@@ -1,0 +1,30 @@
+[
+  {
+    "role": "CarrierCommander",
+    "file": "EMM-A Carrier.txt",
+    "block": "EMM-A Ca Prog. Block (Commander)",
+    "characters": 92509,
+    "sha256": "50152DE534ED99358CFA2C4D34C9B126327101964A6F7827C7767EDE33C00706"
+  },
+  {
+    "role": "CarrierPilot",
+    "file": "EMM-A Carrier Pilot.txt",
+    "block": "EMM-A Ca Prog. Block (Pilot)",
+    "characters": 84960,
+    "sha256": "4922B9CA625165F9819DD0FB8EEFAAC14DCF0EF19103BBD479D887409874D1EE"
+  },
+  {
+    "role": "MinerCommander",
+    "file": "EMM-A Miner.txt",
+    "block": "EMM-A Mi Prog. Block (Commander)",
+    "characters": 51493,
+    "sha256": "2232106D2E80D4C90C745B7B3EFD737C8356380666AD4F04E804D56AE3155F1D"
+  },
+  {
+    "role": "MinerPilot",
+    "file": "EMM-A Miner Pilot.txt",
+    "block": "EMM-A Mi Prog. Block (Pilot)",
+    "characters": 98432,
+    "sha256": "7504E3C5161D7A2EE14B7489122959D8D84E5486CCC67F283298902C7BBF4549"
+  }
+]

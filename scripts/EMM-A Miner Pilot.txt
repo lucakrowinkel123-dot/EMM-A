@@ -1,0 +1,799 @@
+string C=>A(B(0));double D=20,E=2.5,F=0.25,G=1.0,H=2.0,I=80,J=0,K=0,L=5;UpdateFrequency M=UpdateFrequency.Update1;string
+N=>A("Path");int O=3;double P=30.0;string R=>Q(B(1));string S=>A("Connector");string U=>Q("Merger");string V=>A("Merger")
+;string k=>W.g(B(2));string l=>W.g(B(3));string m=>W.g(B(4));string o=>W.g(B(5));string q=>Q(B(6));string ª=>A(
+"Plugin Info");string µ=>A(B(7));string º=>A(B(8));string À="";double Á=0.5,Â=5,Ã=200.0,Ä=0.0,Å=15.0,Æ=15.0,Ç=50.0,È=0.25,É=5.0,Ê=
+0.25,Ë=-1.25,Ì=90.0,Í=20.0,Î=1.0;bool Ï=false,Ð=true,Ñ=false,Ò=false,Ó=false,Ô=false,Õ=false,Ö=false;const double Ø=99.0;
+IMyRemoteControl Ù;Ú Û;Ü Ý;Þ ß;List<IMyShipDrill>à=new List<IMyShipDrill>();bool?á=null;Vector3D ã=â,ä=â,å=â,æ=â,ç=â,è=â,é=â;enum î{ê,ë,
+ì,í}struct ó{public double ï,ð;public ó(double ñ,double ò){ï=ñ;ð=ò;}}î ô=î.ê;bool õ=false,ö=false,ø=false,ù=false,ú=false
+,û=false,ü=false,ý=false,þ=false,ÿ=false,Ā=false,ā=false,Ă=false,ă=false,Ą=false,ą=false;Vector3D Ć=â,ć=â,Ĉ=â,ĉ=â,Ċ=â,ċ=â
+,Č=â,č=â,Ď=â,ď=â,Đ=â,đ=â,Ē=â;double ē=0,Ĕ=0.7,ĕ=2.5,Ė=0,ė=12.5,Ę=17.5,ę=0,Ě=0,ě=0,Ĝ=0;const double ĝ=2.0;List<Vector3D>Ğ=
+new List<Vector3D>();int ğ=0,Ġ=0,ġ=0,Ģ=0,ģ=0,Ĥ=0,ĥ=0,Ħ=0,ħ=-1,Ĩ;const string ĩ="00;";List<int>Ī=new List<int>(),ī=new List<
+int>();List<double>Ĭ=new List<double>();List<List<ó>>ĭ=new List<List<ó>>();List<string>Į=new List<string>();const int į=600
+;enum Ĵ{İ,ı,Ĳ,ĳ}Ĵ ĵ=Ĵ.İ;bool Ķ=false,ķ=false,ĸ=false,Ĺ=false,ĺ=false,Ļ=false;int ļ=0,Ľ=0,ľ=0,Ŀ=0;Vector3D ŀ=â,Ł=â,ł=â;
+double Ń=0,ń=0;const int Ņ=2;List<string>ņ=new List<string>();List<int>Ň=new List<int>();enum Ō{İ,ň,ŉ,Ŋ,ŋ}Ō ō=Ō.İ;string Ŏ="";
+bool ŏ=false,Ő=false,ő=false;int Œ=-1,œ=0,Ŕ=0,ŕ=0,Ŗ=0,ŗ=-1;Vector3D Ř=â,ř=â,Ś=â;const int ś=300;List<string>Ŝ=new List<
+string>();enum ť{İ=0,ŝ=1,Ş=2,ş=3,Š=4,š=5,Ţ=7,ţ=8,Ť=9}ť Ŧ=ť.İ;Vector3D ŧ=â,Ũ=â,ũ=â,Ū=â,ū=â,Ŭ=â,ŭ=â,Ů=â,ů=â;const double Ű=0,ű=
+5.0,Ų=0.25;bool ų=false,Ŵ=false,ŵ=false,Ŷ=false;int ŷ=0,Ÿ=0,Ź=0,ź=0,Ż=0,ż=0;const int Ž=60;double ž=0,ſ=0,ƀ=1.0/60.0,Ɓ=9999
+;IMyShipConnector Ƃ,ƃ;IMyShipMergeBlock Ƅ,ƅ;IMyLightingBlock Ɔ;IMyGravityGenerator Ƈ;bool?ƈ=null;IMyTimerBlock Ɖ,Ɗ;
+IMyBroadcastListener Ƌ;MatrixD ƌ=MatrixD.Identity;List<IMyGyro>ƍ=new List<IMyGyro>();List<IMyThrust>Ǝ=new List<IMyThrust>();List<
+IMyRadioAntenna>Ə=new List<IMyRadioAntenna>();List<IMyBatteryBlock>Ɛ=new List<IMyBatteryBlock>();List<IMyGasTank>Ƒ=new List<IMyGasTank>
+();enum ƛ{İ,ƒ,Ɠ,Ɣ,ƕ,Ɩ,Ɨ,Ƙ,ƙ,ƚ}ƛ Ɯ=ƛ.İ;enum ƥ{İ,Ɲ,ƞ,Ɵ,Ơ,ơ,Ƣ,ƣ,Ƥ}ƥ Ʀ=ƥ.İ;int Ƨ=0,ƨ=0,Ʃ=0,ƪ=0,ƫ=0,Ƭ=0,ƭ=0,Ʈ=0,Ư=0,ư=0;const
+int Ʊ=300,Ʋ=120,Ƴ=2160,ƴ=30,Ƶ=30,ƶ=900,Ʒ=3600,Ƹ=10800,ƹ=Ƹ+1,ƺ=3;long ƻ=0;string Ƽ="";bool ƽ=false,ƾ=false,ƿ=false,ǀ=false,ǁ
+=false,ǂ=false;readonly int ǃ=100;bool Ǆ(){if(ǁ||ǂ)return false;ǁ=true;return true;}void ǅ()=>ǂ=true;double ǆ=0,Ǉ=0,ǈ=0,ǉ
+=0,Ǌ=0,ǋ=0,ǌ=0;StringBuilder Ǎ=new StringBuilder(256),ǎ=new StringBuilder(512);string[]Ǐ=new string[5];bool ǐ=true,Ǒ=
+false,ǒ=false,Ǔ=true,ǔ=false,Ǖ=false,ǖ=false,Ǘ=false,ǘ=false,Ǚ=false,ǚ=false,Ǜ=false,ǜ=false,ǝ=false;const int Ǟ=10,ǟ=300,Ǡ=
+128,ǡ=16,Ǣ=60,ǣ=10,Ǥ=600,ǥ=120,Ǧ=120,ǧ=30;int Ǩ=7,ǩ=0,Ǫ=0,ǫ=int.MaxValue,Ǭ=0,ǭ=0,Ǯ=int.MaxValue,ǯ=0,ǰ=0,Ǳ=0,ǲ=0,ǳ=0,Ǵ=0,ǵ=
+11;Vector3D Ƕ=â;List<string>Ƿ=new List<string>();const string Ǹ="[EMMA3_SCRIPT_LOG_BEGIN]",ǹ="[EMMA3_SCRIPT_LOG_END]",Ǻ=
+"state",ǻ="progress";long Ǽ=0,ǽ=long.MinValue;string Ǿ="",ǿ="";List<IMyTimerBlock>Ȁ=new List<IMyTimerBlock>();IMyTimerBlock ȁ,Ȃ
+,ȃ;MyIni Ȅ=new MyIni();enum ȇ{İ,ȅ,Ȇ}ȇ Ȉ=ȇ.İ;readonly Color ȉ=new Color(0,200,255),Ȋ=new Color(255,128,0),ȋ=Color.White;
+Color?Ȍ=null;bool?ȍ=null;void ȏ(Color Ȏ){if(Ȍ.HasValue&&Ȍ.Value==Ȏ)return;Ɔ.Color=Ȏ;Ȍ=Ȏ;}void ȑ(bool Ȑ){if(ȍ.HasValue&&ȍ.
+Value==Ȑ)return;Ɔ.Enabled=Ȑ;ȍ=Ȑ;}void Ȓ(){if(Ɔ==null)return;Ȉ=ȇ.İ;Ǵ=0;Ɔ.Enabled=false;Ɔ.Color=ȋ;ȍ=false;Ȍ=ȋ;}void ȕ(){if(Ƈ==
+null)return;bool ȓ=ö;if(ƈ.HasValue&&ƈ.Value==ȓ)return;Ƈ.Enabled=ȓ;ƈ=ȓ;Ȕ(B(9)+(ȓ?B(10):B(11)));}void Ȕ(string Ȗ){if(!Ǔ)return
+;{Echo(Ȗ);}{if(Ƿ.Count>=Ǡ)Ƿ.RemoveAt(0);Ƿ.Add(Ȗ??"");}}void ș(){if(!Ǔ||Ƿ.Count==0||ư<ǩ)return;if(ȗ())return;Ș();ǩ=ư+(Ƿ.
+Count>0?ǣ:Ǣ);}void Ș(){if(!Ǔ||Ƿ.Count==0)return;string Ț=Me.CustomData??"";int ȝ=ț.Ȝ(Ƿ,ǡ,4096);if(ȝ==0)return;int ȟ=Ț.IndexOf
+(Ǹ,Ȟ);if(ȟ>=0){int Ƞ=Ț.IndexOf(ǹ,ȟ+Ǹ.Length,Ȟ);if(Ƞ<0)return;StringBuilder ȡ=ǎ;ȡ.Clear();for(int Ȣ=0;Ȣ<ȝ;Ȣ++){ȡ.Append(
+"L|");ț.ȣ(ȡ,Ƿ[Ȣ]);ȡ.AppendLine();}Me.CustomData=Ț.Insert(Ƞ,ȡ.ToString());Ƿ.RemoveRange(0,ȝ);return;}StringBuilder Ȥ=ǎ;Ȥ.
+Clear();if(Ț.Length>0&&!Ț.EndsWith("\n"))Ȥ.AppendLine();Ȥ.AppendLine(Ǹ);for(int Ȣ=0;Ȣ<ȝ;Ȣ++){Ȥ.Append("L|");ț.ȣ(Ȥ,Ƿ[Ȣ]);Ȥ.
+AppendLine();}Ȥ.AppendLine(ǹ);Me.CustomData=Ț+Ȥ.ToString();Ƿ.RemoveRange(0,ȝ);}void Ȧ(){Ö=false;if(Õ)return;ß.ȥ();Ý.ȥ();Õ=true;}
+sealed class Ȭ{public string ȧ="EMM-A Ca",Ȩ="EMM-A Mi";public string ȩ=>ȧ.Length+":"+ȧ+Ȩ.Length+":"+Ȩ;public string Q(string Ȫ
+)=>ȧ+" "+Ȫ;public string A(string Ȫ)=>Ȩ+" "+Ȫ;public string g(string ȫ)=>ȧ=="EMM-A Ca"&&Ȩ=="EMM-A Mi"?ȫ:ȫ+"|"+ȩ;public
+static Ȭ Ȼ(string Ȗ,bool ȭ){var Ȯ=new Ȭ();bool ȯ=false,Ȱ=false,ȱ=false,Ȳ=false;foreach(string ȳ in(Ȗ??"").Split('\n')){string
+ȴ=ȳ.Trim();if(ȴ.StartsWith("[",Ȟ)){ȯ=ȴ.Equals("[EMMA]",ȵ);if(ȯ&&Ȱ)throw new System.ArgumentException(B(12));Ȱ|=ȯ;continue
+;}if(!ȯ)continue;int ȶ=ȴ.IndexOf('=');if(ȶ<0)continue;string ȷ=ȴ.Substring(0,ȶ).Trim(),ȸ=ȴ.Substring(ȶ+1).Trim();if(ȷ.
+Equals(ȭ?"NameCarrier":"NameMiner",ȵ))throw new System.ArgumentException(B(13));bool ȹ=ȷ.Equals("NameShip",ȵ);bool Ⱥ=ȷ.Equals(
+ȭ?"NameMiner":"NameCarrier",ȵ);if(!ȹ&&!Ⱥ)continue;if(ȹ&&ȱ||Ⱥ&&Ȳ)throw new System.ArgumentException("Duplicate "+ȷ);if(ȸ.
+Length==0||ȸ.Length>96)throw new System.ArgumentException("Invalid "+ȷ);foreach(char Ȏ in ȸ)if(char.IsControl(Ȏ))throw new
+System.ArgumentException("Invalid "+ȷ);if(ȹ)ȱ=true;else Ȳ=true;if(ȹ==ȭ)Ȯ.ȧ=ȸ;else Ȯ.Ȩ=ȸ;}if(Ȯ.ȧ==Ȯ.Ȩ)throw new System.
+ArgumentException(B(14));return Ȯ;}}Ȭ W=new Ȭ();string Q(string Ȫ)=>W.Q(Ȫ);string A(string Ȫ)=>W.A(Ȫ);void Ʉ(bool ȭ,bool ȼ){const string
+Ƚ=" Prog. Block (Commander)",Ⱦ=" Prog. Block (Pilot)";IMyProgrammableBlock ȿ=Me;var ɀ=new List<IMyProgrammableBlock>();if
+(ȼ){if(!Me.CustomName.EndsWith(Ⱦ,Ȟ))throw new Exception(B(15)+Ⱦ);string Ɂ=Me.CustomName.Substring(0,Me.CustomName.Length-
+Ⱦ.Length)+Ƚ;GridTerminalSystem.GetBlocksOfType(ɀ,ɂ=>ɂ.CubeGrid==Me.CubeGrid&&ɂ.CustomName==Ɂ);if(ɀ.Count!=1)throw new
+Exception(B(16)+Ɂ);ȿ=ɀ[0];}W=Ȭ.Ȼ(ȿ.CustomData,ȭ);string ȹ=ȭ?W.ȧ:W.Ȩ;if(ȿ.CustomName!=ȹ+Ƚ||Me.CustomName!=ȹ+(ȼ?Ⱦ:Ƚ))throw new
+Exception(B(17));string Ƀ=(ȭ?W.Ȩ:W.ȧ)+Ƚ;ɀ.Clear();GridTerminalSystem.GetBlocksOfType(ɀ,ɂ=>ɂ.CustomName==Ƀ);if(ɀ.Count>1||ɀ.Count
+==1&&Ȭ.Ȼ(ɀ[0].CustomData,!ȭ).ȩ!=W.ȩ)throw new Exception(B(18));}static class ț{public static int Ȝ(System.Collections.
+Generic.List<string>Ʌ,int Ɇ,int ɇ){if(Ʌ==null||Ʌ.Count==0||Ɇ<=0||ɇ<=0)return 0;int Ɉ=System.Math.Min(Ɇ,Ʌ.Count);int ɉ=0;int Ɋ=0
+;for(int Ȣ=0;Ȣ<Ɉ;Ȣ++){string ȸ=Ʌ[Ȣ];int ɋ=3;if(!string.IsNullOrEmpty(ȸ)){for(int Ɍ=0;Ɍ<ȸ.Length;Ɍ++){char Ȏ=ȸ[Ɍ];ɋ+=Ȏ==
+'\\'||Ȏ=='\r'||Ȏ=='\n'?2:1;}}if(ɉ>0&&Ɋ+ɋ>ɇ)break;ɉ++;Ɋ+=ɋ;if(Ɋ>=ɇ)break;}return ɉ;}public static void ȣ(System.Text.
+StringBuilder ɍ,string ȸ){if(string.IsNullOrEmpty(ȸ))return;for(int Ȣ=0;Ȣ<ȸ.Length;Ȣ++){char Ȏ=ȸ[Ȣ];if(Ȏ=='\\')ɍ.Append("\\\\");else
+if(Ȏ=='\r')ɍ.Append("\\r");else if(Ȏ=='\n')ɍ.Append("\\n");else ɍ.Append(Ȏ);}}}bool ɐ(){int ɏ=Math.Max(ǃ,600/Math.Max(1,Ɏ(
+)));return(ư+ǃ/2)%ɏ==0;}void ɑ(){if(!Ǔ)return;StringBuilder Ȥ=Ǎ;Ȥ.Clear();Ȥ.AppendLine(B(19));Ȥ.AppendLine(Ò?B(20):B(21))
+;if(Ñ)Ȥ.AppendLine($"Target: {ã.ToString("0.00")}");else Ȥ.AppendLine(B(22));Ȥ.AppendLine(
+$"Runtime (last tick): {Runtime.LastRunTimeMs:0.000} ms");Ȥ.AppendLine($"Runtime peak (last minute): {ǆ:0.000} ms");Ȕ(Ȥ.ToString());}void ɗ(){double ɒ=Runtime.LastRunTimeMs;ɓ+=
+ɒ;ɔ++;ɕ=Math.Max(ɕ,ɒ);ǆ=ɕ;Ǉ+=ƀ;if(Ǉ>=60){Ȕ(B(23)+ɖ+" avg="+(ɓ/ɔ).ToString("0.000")+" ms; peak="+ɕ.ToString("0.000")+B(24)
++ɔ);ɓ=ɕ=0;ɔ=0;Ǉ=0;}}string ɜ(){if(ɘ!=null)return B(25);if(Ɯ==ƛ.ƙ)return B(26);if(Ɯ==ƛ.ƚ)return B(27);if(ü&&ĥ>=Į.Count&&ə(
+))return B(28);if(Ŧ==ť.ŝ)return B(29);if(Ŧ==ť.Ş)return B(30);if(Ŧ==ť.ş)return B(31);if(Ŧ==ť.Š)return B(32);if(Ŧ==ť.š)
+return B(33);if(Ŧ==ť.Ţ)return B(34);if(Ŧ==ť.ţ)return B(35);if(Ŧ==ť.Ť)return"Ready";if(Ą||Ā||ǀ)return B(34);if(Ķ)return B(36);
+if(Ă)return B(36);if(Ŵ)return B(37);if(ō==Ō.ň)return B(36);if(ō==Ō.ŉ)return"Servicing";if(ō==Ō.Ŋ)return B(30);if(ō==Ō.ŋ)
+return B(36);if(ö)return B(38);if(ý||Ó)return"Paused";if(Ɯ==ƛ.Ɣ||Ɯ==ƛ.Ɨ||Ɯ==ƛ.Ƙ||Ɯ==ƛ.ƕ)return B(34);if(Ɯ==ƛ.ƒ||Ɯ==ƛ.Ɠ||Ɯ==ƛ.Ɩ
+)return B(30);if(Ƃ!=null&&ɚ()==ɛ)return"Docked";if(ü||Ò)return"Travelling";return"Idle";}void ɡ(){ī.Clear();Ĩ=0;for(int Ȣ
+=0;Ȣ<Į.Count;Ȣ++){string ɞ=ɝ(Į[Ȣ]);if(!ɟ(ɞ)&&ɠ(ɞ))Ĩ++;ī.Add(Ĩ);}}void ɤ(out int ɢ,out int ɣ){ɣ=Į.Count==0?0:Ĩ;ɢ=ħ<0||Į.
+Count==0||ī.Count==0?0:ī[Math.Min(ħ,ī.Count-1)];}void ɧ(){if(!ǒ){Ǒ=false;return;}if(!Ǒ){Ƕ=ū;Ǒ=true;return;}double ɥ=Vector3D.
+Distance(Ƕ,ū);Ƕ=ū;if(ɥ<0.001||Ó)return;int ɦ=1;if(Ă&&ą)ɦ=-1;if(ō==Ō.ŉ)ɦ=0;else if(ō==Ō.Ŋ||ō==Ō.ŋ)ɦ=ą?1:-1;ǈ=MathHelper.Clamp(ǈ+ɥ
+*ɦ,0,Math.Max(0,ǉ));}bool ə()=>Ƃ!=null&&ɚ()==ɛ;bool ɨ,ɩ;MyShipConnectorStatus ɪ;bool ɫ;void ɬ(){ɨ=false;ɩ=false;}
+MyShipConnectorStatus ɚ(){if(!ɨ){ɪ=Ƃ==null?MyShipConnectorStatus.Unconnected:Ƃ.Status;ɨ=true;}return ɪ;}void ɱ(){ɬ();ɭ();Û.ɮ(ư);ƌ=Û.ɯ;ū=Û.ɰ;}
+IMyRemoteControl ɶ(){List<IMyRemoteControl>ɳ=ɲ<IMyRemoteControl>();IMyRemoteControl ɴ=null;for(int Ȣ=0;Ȣ<ɳ.Count;Ȣ++){IMyRemoteControl ɵ
+=ɳ[Ȣ];if(ɵ==null||ɵ.CustomName!=C)continue;if(ɴ!=null)throw new Exception(B(39)+C+B(40));ɴ=ɵ;}if(ɴ==null)throw new
+Exception(B(41)+C);return ɴ;}void ɭ(){if(Ù!=null&&Ù.IsAutoPilotEnabled)Ù.SetAutoPilotEnabled(false);}bool ɷ;void ʝ(){Õ=false;
+MatrixD ɸ=ƌ;Vector3D ɺ=ɹ(ɸ);Vector3D ɻ=ū;Vector3D ɼ=ɻ+ɺ;Vector3D ɽ=ã-ɼ;double ɿ=ɾ();bool ʁ=ʀ();bool ʂ=ɽ.LengthSquared()<ɿ*ɿ;
+Vector3D ʃ=ä;bool ʄ=ʁ&&ä==â;if(ʄ)ʃ=ʅ(ɸ,ɽ,ʂ);else Ö=false;if(!ʄ&&ʃ==â&&ɽ.LengthSquared()>0.001)ʃ=ʆ(ɽ);Vector3D ʇ=ʄ&&!ʂ?â:å;if(ʇ==
+â&&!ʄ){Vector3D ʉ=Û.ʈ;if(ʉ.LengthSquared()>0.001)ʇ=ʆ(-ʉ);else ʇ=ɸ.Up;}bool ʋ=ʊ(ɸ,ʃ,ʇ,G);bool ʌ=Ɯ==ƛ.ƕ||Ŧ==ť.ş;if(!ʂ||!ʋ||
+ʌ)ß.ʍ(ɸ,ʃ,ʇ);if(ʂ){if(ʌ){double ʎ=Math.Min(0.25,Math.Max(0.05,Ė));Vector3D ʏ=ã-ɺ;Vector3D ʐ=å.LengthSquared()>0.001?ʆ(å):
+ɸ.Up;Vector3D ʒ=Ý.ʑ(ɻ,ʏ,â,ʎ,ʐ);Ý.ʓ(ʒ);}else{Ý.ȥ();if(ʋ)ß.ȥ();}return;}double ʔ=Ė>0?Ė:D;Vector3D ʕ=ã-ɺ;if(Ɯ!=ƛ.İ){ʔ=Math.
+Min(ʔ,ʖ(ɽ,ɿ));Vector3D ʗ=å.LengthSquared()>0.001?ʆ(å):ɸ.Up;Vector3D ʘ=Ý.ʑ(ɻ,ʕ,â,ʔ,ʗ);Ý.ʓ(ʘ);}else if(ʁ){if(!ʋ){Ý.ȥ();return
+;}ʔ=Math.Min(ʔ,ʖ(ɽ,ɿ));ʔ=Math.Min(ʔ,D);Vector3D ʘ=Ý.ʙ(ɻ,ʕ,â,ʔ);bool ʛ=ʚ(ɽ,ɿ);ʜ(ʘ,ʛ);}else{Vector3D ʘ=Ý.ʙ(ɻ,ʕ,â,ʔ);Ý.ʓ(ʘ);
+}}Vector3D ʅ(MatrixD ɸ,Vector3D ɽ,bool ʂ){Vector3D ʞ=new Vector3D(J,K,L);if(!Ö||æ!=ã||ç!=ʞ||è!=å){æ=ã;ç=ʞ;è=å;é=!ʂ&&ɽ.
+LengthSquared()>0.001?ʆ(ɽ):ɸ.Forward;Ö=true;}return é;}bool ʀ()=>Ɯ==ƛ.İ&&!õ;double ʠ(Vector3D ɽ,double ɿ){double ʟ=Math.Max(0.05,ɿ);
+return Math.Max(0,ɽ.Length()-ʟ+Math.Min(0.05,ʟ*0.2));}double ʖ(Vector3D ɽ,double ɿ){double ʡ=ʠ(ɽ,ɿ);if(ʡ<=0)return 0;Vector3D
+ʢ=ʆ(ɽ);double ʤ=ʣ(ʢ);if(ʤ<=0)return 0;double ʥ=ʤ*2.0;double ʦ=2*ʤ*ʡ;return ʦ/(Math.Sqrt(ʥ*ʥ+ʦ)+ʥ);}bool ʚ(Vector3D ɽ,
+double ɿ){Vector3D ʨ=Û.ʧ;double ʩ=ʠ(ɽ,ɿ);if(ʩ<=0||ʨ.LengthSquared()<0.01||ɽ.LengthSquared()<0.01)return false;Vector3D ʢ=ʆ(ɽ);
+double ʫ=ʪ(ʨ,ʢ);if(ʫ<=0)return false;double ʘ=ʣ(ʢ);if(ʘ<=0)return true;return(ʫ*ʫ)/(2*ʘ)>ʩ;}double ʭ()=>Û.ʬ;double ʯ(Vector3D
+ɦ)=>Û.ʮ(ɦ);double ʱ(Vector3D ɦ){double ʰ=MathHelper.Clamp(I,1,100)/100.0;return ʯ(ɦ)*ʰ;}double ʣ(Vector3D ɦ){double ʲ=ʭ()
+;double ʳ=ʱ(ɦ);return Math.Min(Math.Max(0.1,H),ʳ/ʲ);}void ʜ(Vector3D ʘ,bool ʛ){if(ʛ){Ý.ʓ(ʘ);return;}double ʴ=ʭ()*Math.Max
+(0.1,H);Ý.ʓ(ʘ,ʴ);}Vector3D ʶ(MatrixD ʵ)=>ʵ.Right*J+ʵ.Up*K+ʵ.Forward*L;Vector3D ʷ(){MatrixD ʵ=ƌ;return ū+ʶ(ʵ);}Vector3D ʸ(
+MatrixD ʵ)=>ʵ.Right*ů.X+ʵ.Up*ů.Y+ʵ.Forward*ů.Z;Vector3D ʹ(MatrixD ʵ)=>Ù.CubeGrid.WorldAABB.Center-ū+ʵ.Forward*Ű;Vector3D ɹ(
+MatrixD ʵ){if(Ɯ!=ƛ.İ)return ʸ(ʵ);if(Ŧ==ť.ş)return ʹ(ʵ);return ʶ(ʵ);}bool ʊ(Vector3D ʃ,Vector3D ʇ,double ʺ)=>ʊ(ƌ,ʃ,ʇ,ʺ);bool ʊ(
+MatrixD ʵ,Vector3D ʃ,Vector3D ʇ,double ʺ){double ʻ=Math.Cos(Math.Max(0.1,ʺ)*Math.PI/180.0);double ʼ=ʃ.LengthSquared();if(ʼ>
+0.001){if(Math.Abs(ʼ-1)>0.001)ʃ/=Math.Sqrt(ʼ);if(ʪ(ʵ.Forward,ʃ)<ʻ)return false;}double ʽ=ʇ.LengthSquared();if(ʽ>0.001){if(
+Math.Abs(ʽ-1)>0.001)ʇ/=Math.Sqrt(ʽ);if(ʪ(ʵ.Up,ʇ)<ʻ)return false;}return true;}double ɾ(){if(Ɯ==ƛ.ƕ)return Math.Max(0.05,Ê);
+if(Ɯ!=ƛ.İ||Ŧ==ť.ş)return Math.Max(0.05,È);if(õ)return Math.Max(0.05,F);return Math.Max(0.05,E);}bool ˀ()=>ʾ(ŧ,Ũ,ũ,ɾ())&&Û.
+ʧ.LengthSquared()<=0.05*0.05&&Û.ʿ.LengthSquared()<=0.005*0.005;void ˉ(string ˁ,out string ˆ,out string ˇ){ˆ=ˁ??"";ˇ="";
+string[]ˈ=ˆ.Split('|');if(ˈ.Length>0)ˆ=ˈ[0].Trim();if(ˈ.Length>1)ˇ=ˈ[1].Trim();}void ˠ(){ˊ();Ɯ=ƛ.İ;ˋ();ˌ();ˍ();ˎ();ü=false;ý=
+false;þ=false;ÿ=false;Ā=false;Ħ=0;õ=false;ô=î.ê;ö=false;Ğ.Clear();ğ=0;Ġ=0;ø=false;ˏ();ù=false;û=false;ú=false;ħ=-1;ː(false);ˑ
+();}bool ˬ(Vector3D ʃ,Vector3D ʇ,out Vector3D ˡ,out Vector3D ˢ,out Vector3D ˣ,out Vector3D ˤ){ˡ=â;ˢ=â;ˣ=â;ˤ=â;if(ʃ.
+LengthSquared()<=0.001||ʇ.LengthSquared()<=0.001)return false;ˡ=ʆ(ʃ);ˢ=ʆ(ʇ);ˣ=Vector3D.Cross(ˡ,ˢ);if(ˣ.LengthSquared()<=0.001)return
+false;ˣ=ʆ(ˣ);ˤ=-ˢ;return true;}void Ή(ref Vector3D ˮ,ref Vector3D Ͱ,Vector3D ʃ,Vector3D ʇ){Vector3D ˡ,ˢ,ͱ,Ͳ;if(!ˬ(ʃ,ʇ,out ˡ,
+out ˢ,out ͱ,out Ͳ)){ͳ(ref ˮ,ref Ͱ,ʃ);return;}ͳ(ref ˮ,ref Ͱ,ˡ);double ʹ=ʪ(ˮ,ͱ);double Ͷ=ʪ(Ͱ,ͱ);double ͷ=ʪ(ˮ,Ͳ);double ͺ=ʪ(Ͱ,
+Ͳ);double ͻ=Math.Min(ʹ,Ͷ);double ͼ=Math.Max(ʹ,Ͷ);double ͽ=Math.Min(ͷ,ͺ);double Ά=Math.Max(ͷ,ͺ);Vector3D Έ=ˮ+ͱ*(ͻ-ʹ)+Ͳ*(ͽ-
+ͷ);ˮ=Έ;Ͱ=Έ+ͱ*(ͼ-ͻ)+Ͳ*(Ά-ͽ);}Vector3D Ί(Vector3D ˮ,Vector3D Ͱ)=>(ˮ+Ͱ)*0.5;int Ό()=>Math.Max(1,(int)Math.Ceiling(Á/Math.Max
+(0.001,ƀ)));void Α(){if(Ɔ==null)return;bool Ύ=ö;bool Ώ=Ò||Ύ;Color ΐ=Ύ?Ȋ:ȉ;if(Ώ){if(Ȉ==ȇ.Ȇ){Ȉ=ȇ.İ;Ǵ=0;}if(!Ɔ.Enabled){if(Ȉ
+!=ȇ.ȅ){ȏ(ΐ);Ǵ=Ό();Ȉ=ȇ.ȅ;}else{ȏ(ΐ);Ǵ--;if(Ǵ<=0){ȑ(true);Ȉ=ȇ.İ;}}}else{ȏ(ΐ);Ȉ=ȇ.İ;Ǵ=0;}return;}if(Ȉ==ȇ.ȅ){Ȉ=ȇ.İ;Ǵ=0;}if(Ɔ.
+Enabled){ȑ(false);Ǵ=Ό();Ȉ=ȇ.Ȇ;return;}if(Ȉ==ȇ.Ȇ){Ǵ--;if(Ǵ<=0){ȏ(ȋ);Ȉ=ȇ.İ;}return;}ȏ(ȋ);}void Β(){if(Ȉ==ȇ.İ){if(ǵ>0){ǵ--;return;
+}ǵ=ǧ-1;}Α();}bool Ε(string ȴ){if(Γ(ȴ))return false;string Δ=ȴ.Trim();return Δ.StartsWith(ĩ,ȵ);}void ͳ(ref Vector3D ˮ,ref
+Vector3D Ͱ,Vector3D ʃ){if(ʃ.LengthSquared()<0.001)return;Vector3D Ζ=ʆ(ʃ);double Η=ʪ(ˮ,Ζ);double Θ=ʪ(Ͱ,Ζ);double Ι=Math.Min(Η,Θ);
+ˮ-=Ζ*(Η-Ι);Ͱ-=Ζ*(Θ-Ι);}bool ɟ(string ȴ)=>Ε(ȴ);bool Μ(List<int>Κ,int Λ){for(int Ȣ=0;Ȣ<Κ.Count;Ȣ++)if(Κ[Ȣ]==Λ)return true;
+return false;}void Ν(List<int>Κ,int Λ){if(Λ<0||Μ(Κ,Λ))return;Κ.Add(Λ);}string Π(string Ɂ){Vector3D ɂ=ū;Vector3D Ξ=ʆ(ƌ.Forward)
+;Vector3D Ο=ʆ(ƌ.Up);return$"GPS:{Ɂ}:{ɂ.X:0.00}:{ɂ.Y:0.00}:{ɂ.Z:0.00}:|{Ο.X:0.0000},{Ο.Y:0.0000},{Ο.Z:0.0000},{Ξ.X:0.0000},{Ξ.Y:0.0000},{Ξ.Z:0.0000}"
+;}bool Υ(double Ρ,double Σ,int Τ)=>Math.Abs(Ρ-ė)<0.01&&Math.Abs(Σ-Ę)<0.01&&Τ==Ġ;void Φ(){ː(false);õ=false;ô=î.ê;ö=false;Ğ
+.Clear();ğ=0;Ġ=0;ø=false;û=false;ã=č;å=ď;ä=Ď;Ñ=true;Ò=true;Ė=ĕ;ú=false;}void Ω(){if(!ü||Į.Count==0)return;if(ý)return;if(
+õ)return;if(Ɯ!=ƛ.İ||Χ)return;if(ǀ)return;if(Ò&&Ñ){if(ʾ(ã,ä,å)){Ò=false;Ñ=false;Ė=0;if(Ā){Ā=false;ˑ();return;}}return;}Ψ()
+;}void ΰ(){Ϊ();ˊ();ˌ();ˍ();ü=false;ý=false;þ=false;ÿ=false;Ā=false;Į.Clear();ĥ=0;Ħ=0;ā=false;õ=false;ô=î.ê;ö=false;Ğ.
+Clear();ğ=0;Ġ=0;ø=false;ˏ();ù=false;û=false;ú=false;ħ=-1;ż=0;Ŷ=false;ː(false);Ɯ=ƛ.İ;if(Ϋ()){ά();έ();}ή();ƪ=0;ƫ=0;Ƭ=0;ƿ=false;
+Ò=false;Ñ=false;Ė=0;ί();}bool α=false,β=false;void κ(string ˇ="",bool γ=false){Ϊ();if(!Γ(ˇ))À=ˇ;if(Ă){Ȕ(B(42));return;}if
+(!ü||Į.Count==0){Ȕ(B(43));return;}bool ε=δ();if(!γ)ˍ();ˎ();Ā=false;ή();if(!ε)ˊ();Ó=false;Ô=false;Runtime.UpdateFrequency=
+M;ː(false);Ă=true;ă=false;Ą=false;Ľ=0;ņ.Clear();Ň.Clear();ľ=Math.Max(0,Math.Min(ĥ,Į.Count));Ŀ=Į.Count;Ǩ=0;ý=false;þ=false
+;Ħ=0;ǜ=true;ζ(ľ,Ŀ);if(η())return;if(ε){Ȕ(B(44));return;}if(õ||ö){ă=true;θ(true);Ȕ(B(45));return;}ι();}bool δ(){if(ə())
+return false;return λ()||Χ||Ɯ==ƛ.ƚ||Ɯ==ƛ.ƒ||Ɯ==ƛ.Ɠ||Ɯ==ƛ.Ɩ;}bool η(){if(!ə())return false;ˊ();Ą=true;Ķ=false;ĵ=Ĵ.İ;Ò=false;Ñ=
+false;Ė=0;μ();ν(ƛ.ƙ);Ȕ(B(46));return true;}void ρ(){if(!Ă||Ϋ())return;if(δ())return;if(ă){if(õ)return;if(Ò&&Ñ){if(ʾ(ã,ä,å)){Ò
+=false;Ñ=false;Ė=0;ζ(Math.Max(0,Math.Min(ĥ,Į.Count)),Į.Count);}return;}ă=false;ι();}if(Ķ)return;if(!ă&&!Ą&&ņ.Count==0){ι(
+);return;}if(Ą){if(Ɯ!=ƛ.İ||ǀ)return;if(ə()||ξ()){ο();return;}ˑ();return;}if(Ò&&Ñ){if(ʾ(ã,ä,å)){Ò=false;Ñ=false;Ė=0;if(!ą)
+ľ=Math.Max(0,Math.Min(ĥ,Į.Count));ζ(ľ,Ŀ);}return;}if(Ɯ!=ƛ.İ||ǀ)return;π();}void ι(){ņ.Clear();Ň.Clear();Ľ=0;Ķ=true;ĵ=Ĵ.ı;
+ŀ=ū;Ł=ŀ;Ń=0;ń=0;α=false;β=false;ļ=Math.Max(0,Math.Min(ĥ,Į.Count))-1;ς(true,ĥ);ķ=Ò&&Ñ;ł=ã;ĸ=ā;Ĺ=false;ǜ=true;Ȕ(B(47));}
+void ό(){if(!Ă||!Ķ||ă)return;int σ=Ņ;while(σ-->0&&Ķ){if(ĵ==Ĵ.ı){if(ļ>=0){τ(Į[ļ--],true,ref Ł,ref Ń);continue;}if(ĸ){ĸ=false;
+υ(Đ,ref Ł,ref Ń);continue;}ĵ=Ĵ.Ĳ;Ł=ŀ;ļ=Math.Max(0,Math.Min(ĥ,Į.Count));φ(false);if(ķ){υ(ł,ref Ł,ref ń);ķ=false;}continue;
+}if(ĵ==Ĵ.Ĳ){if(ļ<Į.Count){τ(Į[ļ++],false,ref Ł,ref ń);continue;}ą=Ń<ń;ĵ=Ĵ.ĳ;ļ=ą?Math.Max(0,Math.Min(ĥ,Į.Count))-1:Math.
+Max(0,Math.Min(ĥ,Į.Count));ĸ=ą&&ā;Ĺ=ą;φ(ą);ǜ=true;continue;}if(ĵ==Ĵ.ĳ){if(ą&&ļ>=0){int χ=ļ--;ψ(Į[χ],χ,true);continue;}if(!ą
+&&ļ<Į.Count){int χ=ļ++;ψ(Į[χ],Math.Min(χ+1,Į.Count),false);continue;}if(ĸ){ĸ=false;ω(ϊ(Đ,Đ,đ,Ē),0);continue;}if(Ĺ){Ĺ=false
+;ω("dock",0);continue;}ϋ();}}}void ϋ(){Ķ=false;ĵ=Ĵ.İ;if(ą){Ò=false;Ñ=false;Ė=0;Ȧ();}ǜ=true;Ȕ(B(48)+(ą?"start":"end")+B(49
+)+Ń.ToString("0")+" m, end "+ń.ToString("0")+B(50));}void τ(string ύ,bool ώ,ref Vector3D Ϗ,ref double ʡ){string ɞ=ɝ(ύ);if
+(ώ&&ĵ==Ĵ.ı&&!α){bool ϐ=ɞ.Equals("drillson",ȵ);if(ϐ||ɞ.StartsWith("reverse;",ȵ)||ɞ.Equals("dock",ȵ)||ɞ.Equals("undock",ȵ))
+{α=true;β=ϐ;}}if(ϑ(ɞ,ώ))return;if(Γ(ɞ)||ɟ(ɞ)||ɞ.Equals("undock",ȵ)||ɞ.Equals("drillson",ȵ))return;if(ɞ.Equals("dock",ȵ)){
+if(ā)υ(Đ,ref Ϗ,ref ʡ);return;}Vector3D ϒ,Ζ,ʇ;if(ɠ(ɞ)){Vector3D ˮ,Ͱ;double ϓ;if(ā&&ϔ(ɞ,Đ,out ˮ,out Ͱ,out ʇ,out Ζ,out ϓ))υ(Ί
+(ˮ,Ͱ),ref Ϗ,ref ʡ);return;}string ϕ=null;if(ɞ.StartsWith("Nav;",ȵ))ϕ=ɞ.Substring(4).Trim();else if(ɞ.StartsWith("GPS:",ȵ)
+)ϕ=ɞ;if(ϕ!=null){if(ϖ(ϕ,out ϒ,out Ζ,out ʇ))υ(ϒ,ref Ϗ,ref ʡ);return;}if(ɞ.StartsWith("reverse;",ȵ))ɞ=ɞ.Substring(8).Trim()
+;if(ā&&ϗ(ɞ,Đ,out ϒ,out Ζ,out ʇ))υ(ϒ,ref Ϗ,ref ʡ);}void υ(Vector3D ɼ,ref Vector3D Ϗ,ref double ʡ){ʡ+=Vector3D.Distance(Ϗ,ɼ
+);Ϗ=ɼ;}void ϙ(){ņ.Clear();Ň.Clear();Ľ=0;Ŀ=Į.Count;int Ϙ=Math.Max(0,Math.Min(ĥ,Į.Count));if(ą){ς(true,Ϙ);for(int Ȣ=Ϙ-1;Ȣ>=
+0;Ȣ--)ψ(Į[Ȣ],Ȣ,true);if(ā)ω(ϊ(Đ,Đ,đ,Ē),0);ω("dock",0);return;}ς(false,Ϙ);for(int Ȣ=Ϙ;Ȣ<Į.Count;Ȣ++)ψ(Į[Ȣ],Math.Min(Ȣ+1,Į.
+Count),false);}void ψ(string ύ,int Ϛ,bool ώ){string ɞ=ɝ(ύ);if(ϑ(ɞ,ώ))return;if(Γ(ɞ))return;if(ɟ(ɞ))return;if(ɠ(ɞ)&&ā){
+Vector3D ˮ,Ͱ,ϛ,Ϝ;double ϓ;if(ϔ(ɞ,Đ,out ˮ,out Ͱ,out ϛ,out Ϝ,out ϓ))ω(ϊ(Ί(ˮ,Ͱ),Đ,Ϝ,ϛ),Ϛ);return;}if(ɞ.Equals("undock",ȵ)||ɞ.Equals
+("drillson",ȵ)||ɞ.StartsWith("minearea;",ȵ))return;ω(ɞ,Ϛ);}void φ(bool ώ){ĺ=!ώ&&β;Ļ=ĺ;}void ς(bool ώ,int ϝ){ĺ=false;Ļ=
+false;if(!ώ&&Ϟ(ϝ)){ĺ=true;Ļ=true;}}bool Ϟ(int ϝ){int ñ=Math.Max(0,Math.Min(ϝ,Į.Count))-1;for(int Ȣ=ñ;Ȣ>=0;Ȣ--){string ɞ=ɝ(Į[Ȣ
+]);if(ɞ.StartsWith("reverse;",ȵ))return false;if(ɞ.Equals("drillson",ȵ))return true;if(ɞ.Equals("dock",ȵ)||ɞ.Equals(
+"undock",ȵ))return false;}return false;}bool ϑ(string ɞ,bool ώ){if(Γ(ɞ))return false;bool ϐ=ɞ.Equals("drillson",ȵ);bool ϟ=ɞ.
+StartsWith("reverse;",ȵ);bool Ϡ=ɞ.Equals("dock",ȵ)||ɞ.Equals("undock",ȵ);if(ώ){if(ĺ){if(ϐ||Ϡ)ĺ=false;return!Ϡ;}if(ϟ){ĺ=true;return
+false;}return ϐ;}if(ĺ){if(ϟ){bool ϡ=Ļ;ĺ=false;Ļ=false;return!ϡ;}if(Ϡ){ĺ=false;Ļ=false;return false;}return true;}if(ϐ){ĺ=true
+;Ļ=false;return true;}return false;}void ω(string ɞ,int Ϛ){ņ.Add(ɞ);Ň.Add(Math.Max(0,Math.Min(Ϛ,Ŀ)));}void π(){while(Ľ<ņ.
+Count){string ɞ=ņ[Ľ];int Ϛ=Ľ<Ň.Count?Ň[Ľ]:ľ;Ľ++;ľ=Ϛ;if(Ϣ(ɞ))return;}ο();}bool Ϣ(string ύ){string ɞ=ɝ(ύ);if(Γ(ɞ))return false;
+if(ɞ.Equals("dock",ȵ)){ζ(ľ,Ŀ);if(ə()||ξ()){ο();return true;}ˑ();Ą=true;return true;}Vector3D ϒ,Ζ,ʇ;string ϕ=null;if(ɞ.
+StartsWith("Nav;",ȵ))ϕ=ɞ.Substring(4).Trim();else if(ɞ.StartsWith("GPS:",ȵ))ϕ=ɞ;if(ϕ!=null){if(!ϖ(ϕ,out ϒ,out Ζ,out ʇ))return
+false;ã=ϒ;ä=â;å=â;Ñ=true;Ò=true;Ė=0;return true;}if(ɞ.StartsWith("reverse;",ȵ))ɞ=ɞ.Substring(8).Trim();if(ā&&ϗ(ɞ,Đ,out ϒ,out
+Ζ,out ʇ)){ã=ϒ;ä=â;å=â;Ñ=true;Ò=true;Ė=0;return true;}return false;}string ɝ(string ύ){if(Γ(ύ))return"";string ɞ=ύ.Trim();
+if(ɞ.StartsWith("\"")&&ɞ.EndsWith("\"")&&ɞ.Length>=2)ɞ=ɞ.Substring(1,ɞ.Length-2).Trim();return ɞ;}void ˌ(){Ă=false;ă=false
+;Ą=false;ą=false;Ķ=false;ĵ=Ĵ.İ;ļ=0;ĸ=false;Ĺ=false;ĺ=false;Ļ=false;ņ.Clear();Ň.Clear();Ľ=0;ľ=0;Ŀ=0;}void Ϧ(double ϣ,
+double Ϥ){if(Ŵ)return;Ŵ=true;ŵ=Ò&&Ñ;Ż=0;Ǳ=ǰ;ϥ();Ò=false;ː(false);Ȧ();Ŕ=0;ǜ=true;Ȕ(B(51)+ϣ.ToString("0.0")+"%, stone "+Ϥ.
+ToString("0.0")+"%.");}void Ϯ(bool ϧ,string Ϩ){bool ϩ=ϧ&&ŵ&&Ñ;Ŵ=false;ŵ=false;Ż=0;Ò=ϩ;if(ϩ){bool Ϫ=õ&&(ô==î.ì||ô==î.í);if(ÿ||Ϫ){
+if(ô==î.ì)ϫ();ː(true);if(ô==î.ì)Ϭ();Ȕ(B(52)+(ÿ?B(53):ϭ(ô)+"."));}}ǜ=true;if(!Γ(Ϩ))Ȕ(Ϩ);}void ˎ(){Ŵ=false;ŵ=false;Ż=0;}bool
+ϯ(){if(!Ð||Ă||Ɯ!=ƛ.İ||ǀ||Ā||ə()||ξ()||Ǫ>0||ǔ)return false;if(ü&&Į.Count>0&&!ý)return true;return false;}void ϱ(string ϰ){
+{if(!ϯ())return;ō=Ō.ň;Ŏ=ϰ;ŏ=ö&&ħ>=0&&ħ<Į.Count;Œ=ŏ?ħ:-1;œ=ŏ?Math.Max(0,ğ):0;Ř=ŏ?č:â;ř=ŏ?Ď:â;Ś=ŏ?ď:â;ŕ=0;Ŝ.Clear();Ŗ=0;ǜ=
+true;κ("",true);if(!Ă){ˍ();return;}Ȕ(B(54)+Ŏ+".");}}void ϲ(){if(Ɯ!=ƛ.İ||ǀ)return;if(ŕ>0){ŕ=Math.Max(0,ŕ-Ɏ());return;}ŕ=ś;ˑ()
+;}void ϴ(){if(Ɯ!=ƛ.İ)return;if(ŕ>0){ŕ=Math.Max(0,ŕ-Ɏ());return;}ŕ=ś;ϳ();if(Ɯ!=ƛ.İ||Χ){ō=Ō.Ŋ;ǜ=true;Ȕ(B(55));}}void ϸ(){{ϵ
+();ζ(Ŀ,Ŀ);ý=true;þ=false;Ħ=0;Ă=false;ă=false;Ą=false;Ľ=0;ō=Ō.ŉ;ŕ=0;ǜ=true;if(Ǫ<=0&&!ǔ)Ϸ();Ȕ(B(56));}}void ϵ(){Ŝ.Clear();Ŗ
+=0;ŗ=ņ.Count-1;ő=ą;Ő=true;}void Ϲ(){{if(!Ő)return;if(ŗ>=0){string ɞ=ɝ(ņ[ŗ--]);if(Γ(ɞ)||ɞ.Equals("dock",ȵ)||ɟ(ɞ))return;if
+(ő){ő=false;return;}Ŝ.Add(ɞ);return;}Ő=false;ņ.Clear();Ň.Clear();ǜ=true;Ȕ(B(57)+Ŝ.Count+B(58));}}void Ϻ(){Ŝ.Clear();Ŗ=0;
+int ñ=ņ.Count-1;while(ñ>=0&&ɝ(ņ[ñ]).Equals("dock",ȵ))ñ--;if(ą&&ñ>=0)ñ--;for(int Ȣ=ñ;Ȣ>=0;Ȣ--){string ɞ=ɝ(ņ[Ȣ]);if(Γ(ɞ)||ɞ.
+Equals("dock",ȵ)||ɟ(ɞ))continue;Ŝ.Add(ɞ);}Ȕ(B(57)+Ŝ.Count+B(58));}void Ͼ(){while(Ŗ<Ŝ.Count){string ɞ=Ŝ[Ŗ++];if(ϻ(ɞ)){ϼ();
+return;}}Ͻ();}bool ϻ(string ύ){string ɞ=ɝ(ύ);if(Γ(ɞ)||ɞ.Equals("dock",ȵ)||ɞ.Equals("undock",ȵ)||ɞ.Equals("drillson",ȵ)||ɟ(ɞ))
+return false;Vector3D ϒ,Ζ,ʇ;string ϕ=null;if(ɞ.StartsWith("Nav;",ȵ))ϕ=ɞ.Substring(4).Trim();else if(ɞ.StartsWith("GPS:",ȵ))ϕ=ɞ
+;if(ϕ!=null){if(!ϖ(ϕ,out ϒ,out Ζ,out ʇ))return false;}else{if(ɞ.StartsWith("reverse;",ȵ))ɞ=ɞ.Substring(8).Trim();if(!ā||!
+ϗ(ɞ,Đ,out ϒ,out Ζ,out ʇ))return false;}ã=ϒ;ä=â;å=â;Ñ=true;Ò=true;Ė=0;return true;}void Ͻ(){ō=Ō.İ;Ŏ="";ŕ=0;Ŝ.Clear();Ŗ=0;ý
+=false;þ=false;if(ŏ&&Ͽ()){Ѐ();ǜ=true;Ȕ(B(59));return;}Ѐ();ǜ=true;Ȕ(B(60));}bool Ͽ(){{if(!ŏ||Œ<0||Œ>=Į.Count)return false;
+string ɞ=ɝ(Į[Œ]);if(Γ(ɞ))return false;ħ=Œ;int Ё=Math.Max(0,œ);if(ɞ.StartsWith("minearea;",ȵ)){if(!Ђ(ɞ,Ё))return false;Ѓ();
+return õ||Ò||ġ!=0;}if(!ā||!ɠ(ɞ))return false;Vector3D ˮ,Ͱ,ϛ,Ϝ;double ϓ;if(!ϔ(ɞ,Đ,out ˮ,out Ͱ,out ϛ,out Ϝ,out ϓ))return false;Є
+(ˮ,Ͱ,ϛ,Ϝ,ϓ,Ё);Ѓ();return õ||Ò||ġ!=0;}}void Ѓ(){if(ř.LengthSquared()<=0.001||Ś.LengthSquared()<=0.001)return;č=Ř;Ď=ř;ď=Ś;}
+void ˍ(){ō=Ō.İ;Ŏ="";ŕ=0;Ŝ.Clear();Ŗ=0;Ő=false;ő=false;ŗ=-1;Ѐ();}void Ѐ(){ŏ=false;Œ=-1;œ=0;Ř=â;ř=â;Ś=â;}void Љ(string ˁ){if(!
+Ѕ(ˁ)){Ȕ(B(61));return;}bool І=Ŧ==ť.ŝ||Ŧ==ť.Ş||Ŧ==ť.ş||Ŧ==ť.Š;if(І&&Ź>0&&Ÿ>0){if(Ź!=Ÿ){Ȕ(B(62)+Ÿ+" is active.");return;}Ї(
+Ŧ==ť.Š?"store_ready":B(63));Ȕ(B(64));return;}if(!ə()&&!ξ()){Ȕ(B(65));return;}Ј();if(Ź>0)Ÿ=Ź;Ŧ=ť.ŝ;ų=false;ŷ=0;ź=0;Ħ=0;ː(
+false);μ();Ϸ();ǜ=true;Ї(B(63));Ȕ(B(66));}bool Ѕ(string ˁ){string[]ˈ=ˁ.Split('|');Vector3D ɼ,ʃ,ʇ;double Њ;int Ћ=0;if((ˈ.Length
+!=5&&ˈ.Length!=6)||!Ќ(ˈ[1],out ɼ)||!Ќ(ˈ[2],out ʃ)||!Ќ(ˈ[3],out ʇ)||!double.TryParse(ˈ[4],System.Globalization.NumberStyles
+.Float,Ѝ,out Њ)||Њ<=0||ʃ.LengthSquared()<0.001||ʇ.LengthSquared()<0.001)return false;if(ˈ.Length==6&&(!int.TryParse(ˈ[5],
+out Ћ)||Ћ<=0))return false;bool Ў=ˈ[0].Equals("HangarStore",ȵ);if(!Ў&&Ћ>0&&Ÿ>0&&Ћ!=Ÿ)return false;ŧ=ɼ;Ź=Ћ;ž=Њ;ǜ=true;return
+true;}void Ј(){Ũ=ʆ(Ù.WorldMatrix.Forward);ũ=ʆ(Ù.WorldMatrix.Up);ǜ=true;}void А(string ˁ){if(Ŧ!=ť.Š&&Ŧ!=ť.Ť){Ȕ(B(67));return;
+}if(!Ѕ(ˁ)){Ȕ(B(68));return;}if(Ź>0&&Ÿ>0&&Ź!=Ÿ){Ȕ(B(69)+Ź+".");return;}if(Ź>0)Ÿ=Ź;if(!Џ()){Ȕ(B(70));return;}Ŧ=ť.Ţ;ų=false;
+ŷ=0;ǜ=true;Ȕ(B(71));}void В(string Б){if(ŷ>0){ŷ=Math.Max(0,ŷ-Ɏ());return;}ŷ=Ž;Ї(Б);}void Г(){if(ŷ>0){ŷ=Math.Max(0,ŷ-Ɏ());
+return;}ŷ=Ž;Ї("store_ready");Ї("online");}void Д()=>Ɓ+=ƀ;bool Е()=>ŭ.LengthSquared()>0.001&&Ů.LengthSquared()>0.001&&Ɓ<=É;
+Vector3D З()=>Ж()+ŭ*Â;Vector3D И()=>З()+Ů*(Ã+Ä);Vector3D Ж()=>Ŭ-ŭ*Ë;void К(){if(Ù==null||Ƃ==null)return;Vector3D Й=Ƃ.GetPosition
+()-ū;MatrixD ʵ=ƌ;ů=new Vector3D(ʪ(Й,ʵ.Right),ʪ(Й,ʵ.Up),ʪ(Й,ʵ.Forward));}void Р(){Vector3D Л=-ŭ;Vector3D М=Ů;Vector3D Н,О;
+if(П(Л,М,out Н,out О)){ä=Н;å=О;}else{ä=Л;å=М;}}bool П(Vector3D Л,Vector3D М,out Vector3D Н,out Vector3D О){Н=â;О=â;if(Ù==
+null||Ƃ==null)return false;Vector3D С=ʆ(Ƃ.WorldMatrix.Forward);Vector3D Т=ʆ(Ƃ.WorldMatrix.Up);Vector3D У=Vector3D.Cross(С,Т)
+;if(У.LengthSquared()<0.001)return false;У=ʆ(У);Vector3D Ф=ʆ(Л);Vector3D Х=ʆ(М);Vector3D Ц=Vector3D.Cross(Ф,Х);if(Ц.
+LengthSquared()<0.001)return false;Ц=ʆ(Ц);Н=Ч(ƌ.Forward,У,Т,С,Ц,Х,Ф);О=Ч(ƌ.Up,У,Т,С,Ц,Х,Ф);if(Н.LengthSquared()<0.001||О.
+LengthSquared()<0.001)return false;Н=ʆ(Н);О=ʆ(О);return true;}Vector3D Ч(Vector3D Ш,Vector3D Щ,Vector3D Ъ,Vector3D Ы,Vector3D Ь,
+Vector3D Э,Vector3D Ю){double Я=ʪ(Ш,Щ);double Ο=ʪ(Ш,Ъ);double Ξ=ʪ(Ш,Ы);return Ь*Я+Э*Ο+Ю*Ξ;}bool ξ(){if(!ɩ){ɫ=Ƅ!=null&&Ƅ.
+IsConnected;ɩ=true;}return ɫ;}void б(bool а){if(Ƅ!=null&&Ƅ.Enabled!=а){Ƅ.Enabled=а;ɬ();}}void в(bool а){if(Ƃ!=null){Ƃ.Enabled=а;ɬ()
+;}}void д(){г();if(Ƃ!=null&&ɚ()==ɛ&&!ξ()){{Ƃ.Disconnect();}ɬ();}в(false);б(true);}bool г()=>Ƃ!=null;bool е;bool ж,з,и;
+bool ȗ()=>и&&λ()||Ɯ==ƛ.ƚ||Ɯ==ƛ.ƒ||Ɯ==ƛ.Ɠ||Ɯ==ƛ.Ɩ;bool о(bool й){if(!е){ж=Ï||!Û.к;if(ж)Û.л();else Û.м();е=true;}return Û.н(1,
+й);}void р(){Ý.п();ß.п();}void ν(ƛ с){Ɯ=с;Ʈ=0;ǜ=true;}bool т(ƛ с)=>с==ƛ.ƒ||с==ƛ.Ɠ||с==ƛ.Ɩ;void ˋ(){у();ƾ=false;е=false;ж=
+false;з=и=false;Ʃ=0;ƪ=0;ƫ=0;Ƭ=0;ƿ=false;}void ч(bool ф,bool х){ц();К();б(ф);в(х);ˋ();õ=false;Ò=false;Ñ=false;Ė=0;ή();}void ϳ(
+){if(λ())return;if(Ɯ==ƛ.ƚ&&Ϋ())return;Χ=true;ǜ=true;ш();Ò=Ñ=õ=false;Ė=0;Õ=false;Ȧ();Ƨ=0;з=и=false;Ʀ=ƥ.Ɲ;Ȕ(B(72));}bool λ(
+)=>Ʀ!=ƥ.İ;void ˊ(){if(Ƽ=="disconnect")у();Χ=false;Ʀ=ƥ.İ;Ƨ=0;з=и=false;}bool і(){if(!λ())return false;Ò=Ñ=õ=false;Ė=0;Χ=
+true;if(Ʀ==ƥ.Ɲ){г();if(!Е()){ш();return true;}if(Ƃ==null){Χ=false;Ʀ=ƥ.İ;Ȕ($"Undock denied: miner connector '{S}' not found."
+);return true;}if(!з){ά();щ();ъ();ы();з=true;return true;}if(!ь())return true;и=true;bool э=ō==Ō.ŉ||ō==Ō.Ŋ||Ŧ==ť.ŝ||Ŧ==ť.
+Ş;double я=ю();bool ѐ=я>Î;bool ѓ=ё()&&ђ()<Ø;if(э&&(ѐ||ѓ)){ˊ();if(ō==Ō.Ŋ)ō=Ō.ŉ;if(Ŧ==ť.Ş)Ŧ=ť.ŝ;if(ə()){if(Ɯ==ƛ.ƚ){Ɯ=ƛ.İ;μ(
+);}Ϸ();}Ȕ(B(73)+я.ToString("0.0")+"% / "+Î.ToString("0.0")+"%, H2O "+ђ().ToString("0.0")+"% / "+Ø.ToString("0.0")+"%).");
+return true;}if(!є){ά();ц();е=false;ν(ƛ.ƚ);return true;}К();ѕ("disconnect");Ʀ=ƥ.ƞ;return true;}if(Ʀ==ƥ.ƞ){ƨ+=Ɏ();if(ƽ&&ƨ<Ʋ)
+return true;if(ɚ()!=ɛ){в(false);у();Ʀ=ƥ.ƣ;Ȕ(B(74));return true;}у();ƾ=true;Ʀ=ƥ.Ɵ;Ȕ(B(75));return true;}if(Ʀ==ƥ.Ɵ){б(false);Ʀ=ƥ
+.Ơ;return true;}if(Ʀ==ƥ.Ơ){{Ƃ.Disconnect();}ɬ();Ƨ=0;Ʀ=ƥ.ơ;return true;}if(Ʀ==ƥ.ơ){if(ɚ()==ɛ){Ƨ+=Ɏ();if(Ƨ<Ʊ)return true;Χ=
+false;Ʀ=ƥ.İ;Ȕ(B(76));return true;}Ʀ=ƥ.Ƣ;return true;}if(Ʀ==ƥ.Ƣ){в(false);Ʀ=ƥ.ƣ;return true;}if(Ʀ==ƥ.ƣ){ˋ();Ʀ=ƥ.Ƥ;return true;
+}Χ=false;Ʀ=ƥ.İ;Ʃ=ƴ;ν(ƛ.ƒ);Ȕ(B(77));return true;}bool ї(){г();if(Ƃ==null){Ȕ(
+$"Hangar departure paused: miner connector '{S}' not found.");return false;}if(ə()){ϳ();return Ɯ!=ƛ.İ||Χ;}ч(false,false);ν(ƛ.Ɩ);if(Е()){Р();ã=И();Ñ=true;Ò=true;Ė=Å;}else{ш();Ȕ(B(78
+));}Ȕ(B(79));return true;}bool Џ(){г();if(Ƃ==null){Ȕ($"Hangar docking paused: miner connector '{S}' not found.");return
+false;}if(ə()){μ();ν(ƛ.ƙ);return true;}if(Ï&&Ƅ==null){Ȕ($"Hangar docking paused: miner merge block '{V}' not found.");return
+false;}ч(Ï,!Ï);if(Ï){в(false);б(true);}ν(ƛ.Ƙ);if(Е()){Р();ã=З();Ñ=true;Ò=true;Ė=Å;}else{ш();Ȕ(B(80));}return true;}void ˑ(){г
+();if(ə()){μ();ν(ƛ.ƙ);return;}if(!Е()){Ȕ(B(81));Ò=false;Ñ=false;Ė=0;Ȧ();ј();ш();return;}if(Ƃ==null){Ȕ(
+$"Dock denied: miner connector '{S}' not found.");ή();return;}if(Ï&&Ƅ==null){Ȕ($"Dock denied: miner merge block '{V}' not found.");ή();return;}ч(Ï,!Ï);Vector3D љ=И();
+double њ=Vector3D.Distance(Ƃ.GetPosition(),љ);if(њ>Ç){Ȕ($"Dock waiting: {њ:0.0}m from outer dock pose (max {Ç:0.0}m).");ј();
+return;}if(Ï){в(false);б(true);}ä=â;å=â;ã=љ;Ñ=true;Ò=true;Ė=Å;ν(ƛ.Ɣ);Ȕ(B(82)+(Ï?B(83):B(84))+").");}void ј(){ǀ=true;if(ƭ<=0)ƭ=
+ƶ;}void ή(){ǀ=false;ƭ=0;}void ћ(){if(!ǀ||Ɯ!=ƛ.İ)return;if(ƭ>0){ƭ=Math.Max(0,ƭ-Ɏ());return;}ƭ=ƶ;if(!Е()){ш();return;}Ȕ(B(
+85));ˑ();}bool ѝ(){int Й=Ɏ();if(Ɯ==ƛ.Ɠ||Ɯ==ƛ.Ɩ){if(!Ñ)return false;if(!ʊ(ä,å,G)){if(Ʈ>=ƹ)Ʈ=0;Ʈ+=Й;if(Ʈ>=Ƹ){ќ("phase "+ϭ(Ɯ)
++B(86));return true;}return false;}if(Ʈ<ƹ)Ʈ=ƹ;else Ʈ+=Й;if(Ʈ-ƹ>=Ʒ){ќ("phase "+ϭ(Ɯ)+B(87));return true;}return false;}Ʈ+=Й
+;if(Ʈ>=Ʒ){ќ("phase "+ϭ(Ɯ)+B(88));return true;}return false;}void ѩ(){if(Ϋ())return;if(Ɯ==ƛ.ƙ){if(!ə()){ў();ц();return;}if
+(ə()&&џ)Ѡ(B(89),true);return;}if(Ɯ==ƛ.ƚ){if(!ə()){ў();ц();return;}if(є)ϳ();return;}if(!Е()){if(ǳ<=0){Ȕ(B(90));ш();ǳ=Ǧ;}
+else ǳ--;Ò=false;return;}ǳ=0;if((Ɯ==ƛ.Ɠ||Ɯ==ƛ.Ɩ)&&!Ñ){Р();ã=Ɯ==ƛ.Ɩ?И():З();Ñ=true;Ò=true;Ė=Å;ǜ=true;}if(ѝ())return;if(Ɯ==ƛ.ƒ
+){Ò=false;Ñ=false;Ė=0;if(Ʃ>0)Ʃ--;bool ѡ=о(Ʃ<=0&&!ə());if(Ʃ>0||!ѡ||ə())return;р();Р();ã=З();Ñ=true;Ò=true;Ė=Å;ǅ();ν(ƛ.Ɠ);Ȕ
+(B(91));return;}if(Ɯ==ƛ.Ɠ){Р();if(!ʊ(ä,å,G)){ã=Ƃ.GetPosition();Ė=0;Ò=true;return;}ã=З();Ė=Å;Ò=true;if(Ѣ(ã)){if(Ŧ==ť.Ş){Ѡ(
+B(92));return;}ν(ƛ.Ɩ);ã=И();Ȕ(B(93));}return;}if(Ɯ==ƛ.Ɩ){Р();ã=И();Ė=Å;Ò=true;if(Ѣ(ã)){Ѡ(B(94));}return;}if(Ɯ==ƛ.Ɣ){if(Ï)
+{в(false);б(true);}else{б(false);в(true);}ä=â;å=â;ã=И();Ė=Å;Ò=true;if(ѣ(ã)){Р();ν(ƛ.Ɨ);Ȕ(B(95));}return;}if(Ɯ==ƛ.Ɨ){Р();ã
+=И();Ė=Å;Ò=true;if(Ѣ(ã)){ν(ƛ.Ƙ);ã=З();Ȕ(B(96));}return;}if(Ɯ==ƛ.Ƙ){Р();if(!ʊ(ä,å,G)){ã=Ƃ.GetPosition();Ė=0;Ò=true;return;
+}ã=З();Ė=Å;Ò=true;if(Ѣ(ã)){ν(ƛ.ƕ);ƪ=0;ƫ=0;Ƭ=0;ƿ=false;Ȕ(B(97));}return;}if(Ɯ==ƛ.ƕ){Р();ã=Ж();Ė=Æ;Ò=true;
+MyShipConnectorStatus Ѥ=ɚ();if(!ƾ){if(!ƽ&&Ѥ==ɛ){у();Ò=Ñ=false;μ();ν(ƛ.ƙ);return;}if(!ƽ)ѕ("connect");else ƨ+=Ɏ();if(ƨ<Ƴ){return;}if(Ѥ==ɛ){у();
+Ò=Ñ=false;μ();ν(ƛ.ƙ);Ȕ(B(98));return;}у();ƾ=true;Ȕ(B(99));}bool ѥ=Ï&&ξ();if(ѥ)ƪ++;else ƪ=0;bool Ѧ=!Ï||ƪ>=2;bool ѧ=Ѧ;if(Ï
+&&!Ѧ)д();if(Ï&&Ѧ){if(!ƿ){ƿ=true;Ƭ=Ƶ;ƫ=0;}if(Ƭ>0){в(false);Ƭ--;ѧ=false;}else if(Ƭ==0){г();в(true);Ƭ=-1;}}else if(Ï){ƫ=0;Ƭ=0
+;ƿ=false;ѧ=false;}else{б(false);в(true);Ƭ=-1;ƿ=false;}if(ѧ){ƫ++;if(ƫ>=10){ƫ=0;в(true);if(Ƃ!=null&&ɚ()!=ɛ){{Ƃ.Connect();}ɬ
+();return;}}}bool Ѩ=Ƃ!=null&&ɚ()==ɛ;if(Ѩ){Ò=Ñ=false;μ();ν(ƛ.ƙ);}}}void ѕ(string Ѫ){ƻ=DateTime.UtcNow.Ticks;Ƽ=Ѫ;ƨ=0;ƽ=true
+;ƾ=false;ѫ();ǜ=true;}void у(){ƽ=false;Ƽ="";ƨ=0;ѫ();Ѭ();}void Ѱ(string ˁ){string[]ѭ=ˁ.Split('|');long Ѯ;if(ѭ.Length<5||!
+long.TryParse(ѭ[1],out Ѯ)||!ƽ||Ѯ!=ƻ)return;string Ȯ=ѭ[2];string Ѫ=ѭ[3];string Ϩ=ѭ[4];if(!Ѫ.Equals(Ƽ,ȵ))return;bool ѯ=Ȯ.
+Equals("ok",ȵ);у();if(!ѯ){ƾ=true;if(Ѫ.Equals("disconnect",ȵ)&&Ʀ==ƥ.ƞ)Ʀ=ƥ.Ɵ;Ȕ(B(100)+Ѫ+": "+Ϩ+B(101));return;}if(Ѫ.Equals(
+"disconnect",ȵ)&&Ʀ==ƥ.ƞ){Ʀ=ƥ.ƣ;Ȕ(B(102));return;}if(Ѫ.Equals("connect",ȵ)&&Ɯ==ƛ.ƕ){Ò=Ñ=false;μ();ν(ƛ.ƙ);Ȕ(B(103));}}bool ѣ(Vector3D
+ѱ)=>Vector3D.DistanceSquared(Ƃ.GetPosition(),ѱ)<=È*È;bool Ѣ(Vector3D ѱ)=>ѣ(ѱ)&&ʊ(ä,å,G);bool ѳ(IMyTerminalBlock Ѳ)=>Ѳ.
+CustomName.IndexOf(A(""),ȵ)>=0;void μ()=>Ѵ(1);void ц()=>Ѵ(2);void Ѡ(string Ϩ,bool ѵ=false){Ɯ=ƛ.İ;Ʈ=0;Ư=0;ή();ˋ();Ò=false;Ñ=false;Ė
+=0;Ȧ();Ȕ(Ϩ);if(ѵ){Ϸ();}}int Ѷ;int ѷ,Ѹ=-1;bool џ,є,ѹ;List<IMyFunctionalBlock>Ѻ=new List<IMyFunctionalBlock>();void Ѽ(){Ѻ.
+Clear();foreach(var ѻ in Ǝ)Ѻ.Add(ѻ);foreach(var ѻ in ƍ)Ѻ.Add(ѻ);foreach(var ѻ in Ə)if(ѳ(ѻ))Ѻ.Add(ѻ);foreach(var ѻ in Ɛ)if(ѳ(ѻ
+))Ѻ.Add(ѻ);foreach(var ѻ in Ƒ)if(ѳ(ѻ))Ѻ.Add(ѻ);}bool Ϋ()=>Ѷ!=0;void Ѵ(int ѽ){{if(Ѷ==ѽ||(Ѷ==0&&(ѽ==1?џ:є)))return;bool Ѿ=ѽ
+==1&&(ѹ||ǔ);if(ǔ)ά();ѹ=Ѿ;Ǫ=Ѿ?1:0;Ѷ=ѽ;ѷ=0;Ѹ=ư;Ǚ=ǖ;Ǽ=Ǚ?Math.Max(DateTime.UtcNow.Ticks,Ǽ+1):0;ǭ=0;ѫ();џ=є=false;Õ=true;ǜ=true
+;}}void Ғ(){if(!Ϋ()||Ó||ư==Ѹ)return;if(!ə()&&(Ѷ==1||Ɯ==ƛ.ƚ)){ў();if(Ѷ!=2)Ѵ(2);Ȕ(B(104));return;}if(Ǚ){ǭ+=Ɏ();if(ǖ&&ǭ<Ǥ)
+return;Ǚ=false;ǭ=0;ѷ=0;ѫ();Ȕ(B(105));}if(ѷ<Ѻ.Count){int ѿ=ѷ++;IMyFunctionalBlock ѻ=Ѻ[ѿ];if(ѻ==null||ѻ.Closed)return;bool Ҁ=Ѷ==
+2;IMyThrust ҁ=ѻ as IMyThrust;IMyGyro Ҋ=ѻ as IMyGyro;IMyBatteryBlock ҋ=ѻ as IMyBatteryBlock;IMyGasTank Ҍ=ѻ as IMyGasTank;
+if(ҁ!=null){{if(ҁ.ThrustOverride!=0)ҁ.ThrustOverride=0;if(ҁ.Enabled!=Ҁ)ҁ.Enabled=Ҁ;Û.ҍ(ѿ);}}else if(Ҋ!=null){{bool Ҏ=Ҋ.
+GyroOverride;if(Ҏ){if(Ҋ.Pitch!=0)Ҋ.Pitch=0;if(Ҋ.Yaw!=0)Ҋ.Yaw=0;if(Ҋ.Roll!=0)Ҋ.Roll=0;Ҋ.GyroOverride=false;}if(Ҋ.Enabled!=Ҁ)Ҋ.Enabled
+=Ҁ;Û.ҏ(ѿ-Ǝ.Count,Ҏ);}}else if(ҋ!=null){{ChargeMode Ґ=Ҁ?ChargeMode.Auto:ChargeMode.Recharge;if(ҋ.ChargeMode!=Ґ)ҋ.
+ChargeMode=Ґ;}}else if(Ҍ!=null){{if(Ҍ.Stockpile==Ҁ)Ҍ.Stockpile=!Ҁ;}}else if(ѻ.Enabled!=Ҁ)ѻ.Enabled=Ҁ;return;}ґ();}void ґ(){{џ=Ѷ==1
+;є=Ѷ==2;Ѷ=0;Ǚ=false;ǭ=0;ѫ();ß.п();Ý.п();ǜ=true;if(џ&&ѹ){ѹ=false;Ϸ();}}}void έ(){bool ғ=Ϋ();bool Ҕ=є;Ѷ=0;Ǚ=false;ǭ=0;ѫ();ѹ
+=false;џ=є=false;if(ə())Ѵ(1);else if(ғ)Ѵ(2);else є=Ҕ;ǜ=true;}void ҕ(string ˁ){string[]ѭ=ˁ.Split('|');long Ѯ;int ѽ;if(ѭ.
+Length<5||!long.TryParse(ѭ[1],out Ѯ)||Ѯ!=Ǽ||!int.TryParse(ѭ[3],out ѽ)||ѽ!=Ѷ||!Ǚ)return;Ǚ=false;ǭ=0;ѫ();if(ѭ[2].Equals("ok",ȵ))
+{ґ();Ȕ(B(106)+(ѽ==1?"docked":"flight")+B(107));}else{ѷ=0;Ȕ(B(108)+ѭ[4]+B(109));}}void Ҙ(){int Җ=Ѷ;Ѷ=0;џ=є=false;if(ə()){
+bool җ=Ɯ==ƛ.ƚ||Χ;if(җ)Ɯ=ƛ.ƚ;Ѵ(җ?2:1);}else if(Җ!=0||Ɯ==ƛ.ƙ||Ɯ==ƛ.ƚ){if(Ɯ==ƛ.ƙ||Ɯ==ƛ.ƚ){ў();}Ѵ(2);}else{є=true;foreach(
+IMyFunctionalBlock ѻ in Ѻ){if(ѻ==null||ѻ.Closed)continue;IMyBatteryBlock ҋ=ѻ as IMyBatteryBlock;IMyGasTank Ҍ=ѻ as IMyGasTank;if(ҋ!=null?ҋ.
+ChargeMode!=ChargeMode.Auto:Ҍ!=null?Ҍ.Stockpile:!ѻ.Enabled){є=false;break;}}if(!є)Ѵ(2);}}void ў(){Ɯ=ƛ.İ;ˊ();Ò=Ñ=õ=false;ý=true;þ=
+false;џ=false;Ā=false;Ħ=0;ˌ();ˍ();ˎ();ή();Ŧ=ť.İ;ų=false;ά();ί();ǜ=true;}void ί(){Õ=false;Ȧ();}bool Қ(Vector3D ɼ,Vector3D ʃ,
+Vector3D ʇ)=>ҙ(ɼ)&&ҙ(ʃ)&&ҙ(ʇ)&&ʃ.LengthSquared()>0.001&&ʇ.LengthSquared()>0.001&&Vector3D.Cross(ʆ(ʃ),ʆ(ʇ)).LengthSquared()>0.99;
+bool ҙ(Vector3D ȸ)=>!double.IsNaN(ȸ.X)&&!double.IsNaN(ȸ.Y)&&!double.IsNaN(ȸ.Z)&&!double.IsInfinity(ȸ.X)&&!double.IsInfinity(
+ȸ.Y)&&!double.IsInfinity(ȸ.Z);long қ,Ҝ,ҝ,Ҟ,ҟ;bool Ҡ,Χ;int ҡ,Ң,ң;bool Ҥ(){if(Ó)return false;return Χ||Ā||ǀ||Ɯ!=ƛ.İ||Ă||Ķ||
+Ą||ō==Ō.ň||ō==Ō.Ŋ||Ŧ==ť.Ş||Ŧ==ť.Ţ;}void ҥ(){қ=Math.Max(қ+1,DateTime.UtcNow.Ticks);Ҟ=ҟ=ҝ=0;Ɓ=9999;ҡ=Ң=ң=0;ǯ=0;ѫ();ǜ=true;}
+void ҩ(){bool Ҧ=Ҥ();if(!Ҧ){if(Ҡ)ҧ(false);if(Ҡ)ѫ();Ҡ=false;Ɓ=9999;ǯ=0;return;}if(!Ҡ){Ҡ=true;ҥ();}int Й=Ɏ();ң+=Й;ҡ-=Й;Ң-=Й;if(
+Ǘ&&!Е())ǯ+=Й;else ǯ=0;bool Ҩ=!Ǘ||ǯ>=ǥ;if(!Е()&&ң>=360)ҥ();if(Ҝ==0&&ƃ!=null&&!ƃ.Closed){Ҝ=ƃ.EntityId;ѫ();}if(Ҩ&&!Е()&&Ң<=0
+){Ң=300;IGC.SendBroadcastMessage(m,B(110));}if(Ҩ&&ҡ<=0){ҡ=60;ҧ(true);}}void ҧ(bool Ҧ){if(Ҝ<=0)return;IGC.
+SendBroadcastMessage(o+"_DOCK_V2",new MyTuple<long,long,long,long,bool>(қ,Ҝ,Ҟ,ҟ,Ҧ));}void Ҭ(string ˁ,long Ҫ){long ҫ;if(!Ҡ||!long.TryParse(ˁ.
+Substring(B(111).Length),out ҫ)||ҫ<=0)return;if(ҝ!=0&&Ҫ!=ҝ&&Е())return;if(Ҝ!=ҫ){Ҝ=ҫ;ҥ();}ҡ=0;}void Ү(){if(Ƌ==null)return;if(Ҡ&&Ҟ
+!=0&&!Е())ҥ();int σ=1;while(σ-->0&&Ƌ.HasPendingMessage){MyIGCMessage Ϩ=Ƌ.AcceptMessage();if(!Ҡ)continue;if(Ϩ.Data is
+MyTuple<long,long,long,long,long,MyTuple<Vector3D,Vector3D,Vector3D>>){var ѱ=(MyTuple<long,long,long,long,long,MyTuple<Vector3D
+,Vector3D,Vector3D>>)Ϩ.Data;if(ѱ.Item1!=Me.EntityId||ѱ.Item2!=қ||ѱ.Item5!=Ҝ||ѱ.Item3<=0||ѱ.Item4<=0||(ҝ!=0&&Ϩ.Source!=ҝ))
+continue;if(ѱ.Item3==Ҟ&&ѱ.Item4<ҟ)continue;if(!Қ(ѱ.Item6.Item1,ѱ.Item6.Item2,ѱ.Item6.Item3))continue;ҝ=Ϩ.Source;Ҟ=ѱ.Item3;ҟ=ѱ.
+Item4;Ŭ=ѱ.Item6.Item1;ŭ=ʆ(ѱ.Item6.Item2);Ů=ʆ(ѱ.Item6.Item3);Ɓ=0;ң=0;if(ǀ)ƭ=0;}else if(Ϩ.Data is MyTuple<long,long,long,long,
+long>){var ҭ=(MyTuple<long,long,long,long,long>)Ϩ.Data;if(ҭ.Item1!=Me.EntityId||ҭ.Item2!=қ||ҭ.Item5!=Ҝ||Ϩ.Source!=ҝ||ҭ.Item3
+!=Ҟ||ҭ.Item4!=ҟ)continue;Ɓ=0;ң=0;}}if(Χ&&!Ó&&Е())ϳ();}void ш()=>ҩ();int ү;string Ұ="";void Ҳ(){StringBuilder ұ=new
+StringBuilder();for(int Ȣ=0;Ȣ<Ѻ.Count;Ȣ++){IMyFunctionalBlock ѻ=Ѻ[Ȣ];if(ѻ==null)continue;if(ұ.Length>0)ұ.Append(',');ұ.Append(ѻ.
+EntityId);}Ǿ=ұ.ToString();ұ.Clear();for(int Ȣ=0;Ȣ<Ƒ.Count;Ȣ++){IMyGasTank Ҍ=Ƒ[Ȣ];if(Ҍ==null||!ѳ(Ҍ))continue;if(ұ.Length>0)ұ.
+Append(',');ұ.Append(Ҍ.EntityId);}ǿ=ұ.ToString();}void ҷ(string ˁ){string[]ѭ=ˁ.Split('|');if(ѭ.Length!=4)return;bool ҳ=ѭ[1]==
+"1";bool Ҵ=ѭ[2]=="1";bool ҵ=ѭ[3]=="1";bool Ҷ=ҵ!=Ǘ;if(!ҳ&&ǘ){ǘ=false;Ǭ=0;ү=0;Ҷ=true;}if(!Ҵ&&Ǚ){Ǚ=false;ǭ=0;ѷ=0;Ҷ=true;}Ǖ=ҳ;ǖ
+=Ҵ;Ǘ=ҵ;ǫ=0;if(!ҵ){Ǯ=int.MaxValue;ǯ=0;}if(Ҷ)ѫ();}class ӆ{public string Ҹ;long ҹ,Һ,һ,Ҽ,ҽ,Ҿ;string ҿ,Ӏ;public bool Ӆ(long Ӂ=
+0,long Ѳ=0,long Ȏ=0,long ӂ=0,long Ȑ=0,long Ξ=0,string Ӄ="",string ӄ=""){if(Ҹ!=null&&Ӂ==ҹ&&Ѳ==Һ&&Ȏ==һ&&ӂ==Ҽ&&Ȑ==ҽ&&Ξ==Ҿ&&Ӄ
+==ҿ&&ӄ==Ӏ)return false;ҹ=Ӂ;Һ=Ѳ;һ=Ȏ;Ҽ=ӂ;ҽ=Ȑ;Ҿ=Ξ;ҿ=Ӄ;Ӏ=ӄ;return true;}}ӆ Ӈ=new ӆ();void ѫ()=>ǐ=true;void ӓ(string ˁ){string[
+]ѭ=ˁ.Split('|');long ӈ,ҫ;double Ӊ,ӊ,Ӌ,ӌ,Ӎ,ӎ,ӏ,Ӑ,ӑ;if(ѭ.Length!=12||!long.TryParse(ѭ[1],out ӈ)||ӈ!=қ||!long.TryParse(ѭ[2],
+out ҫ)||ҫ!=Ҝ||!Ӓ(ѭ[3],out Ӊ)||!Ӓ(ѭ[4],out ӊ)||!Ӓ(ѭ[5],out Ӌ)||!Ӓ(ѭ[6],out ӌ)||!Ӓ(ѭ[7],out Ӎ)||!Ӓ(ѭ[8],out ӎ)||!Ӓ(ѭ[9],out ӏ
+)||!Ӓ(ѭ[10],out Ӑ)||!Ӓ(ѭ[11],out ӑ))return;Vector3D ɼ=new Vector3D(Ӊ,ӊ,Ӌ);Vector3D ʃ=new Vector3D(ӌ,Ӎ,ӎ);Vector3D ʇ=new
+Vector3D(ӏ,Ӑ,ӑ);if(!Қ(ɼ,ʃ,ʇ))return;Ŭ=ɼ;ŭ=ʆ(ʃ);Ů=ʆ(ʇ);Ɓ=0;ң=0;ǯ=0;if(ǀ)ƭ=0;}sealed class Ӣ{public string Ӕ,ӕ,Ӗ;public
+IMyTimerBlock ӗ;public int ɰ,Ә,ә;public bool Ӛ,ӛ;public Vector3D Ӝ,ӝ,Ӟ;public double ӟ;public List<string>Ӡ=new List<string>();public
+List<int>ӡ=new List<int>();}Ӣ ɘ;const int ӣ=1024,Ӥ=2;void Ө(Ӣ ӥ,string ȳ){{string ɞ=ɝ(ȳ);if(Γ(ɞ))return;if(!ӥ.Ӛ){Vector3D ɼ,
+ʃ,ʇ;if(Ӧ(ɞ,out ɼ,out ʃ,out ʇ)){ӥ.Ӝ=ɼ;ӥ.ӝ=ʃ;ӥ.Ӟ=ʇ;ӥ.Ӛ=true;return;}}if(!ɟ(ɞ)&&ɠ(ɞ))ӥ.ә++;ӥ.Ӡ.Add(ɞ);ӥ.ӡ.Add(ӥ.ә);if(!ӥ.ӛ&&
+ɞ.StartsWith(B(112),ȵ)){double ӧ;if(Ӓ(ɞ.Substring(15).Trim(),out ӧ))ӥ.ӟ=Math.Max(0,ӧ);ӥ.ӛ=true;}}}bool Ӫ(int ө){for(int Ȣ
+=Math.Min(ө,Į.Count)-1;Ȣ>=0;Ȣ--){string ɞ=ɝ(Į[Ȣ]);if(ɟ(ɞ))continue;if(ɞ.Equals("drillson",ȵ))return true;if(ɞ.Equals(
+"dock",ȵ)||ɞ.Equals("undock",ȵ)||ɞ.StartsWith("reverse;",ȵ)||ɞ.StartsWith("minearea;",ȵ)||ɠ(ɞ))return false;}return false;}
+void ӭ(){if(!ü||Į.Count==0)return;ÿ=Ӫ(ĥ);if(!Ñ||!ā||ĥ<=0||ĥ>Į.Count||õ||ö||Ă||Ā||Ɯ!=ƛ.İ||Χ||Ŧ!=ť.İ||ō!=Ō.İ)return;string ɞ=ɝ
+(Į[ĥ-1]);bool ӫ=ɞ.StartsWith("reverse;",ȵ);if(ӫ)ɞ=ɞ.Substring(8).Trim();Vector3D ϒ,ʃ,ʇ;if(!ϗ(ɞ,Đ,out ϒ,out ʃ,out ʇ)||
+Vector3D.DistanceSquared(ã,ϒ)>0.01)return;bool Ӭ=ӫ||ÿ;ä=Ӭ?ʃ:â;å=Ӭ?ʇ:â;}void Ψ(){{int Ӯ=0;while(ü&&ĥ<Į.Count&&Ӯ<Ӥ){Ӯ++;string ɞ=Į
+[ĥ];ĥ++;if(ɟ(ɞ))continue;if(ӯ(ɞ))return;Ȕ($"Skipping invalid path record #{ĥ}.");}if(ü&&ĥ>=Į.Count){if(!ə()||Ǫ>0||ǔ||!ɷ)
+return;ϼ();ü=false;ÿ=false;ː(false);Ȕ(B(113));Ħ=į;Ӱ();}}}int Ɏ(){if(M==UpdateFrequency.Update10)return 10;if(M==
+UpdateFrequency.Update100)return 100;return 1;}bool ӯ(string ύ){if(Γ(ύ))return false;string ɞ=ύ.Trim();if(ɞ.StartsWith("\"")&&ɞ.
+EndsWith("\"")&&ɞ.Length>=2)ɞ=ɞ.Substring(1,ɞ.Length-2).Trim();if(Γ(ɞ))return false;if(ɟ(ɞ))return false;if(ɞ.Equals("drillson",
+ȵ)){ÿ=true;ː(true);Ȕ(B(114));return true;}if(ɞ.StartsWith("minearea;",ȵ)){ħ=Math.Max(0,ĥ-1);ÿ=false;ӱ(ɞ);return õ||Ò||ġ!=
+0;}if(ɞ.Equals("dock",ȵ)){if(ü&&ā){ã=Đ;ä=đ;å=Ē;Ñ=true;Ò=true;Ā=true;return true;}ˑ();return Ɯ!=ƛ.İ||ǀ;}if(ɞ.Equals(
+"undock",ȵ)){if(ų&&!ə()&&!ξ()){if(!ā)return false;if(!ї())return false;Ŧ=ť.İ;ų=false;ǜ=true;Ȕ(B(115));return Ɯ!=ƛ.İ;}ϳ();return
+Ɯ!=ƛ.İ||Χ;}string ϕ=null;if(ɞ.StartsWith("Nav;",ȵ))ϕ=ɞ.Substring(4).Trim();else if(ɞ.StartsWith("GPS:",ȵ))ϕ=ɞ;if(ϕ!=null)
+{Vector3D Ӳ,ʃ,ʇ;if(!ϖ(ϕ,out Ӳ,out ʃ,out ʇ))return false;ã=Ӳ;ä=â;å=â;Ñ=true;Ò=true;return true;}if(!ā)return false;bool ӫ=
+ɞ.StartsWith("reverse;",ȵ);if(ӫ)ɞ=ɞ.Substring(8).Trim();if(ɠ(ɞ)){Vector3D ˮ,Ͱ,ϛ,Ϝ;double ϓ;if(!ϔ(ɞ,Đ,out ˮ,out Ͱ,out ϛ,
+out Ϝ,out ϓ))return false;Vector3D ӳ=Ί(ˮ,Ͱ);if(!ʾ(ӳ,Ϝ,ϛ)){ĥ=Math.Max(0,ĥ-1);ã=ӳ;ä=Ϝ;å=ϛ;Ñ=true;Ò=true;Ė=ĕ;return true;}ħ=
+Math.Max(0,ĥ-1);ÿ=false;Ӵ(ˮ,Ͱ,ϛ,Ϝ,ϓ);return õ||Ò||ġ!=0;}Vector3D ϒ,Ζ,ˢ;if(ϗ(ɞ,Đ,out ϒ,out Ζ,out ˢ)){ã=ϒ;bool Ӭ=ӫ||ÿ;ä=Ӭ?Ζ:â;
+å=Ӭ?ˢ:â;Ñ=true;Ò=true;return true;}return false;}void ӱ(string ˁ)=>Ђ(ˁ,0);void Ӵ(Vector3D ˮ,Vector3D Ͱ,Vector3D ʇ,
+Vector3D ʃ,double ϓ)=>Є(ˮ,Ͱ,ʇ,ʃ,ϓ,0);void ˏ(){Ī.Clear();Ĭ.Clear();ĭ.Clear();}void Ӽ(){{ˏ();if(ħ<0||ħ+1>=Į.Count)return;double ӵ,
+Ӷ;int ӷ;List<int>Ӹ=new List<int>();List<double>ӹ=new List<double>();List<List<ó>>Ӻ=new List<List<ó>>();if(!ӻ(Į[ħ+1],out ӵ
+,out Ӷ,out ӷ,Ӹ,ӹ,Ӻ)){Ȕ(B(116));return;}if(!Υ(ӵ,Ӷ,ӷ)){Ȕ(B(117));return;}for(int Ȣ=0;Ȣ<Ӹ.Count;Ȣ++)if(Ӹ[Ȣ]>=0&&Ӹ[Ȣ]<Ġ)Ν(Ī,Ӹ
+[Ȣ]);if(ӹ.Count==Ġ)for(int Ȣ=0;Ȣ<ӹ.Count;Ȣ++)Ĭ.Add(ӹ[Ȣ]);if(Ӻ.Count==Ġ)for(int Ȣ=0;Ȣ<Ӻ.Count;Ȣ++)ĭ.Add(Ӻ[Ȣ]);}}void ӽ()=>
+ē=Ĭ.Count==Ġ&&ğ>=0&&ğ<Ĭ.Count&&Ĭ[ğ]>0?Ĭ[ğ]:Math.Max(0.1,P);bool ӿ(){int Ӿ=ğ;while(ğ<Ġ&&Μ(Ī,ğ))ğ++;if(ğ>Ӿ)Ȕ(
+$"Skipping saved empty lanes {Ӿ+1}-{ğ}.");return ğ<Ġ;}void Є(Vector3D ˮ,Vector3D Ͱ,Vector3D ʇ,Vector3D ʃ,double ϓ,int Ё){{Ή(ref ˮ,ref Ͱ,ʃ,ʇ);Vector3D ͱ=Vector3D
+.Cross(ʃ,ʇ);if(ͱ.LengthSquared()<0.001)ͱ=ƌ.Right;ͱ=ʆ(ͱ);if(!Ԁ(ˮ,Ͱ,ʇ,ͱ,ė,Ę)){Ȕ(B(118));return;}ē=ϓ;P=ϓ;ć=ʃ;å=ʇ;ä=ć;ø=true;
+Ĉ=ˮ;ĉ=Ͱ;Ċ=ʇ;ċ=ʃ;Č=ͱ;č=ʷ();Ď=ʆ(ƌ.Forward);ď=ʆ(ƌ.Up);ú=true;ö=true;Ģ=Math.Max(0,Math.Min(Ё,Ġ-1));ù=false;û=false;ż=0;õ=
+false;Ò=false;Ñ=false;Ė=0;ġ=1;ǅ();}}bool ԃ(){if(ġ==0)return false;if(ġ==1){Ӽ();ġ=2;return true;}ğ=Ģ;if(!ӿ()){ġ=0;õ=false;ô=î.
+ê;Ȕ(B(119));ԁ();return true;}ӽ();Ć=Ԃ(ğ);ã=Ć;Ė=ĕ;Ñ=true;Ò=true;õ=true;ô=î.ë;ġ=0;ǜ=true;if(ğ>0)Ȕ(
+$"Area mining resumed. Lane={ğ+1}/{Ġ}, depth={ē:0.00}m");else Ȕ($"Area mining started. Lanes={Ġ}, depth={ē:0.00}m");return true;}bool Ԁ(Vector3D Ԅ,Vector3D ԅ,Vector3D ʇ,
+Vector3D ͱ,double Ԇ,double ԇ){{if(Ԇ<=0||ԇ<=0)return false;Vector3D Ͳ=-ʇ;Vector3D Й=ԅ-Ԅ;double Ԉ=Math.Abs(ʪ(Й,Ͳ));double ԉ=Math.
+Abs(ʪ(Й,ͱ));ģ=Ԋ(Ԉ,Ԇ);Ĥ=Ԋ(ԉ,ԇ);ę=ģ>1?Ԇ*0.5:Ԉ*0.5;Ě=ģ>1?(Ԉ-Ԇ)/(ģ-1):0;ě=Ĥ>1?ԇ*0.5:ԉ*0.5;Ĝ=Ĥ>1?(ԉ-ԇ)/(Ĥ-1):0;Ġ=ģ*Ĥ;return Ġ>0;
+}}int Ԋ(double ԋ,double Ԍ){double ɉ=ԋ/Ԍ;double ԍ=Math.Round(ɉ);if(Math.Abs(ɉ-ԍ)<=1e-9)ɉ=ԍ;return Math.Max(1,(int)Math.
+Ceiling(ɉ));}Vector3D Ԃ(int Ԏ){if(Ĥ<=0)return Ć;if(Ԏ<0)Ԏ=0;if(Ġ>0&&Ԏ>=Ġ)Ԏ=Ġ-1;int Я=Ԏ/Ĥ;int Ȏ=Ԏ%Ĥ;bool ԏ=(Я%2)==1;int Ԑ=ԏ?(Ĥ-1-
+Ȏ):Ȏ;Vector3D Ͳ=-Ċ;return Ĉ+Ͳ*(ę+Я*Ě)+Č*(ě+Ԑ*Ĝ);}void ԛ(){switch(ô){case î.ë:ã=Ć;ä=ć;Ė=ĕ;if(ʾ(ã,ä,å,F)){ô=î.ì;ϫ();ː(true)
+;Ϭ();}break;case î.ì:ã=Ć+ć*ԑ();ä=ć;bool ԓ=Ԓ();Ė=ԓ?Ĕ*ĝ:Ĕ;Ԕ(ԓ);if(ԕ()){ù=true;Ŷ=true;Ԕ(false);ô=î.í;Ȕ(B(120));}else if(Ԗ())
+{Ԕ(false);ô=î.í;}break;case î.í:ã=Ć;ä=ć;Ė=ĕ;Ԕ(false);if(ԗ(ã,F)){if(!ù&&(!ö||û))ː(false);if(ü&&ý){ː(false);Ò=false;Ė=0;õ=
+false;return;}if(ù){ù=false;bool Ԙ=Ŷ;Ŷ=false;if(Ԙ)ż++;bool ԙ=Ԙ&&O>0&&ż>=O;if(ԙ&&ö&&ğ+1<Ġ){Ȕ(
+$"Max retries ({O}) reached. Skipping lane {ğ+1}.");ż=0;ğ++;if(!ӿ()){ԁ();return;}ӽ();Ć=Ԃ(ğ);ô=î.ë;}else if(ԙ){Ȕ($"Max retries ({O}) reached. Mining stopped.");ː(false);õ=
+false;ô=î.ê;Ò=false;Ė=0;ö=false;Ğ.Clear();ğ=0;Ġ=0;ø=false;ˏ();}else{ô=î.ë;string Ԛ=O>0?$"attempt {ż+1}/{O}":"no limit";Ȕ(
+$"Retrying lane {ğ+1}/{Math.Max(1,Ġ)} ({Ԛ})");}}else if(û){û=false;ԁ();}else if(ö&&ğ+1<Ġ){ż=0;ğ++;if(!ӿ()){ԁ();return;}ӽ();Ć=Ԃ(ğ);ô=î.ë;Ȕ(
+$"Proceeding to lane {ğ+1}/{Ġ}");}else{ԁ();}}break;}}void Ϭ(){Ū=ū;ſ=0;}double Ԝ()=>Math.Max(0,ʪ((ū+ʶ(ƌ))-Ć,ć));double ԑ()=>ē;bool Ԗ(){double ԝ=Ԝ();
+return ԝ>=ē||ԗ(ã,F);}bool ԕ(){Vector3D Ԟ=ū;double ɥ=Vector3D.DistanceSquared(Ԟ,Ū);if(ɥ<Ų*Ų){ſ+=ƀ;if(ſ>=ű){Ϭ();return true;}}
+else{Ū=Ԟ;ſ=0;}return false;}void ԁ(){ħ=-1;ÿ=false;ː(false);õ=false;ô=î.ê;ö=false;Ğ.Clear();ğ=0;Ġ=0;ø=false;ˏ();û=false;ǜ=
+true;if(ú){Φ();Ȕ(B(121));}else{Ò=false;Ė=0;Ȕ(B(122));}}void θ(bool ԟ=false){if(Ġ==0){if(ԟ&&ú){Φ();Ȕ(B(123));return;}Ȕ(B(124)
+);return;}int Ԡ=ԟ?Ġ-1:ğ+1;bool ԡ=ԟ||Ԡ>=Ġ||Ԡ<=ğ;if(!ö)ː(false);ż=0;ù=false;if(ԡ){if(ô==î.ì||ô==î.í){ö=true;Ò=true;õ=true;û
+=true;ô=î.í;Ȕ(B(125));}else{ԁ();}return;}ö=true;Ò=true;õ=true;û=false;if(ô==î.ì){ô=î.í;Ȕ(
+$"Backing out before advancing to hole {ğ+2}/{Ġ}...");}else{ğ=Ԡ;if(!ӿ()){ԁ();return;}ӽ();Ć=Ԃ(ğ);ã=Ć;ä=ć.LengthSquared()>0.001?ć:ƌ.Forward;Ė=ĕ;Ñ=true;ô=î.ë;Ȕ(
+$"Advancing to hole {ğ+1}/{Ġ}");}}bool ԗ(Vector3D ɍ,double Ԣ=-1){double ԣ=Ԣ>0?Ԣ:E;double ɿ=Math.Max(0.05,ԣ);return Vector3D.DistanceSquared(ū+ɹ(ƌ),ɍ)<
+ɿ*ɿ;}bool ʾ(Vector3D ɍ,Vector3D ʃ,Vector3D ʇ,double Ԣ=-1)=>ԗ(ɍ,Ԣ)&&ʊ(ʃ,ʇ,G);void ː(bool а){foreach(var ӂ in à){if(ӂ==null
+||!ӂ.IsFunctional)continue;ӂ.Enabled=а;}if(!а)Ԕ(false);}void ϫ()=>Ԕ(Ԓ());bool Ԓ(){if(!õ||ô!=î.ì||ĭ.Count!=Ġ||ğ<0||ğ>=ĭ.
+Count)return false;double ϓ=Ԝ();List<ó>Ԥ=ĭ[ğ];for(int Ȣ=0;Ȣ<Ԥ.Count;Ȣ++)if(ϓ>=Ԥ[Ȣ].ï&&ϓ<=Ԥ[Ȣ].ð)return true;return false;}
+void Ԕ(bool а){if(á.HasValue&&á.Value==а)return;foreach(var ӂ in à){if(ӂ==null||!ӂ.IsFunctional)continue;ӂ.
+TerrainClearingMode=а;}á=а;}void ԥ(){bool Ϫ=õ&&(ô==î.ì||ô==î.í);if(!ÿ&&!Ϫ)return;ː(true);if(ô==î.ì)Ϭ();Ȕ(B(126)+(ÿ?B(53):ϭ(ô)+"."));}void ԧ
+(){StringBuilder Ȥ=new StringBuilder();string Ԧ=Me.CustomData??"";if(!Γ(Ԧ))Ȥ.Append(Ԧ.TrimEnd());Ȥ.AppendLine();Ȥ.
+AppendLine();Ȥ.AppendLine(B(127));Ȥ.AppendLine(Π("Here"));Me.CustomData=Ȥ.ToString();Ȕ(B(128));}string Բ(Vector3D Ա)=>Ա.X.ToString
+("0.00",Ѝ)+":"+Ա.Y.ToString("0.00",Ѝ)+":"+Ա.Z.ToString("0.00",Ѝ);string Գ(Vector3D Ա)=>Ա.X.ToString("0.000000",Ѝ)+":"+Ա.Y
+.ToString("0.000000",Ѝ)+":"+Ա.Z.ToString("0.000000",Ѝ);string Դ(double ȸ)=>ȸ.ToString("0.00",Ѝ);string Ե(double ȸ)=>ȸ.
+ToString("R",Ѝ);bool Ӓ(string Ȗ,out double ȸ)=>double.TryParse(Ȗ,System.Globalization.NumberStyles.Float,Ѝ,out ȸ);bool Ќ(string
+Զ,out Vector3D Ա){Ա=â;if(Γ(Զ))return false;string[]ɂ=Զ.Split(':');if(ɂ.Length!=3)return false;double Է,Ը,Թ;if(!double.
+TryParse(ɂ[0],System.Globalization.NumberStyles.Float,Ѝ,out Է)||!double.TryParse(ɂ[1],System.Globalization.NumberStyles.Float,Ѝ,
+out Ը)||!double.TryParse(ɂ[2],System.Globalization.NumberStyles.Float,Ѝ,out Թ))return false;Ա=new Vector3D(Է,Ը,Թ);return
+true;}class Ú{IMyShipController Ժ;List<Ի>Լ=new List<Ի>(),Խ=new List<Ի>(),Ծ=new List<Ի>();List<Կ>ß=new List<Կ>();List<Ի>[]Հ={
+new List<Ի>(),new List<Ի>(),new List<Ի>()};double[]Ձ=new double[6],Ճ=new double[Ղ];int Մ,Յ,Ն=-1,Շ=-1,Ո=-1,Չ,Պ,Ջ,Ռ=60,Ս,Վ;
+bool Տ,Ր,Ց,Ւ,Փ;double ʲ,Ք;Vector3D Օ,Ֆ,ʉ,ՙ;const int Ղ=8;Vector3D[]ա=new Vector3D[Ղ];public MatrixD ɯ{get;set;}public
+MatrixD բ{get;set;}public Vector3D ɰ{get;set;}class Ի{public IMyThrust գ;public Vector3D դ;public float ե,զ,է;public int ը,թ=-1
+,ժ,ի;public bool լ,խ,ծ,կ;public IMyCubeGrid հ,ձ;}public class Կ{public IMyGyro գ;public MatrixD ղ;public IMyCubeGrid հ,ձ;
+public bool խ,ծ;public int ժ,ճ;public float մ,յ,ն;}public Ú(IMyShipController Ժ){this.Ժ=Ժ;}public void ɮ(int շ){Չ=շ;ɯ=Ժ.
+WorldMatrix;բ=MatrixD.Transpose(ɯ);ɰ=Ժ.GetPosition();Ց=false;Ւ=false;Փ=false;Ս=Վ=0;}public void ջ(List<IMyThrust>ո,List<IMyGyro>չ){
+Լ.Clear();for(int Ȣ=0;Ȣ<ո.Count;Ȣ++)Լ.Add(new Ի{գ=ո[Ȣ],ը=Ȣ,ժ=Ȣ%120});ß.Clear();for(int Ȣ=0;Ȣ<չ.Count;Ȣ++)ß.Add(new Կ{գ=չ[
+Ȣ],ժ=(Ȣ+31)%60});պ();}void պ(){ռ();for(int Ȣ=0;Ȣ<Լ.Count;Ȣ++)Լ[Ȣ].ծ=false;for(int Ȣ=0;Ȣ<ß.Count;Ȣ++)ß[Ȣ].ծ=false;}public
+bool к=>Ր;void ռ(){Տ=false;Ր=false;Մ=0;Շ=-1;Փ=false;Ս=Վ=0;for(int Ȣ=0;Ȣ<Լ.Count;Ȣ++)Լ[Ȣ].խ=false;for(int Ȣ=0;Ȣ<ß.Count;Ȣ++)ß
+[Ȣ].խ=false;}public void ҍ(int Ԏ){if(Ԏ<0||Ԏ>=Լ.Count)return;Ի ս=Լ[Ԏ];ս.է=0;ս.կ=false;ս.ծ=true;ս.ի=վ(Չ,120,Ԏ);}public void
+ҏ(int Ԏ,bool Ҏ){if(Ԏ<0||Ԏ>=ß.Count)return;Կ ս=ß[Ԏ];if(!Ҏ){ս.ծ=false;return;}ս.մ=ս.յ=ս.ն=0;ս.ծ=true;ս.ճ=վ(Չ,120,Լ.Count+Ԏ)
+;}static int վ(int շ,int տ,int ր){int ց=((շ%տ)-(ր%տ)+տ)%տ;return շ+տ-ց;}public double ʬ{get{if(!Տ||Չ>=Պ){ʲ=Math.Max(1,Ժ.
+CalculateShipMass().TotalMass);Պ=վ(Չ,10,5);Տ=true;}return ʲ;}}void փ(){if(Ց)return;var ւ=Ժ.GetShipVelocities();Օ=ւ.LinearVelocity;Ֆ=ւ.
+AngularVelocity;Ց=true;}public Vector3D ʧ{get{փ();return Օ;}}public Vector3D ʿ{get{փ();return Ֆ;}}public Vector3D ʈ{get{if(!Ւ){ʉ=Ժ.
+GetNaturalGravity();Ւ=true;}return ʉ;}}List<Ի>ֆ{get{if(!Ր)ք();else if(Չ>=Ջ)օ();return Լ;}}void ք(){IMyCubeGrid և=Ժ.CubeGrid;א();for(int Ȣ
+=0;Ȣ<Լ.Count;Ȣ++)ב(Լ[Ȣ],և);Ջ=վ(Չ,Ռ,9);Շ=0;Ր=true;if(Մ==1){Մ=2;Յ=0;}Փ=false;Ս=Վ=0;}void օ(){if(Ո==Չ||Լ.Count==0)return;Ո=Չ
+;if(Շ<0||Շ>=Լ.Count)Շ=0;Ի ս=Լ[Շ++];ג(ս);ב(ս,Ժ.CubeGrid);Փ=false;Ս=Վ=0;Ջ=Չ+1;}void ג(Ի ս){if(ս.թ>=0){Հ[ս.թ/2].Remove(ս);if
+(ս.լ)Ձ[ս.թ]-=ս.ե;}else Խ.Remove(ս);Ծ.Remove(ս);}void א(){for(int Ȣ=0;Ȣ<3;Ȣ++)Հ[Ȣ].Clear();for(int Ȣ=0;Ȣ<6;Ȣ++)Ձ[Ȣ]=0;Խ.
+Clear();Ծ.Clear();}void ב(Ի ս,IMyCubeGrid և){IMyThrust ѻ=ս.գ;bool ד=ѻ!=null&&ѻ.IsFunctional;if(ד!=ս.լ)ս.ծ=false;ս.լ=ד;if(!ד){
+ս.ե=ս.զ=0;if(ѻ!=null)ה(Ծ,ս);return;}ս.ե=ѻ.MaxEffectiveThrust;float ו=ѻ.MaxThrust;if(ս.զ!=ו)ս.ծ=false;ս.զ=ו;IMyCubeGrid ז=
+ѻ.CubeGrid;if(!ս.խ||ז!=և||ս.հ!=ז||ս.ձ!=և){ս.դ=Vector3D.TransformNormal(ѻ.WorldMatrix.Forward,բ);ս.հ=ז;ս.ձ=և;ս.խ=true;}ս.թ
+=ז==և?ח(ս.դ):-1;if(ս.թ<0)ה(Խ,ս);else{ה(Հ[ս.թ/2],ս);Ձ[ս.թ]+=ս.ե;}}static void ה(List<Ի>ט,Ի ս){int Ԏ=ט.Count;while(Ԏ>0&&ט[Ԏ
+-1].ը>ս.ը)Ԏ--;ט.Insert(Ԏ,ս);}static int ח(Vector3D ȸ){const double ɿ=1e-6;if(Math.Abs(Math.Abs(ȸ.X)-1)<ɿ&&Math.Abs(ȸ.Y)<ɿ
+&&Math.Abs(ȸ.Z)<ɿ)return ȸ.X>0?0:1;if(Math.Abs(Math.Abs(ȸ.Y)-1)<ɿ&&Math.Abs(ȸ.X)<ɿ&&Math.Abs(ȸ.Z)<ɿ)return ȸ.Y>0?2:3;if(
+Math.Abs(Math.Abs(ȸ.Z)-1)<ɿ&&Math.Abs(ȸ.X)<ɿ&&Math.Abs(ȸ.Y)<ɿ)return ȸ.Z>0?4:5;return-1;}static double כ(Vector3D ȸ,int י){
+double ך=י<2?ȸ.X:י<4?ȸ.Y:ȸ.Z;return(י&1)==0?ך:-ך;}public void л(){ռ();א();Մ=1;Յ=0;Ն=-1;}public void м(){Տ=false;Մ=3;Յ=0;Ն=-1;}
+public bool н(int ל,bool й){if(Մ==0)return false;if(Մ==4)return Ն!=Չ;if(Ն==Չ)return false;Ն=Չ;if(Մ==1){IMyCubeGrid ז=Ժ.
+CubeGrid;for(int ם=0;ם<ל&&Յ<Լ.Count;ם++)ב(Լ[Յ++],ז);if(Յ==Լ.Count){Մ=2;Յ=0;}return false;}if(Մ==2){for(int ם=0;ם<ל&&Յ<ß.Count;ם
+++){Կ ս=ß[Յ++];if(ս.գ!=null)מ(ս,â,â);}if(Յ==ß.Count)Մ=3;return false;}if(!й)return false;Տ=false;double ן=ʬ;Պ=Չ+10;Ջ=Չ+Ռ;Շ
+=0;Ր=true;Մ=4;return false;}public double ʮ(Vector3D נ){if(!נ.IsValid()||נ.LengthSquared()<0.001)return 0;List<Ի>ס=ֆ;if(Փ
+&&ՙ==נ)return Ք;for(int Ȣ=0;Ȣ<Ս;Ȣ++){if(ա[Ȣ]!=נ)continue;Փ=true;ՙ=נ;Ք=Ճ[Ȣ];return Ք;}Vector3D ע=Vector3D.TransformNormal(ʆ
+(נ),բ);double ɣ=0;for(int Ȣ=0;Ȣ<6;Ȣ++)ɣ+=Ձ[Ȣ]*Math.Max(0,כ(ע,Ȣ));for(int Ȣ=0;Ȣ<Խ.Count;Ȣ++){Ի ս=Խ[Ȣ];double ף=ʪ(ս.դ,ע);if
+(ս.լ&&ף>0)ɣ+=ս.ե*ף;}ա[Վ]=נ;Ճ[Վ]=ɣ;Վ++;if(Վ==Ղ)Վ=0;if(Ս<Ղ)Ս++;Փ=true;ՙ=נ;Ք=ɣ;return ɣ;}public void פ(){for(int Ȣ=0;Ȣ<Լ.
+Count;Ȣ++){Ի ս=Լ[Ȣ];ս.ծ=false;if(ս.գ!=null&&ս.գ.ThrustOverride!=0)ս.գ.ThrustOverride=0;}}public void ױ(Vector3D ʳ,float ץ){
+List<Ի>ס=ֆ;if(Խ.Count!=0){for(int Ȣ=0;Ȣ<ס.Count;Ȣ++){Ի ս=ס[Ȣ];if(ս.գ==null||!ս.գ.IsFunctional){ս.ծ=false;continue;}float צ=(
+float)ʪ(ս.դ,ʳ);if(!ս.լ||ս.ե<=0||ս.զ<=0||צ<=0)ק(ս,false,ץ);else{float ר=MathHelper.Clamp(צ/ս.ե,ץ/ս.զ,1);ק(ս,true,ר);ʳ-=ս.դ*ר*ս
+.ե;}}return;}for(int י=0;י<3;י++){double ש=כ(ʳ,י*2);List<Ի>ת=Հ[י];for(int Ȣ=0;Ȣ<ת.Count;Ȣ++){Ի ս=ת[Ȣ];int װ=(ս.թ&1)==0?1:
+-1;float צ=(float)(ש*װ);if(צ<=0||ս.ե<=0||ս.զ<=0)ק(ս,false,ץ);else{if(!ս.գ.IsFunctional){ս.ծ=false;continue;}float ר=
+MathHelper.Clamp(צ/ս.ե,ץ/ս.զ,1);ק(ս,true,ר);ש-=װ*(double)ר*ս.ե;}}}for(int Ȣ=0;Ȣ<Ծ.Count;Ȣ++){Ի ս=Ծ[Ȣ];if(ս.գ.IsFunctional)ק(ս,
+false,ץ);}}void ק(Ի ս,bool ײ,float ȸ){bool ؠ=!ս.ծ||Չ>=ս.ի||(ײ!=ս.կ&&ս.է!=0);if(ؠ){ս.է=ײ?ս.գ.ThrustOverridePercentage:ս.գ.
+ThrustOverride;ս.կ=ײ;ս.ծ=true;ս.ի=վ(Չ,120,ս.ժ);}bool ء=ײ?(ȸ==0?ս.է!=0:Math.Abs(ս.է-ȸ)>Math.Min(0.001f,ȸ*0.01f)):ս.է!=ȸ;if(!ء)return;if
+(ײ)ս.գ.ThrustOverridePercentage=ȸ;else ս.գ.ThrustOverride=ȸ;ս.է=ȸ;}public void آ(){for(int Ȣ=0;Ȣ<ß.Count;Ȣ++){Կ ս=ß[Ȣ];ս.
+ծ=false;if(ս.գ!=null&&ս.գ.GyroOverride)ս.գ.GyroOverride=false;}}public void ا(Կ ս,Vector3D ˁ){IMyGyro ѻ=ս.գ;bool أ=!ս.ծ;
+bool а=ѻ.GyroOverride;if(!а)ѻ.GyroOverride=true;if(أ||!а||Չ>=ս.ճ){ս.մ=ѻ.Pitch;ս.յ=ѻ.Yaw;ս.ն=ѻ.Roll;ս.ճ=վ(Չ,60,ս.ժ);}ս.ծ=true
+;float ؤ=(float)ˁ.X,إ=(float)ˁ.Y,ئ=(float)ˁ.Z;if(ս.մ!=ؤ){ѻ.Pitch=ؤ;ս.մ=ؤ;}if(ս.յ!=إ){ѻ.Yaw=إ;ս.յ=إ;}if(ս.ն!=ئ){ѻ.Roll=ئ;ս
+.ն=ئ;}}public List<Կ>ب=>ß;public Vector3D מ(Կ ս,Vector3D ة,Vector3D ت){IMyGyro ѻ=ս.գ;IMyCubeGrid ז=ѻ.CubeGrid;IMyCubeGrid
+և=Ժ.CubeGrid;if(ז!=և){ս.խ=false;return Vector3D.TransformNormal(ة,MatrixD.Transpose(ѻ.WorldMatrix));}if(!ս.խ||ս.հ!=ז||ս.ձ
+!=և){ս.ղ=ɯ*MatrixD.Transpose(ѻ.WorldMatrix);ս.հ=ז;ս.ձ=և;ս.խ=true;}return Vector3D.TransformNormal(ت,ս.ղ);}}bool ث=false;
+const string ج="EMMA-STORAGE-1\n";string ح="",خ="",د="",ذ="";void س(bool а){if(ث==а)return;ث=а;ر();ز(true);}string ظ(string ش
+,string ص,string ض,string ط){ش=ش??"";ص=ص??"";ض=ض??"";ط=ط??"";return ج+(ث?"1\n":"0\n")+ش.Length.ToString(Ѝ)+"\n"+ش+ص.
+Length.ToString(Ѝ)+"\n"+ص+ض.Length.ToString(Ѝ)+"\n"+ض+ط.Length.ToString(Ѝ)+"\n"+ط;}bool ػ(string Ț,ref int Ԏ,out string ع){ع=
+"";int ò=Ț.IndexOf('\n',Ԏ),غ;if(ò<0||!int.TryParse(Ț.Substring(Ԏ,ò-Ԏ),System.Globalization.NumberStyles.None,Ѝ,out غ)||غ<0
+||غ>Ț.Length-ò-1)return false;Ԏ=ò+1;ع=Ț.Substring(Ԏ,غ);Ԏ+=غ;return true;}bool ؼ(){string Ț=Storage??"";if(!Ț.StartsWith(ج,
+Ȟ))return false;int Ԏ=ج.Length;if(Ԏ+2>Ț.Length||Ț[Ԏ+1]!='\n'||Ț[Ԏ]!='0'&&Ț[Ԏ]!='1')return false;bool а=Ț[Ԏ]=='1';Ԏ+=2;
+string ش,ص,ض,ط;if(!ػ(Ț,ref Ԏ,out ش)||!ػ(Ț,ref Ԏ,out ص)||!ػ(Ț,ref Ԏ,out ض)||!ػ(Ț,ref Ԏ,out ط)||Ԏ!=Ț.Length||Γ(ش))return false;ح
+=ش;خ=ص;د=ض;ذ=ط;ث=а;return true;}struct ف{public int ؽ;public long ؾ;public double ؿ;public Vector3D ـ;public string Ҹ;}
+const int ق=8;int[]ك={0,3,4,5,6,7,8,9,10,11,21,24,25,26,41,27,28,29,30,31,32,33,34,35,36,37,38,39,40,42,43,45,46,47,54,58,59,
+60,61,62,68,70,71,72,73,74,75,78,79,85,83,84,86,87,90,96,98,99,101,104,105,106,107,108},ل={28,29,30,31,34,35,36,73,74,75},
+م={-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,1,2,3,-1,-1,4,5,6,-1,-1,-1,-1,-1
+,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,7,8,9,-1,-1,-1,-1,-1,-1,-1,
+-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};ف[]ن=new ف[109],ه=new ف[109];MyIni و=new
+MyIni(),ى=new MyIni();string[]ي=new string[109];string ٮ,ٯ;bool ٱ,ٲ;int ٳ,ٴ,ٵ,ٶ,ٷ;long ٸ,ٹ;bool ٺ(int Ԏ)=>Ԏ>=24&&Ԏ<=64||Ԏ>=70
+&&Ԏ<=75;void ٻ(int Ԏ,long ȸ){ن[Ԏ].ؽ=0;ن[Ԏ].ؾ=ȸ;}void ټ(int Ԏ,double ȸ){ن[Ԏ].ؽ=1;ن[Ԏ].ؿ=ȸ;}void ٽ(int Ԏ,Vector3D ȸ,bool ɦ){
+ن[Ԏ].ؽ=ɦ?3:2;ن[Ԏ].ـ=ȸ;}void پ(int Ԏ,string ȸ){ن[Ԏ].ؽ=4;ن[Ԏ].Ҹ=ȸ;}void ٿ(int Ԏ,bool ȸ){ن[Ԏ].ؽ=5;ن[Ԏ].ؾ=ȸ?1:0;}void ڃ(MyIni
+ڀ,string ځ,long ڂ)=>ڀ.Set(ځ,B(129),ڂ);void ڈ(){if(ٱ)return;bool ڄ=ٲ;ٲ=true;و.Clear();ى.Clear();څ();for(int Ȣ=0;Ȣ<چ.Length
+;Ȣ++)ڇ(Ȣ);ڃ(و,Ǻ,ٸ);و.ToString();ى.ToString();و.Clear();ٲ=ڄ;}void ز(bool ډ){if(Γ(ح))ډ=true;if(ٱ){if(!ډ||ٲ)return;ر();}if(!
+ډ&&!ǝ)return;څ(ډ);و.Clear();ى.Clear();ٮ=null;ٯ=null;ٶ=0;ٷ=0;ٲ=ډ;ٳ=0;ٴ=ư;ٵ=ư;ٹ=ٸ+(ډ?1:0);ٱ=true;if(ډ){ǜ=false;ǽ=long.
+MinValue;}ǝ=false;}void ر(){if(!ٱ)return;if(ٲ)ǜ=true;ǝ=true;ٱ=false;}bool ڎ(out MyIni ڀ){ڀ=new MyIni();bool ڊ=ؼ();if(!ڊ&&(
+Storage??"").StartsWith(ج,Ȟ)){Ȕ(B(130));return false;}IMyTimerBlock ڌ=ڊ?null:ڋ();string Ț=ڊ?ح:ڌ==null?"":ڌ.CustomData??"";if(Γ(
+Ț))return false;MyIniParseResult Ȯ;if(!ڀ.TryParse(Ț,out Ȯ)){Ȕ(B(131)+Ȯ.ToString());return false;}string ص=ڊ?خ:ȃ==null?"":
+ȃ.CustomData??"";long ڂ;if(!long.TryParse(ڀ.Get(Ǻ,B(129)).ToString("0"),out ڂ)||!ڍ(ڀ,ص,ڂ)){Ȕ(B(132));return false;}ح=Ț;خ=
+ص;د="";return true;}bool ڏ(){Ȅ.Clear();ǽ=long.MinValue;bool ڊ=(Storage??"").StartsWith(ج,Ȟ);if(ڊ&&!ؼ())return false;
+string Ț=ڊ?ذ:Storage??"";if(Γ(Ț))return false;MyIniParseResult Ȯ;if(!Ȅ.TryParse(Ț,out Ȯ))return false;long ڂ;if(!long.TryParse
+(Ȅ.Get(ǻ,B(129)).ToString("0"),out ڂ)||ڂ!=ٸ)return false;return true;}string ڑ(MyIni ڀ,string ȷ,string ڐ){if(Ǜ){string ط;
+if(Ȅ.Get(ǻ,ȷ).TryGetString(out ط))return ط;}return ڀ.Get(Ǻ,ȷ).ToString(ڐ);}bool ڒ(MyIni ڀ,string ȷ,bool ڐ){string Զ=ڑ(ڀ,ȷ,
+ڐ?"1":"0");return Զ=="1"||Զ.Equals("true",ȵ);}IMyTimerBlock ڋ(){if(Ȃ!=null&&Ȃ.CustomName.Equals(ړ,ȵ))return Ȃ;foreach(var
+ڕ in ڔ()){if(ڕ.CustomName.Equals(ړ,ȵ)){Ȃ=ڕ;return Ȃ;}}Ȃ=null;return null;}void ږ(){Ȁ.Clear();GridTerminalSystem.
+GetBlocksOfType(Ȁ,Ѳ=>Ѳ.CubeGrid.EntityId==Me.CubeGrid.EntityId);}void ژ(){ȁ=null;Ȃ=null;ȃ=null;for(int Ȣ=0;Ȣ<Ȁ.Count;Ȣ++){IMyTimerBlock
+ڌ=Ȁ[Ȣ];if(ڌ==null||Γ(ڌ.CustomName))continue;if(ȁ==null&&ڌ.CustomName.IndexOf(N,ȵ)>=0)ȁ=ڌ;if(Ȃ==null&&ڌ.CustomName.Equals(
+ړ,ȵ))Ȃ=ڌ;else if(ȃ==null&&ڌ.CustomName.Equals(ڗ,ȵ))ȃ=ڌ;}}List<IMyTimerBlock>ڔ()=>Ȁ;string[]ڙ={B(133),B(134),"areaPlanUp",
+B(135),B(136),B(137),B(138),B(139),B(140),B(141)};Vector3D[]ښ=new Vector3D[10];bool[]ڛ=new bool[10];void ڜ(MyIni ڀ){long.
+TryParse(ڀ.Get(Ǻ,B(129)).ToString("0"),out ٸ);for(int Ȣ=0;Ȣ<ڙ.Length;Ȣ++)ڛ[Ȣ]=Ќ(ڀ.Get(Ǻ,ڙ[Ȣ]).ToString(""),out ښ[Ȣ]);}void ϼ()=>
+ǝ=true;long ڞ(long ڝ,long ȸ){unchecked{return(ڝ^ȸ)*1099511628211L;}}long ڠ(double ȸ,double ڟ)=>(long)Math.Round(ȸ/Math.
+Max(0.000001,ڟ));bool ڢ(){long ڡ=1469598103934665603L;ڡ=ڞ(ڡ,Ò?1:0);ڡ=ڞ(ڡ,Ñ?1:0);ڡ=ڞ(ڡ,ڠ(ã.X,0.1));ڡ=ڞ(ڡ,ڠ(ã.Y,0.1));ڡ=ڞ(ڡ,ڠ
+(ã.Z,0.1));ڡ=ڞ(ڡ,õ?1:0);ڡ=ڞ(ڡ,(int)ô);ڡ=ڞ(ڡ,ö?1:0);ڡ=ڞ(ڡ,ğ);ڡ=ڞ(ڡ,ħ);ڡ=ڞ(ڡ,ü?1:0);ڡ=ڞ(ڡ,ý?1:0);ڡ=ڞ(ڡ,ÿ?1:0);ڡ=ڞ(ڡ,Ā?1:0);
+ڡ=ڞ(ڡ,ĥ);ڡ=ڞ(ڡ,À==null?0:À.GetHashCode());ڡ=ڞ(ڡ,Ă?1:0);ڡ=ڞ(ڡ,Ķ?1:0);ڡ=ڞ(ڡ,ă?1:0);ڡ=ڞ(ڡ,Ą?1:0);ڡ=ڞ(ڡ,ą?1:0);ڡ=ڞ(ڡ,Ľ);ڡ=ڞ(ڡ
+,(int)ō);ڡ=ڞ(ڡ,Ŗ);ڡ=ڞ(ڡ,(int)Ŧ);ڡ=ڞ(ڡ,ų?1:0);ڡ=ڞ(ڡ,Ÿ);ڡ=ڞ(ڡ,ź/60);ڡ=ڞ(ڡ,Ŵ?1:0);ڡ=ڞ(ڡ,(int)Ɯ);ڡ=ڞ(ڡ,ǀ?1:0);ڡ=ڞ(ڡ,Χ?1:0);ڡ=
+ڞ(ڡ,Ҝ);ڡ=ڞ(ڡ,қ);ڡ=ڞ(ڡ,Ʈ/60);ڡ=ڞ(ڡ,Ư);ڡ=ڞ(ڡ,ǔ?1:0);if(ڡ==ǽ)return false;ǽ=ڡ;return true;}bool ڣ()=>Ò||Ñ||õ||ö||ü||ý||ǒ||Ă
+||ō!=Ō.İ||Ŧ!=ť.İ||Ŵ||Ɯ!=ƛ.İ||ǔ||Ǫ>0||Ħ>0||ǀ||Χ;void ڨ(){bool ڤ=ü||ö||Ă||ō!=Ō.İ;if(!ڤ||Į.Count>0)return;List<string>ڥ;
+string ڦ;if(ڧ(out ڥ,out ڦ)){Į=ڥ;if(ĥ<0)ĥ=0;if(ĥ>Į.Count)ĥ=Į.Count;}else{Ò=false;Ñ=false;õ=false;ü=false;ö=false;Ă=false;ă=
+false;Ą=false;ō=Ō.İ;ĥ=0;ː(false);Ȧ();Ȕ(B(142));}}void ک(){if(!ö)return;if(ø){Vector3D ͱ=Vector3D.Cross(ċ,Ċ);if(ͱ.
+LengthSquared()>0.001){ͱ=ʆ(ͱ);Č=ͱ;Ԁ(Ĉ,ĉ,Ċ,ͱ,ė,Ę);}}else if(Ġ<=0&&Ğ.Count>0)Ġ=Ğ.Count;if(Ġ<=0){ö=false;ğ=0;return;}if(ğ<0)ğ=0;if(ğ>=Ġ)
+ğ=Ġ-1;if(ħ>=0&&Į.Count==0){List<string>ڥ;string ڦ;if(ڧ(out ڥ,out ڦ))Į=ڥ;}if(Ī.Count==0&&Ĭ.Count==0&&ħ>=0)Ӽ();ӽ();Ć=ø?Ԃ(ğ)
+:Ğ[ğ];}void ڪ(){if(Ɯ!=ƛ.İ&&!Е())Ò=false;}void ڵ(){if(Į.Count==0)return;if(Ă&&!ă&&!Ą){int ګ=Ľ;int ڬ=ľ;int ڭ=Ŀ;ϙ();Ľ=Math.
+Max(0,Math.Min(ګ,ņ.Count));ľ=Math.Max(0,ڬ);Ŀ=ڭ>0?ڭ:Į.Count;}if(ō!=Ō.ŉ&&ō!=Ō.Ŋ&&ō!=Ō.ŋ)return;int ڮ=Ŗ;bool گ=Ă;bool ڰ=ă;bool
+ڱ=Ą;int ڲ=Ľ;int ڳ=ľ;int ڴ=Ŀ;ϙ();Ϻ();Ŗ=Math.Max(0,Math.Min(ڮ,Ŝ.Count));Ă=گ;ă=ڰ;Ą=ڱ;Ľ=ڲ;ľ=ڳ;Ŀ=ڴ;if(!Ă){ņ.Clear();Ň.Clear();
+}}ڶ ڸ<ڶ>(string Ɂ,bool ڷ=false)where ڶ:class,IMyTerminalBlock{if(ڷ)return GridTerminalSystem.GetBlockWithName(Ɂ)as ڶ;
+foreach(ڶ ѻ in ɲ<ڶ>(false))if(ѻ.CustomName==Ɂ)return ѻ;return null;}ڶ ڸ<ڶ>(bool ڷ=false)where ڶ:class,IMyTerminalBlock{List<ڶ>ڹ
+=ɲ<ڶ>(ڷ);return ڹ.FirstOrDefault();}List<ڶ>ɲ<ڶ>(bool ڷ=false)where ڶ:class,IMyTerminalBlock{List<ڶ>ڹ=new List<ڶ>();if(ڷ)
+GridTerminalSystem.GetBlocksOfType(ڹ);else GridTerminalSystem.GetBlocksOfType(ڹ,Ѳ=>Ѳ.CubeGrid.EntityId==Me.CubeGrid.EntityId);return ڹ;}
+const double ں=10,ڻ=0,ڼ=5,ڽ=1000,ھ=0.003,ڿ=0.002,ۀ=0.12,ہ=0.35;class Þ{List<IMyGyro>ß;Ú Ҁ;public Þ(Ú Ҁ,UpdateFrequency M,List
+<IMyGyro>ß){if(Ҁ==null)throw new Exception(B(143));this.Ҁ=Ҁ;this.ß=ß;double ۂ=1;if(M==UpdateFrequency.Update10)ۂ=10;else
+if(M==UpdateFrequency.Update100)ۂ=100;double ƀ=(1.0/60)*ۂ;ۃ=new ۄ(ں/ۂ,ڻ/ۂ,ڼ/ۂ,-ڽ,ڽ,ƀ);ȥ();}ۄ ۃ;public void п()=>ۃ.ȥ();
+public void ȥ(){Ҁ.آ();ۃ.ȥ();}Vector3D ۉ(MatrixD Ϙ,Vector3D ʃ,Vector3D ʇ){Vector3D ۅ=new Vector3D();if(ʃ!=â){Vector3D ۆ=ʆ(ʃ);
+double ۇ=MathHelper.Clamp(ʪ(Ϙ.Forward,ۆ),-1,1);if(ۇ<-0.9995){ۅ.Y=Math.PI;}else{ۅ.X=ۈ(Ϙ.Forward,ۆ,Ϙ.Right,Ϙ.Up,false);ۅ.Y=ۈ(Ϙ.
+Forward,ۆ,Ϙ.Up,Ϙ.Right,true);}}if(ʇ!=â){ۅ.Z=ۈ(Ϙ.Up,ʇ,Ϙ.Forward,Ϙ.Right,true);}if(Math.Abs(ۅ.X)<0.001)ۅ.X=0;if(Math.Abs(ۅ.Y)<
+0.001)ۅ.Y=0;if(Math.Abs(ۅ.Z)<0.001)ۅ.Z=0;return ۅ;}public void ʍ(MatrixD Ϙ,Vector3D ʃ,Vector3D ʇ){Vector3D ۅ=-ۉ(Ϙ,ʃ,ʇ);
+Vector3D ۋ=new Vector3D(ۃ.ۊ(ۅ));ی(ۅ,ref ۋ);ۍ(Ϙ,ۋ);}void ی(Vector3D ۅ,ref Vector3D ۋ){if(Math.Abs(ۅ.X)<ھ)ۋ.X=0;if(Math.Abs(ۅ.Y)<ھ
+)ۋ.Y=0;if(Math.Abs(ۅ.Z)<ھ)ۋ.Z=0;double ێ=ۅ.Length();if(ێ<ۀ){double Զ=MathHelper.Clamp(ێ/ۀ,0.2,1.0);ۋ*=Զ;}if(Math.Abs(ۋ.X)
+<ڿ)ۋ.X=0;if(Math.Abs(ۋ.Y)<ڿ)ۋ.Y=0;if(Math.Abs(ۋ.Z)<ڿ)ۋ.Z=0;ۋ.X=MathHelper.Clamp(ۋ.X,-ہ,ہ);ۋ.Y=MathHelper.Clamp(ۋ.Y,-ہ,ہ);
+ۋ.Z=MathHelper.Clamp(ۋ.Z,-ہ,ہ);}void ۍ(MatrixD Ϙ,Vector3D ۏ){Vector3D ة=Vector3D.TransformNormal(ۏ,Ϙ);Vector3D ت=Vector3D
+.TransformNormal(ة,Ҁ.բ);foreach(var ս in Ҁ.ب){IMyGyro Ҋ=ս.գ;if(Ҋ==null)continue;Vector3D ې=Ҁ.מ(ս,ة,ت);if(!ې.IsValid())
+throw new Exception(B(144)+ې.ToString());Ҁ.ا(ս,ې);}}static double ۓ(Vector3D ȸ,Vector3D ۑ){double ے=ʪ(ȸ,ۑ);if(double.IsNaN(ے)
+)return 0;return ے;}static double ۈ(Vector3D ە,Vector3D ۥ,Vector3D ۦ,Vector3D ۮ,bool ۯ){Vector3D ۻ=ۺ(ۥ,ۦ);if(ۻ.
+LengthSquared()<1e-12)return 0;ۻ=ʆ(ۻ);double ף=MathHelper.Clamp(ʪ(ە,ۻ),-1,1);double ۼ=Math.Acos(ף);double ۿ=ۓ(ۻ,ۮ);if((ۯ&&ۿ>0)||(!ۯ&&
+ۿ<0))ۼ*=-1;return ۼ;}static Vector3D ܐ(Vector3D ȸ,Vector3D ۑ)=>ۓ(ȸ,ۑ)*ۑ;static Vector3D ۺ(Vector3D ȸ,Vector3D ۑ)=>ȸ-ܐ(ȸ,ۑ
+);}class ܥ{double ܒ=0,ܓ=0,ܔ=0,ܕ=0,ܖ=0,ܗ=0,ܘ=0,ܙ=0,ܚ=0,ܛ=0;bool ܜ=true,ܝ=false;double ܞ{get;set;}public ܥ(double ܟ,double
+ܠ,double ܡ,double ܢ,double ܣ,double ܤ){ܒ=ܟ;ܓ=ܠ;ܔ=ܡ;ܖ=ܢ;ܗ=ܣ;ܘ=ܤ;ܙ=1/ܘ;ܝ=false;}public ܥ(double ܟ,double ܠ,double ܡ,double
+ܦ,double ܤ){ܒ=ܟ;ܓ=ܠ;ܔ=ܡ;ܘ=ܤ;ܙ=1/ܘ;ܕ=ܦ;ܝ=true;}public double ۊ(double ۅ){var ܧ=(ۅ-ܛ)*ܙ;if(ܜ){ܧ=0;ܜ=false;}if(!ܝ){ܚ+=ۅ*ܘ;if
+(ܚ>ܗ)ܚ=ܗ;else if(ܚ<ܖ)ܚ=ܖ;}else{ܚ=ܚ*(1.0-ܕ)+ۅ*ܘ;}ܛ=ۅ;this.ܞ=ܒ*ۅ+ܓ*ܚ+ܔ*ܧ;return this.ܞ;}public void ȥ(){ܚ=0;ܛ=0;ܜ=true;}}
+class ۄ{ܥ ܨ,ܩ,ܪ;public ۄ(double ܟ,double ܠ,double ܡ,double ܢ,double ܣ,double ܤ){ܨ=new ܥ(ܟ,ܠ,ܡ,ܢ,ܣ,ܤ);ܩ=new ܥ(ܟ,ܠ,ܡ,ܢ,ܣ,ܤ);ܪ=
+new ܥ(ܟ,ܠ,ܡ,ܢ,ܣ,ܤ);}public ۄ(double ܟ,double ܠ,double ܡ,double ܦ,double ܤ){ܨ=new ܥ(ܟ,ܠ,ܡ,ܦ,ܤ);ܩ=new ܥ(ܟ,ܠ,ܡ,ܦ,ܤ);ܪ=new ܥ(ܟ,
+ܠ,ܡ,ܦ,ܤ);}public Vector3D ۊ(Vector3D ۅ)=>new Vector3D(ܨ.ۊ(ۅ.X),ܩ.ۊ(ۅ.Y),ܪ.ۊ(ۅ.Z));public void ȥ(){ܨ.ȥ();ܩ.ȥ();ܪ.ȥ();}}
+const double ܫ=3,ܬ=2,ܭ=5,ܮ=0.2;const float ܯ=1.0000001f;class Ü{List<IMyThrust>Լ=new List<IMyThrust>();Ú Ҁ;ۄ ݍ;public void п(
+)=>ݍ.ȥ();public void ȥ()=>Ҁ.פ();public Ü(Ú Ҁ,UpdateFrequency M,List<IMyThrust>Լ){if(Ҁ==null)throw new Exception(B(145));
+double ۂ=1;if(M==UpdateFrequency.Update10)ۂ=10;else if(M==UpdateFrequency.Update100)ۂ=100;double ƀ=(1.0/60)*ۂ;ݍ=new ۄ(ܫ/ۂ,ܬ/ۂ,
+ܭ/ۂ,ܮ/ۂ,ƀ);this.Ҁ=Ҁ;this.Լ=Լ;ȥ();}public Vector3D ʙ(Vector3D Ԟ,Vector3D ã,Vector3D ݎ,double D=double.PositiveInfinity)=>ݏ
+(ݎ+ݐ(-ݍ.ۊ(Ԟ-ã),D));public Vector3D ʑ(Vector3D Ԟ,Vector3D ã,Vector3D ݎ,double D,Vector3D ݑ,double ݒ=0.2){Vector3D ݓ=ݎ+ݐ(-ݍ
+.ۊ(Ԟ-ã),D);double ݔ=ʪ(ݓ,ݑ);Vector3D ݕ=ݓ-ݔ*ݑ;ݕ=ݐ(ݕ,D);double ݖ=D*ݒ;ݔ=MathHelper.Clamp(ݔ,-ݖ,ݖ);return ݏ(ݕ+ݔ*ݑ);}Vector3D ݐ(
+Vector3D Ա,double ݗ){double ݘ=Ա.LengthSquared();if(ݘ>ݗ*ݗ)Ա=(Ա/Math.Sqrt(ݘ))*ݗ;return Ա;}Vector3D ݏ(Vector3D ݎ){Vector3D ݙ=Ҁ.ʧ;
+Vector3D ݚ=ݙ-ݎ;if(Vector3D.IsZero(ݚ))return â;Vector3D ʉ=Ҁ.ʈ;return 2*ݚ+ʉ;}public void ʓ(Vector3D ʘ)=>ʓ(ʘ,double.
+PositiveInfinity);public void ʓ(Vector3D ʘ,double ݛ){Vector3D Ý=Vector3D.TransformNormal(ʘ*Ҁ.ʬ,Ҁ.բ);double ݜ=Ý.Length();if(ݜ>ݛ&&ݜ>0)Ý*=ݛ
+/ݜ;Ҁ.ױ(Ý,ܯ);}}bool Ӧ(string ȴ,out Vector3D ϒ,out Vector3D ʃ,out Vector3D ʇ){ϒ=ʃ=ʇ=â;string[]ɂ=ȴ.Split('|');return ɂ.
+Length==4&&ɂ[0]=="A"&&Ќ(ɂ[1],out ϒ)&&Ќ(ɂ[2],out ʃ)&&Ќ(ɂ[3],out ʇ);}bool ϗ(string ȴ,Vector3D ݝ,out Vector3D ϒ,out Vector3D ʃ,
+out Vector3D ʇ){int ݞ;return ݟ(ȴ,out ϒ,out ʃ,out ʇ,out ݞ);}bool ݟ(string ȴ,out Vector3D ϒ,out Vector3D ʃ,out Vector3D ʇ,out
+int ݞ){ϒ=ʃ=ʇ=â;ݞ=0;string[]ɂ=ȴ.Split('|');return ɂ.Length==5&&ɂ[0]=="N"&&Ќ(ɂ[1],out ϒ)&&Ќ(ɂ[2],out ʃ)&&Ќ(ɂ[3],out ʇ)&&int.
+TryParse(ɂ[4],out ݞ)&&ݞ>=0&&ݞ<=3;}bool ϖ(string ˁ,out Vector3D ϒ,out Vector3D ʃ,out Vector3D ʇ){int ݞ;if(!ݟ(ˁ,out ϒ,out ʃ,out ʇ,
+out ݞ))return false;Vector3D Й=ϒ-ū;if((ݞ&1)!=0&&Й.LengthSquared()>0.001)ʃ=ʆ(Й);if((ݞ&2)!=0){Vector3D ʉ=Û.ʈ;ʇ=ʉ.
+LengthSquared()>0.001?ʆ(-ʉ):ƌ.Up;}return true;}bool ɠ(string ȴ)=>ȴ!=null&&ȴ.StartsWith("M|",Ȟ);bool ϔ(string ȴ,Vector3D ݝ,out
+Vector3D Ӂ,out Vector3D Ѳ,out Vector3D ʇ,out Vector3D ʃ,out double ϓ){Ӂ=Ѳ=ʇ=ʃ=â;ϓ=0;string[]ɂ=ȴ.Split('|');int Ґ;if(ɂ.Length!=7
+||ɂ[0]!="M"||!Ќ(ɂ[1],out Ӂ)||!Ќ(ɂ[2],out Ѳ)||!Ќ(ɂ[3],out ʇ)||!Ќ(ɂ[4],out ʃ)||!Ӓ(ɂ[5],out ϓ)||!int.TryParse(ɂ[6],out Ґ)||Ґ<
+0||Ґ>1)return false;if(Ґ==1){Vector3D ʉ=Û.ʈ;ʇ=ʉ.LengthSquared()>0.001?ʆ(-ʉ):ƌ.Up;Vector3D ݠ=Ѳ-Ӂ;ݠ-=ʪ(ݠ,ʇ)*ʇ;ʃ=ݠ.
+LengthSquared()>0.001?ʆ(ݠ):ƌ.Forward;}return true;}bool Ђ(string ˁ,int Ё){Vector3D Ӂ,Ѳ,Ο,Ξ;double ϓ;if(!ˁ.StartsWith("minearea;",ȵ)||
+!ϔ(ˁ.Substring(9),Đ,out Ӂ,out Ѳ,out Ο,out Ξ,out ϓ)||ϓ<=0)return false;Є(Ӂ,Ѳ,Ο,Ξ,ϓ,Ё);return õ||Ò||ġ!=0;}string ϊ(Vector3D
+ϒ,Vector3D ݝ,Vector3D ʃ,Vector3D ʇ)=>"N|"+ݡ(ϒ)+"|"+ݡ(ʃ)+"|"+ݡ(ʇ)+"|0";string ݡ(Vector3D Ա)=>Ե(Ա.X)+":"+Ե(Ա.Y)+":"+Ե(Ա.Z);
+bool ӻ(string ȴ,out double ڡ,out double ݢ,out int ɉ,List<int>ݣ,List<double>ݤ,List<List<ó>>Ԥ){ڡ=ݢ=0;ɉ=0;ݣ.Clear();ݤ.Clear();Ԥ
+.Clear();string[]ɂ=ȴ.Split('|');if(ɂ.Length!=7||ɂ[0]!="00;C"||!Ӓ(ɂ[1],out ڡ)||!Ӓ(ɂ[2],out ݢ)||!int.TryParse(ɂ[3],out ɉ)||
+ڡ<=0||ݢ<=0||ɉ<=0)return false;int ם;double ȸ;if(ɂ[4].Length>0)foreach(string Զ in ɂ[4].Split(',')){if(!int.TryParse(Զ,out
+ם)||ם<0)return false;ݣ.Add(ם);}if(ɂ[5].Length>0)foreach(string Զ in ɂ[5].Split(',')){if(!Ӓ(Զ,out ȸ)||ȸ<0)return false;ݤ.
+Add(ȸ);}if(ݤ.Count!=0&&ݤ.Count!=ɉ)return false;string[]ݥ=ɂ[6].Split(';');if(!int.TryParse(ݥ[0],out ם)||(ם!=0&&ם!=ɉ))return
+false;for(int Ȣ=0;Ȣ<ם;Ȣ++)Ԥ.Add(new List<ó>());for(int Ȣ=1;Ȣ<ݥ.Length;Ȣ++){string[]Я=ݥ[Ȣ].Split(',');int ݦ;double ñ,ò;if(Я.
+Length!=3||!int.TryParse(Я[0],out ݦ)||ݦ<0||ݦ>=Ԥ.Count||!Ӓ(Я[1],out ñ)||!Ӓ(Я[2],out ò)||ñ<0||ò<=ñ)return false;Ԥ[ݦ].Add(new ó(ñ
+,ò));}return true;}void ݩ(string ش,string ص,string ض){ش=ݧ(ش);string ݨ=ظ(ش,ص,ض,"");Storage=ݨ;ح=ش;خ=ص;د=ض;ذ="";}bool ݪ(
+string ط){if(Γ(ح)){ز(true);return false;}ط=ݧ(ط);string ݨ=ظ(ح,خ,د,ط);if(!string.Equals(Storage,ݨ,Ȟ))Storage=ݨ;ذ=ط;return true;}
+string ړ=>A(B(146));string ڗ=>A(B(147));const string ɖ="MinerPilot",ݫ="MinerCommander";string ݬ=>A(B(148));bool ݭ,ݮ,ݯ,ݰ,ݱ,ݲ,ݳ;
+long ݴ,ݵ,ݶ,ݷ;string ݸ="",ݹ="";int ݺ=-10000;void ݽ(){bool ݻ=ə();long Ƀ=ݻ&&Ƃ.OtherConnector!=null?Ƃ.OtherConnector.EntityId:0;
+if(ݻ!=ݯ||Ƀ!=ݵ){ݴ++;ݯ=ݻ;ݵ=Ƀ;ݰ=false;ɷ=false;ǔ=false;Ǫ=0;ݶ=0;ǜ=true;ݼ();}}string ݾ="";void ޘ(string ݿ,string ހ){if(ݿ==
+"consume"){if(ށ.ނ(ހ))ރ();return;}if(ݿ=="endpoint"){MyIni ބ=new MyIni();if(ބ.TryParse(ހ))Ҭ(ބ.Get("Endpoint","text").ToString(""),ބ
+.Get("Endpoint","source").ToInt64(0));return;}if(ݿ=="callback"){if(ހ.StartsWith(B(149),ȵ))ҕ(ހ);else if(ހ.StartsWith(B(150
+),ȵ))Ѱ(ހ);else if(ހ.StartsWith(B(151),ȵ))ӓ(ހ);else if(ހ.StartsWith(B(152),ȵ))ҷ(ހ);return;}if(ݿ=="settings"){MyIni ڀ=new
+MyIni();if(ڀ.TryParse(ހ))ޅ(ڀ);return;}if(ݿ=="supply"){ކ(ހ);return;}if(ݿ=="control"){MyIni އ=new MyIni();if(!އ.TryParse(ހ))
+return;string ވ=އ.Get("Control","id").ToString("");if(!މ.ފ(ވ,ݹ)){ݼ();return;}string ˁ=އ.Get("Control","command").ToString("");
+if(ˁ=="stop"||ˁ=="reset")ݾ=ވ;if(ˁ.StartsWith("service:",Ȟ)){if(Ŵ)Ϯ(false,B(153));ϱ(ˁ.Substring(8));}else if(ˁ=="hold")Ϧ(Ǌ,
+ǋ);else if(ˁ=="endhold")Ϯ(true,B(154));else if(ˁ=="stop")ދ();else if(ˁ=="reset"){ތ(ˁ);ށ.ލ(ށ.ގ,"cancelled");}else if(ˁ==B(
+155))μ();else if(ˁ=="merge:on")б(true);else if(ˁ=="merge:off")б(false);else if(ˁ.StartsWith("endpoint:",Ȟ))Ҭ(ˁ.Substring(9)
+,އ.Get("Control","source").ToInt64(0));else ތ(ˁ);ݹ=ވ;ރ();ݼ();return;}if(ݿ!="job"||ݭ)return;var ޏ=new މ();if(!ޏ.ސ(ހ)||ޏ.ޑ
+!="accepted")return;if(ޏ.ގ==ށ.ގ){ݼ();return;}if(ݾ.Length>0&&!މ.ފ(ޏ.ގ,ݾ)){if(ށ.ޒ(ޏ.ގ,ޏ.ޓ,ޏ.ޔ,false)){ށ.ލ(ޏ.ގ,"cancelled");ރ
+();}ݼ();return;}MyIni ӥ=new MyIni();if(!ӥ.TryParse(ޏ.ޔ))return;if(ޏ.ޓ=="path"&&ӥ.Get("Job","routeFormat").ToString("")!=
+"C1"){if(ށ.ޒ(ޏ.ގ,ޏ.ޓ,ޏ.ޔ,false)){ށ.ލ(ޏ.ގ,B(156));ރ();ݼ();}return;}bool ޕ=ޏ.ޓ=="recall"||ޏ.ޓ=="dock"||ޏ.ޓ=="hangar";if(!ށ.ޒ(ޏ
+.ގ,ޏ.ޓ,ޏ.ޔ,ޕ))return;ޅ(ӥ);string ޖ=ӥ.Get("Job","command").ToString("");ݳ=false;if(ޏ.ޓ=="path"){ޗ(ӥ.Get("Job","mission").
+ToString(""));}else ތ(ޖ);ރ();ݼ();}void ݼ(){MyIni Б=new MyIni();Б.Set("Pilot","runtime",ޙ());Б.Set("Pilot","id",ށ.ގ);Б.Set(
+"Pilot","state",ށ.ޑ);Б.Set("Pilot","result",ށ.ޚ);Б.Set("Pilot","control",ݹ);Б.Set("Pilot","mission",À);Б.Set("Pilot",B(157),ݭ);
+Б.Set("Pilot","status",ɜ());Б.Set("Pilot",B(158),ϯ());Б.Set("Pilot","service",(int)ō);Б.Set("Pilot","hangar",(int)Ŧ);Б.
+Set("Pilot","docking",(int)Ɯ);Б.Set("Pilot",B(159),ݴ);Б.Set("Pilot","dockOther",ݵ);Б.Set("Pilot","docked",ə());Б.Set(
+"Pilot","powerReady",џ);Б.Set("Pilot","powerGoal",Ѷ);Б.Set("Pilot",B(160),ݶ);Б.Set("Pilot",B(161),ݷ);Б.Set("Pilot",B(162),з||λ(
+)?ޛ:0);Б.Set("Pilot","hold",Ŵ);Б.Set("Pilot","pathLoaded",ü&&ɘ==null);Б.Set("Pilot",B(163),ݳ);Б.Set("Pilot","pathIndex",ĥ
+);Б.Set("Pilot","pathCount",Į.Count);Б.Set("Pilot","dockSession",қ);Б.Set("Pilot",B(164),Ҝ);int ɢ,ɣ;ɤ(out ɢ,out ɣ);Б.Set(
+"Pilot","plane",ɢ);Б.Set("Pilot","planes",ɣ);Б.Set("Pilot","lane",Ġ>0?Math.Min(Ġ,ğ+1):0);Б.Set("Pilot","lanes",Ġ);Б.Set("Pilot"
+,"progress",ǈ);Б.Set("Pilot","length",ǉ);ޜ("status",Б.ToString());Ѭ();}void ޝ(string ȫ,string ހ)=>ޜ(ȫ==l?"completion":
+"progress",ހ);void ޞ(){if(ށ.ޑ!="accepted")return;string Ȯ="";if(ށ.ޓ=="path"&&ݳ)Ȯ=B(165);else if(ށ.ޓ=="hangar"&&Ŧ==ť.Š)Ȯ=
+"store_ready";else if((ށ.ޓ=="dock"||ށ.ޓ=="recall")&&ə()&&Ɯ==ƛ.İ&&!Ă)Ȯ="docked";else if(ށ.ޓ=="undock"&&!ə()&&!ξ()&&Ɯ==ƛ.İ&&!Χ&&!Ñ)Ȯ=
+"undocked";if(Ȯ.Length>0){ށ.ލ(ށ.ގ,Ȯ);ރ();ݼ();}}void ދ(){ތ("stop");ށ.ލ(ށ.ގ,"cancelled");ރ();ݼ();}void Ӱ(){if(!ޟ()||ޠ-ݺ>180||!ə()||!
+ɷ||ǔ)return;ݳ=true;ރ();ݼ();}void Ϸ(){if(!ə()||Ƃ.OtherConnector==null)return;if(!џ){ѹ=true;Ǫ=1;μ();return;}if(ݶ!=0&&ǔ)
+return;ޡ++;ݶ=ޡ;ݰ=false;ɷ=false;ǔ=true;Ǫ=0;ރ();ݼ();}void ά(){ݶ=0;ݰ=false;ɷ=false;ǔ=false;Ǫ=0;ѹ=false;ǜ=true;ݼ();}bool ޢ()=>ޠ-ݺ
+<=180&&ޟ()&&ݰ&&ə()&&ݯ&&Ƃ.OtherConnector!=null&&Ƃ.OtherConnector.EntityId==ݵ;void ކ(string ހ){MyIni Ț=new MyIni();if(!Ț.
+TryParse(ހ))return;Ǌ=Ț.Get("Supply","cargo").ToDouble(100);ǋ=Ț.Get("Supply","stone").ToDouble(0);ǚ=Ț.Get("Supply","cargoValid").
+ToBoolean(false);ǰ=Ț.Get("Supply","cycles").ToInt32(0);ǌ=Ț.Get("Supply","hydrogen").ToDouble(0);ǲ=Ț.Get("Supply","tanks").ToInt32
+(0);Ұ=Ț.Get("Supply",B(166)).ToString("");ݺ=ޠ;ޣ(Ț);bool ޱ=ޤ.ޥ(ޟ(),ə(),0,ݴ,ݵ,ݶ,À,Ț.Get("Supply","generation").ToInt64(-1),
+Ț.Get("Supply","other").ToInt64(0),Ț.Get("Supply","request").ToInt64(-1),Ț.Get("Supply","mission").ToString(""));if(!ޱ){ɷ
+=false;ݰ=false;}if(ޱ&&ə()&&ݶ!=0){ɷ=Ț.Get("Supply","unloaded").ToBoolean(false);ǔ=!ɷ;ݰ=ɷ&&Ț.Get("Supply",B(167)).ToBoolean
+(false);}if(Ț.Get("Supply",B(161)).ToInt64(-1)==ݷ&&ݷ!=0&&Ț.Get("Supply","mission").ToString("")==À){ݱ=Ț.Get("Supply",
+"deployReady").ToBoolean(false);ݲ=Ț.Get("Supply",B(168)).ToBoolean(true);}}void ߋ(){Ϲ();if(ō!=Ō.İ)ߊ();}void ߌ(){Ŧ=ť.š;ݷ=++ޡ;ݱ=false;ź
+=0;ŷ=0;ǜ=true;ރ();ݼ();}double ю()=>Ǌ;double ђ()=>ǌ;bool ё()=>ǲ>0;void ъ(){}void ϥ(){ǚ=false;ޜ("freshCargo","");}void ߍ(
+string ˁ){}void ߎ(string ˁ){}void ߒ(){if(!ƽ||Ƃ==null){ߏ(4,"");return;}long ߐ=Ƅ==null?0:Ƅ.EntityId;if(Ӈ.Ӆ(ƻ,Ƃ.EntityId,ߐ,Ï?1:0,
+(ߑ==null?0:ߑ.EntityId),Ӄ:Ƽ))Ӈ.Ҹ=B(169)+ƻ+"|"+Ƽ+"|"+Ƃ.EntityId+"|"+ߐ+"|"+(Ï?"1":"0")+"|"+(ߑ==null?0:ߑ.EntityId);ߏ(4,Ӈ.Ҹ);}
+void ߕ(string ϰ){bool ߓ=Ŧ!=ť.İ;bool ߔ=т(Ɯ);у();ƾ=false;Ɯ=ƛ.İ;Ʈ=0;Ư=0;Ò=false;Ñ=false;Ė=0;Ȧ();Ȕ(B(170)+ϰ);if(ߓ){Ŧ=ť.İ;ų=false
+;Ї("failed|"+ϰ.Replace('|','/'));ǜ=true;return;}if(ߔ){ή();ý=ü;þ=false;Ā=false;ǜ=true;Ȕ(B(171));return;}Ư++;if(Ư<ƺ){ј();Ȕ(
+B(172)+Ư+"/"+ƺ+".");}else{ή();ü=false;Ă=false;Ą=false;Ȕ(B(173));}}void ќ(string ϰ){bool ߖ=Ŧ!=ť.İ||т(Ɯ);ߕ(ϰ);if((ߖ||!ǀ)&&ށ
+.ލ(ށ.ގ,"error:"+ϰ)){ރ();ݼ();}}public
+ Program
+(){Ʉ(false,true);Ù=ɶ();Û=new Ú(Ù);ɱ();ƍ=ɲ<IMyGyro>().FindAll(Ѳ=>ѳ(Ѳ));Ǝ=ɲ<IMyThrust>().FindAll(Ѳ=>ѳ(Ѳ));Û.ջ(Ǝ,ƍ);Ý=new Ü(
+Û,M,Ǝ);ß=new Þ(Û,M,ƍ);à=ɲ<IMyShipDrill>();Ə=ɲ<IMyRadioAntenna>();Ɛ=ɲ<IMyBatteryBlock>();Ƒ=ɲ<IMyGasTank>();Ѽ();Ƃ=ڸ<
+IMyShipConnector>(S,true)??ڸ<IMyShipConnector>();ƃ=ڸ<IMyShipConnector>(R,true);Ƅ=ڸ<IMyShipMergeBlock>(V,true);ƅ=ڸ<IMyShipMergeBlock>(U,
+true);Ɔ=ڸ<IMyLightingBlock>(µ,true);Ƈ=ڸ<IMyGravityGenerator>(º,true);Ҳ();ږ();ژ();Ɖ=GridTerminalSystem.GetBlockWithName(q)as
+IMyTimerBlock;Ɗ=GridTerminalSystem.GetBlockWithName(ª)as IMyTimerBlock;Ƌ=IGC.RegisterBroadcastListener(k+"_V2");К();if(M==
+UpdateFrequency.Update10){ƀ=10.0/60.0;ǃ=10;}else if(M==UpdateFrequency.Update100){ƀ=100.0/60.0;ǃ=1;}ߗ();ߘ();if(ث&&(Ȃ==null||ȃ==null))Ȕ(
+B(174));if(!Ï)б(false);ɡ();ҩ();bool ߙ=ǔ||Ǫ>0||ō==Ō.ŉ||Ŧ==ť.ŝ||Ŧ==ť.ţ||ü&&ĥ>=Į.Count;ǔ=false;Ǫ=0;Ҙ();ڈ();if(ߙ&&ə())Ϸ();ȕ()
+;if(Ƈ==null)Ȕ(B(175)+º+"'.");Ȕ(B(176));Runtime.UpdateFrequency=UpdateFrequency.Update1;}public void
+ Main
+(string ߚ,UpdateType ߛ){ߜ.ߝ(Runtime.LifetimeTicks,Runtime.LastRunTimeMs);if(ߛ==UpdateType.Update100||ߛ==UpdateType.
+Update10||ߛ==UpdateType.Update1){ɱ();ݽ();ߞ();if(!ޟ()||ݭ){if(!ݮ){Õ=false;Ȧ();ː(false);ݮ=true;}ư++;return;}if(ݮ){ݮ=false;ԥ();}ǁ=
+false;ǂ=false;bool ߟ=ư%Ǟ==0;ɗ();ɱ();ɧ();Д();Ү();ߠ();if(Ó){if(ɘ==null)Runtime.UpdateFrequency=UpdateFrequency.Update1;ư++;
+return;}if(ư%ǃ==0){ɑ();}if(!ȗ()){ߡ();if(ɐ()){if(ǜ)ز(true);else{if(ڣ()&&ڢ())ϼ();ز(false);}}ș();}Ғ();bool ߢ=ԃ();if(õ&&!Ŵ&&!Ϋ()){
+ԛ();}bool ߣ=і();if(!ߣ&&Ɯ!=ƛ.İ){ѩ();}if(ǀ)ћ();ߋ();if(Ŧ!=ť.İ)ߤ();bool ߥ=Ϋ()||ߣ||λ()||ߢ||ġ!=0||ǂ;if(ߥ){Ȧ();}else if(Ŵ){Ȧ();}
+else{if(Ò&&Ñ){ʝ();}else{Ȧ();}}if(!ߥ&&!Ŵ){if(Ă){ό();ρ();}if(!Ă&&Ŧ==ť.İ&&ġ==0){Ω();}}if(Ƈ!=null&&(!ƈ.HasValue||ƈ.Value!=ö))ȕ()
+;Β();if(ǒ&&ǉ>0)ߦ();ޞ();if(Ҡ||ߟ)ҩ();Ѭ();ư++;}else{ɱ();if(ߚ.Equals("stop",ȵ))ދ();ҩ();ȕ();if(!ߚ.StartsWith("Plugin",ȵ))ز(
+true);}}void ތ(string ˁ){if(Γ(ˁ))return;string Δ=ˁ.Trim();if(Δ.StartsWith(B(152),ȵ)){ҷ(Δ);return;}if(Δ.StartsWith(B(149),ȵ))
+{ҕ(Δ);return;}if(Δ.StartsWith(B(177),ȵ)){ߍ(Δ);return;}if(Δ.StartsWith(B(178),ȵ)){ߎ(Δ);return;}if(Δ.StartsWith(B(151),ȵ)){
+ӓ(Δ);return;}if(Δ.StartsWith(B(150),ȵ)){Ѱ(Δ);return;}string ˆ,ˇ;ˉ(Δ,out ˆ,out ˇ);if(ˆ.Equals("pause",ȵ)||ˆ.Equals("stop",
+ȵ)||ˆ.Equals("reset",ȵ)||ˆ.Equals("recall",ȵ)||ˆ.Equals("pathpause",ȵ)||ˆ.Equals("dock",ȵ)||ˆ.Equals("undock",ȵ)||ˆ.
+Equals("cancelmine",ȵ)||Δ.StartsWith("Hangar",ȵ))Ϊ();if(Δ.StartsWith(B(179),ȵ)){Љ(Δ);return;}if(Δ.StartsWith(B(180),ȵ)){А(Δ);
+return;}if(Δ.StartsWith("Nav;",ȵ)||Δ.StartsWith("pathrecord",ȵ)||Δ.Equals("pathclear",ȵ)||Δ.Equals("appendpath",ȵ)||Δ.
+StartsWith(B(181),ȵ)||Δ.StartsWith("minearea;",ȵ)||Δ.StartsWith("minelane;",ȵ)){Ȕ(B(182));return;}switch(ˆ.ToLower()){case"pause":
+ά();у();ƾ=false;Ô=Ò;Ó=true;Runtime.UpdateFrequency=UpdateFrequency.Update1;ί();Ò=false;Ȓ();Ȕ("Paused.");break;case
+"resume":case"start":if(ə()&&!ɷ)Ϸ();Ò=Ó?Ô:Ñ;Ó=false;Runtime.UpdateFrequency=M;Ô=false;ԥ();ɑ();break;case"stop":case"reset":ˊ();у
+();ƾ=false;ά();Ó=false;Ô=false;Runtime.UpdateFrequency=M;Ò=false;Ñ=false;ã=â;ä=â;å=â;õ=false;ô=î.ê;ö=false;Ğ.Clear();ğ=0;
+Ġ=0;ø=false;ˏ();ù=false;ż=0;û=false;ú=false;ħ=-1;ü=false;ý=false;þ=false;Ā=false;Į.Clear();ĥ=0;ǒ=false;Ǒ=false;ǈ=0;ǉ=0;ā=
+false;À="";ˌ();ˍ();Ŧ=ť.İ;ų=false;ŷ=0;Ÿ=0;ź=0;ˎ();ǔ=false;Ǫ=0;Ɯ=ƛ.İ;έ();Ʈ=0;Ư=0;ή();Ė=0;ː(false);ί();Ȓ();ɑ();if(Δ.Equals(
+"stop",ȵ))Ȕ("Stopped.");break;case"dumpgps":ԧ();break;case"cancelmine":õ=false;ô=î.ê;ö=false;Ğ.Clear();ğ=0;Ġ=0;ø=false;ˏ();ù=
+false;û=false;ú=false;ħ=-1;Ò=false;Ñ=false;Ė=0;ː(false);Ȕ(B(183));break;case"nexthole":θ(false);break;case"nexthole all":θ(
+true);break;case"recall":κ(ˇ);break;case"pathstart":ޗ(ˇ);break;case"pathpause":if(Ă){Ȕ(B(184));break;}if(!ü)Ȕ(B(185));else{ý
+=true;if(ÿ)ː(false);if(õ){ː(false);ù=true;ô=î.í;Ò=true;Ȕ(B(186));}else if(Ò&&Ñ){Ò=false;þ=true;Ȕ(B(187));}else{Ȕ(B(188));
+}}break;case"pathcontinue":if(!ü)Ȕ(B(185));else{ý=false;if(ÿ)ː(true);Ȕ(B(189));if(!õ&&ô!=î.ê){õ=true;Ò=true;}else if(õ&&Ñ
+)Ò=true;else if(þ&&Ñ){Ò=true;þ=false;}else if(!Ò&&!õ&&!Χ&&Ɯ==ƛ.İ)Ψ();}break;case"pathstop":ΰ();Ȕ(B(190));break;case"dock"
+:ˠ();break;case"undock":ϳ();break;case"toffreset":J=0;K=0;L=5;ߧ();Ȕ(B(191));break;}}void ߦ(){if(!ǒ||ǉ<=0)return;if(Ǩ>0){Ǩ
+=Math.Max(0,Ǩ-Ɏ());return;}Ǩ=ǟ-Ɏ();ޝ(m,"route:"+ǈ.ToString("0.0",Ѝ)+":"+ǉ.ToString("0.0",Ѝ));}void ζ(int ߨ,int ɣ){ߨ=Math.
+Max(0,ߨ);ɣ=Math.Max(0,ɣ);if(ɣ>0)ߨ=Math.Min(ߨ,ɣ);ޝ(m,"progress:"+ߨ+"/"+ɣ);}void Ї(string Б)=>ޝ(m,"hangar|"+Б+"|"+Ÿ);void ߩ(
+string ˇ){if(Γ(ˇ))return;ޝ(m,B(192)+ˇ);}void ο(){if(ə()&&!џ)return;if(ō==Ō.ň){ϸ();return;}ζ(Ŀ,Ŀ);ü=false;ý=false;þ=false;Į.
+Clear();ĥ=0;Ħ=0;Ă=false;ă=false;Ą=false;Ķ=false;ĵ=Ĵ.İ;ņ.Clear();Ň.Clear();Ľ=0;ޝ(l,B(193)+À+"|1");Ȕ(B(194));}bool ڍ(MyIni ߪ,
+string Ț,long ڂ){if(Γ(Ț))return false;MyIni Ҫ=new MyIni();MyIniParseResult Ȯ;if(!Ҫ.TryParse(Ț,out Ȯ)||Ҫ.Get(Ǻ,B(129)).ToInt64(
+-1)!=ڂ)return false;for(int Ȣ=0;Ȣ<چ.Length;Ȣ++){if(!ٺ(Ȣ))continue;if(چ[Ȣ].Length==0)continue;MyIniValue ȸ=Ҫ.Get(Ǻ,چ[Ȣ]);
+if(!ȸ.IsEmpty)ߪ.Set(Ǻ,چ[Ȣ],ȸ.ToString());}return true;}void ߠ(){Ӣ ӥ=ɘ;if(ӥ==null)return;if(ӥ.Ӕ==null){if(!Ǆ())return;ӥ.Ӕ=ӥ
+.ӗ==null?"":ӥ.ӗ.CustomData??"";ӥ.ӗ=null;return;}int ߴ=0,ߵ=0;while(ӥ.ɰ<ӥ.Ӕ.Length&&ߴ<ӣ&&ߵ<Ӥ){char Ȏ=ӥ.Ӕ[ӥ.ɰ++];ߴ++;if(Ȏ!=
+'\n'&&Ȏ!='\r')continue;string ȳ=ӥ.Ӕ.Substring(ӥ.Ә,ӥ.ɰ-ӥ.Ә-1);ӥ.Ә=ӥ.ɰ;Ө(ӥ,ȳ);ߵ++;}if(ӥ.ɰ<ӥ.Ӕ.Length)return;if(ӥ.Ә<ӥ.Ӕ.Length)
+{if(ߵ>=Ӥ)return;Ө(ӥ,ӥ.Ӕ.Substring(ӥ.Ә));ӥ.Ә=ӥ.Ӕ.Length;return;}if(ߴ>0)return;ɘ=null;if(ӥ.Ӡ.Count==0&&!ӥ.Ӛ){ߺ=false;ށ.ލ(ށ.
+ގ,B(195));ރ();ݼ();Ȕ(B(196));return;}ࠀ(ӥ);}void ߏ(int ࠁ,string Ȗ)=>Ǐ[ࠁ]=Ȗ??"";int ࠂ;void Ѭ(){if(!ޟ()||!ǐ&&ޠ<ࠂ)return;ࠂ=ޠ+
+60;ߒ();long ࠃ=ߑ.EntityId;string Ҵ=Ǚ?B(197)+Ǽ+"|"+Ѷ+"|"+ࠃ+"|"+Ǿ:"";ߏ(2,Ҵ);string ҵ=Ǘ&&Ƃ!=null?B(198)+ࠃ+"|"+Ƃ.EntityId+"|"+(
+Ҡ?"1":"0")+"|"+қ+"|"+Ҝ+"|"+ǿ+"|"+Ұ:"";ߏ(3,ҵ);for(int ࠁ=2;ࠁ<=4;ࠁ++)ޜ("plugin",ࠁ+"|"+(Ǐ[ࠁ]??""));ǐ=false;}void ߗ(){MyIni ڀ;
+if(!ڎ(out ڀ)){ݭ=!Γ(Storage);return;}ڜ(ڀ);Ǜ=ڏ();if(!ࠄ(ڀ)){ݭ=!ࠅ;return;}ࠆ(ڀ);Ŭ=ŭ=Ů=â;Ɓ=9999;ڨ();ک();ڪ();ڵ();ӭ();if(ō==Ō.ŉ||ō
+==Ō.Ŋ||ō==Ō.ŋ)ý=true;ݰ=false;ɷ=false;ݱ=false;if(Ŧ==ť.š)ݷ=++ޡ;if(ߺ&&ށ.ޑ=="accepted"&&ށ.ޓ=="path"){MyIni ࠇ=new MyIni();if(ࠇ.
+TryParse(ށ.ޔ))ޗ(ࠇ.Get("Job","mission").ToString(""));else ݭ=true;}ǜ=false;ǝ=false;}void ࠈ(MyIni ڀ){ڀ.Set("Module","lastStop",ݾ);
+ڀ.Set("Module",B(199),ߺ);ڀ.Set("Module","route",ݸ);ڀ.Set("Module",B(159),ݴ);ڀ.Set("Module","dockOther",ݵ);ڀ.Set("Module",
+"wasDocked",ݯ);ڀ.Set("Module",B(160),ݶ);ڀ.Set("Module",B(161),ݷ);ڀ.Set("Module","lastControl",ݹ);ڀ.Set("Module",B(163),ݳ);}void ࠉ(
+MyIni ڀ){ݾ=ڀ.Get("Module","lastStop").ToString("");ߺ=ڀ.Get("Module",B(199)).ToBoolean(false);ݸ=ڀ.Get("Module","route").
+ToString("");ݴ=ڀ.Get("Module",B(159)).ToInt64(0);ݵ=ڀ.Get("Module","dockOther").ToInt64(0);ݯ=ڀ.Get("Module","wasDocked").
+ToBoolean(false);ݶ=ڀ.Get("Module",B(160)).ToInt64(0);ݷ=ڀ.Get("Module",B(161)).ToInt64(0);ݹ=ڀ.Get("Module","lastControl").ToString
+("");ݳ=ڀ.Get("Module",B(163)).ToBoolean(false);}void ޗ(string ˇ=""){string ࠊ=ˇ??"";if(ɘ!=null&&ɘ.ӕ==ࠊ)return;if(ࠊ.Length>
+0&&À==ࠊ){ߩ(ࠊ);return;}ߺ=true;MyIni Ʌ=new MyIni();if(!Ʌ.TryParse(ށ.ޔ)){ߺ=false;ށ.ލ(ށ.ގ,B(200));return;}ɘ=new Ӣ{Ӕ=Ʌ.Get(
+"Job","route").ToString(""),Ӗ=B(201),ӕ=ࠊ};Runtime.UpdateFrequency=M;}bool ڧ(out List<string>ߵ,out string ڦ){ߵ=new List<string
+>();ڦ="";ā=false;Đ=â;đ=â;Ē=â;ڦ=B(201);string Ț=ݸ;string[]ࠋ=Ț.Split(new[]{'\n','\r'},StringSplitOptions.RemoveEmptyEntries
+);foreach(string ȴ in ࠋ){string ࠌ=ȴ.Trim();if(Γ(ࠌ))continue;if(ࠌ.StartsWith("\"")&&ࠌ.EndsWith("\"")&&ࠌ.Length>=2)ࠌ=ࠌ.
+Substring(1,ࠌ.Length-2).Trim();if(Γ(ࠌ))continue;if(!ā){Vector3D ࠍ,ࠎ,ࠏ;if(Ӧ(ࠌ,out ࠍ,out ࠎ,out ࠏ)){Đ=ࠍ;đ=ࠎ;Ē=ࠏ;ā=true;continue;}}ߵ.
+Add(ࠌ);}return ߵ.Count>0||ā;}bool ߺ;void Ϊ(){if(ߺ&&ށ.ޓ=="path")ށ.ލ(ށ.ގ,"cancelled");ߺ=false;ɘ=null;}void ࠀ(Ӣ ӥ){{ߺ=false;ݸ=
+ӥ.Ӕ;ǅ();bool ࠐ=!ə()&&!ξ()&&(Ŧ==ť.Š||Ŧ==ť.š||Ŧ==ť.Ţ||Ŧ==ť.ţ||Ŧ==ť.Ť);ر();À=ӥ.ӕ;ˊ();ˌ();ˍ();ή();Ư=0;if(!ࠐ)Ŧ=ť.İ;ų=ࠐ;ŷ=0;Ó=
+false;Ô=false;Runtime.UpdateFrequency=M;Į=ӥ.Ӡ;ī=ӥ.ӡ;Ĩ=ӥ.ә;ā=ӥ.Ӛ;Đ=ӥ.Ӝ;đ=ӥ.ӝ;Ē=ӥ.Ӟ;ĥ=0;ǒ=false;Ǒ=false;ǈ=0;ǉ=0;ǉ=ӥ.ӟ;ǒ=ǉ>0;Ƕ=ū
+;Ǒ=ǒ;Ǩ=0;ü=true;ý=false;þ=false;ÿ=false;ː(false);Ā=false;Ħ=0;ǜ=true;ϼ();Ȕ(
+$"Loaded {Į.Count} path records from timer '{ӥ.Ӗ}'.");ߩ(ӥ.ӕ);if(ࠐ)ߌ();else Ψ();}}string[]چ={B(202),B(203),B(204),"hasTarget",B(205),B(206),"desiredUp",B(207),"miningState",
+"laneAnchor","drillAxis","laneDepth","SPEEDF","SPEEDB","MINEH","MINEW",B(208),B(209),"TOFFR","TOFFU","TOFFF",B(210),B(211),B(212),B(
+213),B(214),B(215),B(216),B(133),B(134),"areaPlanUp",B(135),B(217),B(218),B(136),B(137),B(138),B(219),"retryLane",B(220),B(
+221),B(222),"pathMode","pathPaused",B(223),B(224),B(225),"pathIndex","",B(226),B(227),B(228),B(229),B(230),B(231),B(232),B(
+233),B(234),B(235),B(236),B(237),B(238),"recallIndex",B(239),B(240),"","","",B(241),B(242),B(243),B(244),B(245),B(139),B(
+140),B(141),"",B(246),B(247),"hangarState",B(248),B(249),B(250),B(251),B(252),B(253),B(254),B(255),"",B(256),B(257),B(258),
+B(259),B(260),B(261),B(262),B(263),B(264),B(265),B(266),B(267),"","","","",B(268),B(269),B(270),B(271)};bool ࠑ(int Ԏ){
+switch(Ԏ){case 0:case 3:case 4:case 5:case 6:case 7:case 8:case 9:case 10:case 11:case 21:case 24:case 25:case 26:case 27:case
+28:case 29:case 30:case 31:case 32:case 33:case 34:case 35:case 36:case 37:case 38:case 39:case 40:case 41:case 42:case 43
+:case 45:case 46:case 47:case 54:case 58:case 59:case 60:case 61:case 62:case 68:case 70:case 71:case 72:case 73:case 74:
+case 75:case 78:case 79:case 83:case 84:case 85:case 86:case 87:case 90:case 96:case 98:case 99:case 105:case 106:case 107:
+case 108:case 1:case 2:case 12:case 13:case 14:case 15:case 16:case 17:case 18:case 19:case 20:case 22:case 23:case 44:case
+49:case 50:case 51:case 52:case 53:case 55:case 56:case 57:case 63:case 64:case 69:case 77:case 80:case 81:case 82:case 89
+:case 91:case 92:case 93:case 94:case 95:case 97:case 100:return true;default:return false;}}void څ(bool ډ=true){ࠒ();ٻ(0,
+Ò?1:0);ٻ(3,Ñ?1:0);ٽ(4,ã,false);ٽ(5,ä,true);ٽ(6,å,true);ٻ(7,õ?1:0);ٻ(8,(int)ô);ٽ(9,Ć,false);ٽ(10,ć,true);ټ(11,ē);ټ(21,Ė);پ
+(24,À);ٻ(25,ö?1:0);ٻ(26,ğ);ٻ(27,ø?1:0);ٽ(28,Ĉ,false);ٽ(29,ĉ,false);ٽ(30,Ċ,true);ٽ(31,ċ,true);ٻ(32,ú?1:0);ٻ(33,û?1:0);ٽ(34
+,č,false);ٽ(35,Ď,true);ٽ(36,ď,true);ٻ(37,ħ);ٻ(38,ù?1:0);ٻ(39,Ŷ?1:0);ٻ(40,ż);ٻ(41,Ġ);ٻ(42,ü?1:0);ٻ(43,ý?1:0);ٻ(45,ÿ?1:0);ٻ
+(46,Ā?1:0);ٻ(47,ĥ);ٻ(54,ā?1:0);ٻ(58,Ă?1:0);ٻ(59,ă?1:0);ٻ(60,Ą?1:0);ٻ(61,ą?1:0);ٻ(62,Ľ);ٻ(68,(int)ō);ٻ(70,ŏ?1:0);ٻ(71,Œ);ٻ
+(72,œ);ٽ(73,Ř,false);ٽ(74,ř,true);ٽ(75,Ś,true);ٻ(78,Ŗ);ٻ(79,(int)Ŧ);ٻ(83,Ÿ);ٻ(84,ź);ٻ(85,ų?1:0);ٻ(86,Ŵ?1:0);ٻ(87,ŵ?1:0);ٻ
+(90,(int)Ɯ);ٻ(96,ǀ?1:0);ٻ(98,Ʈ);ٻ(99,Ư);ٻ(105,Ҝ);ٻ(106,қ);ٿ(107,Χ);ٻ(108,Ѷ);if(ډ)ٻ(1,Ó?1:0);if(ډ)ٻ(2,Ô?1:0);if(ډ)ټ(12,Ĕ);
+if(ډ)ټ(13,ĕ);if(ډ)ټ(14,ė);if(ډ)ټ(15,Ę);if(ډ)ټ(16,Ä);if(ډ)ٻ(17,Ï?1:0);if(ډ)ټ(18,J);if(ډ)ټ(19,K);if(ډ)ټ(20,L);if(ډ)ټ(22,H);
+if(ډ)ټ(23,I);if(ډ)ٻ(44,þ?1:0);if(ډ)ټ(49,ǈ);if(ډ)ټ(50,ǉ);if(ډ)ٽ(51,Ƕ,false);if(ډ)ٻ(52,Ǒ?1:0);if(ډ)ٻ(53,ǒ?1:0);if(ډ)ٽ(55,Đ,
+false);if(ډ)ٽ(56,đ,true);if(ډ)ٽ(57,Ē,true);if(ډ)ٻ(63,ľ);if(ډ)ٻ(64,Ŀ);if(ډ)پ(69,Ŏ);if(ډ)ٻ(77,ŕ);if(ډ)ٽ(80,ŧ,false);if(ډ)ٽ(81,Ũ
+,true);if(ډ)ٽ(82,ũ,true);if(ډ)ټ(89,P);if(ډ)ٻ(91,Ʃ);if(ډ)ٻ(92,ƪ);if(ډ)ٻ(93,ƫ);if(ډ)ٻ(94,Ƭ);if(ډ)ٻ(95,ƿ?1:0);if(ډ)ٻ(97,ƭ);
+if(ډ)ٽ(100,ů,false);}void ߡ(bool ʳ=false){if(!ٱ||(!ʳ&&(ư==ٴ||ư==ٵ)))return;int ࠓ=ٲ?چ.Length:ك.Length;if(!ʳ&&(ٳ>=ࠓ&&(ɘ!=
+null||ġ!=0||λ())))return;if(!ʳ&&(ٳ>=ࠓ&&!Ǆ()))return;ٵ=ư;int ɉ=ࠓ;if(ٳ<ɉ){int ò=Math.Min(ɉ,ٳ+ق);while(ٳ<ò){ڇ(ٲ?ٳ:ك[ٳ]);ٳ++;}
+return;}if(ٶ==0){ڃ(و,ٲ?Ǻ:ǻ,ٹ);ٮ=و.ToString();ٶ=ٲ?1:2;return;}if(ٶ==1){ڃ(ى,Ǻ,ٹ);ٯ=ى.ToString();ٶ=2;return;}if(ٲ){if(ٷ==0){ݩ(ٮ,ٯ
+,"");ٸ=ٹ;for(int Ȣ=0;Ȣ<ل.Length;Ȣ++){ښ[Ȣ]=ن[ل[Ȣ]].ـ;ڛ[Ȣ]=true;}Ǜ=false;Ȅ.Clear();ٷ=1;if(ث)return;}if(ث){IMyTimerBlock ڌ=ڋ
+();if(ڌ==null||ȃ==null){Ȕ(B(272));}else if(ٷ==1){ȃ.CustomData=ٯ??"";ٷ=2;return;}else ڌ.CustomData=ٮ;}}else{if(!ݪ(ٮ)){ر();
+return;}Ǜ=true;}ٱ=false;}void ڇ(int Ԏ){if(!ࠑ(Ԏ))return;ف ȸ=ن[Ԏ];int ࠔ=م[Ԏ];if(!ٲ&&ࠔ>=0&&ڛ[ࠔ]&&ȸ.ـ==ښ[ࠔ])return;string ځ=ٲ?Ǻ:ǻ;
+string ȷ=چ[Ԏ];ف Ϗ=ه[Ԏ];bool ࠕ=ي[Ԏ]!=null&&Ϗ.ؽ==ȸ.ؽ&&(ȸ.ؽ==0||ȸ.ؽ==5?Ϗ.ؾ==ȸ.ؾ:ȸ.ؽ==1?Ϗ.ؿ==ȸ.ؿ:ȸ.ؽ==2||ȸ.ؽ==3?Ϗ.ـ==ȸ.ـ:string.
+Equals(Ϗ.Ҹ,ȸ.Ҹ,Ȟ));if(!ࠕ){ي[Ԏ]=ȸ.ؽ==0?ȸ.ؾ.ToString(Ѝ):ȸ.ؽ==1?Դ(ȸ.ؿ):ȸ.ؽ==2?Բ(ȸ.ـ):ȸ.ؽ==3?Գ(ȸ.ـ):ȸ.ؽ==4?ȸ.Ҹ??"":ȸ.ؾ!=0?"true":
+"false";ه[Ԏ]=ȸ;}MyIni ߪ=ٲ&&ٺ(Ԏ)?ى:و;ߪ.Set(ځ,ȷ,ي[Ԏ]);}void ރ(){ر();ز(true);while(ٱ)ߡ(true);}void ࠆ(MyIni ڀ){int ם;double ӂ;
+Vector3D Ա;long ࠚ;int ࠤ;bool ࠨ=false;Ò=ڒ(ڀ,چ[0],Ò);Ó=ڒ(ڀ,چ[1],Ó);Ô=ڒ(ڀ,چ[2],Ô);Ñ=ڒ(ڀ,چ[3],Ñ);if(Ќ(ڑ(ڀ,چ[4],Բ(ã)),out Ա))ã=Ա;if(Ќ
+(ڑ(ڀ,چ[5],Բ(ä)),out Ա))ä=Ա;if(Ќ(ڑ(ڀ,چ[6],Բ(å)),out Ա))å=Ա;õ=ڒ(ڀ,چ[7],õ);if(int.TryParse(ڑ(ڀ,چ[8],((int)ô).ToString()),out
+ם))ô=(î)ם;if(Ќ(ڑ(ڀ,چ[9],Բ(Ć)),out Ա))Ć=Ա;if(Ќ(ڑ(ڀ,چ[10],Բ(ć)),out Ա))ć=Ա;if(Ӓ(ڑ(ڀ,چ[11],Ե(ē)),out ӂ))ē=ӂ;if(Ӓ(ڑ(ڀ,چ[12],Ե
+(Ĕ)),out ӂ))Ĕ=Math.Max(0.1,ӂ);if(Ӓ(ڑ(ڀ,چ[13],Ե(ĕ)),out ӂ))ĕ=Math.Max(0.1,ӂ);if(Ӓ(ڑ(ڀ,چ[14],Ե(ė)),out ӂ))ė=Math.Max(0.1,ӂ)
+;if(Ӓ(ڑ(ڀ,چ[15],Ե(Ę)),out ӂ))Ę=Math.Max(0.1,ӂ);if(Ӓ(ڑ(ڀ,چ[16],Ե(Ä)),out ӂ))Ä=MathHelper.Clamp(ӂ,0,500);Ï=ڒ(ڀ,چ[17],Ï);if(
+Ӓ(ڑ(ڀ,چ[18],Ե(J)),out ӂ))J=ӂ;if(Ӓ(ڑ(ڀ,چ[19],Ե(K)),out ӂ))K=ӂ;if(Ӓ(ڑ(ڀ,چ[20],Ե(L)),out ӂ))L=ӂ;if(Ӓ(ڑ(ڀ,چ[21],Ե(Ė)),out ӂ))
+Ė=ӂ;if(Ӓ(ڑ(ڀ,چ[22],Ե(H)),out ӂ))H=Math.Max(0.1,ӂ);if(Ӓ(ڑ(ڀ,چ[23],Ե(I)),out ӂ))I=MathHelper.Clamp(ӂ,1,100);À=ڑ(ڀ,چ[24],À);
+ö=ڒ(ڀ,چ[25],ö);if(int.TryParse(ڑ(ڀ,چ[26],ğ.ToString()),out ם))ğ=ם;ø=ڒ(ڀ,چ[27],ø);if(Ќ(ڑ(ڀ,چ[28],Բ(Ĉ)),out Ա))Ĉ=Ա;if(Ќ(ڑ(ڀ
+,چ[29],Բ(ĉ)),out Ա))ĉ=Ա;if(Ќ(ڑ(ڀ,چ[30],Բ(Ċ)),out Ա))Ċ=Ա;if(Ќ(ڑ(ڀ,چ[31],Բ(ċ)),out Ա))ċ=Ա;ú=ڒ(ڀ,چ[32],ú);û=ڒ(ڀ,چ[33],û);if(
+Ќ(ڑ(ڀ,چ[34],Բ(č)),out Ա))č=Ա;if(Ќ(ڑ(ڀ,چ[35],Բ(Ď)),out Ա))Ď=Ա;if(Ќ(ڑ(ڀ,چ[36],Բ(ď)),out Ա))ď=Ա;if(int.TryParse(ڑ(ڀ,چ[37],ħ.
+ToString()),out ם))ħ=ם;ù=ڒ(ڀ,چ[38],ù);Ŷ=ڒ(ڀ,چ[39],Ŷ);if(int.TryParse(ڑ(ڀ,چ[40],ż.ToString()),out ם))ż=ם;if(int.TryParse(ڑ(ڀ,چ[41
+],"0"),out ם))Ġ=Math.Max(0,ם);ü=ڒ(ڀ,چ[42],ü);ý=ڒ(ڀ,چ[43],ý);þ=ڒ(ڀ,چ[44],þ);ÿ=ڒ(ڀ,چ[45],ÿ);Ā=ڒ(ڀ,چ[46],Ā);if(int.TryParse(
+ڑ(ڀ,چ[47],ĥ.ToString()),out ם))ĥ=ם;if(Ӓ(ڑ(ڀ,چ[49],Ե(ǈ)),out ӂ))ǈ=Math.Max(0,ӂ);if(Ӓ(ڑ(ڀ,چ[50],Ե(ǉ)),out ӂ))ǉ=Math.Max(0,ӂ
+);if(Ќ(ڑ(ڀ,چ[51],Բ(Ƕ)),out Ա))Ƕ=Ա;Ǒ=ڒ(ڀ,چ[52],Ǒ);ǒ=ڒ(ڀ,چ[53],ǒ);ā=ڒ(ڀ,چ[54],ā);if(Ќ(ڑ(ڀ,چ[55],Բ(Đ)),out Ա))Đ=Ա;if(Ќ(ڑ(ڀ,چ
+[56],Բ(đ)),out Ա))đ=Ա;if(Ќ(ڑ(ڀ,چ[57],Բ(Ē)),out Ա))Ē=Ա;Ă=ڒ(ڀ,چ[58],Ă);ă=ڒ(ڀ,چ[59],ă);Ą=ڒ(ڀ,چ[60],Ą);ą=ڒ(ڀ,چ[61],ą);if(int.
+TryParse(ڑ(ڀ,چ[62],Ľ.ToString()),out ם))Ľ=Math.Max(0,ם);if(int.TryParse(ڑ(ڀ,چ[63],ľ.ToString()),out ם))ľ=Math.Max(0,ם);if(int.
+TryParse(ڑ(ڀ,چ[64],Ŀ.ToString()),out ם))Ŀ=Math.Max(0,ם);if(int.TryParse(ڑ(ڀ,چ[68],((int)ō).ToString()),out ם)){if(ם<0||ם>(int)Ō.
+ŋ)ם=0;ō=(Ō)ם;}Ŏ=ڑ(ڀ,چ[69],Ŏ);ŏ=ڒ(ڀ,چ[70],ŏ);if(int.TryParse(ڑ(ڀ,چ[71],Œ.ToString()),out ם))Œ=ם;if(int.TryParse(ڑ(ڀ,چ[72],
+œ.ToString()),out ם))œ=Math.Max(0,ם);if(Ќ(ڑ(ڀ,چ[73],Բ(Ř)),out Ա))Ř=Ա;if(Ќ(ڑ(ڀ,چ[74],Բ(ř)),out Ա))ř=Ա;if(Ќ(ڑ(ڀ,چ[75],Բ(Ś))
+,out Ա))Ś=Ա;if(int.TryParse(ڑ(ڀ,چ[77],ŕ.ToString()),out ם))ŕ=Math.Max(0,ם);if(int.TryParse(ڑ(ڀ,چ[78],"0"),out ם))Ŗ=Math.
+Max(0,ם);if(int.TryParse(ڑ(ڀ,چ[79],((int)Ŧ).ToString()),out ם)){if(ם==6||ם==11)Ŧ=ť.Ţ;else if(ם==10)Ŧ=ť.ş;else if(ם==12){Ŧ=ť
+.Ť;ࠨ=true;}else if(ם==0||ם==1||ם==2||ם==3||ם==4||ם==5||ם==7||ם==8||ם==9)Ŧ=(ť)ם;else Ŧ=ť.İ;}if(Ќ(ڑ(ڀ,چ[80],Բ(ŧ)),out Ա))ŧ=
+Ա;if(Ќ(ڑ(ڀ,چ[81],Բ(Ũ)),out Ա))Ũ=Ա;if(Ќ(ڑ(ڀ,چ[82],Բ(ũ)),out Ա))ũ=Ա;if(int.TryParse(ڑ(ڀ,چ[83],"0"),out ם))Ÿ=Math.Max(0,ם);
+if(int.TryParse(ڑ(ڀ,چ[84],"0"),out ם))ź=Math.Max(0,ם);ų=ࠨ||ڒ(ڀ,چ[85],ų);Ŵ=ڒ(ڀ,چ[86],Ŵ);ŵ=ڒ(ڀ,چ[87],ŵ);if(Ӓ(ڑ(ڀ,چ[89],ڑ(ڀ,B
+(273),Ե(P))),out ӂ))P=ӂ;if(int.TryParse(ڑ(ڀ,چ[90],((int)Ɯ).ToString()),out ם))Ɯ=(ƛ)ם;if(int.TryParse(ڑ(ڀ,چ[91],Ʃ.ToString
+()),out ם))Ʃ=ם;if(int.TryParse(ڑ(ڀ,چ[92],ƪ.ToString()),out ם))ƪ=ם;if(int.TryParse(ڑ(ڀ,چ[93],ƫ.ToString()),out ם))ƫ=ם;if(
+int.TryParse(ڑ(ڀ,چ[94],Ƭ.ToString()),out ם))Ƭ=ם;ƿ=ڒ(ڀ,چ[95],ƿ);ǀ=ڒ(ڀ,چ[96],ǀ);if(int.TryParse(ڑ(ڀ,چ[97],ƭ.ToString()),out ם
+))ƭ=Math.Max(0,ם);if(int.TryParse(ڑ(ڀ,چ[98],"0"),out ם))Ʈ=Math.Max(0,ם);if(int.TryParse(ڑ(ڀ,چ[99],"0"),out ם))Ư=Math.Max(
+0,Math.Min(ƺ,ם));if(Ќ(ڑ(ڀ,چ[100],Բ(ů)),out Ա))ů=Ա;long.TryParse(ڑ(ڀ,چ[105],"0"),out Ҝ);long.TryParse(ڑ(ڀ,چ[106],"0"),out
+қ);Χ=ڒ(ڀ,چ[107],false);if(!int.TryParse(ڑ(ڀ,چ[108],"0"),out Ѷ)||Ѷ<0||Ѷ>2)Ѷ=0;}void ߤ(){if(Ϋ())return;if(Ŧ==ť.İ)return;if(
+Ŧ==ť.ş||Ŧ==ť.š){ź+=Ɏ();int ࡀ=Ŧ==ť.ş?7200:600;if(ź>=ࡀ){ќ(Ŧ==ť.ş?B(274):B(275));return;}}if(Ŧ==ť.ŝ){if(!ə()&&!ξ())return;if
+(!ޢ())return;ϳ();if(Ɯ!=ƛ.İ||Χ){Ŧ=ť.Ş;ǜ=true;}return;}if(Ŧ==ť.Ş){if(Ɯ!=ƛ.İ||Χ)return;if(ə()||ξ())return;ã=ŧ;ä=Ũ;å=ũ;Ñ=true
+;Ò=true;Ė=ĕ;Ŧ=ť.ş;ź=0;ǜ=true;Ȕ(B(276));return;}if(Ŧ==ť.ş){if(!ˀ())return;Ò=false;Ñ=false;Ė=0;Ȧ();Ŧ=ť.Š;ź=0;ŷ=0;ǜ=true;ރ()
+;Ї("store_ready");Ȕ(B(277));return;}if(Ŧ==ť.Š){Г();return;}if(Ŧ==ť.š){if(!ݱ)return;ࡁ();return;}if(Ŧ==ť.Ţ){if(Ɯ!=ƛ.İ||ǀ)
+return;if(!ə()&&!ξ()){Џ();return;}Ŧ=ť.ţ;ǜ=true;return;}if(Ŧ==ť.ţ){if(!ޢ())return;Ŧ=ť.İ;ų=false;ŷ=0;ރ();Ȕ(B(278));Ψ();return;}
+if(Ŧ==ť.Ť)В(B(279));}void ߊ(){if(Ϋ())return;if(ō==Ō.ň){if(Ă)return;if(ə()||ξ()){ϸ();return;}ˍ();return;}if(ō==Ō.ŉ){if(!ə()
+&&!ξ()){ϲ();return;}if(Ő||!ޢ())return;ϴ();return;}if(ō==Ō.Ŋ){if(Ɯ!=ƛ.İ||Χ)return;if(ə()||ξ()){ϴ();return;}ō=Ō.ŋ;ŕ=0;ý=true
+;þ=false;Ŗ=0;ǜ=true;Ȕ(B(280));Ͼ();return;}if(ō==Ō.ŋ){if(Ɯ!=ƛ.İ||ǀ)return;if(Ò&&Ñ){if(!ʾ(ã,ä,å))return;Ò=false;Ñ=false;Ė=0
+;}Ͼ();return;}}void ࡁ(){if(!ݱ)return;bool ࡂ=ݲ;ŷ=0;if(!ࡂ){Ŧ=ť.İ;ų=true;ރ();Ȕ(B(281));Ψ();return;}if(!Џ())return;Ŧ=ť.Ţ;ų=
+false;ǜ=true;Ȕ(B(282));}void ޅ(MyIni ڀ){bool ࡃ=Ï;Ĕ=ڀ.Get("Settings","SPEEDF").ToDouble(Ĕ);ĕ=ڀ.Get("Settings","SPEEDB").
+ToDouble(ĕ);ė=ڀ.Get("Settings","MINEH").ToDouble(ė);Ę=ڀ.Get("Settings","MINEW").ToDouble(Ę);P=ڀ.Get("Settings",B(256)).ToDouble(
+P);Ä=ڀ.Get("Settings",B(208)).ToDouble(Ä);J=ڀ.Get("Settings","TOFFR").ToDouble(J);K=ڀ.Get("Settings","TOFFU").ToDouble(K)
+;L=ڀ.Get("Settings","TOFFF").ToDouble(L);H=ڀ.Get("Settings",B(211)).ToDouble(H);I=ڀ.Get("Settings",B(212)).ToDouble(I);Ì=
+ڀ.Get("Settings",B(283)).ToDouble(Ì);Í=ڀ.Get("Settings",B(284)).ToDouble(Í);Ð=ڀ.Get("Settings",B(285)).ToBoolean(Ð);Ï=ڀ.
+Get("Settings",B(209)).ToBoolean(Ï);Ǔ=ڀ.Get("Settings",B(286)).ToBoolean(Ǔ);س(ڀ.Get("Settings",B(287)).ToBoolean(ث));if(ࡃ&&
+!Ï)б(false);}void щ(){}void ߧ(){}long ޛ,ࡄ,ࡅ;bool ࡆ;void ы(){ޛ=++ޡ;ࡄ=ݴ;ࡅ=ݵ;ࡆ=false;ރ();ݼ();}bool ь(){if(ࡄ!=ݴ||ࡅ!=ݵ){ы();
+return false;}return ޟ()&&ޠ-ݺ<=180&&ࡆ&&ǚ&&Ǌ>=0&&Ǌ<=100&&ǌ>=0&&ǌ<=100;}void ޣ(MyIni Ț)=>ࡆ=ޛ!=0&&Ț.Get("Supply",B(162)).ToInt64(
+0)==ޛ&&Ț.Get("Supply",B(288)).ToInt64(-1)==ࡄ&&Ț.Get("Supply","other").ToInt64(-1)==ࡅ&&Ț.Get("Supply","mission").ToString(
+"")==À&&Ț.Get("Supply",B(289)).ToBoolean(false);class މ{public string ގ="",ޓ="",ޔ="",ޑ="",ޚ="";public bool ޒ(string ވ,
+string ࡇ,string ހ,bool ޕ){if(string.IsNullOrEmpty(ވ)||string.IsNullOrEmpty(ࡇ)||ވ==ގ)return false;if(!ފ(ވ,ގ))return false;if(!ޕ
+&&ޑ!=""&&ޑ!=B(290))return false;ގ=ވ;ޓ=ࡇ;ޔ=ހ??"";ޑ="accepted";ޚ="";return true;}public bool ލ(string ވ,string Ȯ){if(ވ!=ގ||ޑ
+!="accepted")return false;ޑ="finished";ޚ=Ȯ??"";return true;}public bool ނ(string ވ){if(ވ!=ގ||ޑ!="finished")return false;ޑ=
+B(290);return true;}public string ࡉ()=>"EMMA-OP-1\n"+ࡈ(ގ)+ࡈ(ޓ)+ࡈ(ޔ)+ࡈ(ޑ)+ࡈ(ޚ);static string ࡈ(string ȸ)=>ȸ.Length.
+ToString()+":"+ȸ;public static bool ފ(string ɵ,string Ϗ){int ȶ=ɵ==null?-1:ɵ.LastIndexOf('/');long ࡊ;if(ȶ<=0||!long.TryParse(ɵ.
+Substring(ȶ+1),out ࡊ)||ࡊ<=0)return false;if(string.IsNullOrEmpty(Ϗ))return true;int ࡋ=Ϗ.LastIndexOf('/');long ࡌ;return ࡋ==ȶ&&ɵ.
+Substring(0,ȶ)==Ϗ.Substring(0,ࡋ)&&long.TryParse(Ϗ.Substring(ࡋ+1),out ࡌ)&&ࡊ>ࡌ;}public bool ސ(string ȸ){const string ࡍ=
+"EMMA-OP-1\n";if(ȸ==null||!ȸ.StartsWith(ࡍ,Ȟ))return false;int ʞ=ࡍ.Length;string ވ,ࡇ,ހ,с,Ȯ;if(!Ȼ(ȸ,ref ʞ,out ވ)||!Ȼ(ȸ,ref ʞ,out ࡇ)||!Ȼ
+(ȸ,ref ʞ,out ހ)||!Ȼ(ȸ,ref ʞ,out с)||!Ȼ(ȸ,ref ʞ,out Ȯ)||ʞ!=ȸ.Length)return false;if(с!=""&&с!="accepted"&&с!="finished"&&с
+!=B(290))return false;if(с!=""&&(!ފ(ވ,"")||ࡇ.Length==0))return false;if(с==""&&(ވ.Length!=0||ࡇ.Length!=0||ހ.Length!=0||Ȯ.
+Length!=0))return false;ގ=ވ;ޓ=ࡇ;ޔ=ހ;ޑ=с;ޚ=Ȯ;return true;}static bool Ȼ(string ȸ,ref int ʞ,out string ع){ع="";int ò=ȸ.IndexOf(
+':',ʞ),غ;if(ò<ʞ||ò-ʞ>9||!int.TryParse(ȸ.Substring(ʞ,ò-ʞ),out غ)||غ<0||غ>ȸ.Length-ò-1)return false;ع=ȸ.Substring(ò+1,غ);ʞ=ò+
+1+غ;return true;}}string ࡎ="";bool ࡏ;void ࠒ(){MyIni ࡐ=new MyIni();ࡑ(ࡐ);ࠈ(ࡐ);ࡎ=ࡐ.ToString();}string ݧ(string Ț){MyIni ߪ=
+new MyIni(),ࡐ=new MyIni();if(!ߪ.TryParse(Ț??"")||!ࡐ.TryParse(ࡎ))throw new Exception(B(291));var ࡒ=new List<MyIniKey>();ࡐ.
+GetKeys("Module",ࡒ);foreach(var ȷ in ࡒ)ߪ.Set(ȷ,ࡐ.Get(ȷ).ToString());return ߪ.ToString();}bool ࠄ(MyIni ش){MyIni с=Ǜ&&Ȅ.
+ContainsKey("Module","role")?Ȅ:ش;ࡏ=ࡓ(с);if(ࡏ)ࠉ(с);return ࡏ;}static class ޤ{public static bool ޥ(bool ࡔ,bool ࡕ,int ࡖ,long ڂ,long Ƀ,
+long ࡗ,string ࡘ,long ࢠ,long ࢢ,long ࢣ,string ࢤ)=>ࡔ&&ࡕ&&ࡖ>=0&&ࡖ<=180&&Ƀ!=0&&ࡗ>0&&ڂ==ࢠ&&Ƀ==ࢢ&&ࡗ==ࢣ&&string.Equals(ࡘ,ࢤ,Ȟ);}const
+string ࢥ="EMMA-MODULE/0.8.42/1";IMyBroadcastListener ࢦ;IMyProgrammableBlock ߑ;List<IMyProgrammableBlock>ࢧ=new List<
+IMyProgrammableBlock>();int ޠ,ࢨ=-10000;bool ࢩ,ࠅ;string ࢪ=B(292),ࢫ="";މ ށ=new މ();long ޡ;bool ޟ()=>ࢩ&&ߑ!=null&&!ߑ.Closed&&ߑ.Enabled&&ߑ.
+IsFunctional&&ޠ-ࢨ<=180;void ߘ(){ࢦ=IGC.RegisterBroadcastListener(W.g(ࢥ+"/"+ɖ));if(ࢫ.Length==0)ࢫ=Me.EntityId.ToString();ࢬ();if(ࠅ)ރ();}
+void ࢬ(){ࢧ.Clear();GridTerminalSystem.GetBlocksOfType(ࢧ,ɂ=>ɂ.CubeGrid==Me.CubeGrid&&ɂ.CustomName==ݬ);IMyProgrammableBlock ऄ=
+ࢧ.Count==1?ࢧ[0]:null;if(ऄ!=ߑ){ߑ=ऄ;ࢩ=false;ࢨ=-10000;}if(ऄ==null)ࢪ=ࢧ.Count>1?B(293):"Missing "+ݬ;}void ޜ(string ݿ,string ހ)
+{if(ߑ==null||ߑ.Closed)return;IGC.SendBroadcastMessage(W.g(ࢥ+"/"+ݫ),new MyTuple<long,string,string>(ߑ.EntityId,ݿ,ހ??""),
+TransmissionDistance.CurrentConstruct);}void ߞ(){ޠ++;if(ޠ%60==1)ࢬ();int σ=8;while(ࢦ.HasPendingMessage&&σ-->0){var Ϩ=ࢦ.AcceptMessage();if(ߑ==
+null||Ϩ.Source!=ߑ.EntityId||!(Ϩ.Data is MyTuple<long,string,string>))continue;var Ț=(MyTuple<long,string,string>)Ϩ.Data;if(Ț
+.Item1!=Me.EntityId)continue;if(Ț.Item2=="hello"){ࢩ=Ț.Item3==ࢥ;if(ࢩ)ࢨ=ޠ;else ࢪ=B(294);}else if(ࢩ){ࢨ=ޠ;ޘ(Ț.Item2,Ț.Item3);
+}}if(ޠ%60==1){ޜ("hello",ࢥ);if(ޟ())ݼ();}if(ޟ())ࢪ="";else if(ࢩ)ࢪ=B(295)+ݫ;}void ࡑ(MyIni ڀ){ڀ.Set("Module","role",ɖ);ڀ.Set(
+"Module","pair",W.ȩ);ڀ.Set("Module","version",ࢥ);ڀ.Set("Module","identity",ࢫ);ڀ.Set("Module","sequence",ޡ);ڀ.Set("Module",
+"operation",ށ.ࡉ());}bool ࡓ(MyIni ڀ){if(ڀ.Get("Module","role").ToString("")!=ɖ||ڀ.Get("Module","version").ToString("")!=ࢥ)return
+false;ࢫ=ڀ.Get("Module","identity").ToString("");ޡ=ڀ.Get("Module","sequence").ToInt64(0);ࠅ=ڀ.Get("Module","pair").ToString(new
+Ȭ().ȩ)!=W.ȩ;if(ࠅ)return false;var अ=new މ();if(!अ.ސ(ڀ.Get("Module","operation").ToString("")))return false;ࢫ=ڀ.Get(
+"Module","identity").ToString("");ޡ=ڀ.Get("Module","sequence").ToInt64(0);ށ=अ;return ࢫ.Length!=0&&ޡ>=0;}sealed class ए{public
+long आ,इ=-1;double ई;readonly long उ=DateTime.UtcNow.Ticks;bool Ʌ;public void ߝ(long ऊ,double Ϗ){if(इ>=0){if(Ʌ&&आ++>=20&&Ϗ>=
+0&&!double.IsInfinity(Ϗ))ई+=.005*Ϗ;long ऋ=Math.Max(0,ऊ-इ);if(ऋ>0)ई*=ऋ==1?.995:Math.Pow(.995,ऋ);}इ=ऊ;Ʌ=true;}public void ऌ
+()=>Ʌ=false;public string ऎ(string ऍ,long ވ)=>B(296)+ऍ+"|"+ވ+"|"+उ+"|"+आ+"|"+ई.ToString("R",Ѝ);}ए ߜ=new ए();long ऐ=-60;
+string ऑ="";string ޙ(){if(ऑ.Length==0||ߜ.इ-ऐ>=60){ऐ=ߜ.इ;ऑ=ߜ.ऎ(ɖ,Me.EntityId);}return ऑ;}public void
+ Save
+(){ߜ.ऌ();ރ();}double ɓ,ɕ;long ɔ;static string ϭ(ƛ ȸ){switch((int)ȸ){case 0:return"None";case 1:return B(297);case 2:
+return B(298);case 3:return B(299);case 4:return B(300);case 5:return B(301);case 6:return B(302);case 7:return B(303);case 8:
+return B(304);case 9:return B(305);default:return((int)ȸ).ToString();}}static string ϭ(î ȸ){switch((int)ȸ){case 0:return"Idle"
+;case 1:return"EnterLane";case 2:return B(306);case 3:return"Backout";default:return((int)ȸ).ToString();}}static string[]
+ऒ={"䀀楥盯穥偃矮穲矬","䀀懯睮狣穯礠呈烮珡礩","䀁拍曟惟扏懋濐染技","䀁拍曟惟曉杅楟桁橈濃柍桌拔技","䀀拍曟惟曉杅楟桒柇楅槓","䀁拍曟惟曉杅楟懏曍惎戀","䀁桬竧瓮偂祩牧犀","䀁擮物燡穯礠癩珨稀","䀁揲烶瓴粠揥睥祡穯礀",
+"䀁曩睩睧偧祡筩穹偧狮狲烴矲倀","䀀狮烢癥爠烴偭瓮瓮玠硬烮犮","䀀物秡煬狤偡篡粠獲短偭瓮瓮玠硬烮犮","䀀扵硬瓣烴犠淅曍惝偳狣穩矮","䀁毲矮玠懯盭烮牥礠睡盩睧偲矬犀","䀁懡祲瓥礠烮爠曩睥礠睡盥禠盵秴偤瓦獥礀","䀀桩癯稠睡盥偭竳稠狮爠篩穨",
+"䀁拸硥燴狤偯睥偬矣烬倀","䀁条盥槨瓰偤知禠睯稠盡穣琠桂偮热犀","䀁懡祲瓥礯曩睥礠睡盩睧偭瓳盡穣琀","䀀惵穯硩癯稠曯牥","䀀槴烴犺偅睡煬狤","䀁槴烴犺偄瓳烢癥爀","䀀橡祧狴崠幮矮犾","䀁桅楆囍柄櫌抺倀","䀁偭离偳热硬狳庀","䀁景烤瓮玠祯竴犀",
+"䀁曩睥礠硯篥祩睧偤矷眀","䀁曩睥礠硯篥祩睧偵砀","䀁捩睡瘠竮癯烤瓮玀","䀁捩睡瘠秥祶瓣犀","䀁曩睥礠竮牯燫瓮玀","䀁拮穥祩睧偨烮珡礀","䀀楥烤粠穯偳穯祥","䀁懨狣痩睧偡獴狲偤狰癯粀","䀁曩睥礠牯燫瓮玀","䀁桯秴囤狰癯粠秥祶瓣犀",
+"䀁曩睥礠祥穵祮瓮玀","䀀曩睥礠狪狣穩睧偳穯睥","䀀曩睥礠盩睩睧","䀀曵癴瓰癥偒狭矴犠懯睴祯癳偮热狤健籡燴癹倧","䀀厠狸瓳稠矮側瑥偍瓮狲偧祩爮","䀁楥磵瓲狤偒狭矴犠懯睴祯瘠睯稠獯竮爠矮側瑥偍瓮狲偧祩爺倀","䀀楥燡癬偡癲狡特偡燴瓶犮",
+"䀁楥燡癬偩珮矲狤崠睯偡燴瓶犠硡穨圀","䀀楥燡癬偱童童爺偦瓮瓳瑩睧偳烦犠秥硡祡穩矮側瞠穨犠矵穥礠牯燫偰石犠獩祳種","䀀楥燡癬崠獩睩秨瓮玠燵祲狮稠瑯癥偢狦矲犠硡穨偲狣烬瘮","䀀楥燡癬崠烬祥烤粠燯睮狣穥爻偦瓮瓳瑩睧偰矷狲偳瑵穤矷眮","䀀楥燡癬崠硲狰烲瓮玠祯竴犮",
+"䀀楥燡癬偲矵穥崠","䀁偩禠秨矲穥礠味穡祴倀","䀀偭咮偒狣烬瘠秴烲穥爮","䀀槴矮犠狪狣穩矮崠瑯癤瓮玠硯秩穩矮偡稠燡祧瞠","䀀槴矮犠狪狣穩矮偲狳竭犠祥秴矲狤偤祩癬禠獯礠","䀀盩睩睧困癡睥偡硰祯烣琮","䀀惵穯偳狲筩燥崠祥穵祮瓮玠獯礠",
+"䀀惵穯偳狲筩燥崠秥祶瓣犠燯盰癥穥嘠竮牯燫瓮玮","䀀惵穯偳狲筩燥崠牯燫狤嘠竮癯烤瓮玠烮爠祥獵独瓮玮","䀀惵穯偳狲筩燥崠秡筥爠","䀁偳烦犠祥穵祮偷烹硯瓮穳圀","䀁惵穯偳狲筩燥崠秡獥偲矵穥偣短硬狴犻偲狳竭狤健籣烶烴瓯眠絯睥圀","䀀惵穯偳狲筩燥崠秡獥偲矵穥偣短硬狴犻偲狳竭狤偰烴琮",
+"䀀摡睧烲崠祥略燴狤偩睶烬瓤偳穯祡珥偰石犮","䀁摡睧烲崠祥略燴狤偡偮狷偳穯祡珥偯硥祡穩矮偷瑩癥偯硥祡穩矮倀","䀀秴矲狟烣燥硴狤","䀀摡睧烲崠祥硥烴狤偳穯祡珥偣短盡睤偡燫睯篬狤珥爠篩穨矵稠祥秴烲穩睧側瑥偡燴瓶犠矰狲烴瓯眮",
+"䀁摡睧烲崠秴矲烧犠祥磵狳稠祥略燴狤偢狣烵秥偍瓮狲偩禠睯稠牯燫狤圀","䀁摡睧烲崠獩睩秨瓮玠秥祶瓣犻偰祥秥祶瓮玠穨犠牯燫狤偍瓮狲偯祩狮穡穩矮偦矲偳穯祡珥圀","䀀摡睧烲懹燬犠祥穵祮偲狪狣穥爺偍瓮狲偩禠睯稠獲狳瑬粠牥硬矹狤偦祯皠秴矲烧犮",
+"䀀摡睧烲懹燬犠祥穵祮偲狪狣穥爺偣竲祥睴偳穯祡珥固矮犠硯秥偩禠瓮筡癩爮","䀁摡睧烲懹燬犠祥穵祮偲狪狣穥爺偳穡癥偯硥祡穩矮倀","䀁摡睧烲懹燬犠祥穵祮偰烵秥爺偤瓲狣稠扯燫偐石犠墠烰硲矡燨偣矵癤偮矴偳穡祴圀","䀁摡睧烲懹燬犺偲狴竲睩睧偤瓲狣穬粠穯偄矣疠桯秥倱偡睤偤矣痩睧圀",
+"䀁櫮牯燫偳穡珥爠秥磵狮燥偳穡祴狤圀","䀁櫮牯燫偨独爠煥獯祥偰矷狲囵砺偳狲筩燥偩督短硬狴犠呣烲珯倀","䀀扯燫偨烲牷烲犠物秣矮睥燴偷烳偯煳狲筥爠烦穥礠烣痮矷癥牧狭狮稠穩盥矵稻偤狰烲穵祥偲狭烩睳偳穡珥爮",
+"䀀扯燫偨烲牷烲犠硬竧瓮偤瓤偮矴偣短硬狴犠物秣矮睥燴嶠竳瓮玠睡穩筥偍瓮狲偦烬癢烣疮","䀁櫮牯燫偳穯硰狤崠燯睮狣穯礠物爠睯稠祥癥烳犠篩穨瓮倵偳狣矮牳圀","䀀櫮牯燫偤狴烣琠燯盰癥穥嶠硲狰烲瓮玠牥硡祴竲犮","䀁摡睧烲偤狰烲穵祥偩禠篡瓴瓮玠獯礠炠獲狳琠懡祲瓥礠硯秥圀",
+"䀁摡睧烲偤狰烲穵祥偳穡祴狤崠盯筩睧偳穲烩珨稠穯偄矣疠桯秥倲圀","䀁摡睧烲偤矣痩睧偩禠篡瓴瓮玠獯礠炠獲狳琠懡祲瓥礠硯秥圀","䀁扯燫偤狮瓥爺偮瞠獲狳琠燡祲瓥礠燯睮狣穯礠硯秥偢祯烤燡秴圀","䀀扯燫偳穡祴狤倨硨烳犠墺偯竴狲偤矣疠硯秥嘠","䀀盥祧犠烳秩秴狤","䀀燯睮狣穯礠矮癹",
+"䀀扯燫偲狴祹崠燡祲瓥礠硯秥偲狳穯祥爮","䀁偡癩珮盥睴健籣狥牥爠墸堠秥燯睤禀","䀁側祡筥瘠狸燥狤狤倶堠秥燯睤禀","䀀健籣狥牥爠嬰偳狣矮牳","䀁扯燫偣短硬狴犠呣矮睥燴狤嶠硯篥礠秨竴牯篮偣短硬狴犩圀","䀀扯燫瓮玠硡竳狤崠烷烩穩睧偦祥秨偣烲祩狲偰石犮",
+"䀁櫮牯燫偲狣短硩癥偣短硬狴犮偍矶瓮玠穯偩睮狲偤矣疠硯秥圀","䀁摡睧烲偤狰烲穵祥偲狡燨狤偩睮狲偤矣疠硯秥圀","䀀櫮牯燫偰瑡秥倲崠盯筩睧側瞠矵穥礠牯燫偰石犮","䀁櫮牯燫偣短硬狴犠呡稠矵穥礠牯燫偰石犩圀","䀀扯燫偰瑡秥倲崠烬瓧睩睧偡稠矵穥礠牯燫偰石犮",
+"䀀扯燫偰瑡秥倳崠盯筩睧側瞠瓮睥礠牯燫偰石犮","䀁扯燫偰瑡秥倴崠獩睡瘠燯睮狣穯礠烰硲矡燨圀","䀀扯燫偨烲牷烲犠燯睮狣穩矮偷烳偯煳狲筥爠烦穥礠烣痮矷癥牧狭狮稠穩盥矵種","䀁扯燫偨烲牷烲犠硬竧瓮偤瓤偮矴偣短硬狴犠燯睮狣稻偵秩睧偮烴瓶犠曩睥礠獡癬煡燫圀",
+"䀀扯燫偨烲牷烲犠硬竧瓮偦烩癥爠","䀀圠条穩筥偦烬癢烣疠狮烢癥爮","䀀扯燫偨烲牷烲犠硬竧瓮偣短硬狴狤偤瓳燯睮狣種","䀀扯燫偨烲牷烲犠硬竧瓮偣短硬狴狤偣矮睥燴瓯眮","䀁桯篥礠穲烮秩穩矮崠燯睮狣穯礠祥癥烳狤偵睥籰狣穥牬粻偲狳穯祩睧偦癩珨稠煬矣痳偡睤偨矬物睧圀",
+"䀁桬竧瓮偰矷狲側祡睳瓴瓯眠竮烶烩癡煬犻偍瓮狲偐愠獡癬煡燫偡燴瓶烴狤圀","䀁桬竧瓮偣短硬狴狤偍瓮狲倀","䀀偰矷狲側祡睳瓴瓯眮","䀀桬竧瓮偰矷狲側祡睳瓴瓯眠獡瓬狤崠","䀀圠曩睥礠桂偦烬癢烣疠烣穩筡穥爮","䀀瑡睧烲繤矣痟硯秥濲狱童秴縰","䀁扯燫拮牰矩睴縀","䀁堰已矵穥曥穥祳崀",
+"䀀桡穨健籥燵穩矮偣短硬狴犮","䀀曩睩睧困癡睥偡硰祯烣琠秴烲穥爻偤祩癬禠狮烢癥爮","䀁摡睧烲偤狰烲穵祥崠盯筩睧偤瓲狣穬粠穯偄矣疠桯秥倲圀","䀀晡睥偭狴烤烴炠瓧睯祥爺偵睡煬犠穯偰烲秥倰堻偲狣矲爮",
+"䀀晡睥偭狴烤烴炠瓧睯祥爺偤瓭狮秩矮禠牯偮矴偭烴燨偣竲祥睴偭瓮瓮玠硬烮犮","䀀櫮烢癥側瞠珥睥祡穥偡祥炠癡睥禮","䀀惲狡偭瓮瓮玠秫瓰硥爻偡癬偬烮狳偡祥偭烲痥爠狭硴粮","䀀槴竣疠牥穥燴狤圠楥穵祮瓮玠穯偡督瑯礠烮爠祥穲糩睧偬烮犮","䀀曩睩睧偣短硬狴犮偒狴竲睩睧側瞠盩睥偰石犮圮","䀀曩睩睧偯硥祡穩矮偣短硬狴犮"
+,"䀁曩睥烲狡偳痩硰狤圠楥穵祮瓮玠穯偭瓮犠硯秥圮圀","䀁杯偡祥炠硬烮偬矡牥爮偓穡祴偷瓴琠盩睥烲狡偦瓲秴圀","䀀慡燫瓮玠矵稠煥獯祥偦瓮瓳瑩睧偭瓮瓮玮圮","䀁懯睴瓮童偲狳穯祥爠牲瓬癳偦矲倀","䀁淁竴矰瓬矴扵盰満",
+"䀀扵盰狤假桓埯祩狮穡穩矮側瞠懵秴短偄烴炮","䀀秮烰秨矴揥睥祡穩矮","䀀擮穥祮烬偣瑥燫硯瓮稠瓳偭烬獯祭狤嶠睯偭瓳秩矮偳穡穥偷烳偲狳穯祥爮","䀀槴烴犠擎撠硡祳犠獡瓬狤崠","䀀桥祳瓳穥督犠燨狣痰矩睴偲狪狣穥爺偃矲犯楯竴犠珥睥祡穩矮禠牯偮矴偭烴燨嶠睯偭瓳秩矮偷烳偲狳穯祥爮",
+"䀁烲狡桬烮懯祮狲悀","䀁烲狡桬烮懯祮狲愀","䀁烲狡桬烮捯祷烲爀","䀀烲狡曩睥拮穲糐石","䀀烲狡曩睥拮穲糆矲篡祤","䀁烲狡曩睥拮穲糕砀","䀁烵穯槥祶瓣狒狳竭狍瓮狅睴祹桯禀","䀁烵穯槥祶瓣狒狳竭狍瓮狅睴祹捯祷烲爀","䀀烵穯槥祶瓣狒狳竭狍瓮狅睴祹櫰"
+,"䀀楥癯烤偳穯硰狤偳烦独粺偡竴瑯祩穡穩筥偍瓮狲偰烴琠穩盥礠瓳偭瓳秩睧偯礠瓮筡癩爮","䀁楥獥祥督犠煬矣疠睵癬圀","䀀擮筡癩爠穲烮禠筥燴矲圠","䀁槨瓰偣矮穲矬癥礠睵癬圀","䀀擎撠桩癯稠懯祥","䀁擎撠桩癯稠楯竴犀",
+"䀁桲矧圠慬矣疠呃短盡睤狲咀","䀀桬竧瓮桯篥祼","䀁桬竧瓮扯燫摡祤篡祥縀","䀁桬竧瓮扯燫桯秥縀","䀁桬竧瓮捥烴竲狳縀","䀀懯盭烮牥礠祥磵狳穥爠秥祶瓣犮","䀀懯盭烮牥礠狮牥爠秴矮犠狪狣穩矮偨矬爮","䀀硯篥示牯燫狤","䀀狲祯示竮秵硰矲穥爠祯竴犠獯祭烴",
+"䀁祥燯筥祹慬矣痥爀","䀁秥祶瓣狅癩珩煬犀","䀀牯燫揥睥祡穩矮","䀁竮癯烤楥磵狳稀","䀁牥硬矹楥磵狳稀","䀀硲狦癩珨穒狱童秴","䀀硡穨懯盰癥穥","䀁牯燫懯睮狣穯礀","䀁硡穨濣短硬狴犀","䀀瓮筥睴矲糉牳","䀀秥祶瓣狒狡特",
+"䀀牥硬矹来狤秓狲筩燥","䀀拍曁姟扏懋濈毼壼","䀁扯燫瓮玠秴矰硥爺倀","䀀扥硡祴竲犠秴矰硥爻偡燴瓶犠硡穨偰烵秥爠獯礠盡睵烬偩睴狲筥睴瓯眮","䀀扯燫偲狴祹偡祭狤偡獴狲偦烩癥爠烴穥盰稠",
+"䀀扯燫瓮玠烢烮牯睥爠烦穥礠穨祥犠獡瓬狤偡穴狭硴离偭烮竡瘠瓮穥祶狮穩矮偲狱竩祥爮","䀀毁楎擎掺偉杉側瓭狲偣矰瓥禠竮烶烩癡煬犻偍瓮狲偳穡穥偳穩癬偳烶狳偩睴狲睡癬粮","䀁曩睩睧偧祡筩穹偧狮狲烴矲偮矴偦矵睤崠厀","䀀楥烤粮偍瓮狲偐瓬矴偶堮尮媶嶠獬瓧瑴偤瓡珮石穩燳偦矲盡稠墮","䀁桬竧瓮櫮癯烤縀",
+"䀁桬竧瓮楥盯穥槴烴竳縀","䀀摡睧烲槴矲狼","䀀摡睧烲懹燬狒狴竲睄矣痼","䀁烤畵秴偣矲睥礀","䀁拍暭悠妺偭烮竡瘠硡穨偲狣矲物睧埮烶瓧烴瓯眠篡禠祥硬烣狤偢粠穨犠硬竧瓮偰癡睮狲圀","䀁曩睩睧偣烮燥癬狤圀","䀀懡睮矴偰烵秥偷瑩癥偲狣烬瘠瓳偡燴瓶犮",
+"䀀桡穨偭矤犠瓳偮矴偡燴瓶犮","䀀桡穨偭矤犠硡竳狤圠楥穵祮瓮玠穯偣竲祥睴偡督瑯礮","䀀桡穨偭矤犠硡竳狤圠曯筥盥睴偨烬穥爮","䀁桡穨偭矤犠硡竳狤圀","䀀桡穨偭矤犠祥秵盥爮","䀀桡穨偭矤犠秴矰硥爮","䀀橏捆偲狳狴側瞠堬堬堮","䀁硡穨濳穡祴狤縀",
+"䀁楥燡癬懯盰癥穥縀","䀀楥燡癬偣短硬狴犮","䀁狲祯示狭硴粠祯竴犀","䀁懯盭烮牥礠祯竴犠瓳健盰穹圀","䀀拍曁姟桏毅楼壼","䀁拍曁姟楅曏橅縱縀","䀁硡穨景烤桥睤瓮玀","䀁狲祯示瓮筡癩爠祯竴犠畯焀","䀁懯盭烮牥礠祯竴犀","䀀烵穯硩癯穅睡煬狤",
+"䀀秣祩硴桡竳狤","䀀硡竳狒狳竭狁竴矰瓬矴","䀀穡祧狴桯秩穩矮","䀀牥秩祥牆矲篡祤","䀁盩睩睧拮烢癥爀","䀀盩睥祒矵穥槴烲穅籴祡","䀀盥祧狁秳瓳穥牄矣痩睧","䀀烣穩筥曡籓硥狤","䀁硯瓮穔矐矩睴惣燥癥祡穩矮晩盩稀",
+"䀀硯瓮穔矐矩睴橨祵秴櫳狐狲燥睴","䀁烣穩筥曩秳瓯睉爀","䀀烲狡曩睩睧曯牥","䀁烲狡晡睥擮牥簀","䀁烲狡桬烮歡癩爀","䀁祥穵祮橯曩睥桯秥惦穥祁祥炀","䀀獩睩秨惲狡惦穥祂烣痯竴","䀁烣穩筥曩睥惲狡楥燯祤擮牥簀","䀀秴竣痂烣痯竴","䀁秴竣痒狴祹懯竮稀",
+"䀁烲狡晡睥懯竮稀","䀁硡穨桡竳狤条筒狳竭犀","䀁硡穨扲瓬癁硰祯烣瑁燴瓶犀","䀁硡穨扯燫桥睤瓮玀","䀁祯竴狐祯珲狳种狴狲禀","䀀祯竴狐祯珲狳秔矴烬曥穥祳","䀁祯竴狐祯珲狳秐祥筩矵秐石瓴瓯眀","䀀祯竴狐祯珲狳秐祥筩矵秖烬瓤",
+"䀁祯竴狐祯珲狳秔祡燫瓮玀","䀁硡穨惮燨矲歡癩爀","䀁硡穨惮燨矲桯禀","䀁硡穨惮燨矲捯祷烲爀","䀀硡穨惮燨矲櫰","䀀祥燡癬惣穩筥","䀀祥燡癬毡瓴瓮珆矲惲狡拸瓴","䀀祥燡癬毡瓴瓮珆矲扯燫","䀁祥燡癬楥筥祳狍矤犀","䀀祥燡癬晡秴扯睥",
+"䀁祥燡癬晡秴橯穡瘀","䀀烵穯槥祶瓣狓穡穥","䀁烵穯槥祶瓣狒狡积眀","䀁烵穯槥祶瓣狒狳竭狍瓮狁祥炀","䀀烵穯槥祶瓣狒狳竭狍瓮狁祥烒狣矲牉睤狸","䀀烵穯槥祶瓣狒狳竭狁祥烌烮狉睤狸","䀁烵穯槥祶瓣狁燴瓯睒狴祹橩燫禀","䀁烵穯槥祶瓣狒狴竲睒矵穥擮牥簀",
+"䀀瑡睧烲橡祧狴桯秩穩矮","䀁瑡睧烲橡祧狴捯祷烲爀","䀀瑡睧烲橡祧狴櫰","䀁瑡睧烲柰狲烴瓯睉爀","䀁瑡睧烲桨烳狅癡硳狤橩燫禀","䀀瑡睧烲晡竮燨櫮牯燫狤","䀁秴矮狅略燴瓯睈矬牁燴瓶犀","䀀秴矮狅略燴瓯睒狳竭狁竴矰瓬矴","䀁秴烮牡祤曩睥扥硴琀",
+"䀀牯燫瓮珓穡穥","䀁竮牯燫楥燯盰瓬狔瓣痳楥盡瓮瓮玀","䀁牯燫曥祧狒狡特橩燫禀","䀁牯燫懯睮狣穒狴祹橩燫禀","䀀牯燫懯睮狣穒狣短硩癥橩燫秒狭烩睩睧","䀁牯燫懯睮狣穒狣短硩癥惲盥爀","䀀牯燫楥穲糐狮物睧","䀀牯燫楥穲糔瓣痳",
+"䀀牯燫瓮珐瑡秥括烰秥牔瓣痳","䀀牯燫瓮珁穴狭硴捡瓬竲狳","䀀燯睮狣穯祏獦秥穌矣烬","䀀盩睥祄矣痃矮睥燴矲擤","䀀盩睥祄矣痓狳秩矮","䀁硥睤瓮珕睤矣疀","䀀盩睥祐矷狲揯烬","䀁擎撠穩盥礠盩祲矲偵睡筡瓬烢癥嶠燯盰癥穥偩睴狲睡瘠燨狣痰矩睴偷烳偳烶狤圀",
+"䀁硡穨楥燯祤曩睥扥硴琀","䀀瑡睧烲偡硰祯烣琠狸燥狤狤倱夰偳狣矮牳","䀀硯秴囤狰癯粠秴烴竳偣瑥燫健籣狥牥爠墰偳狣矮牳","䀀摡睧烲崠扯燫偐石犠墠祥烣瑥爻偭矶瓮玠物祥燴癹側瞠瑡睧烲偣狮穥礮","䀁摡睧烲崠燥睴狲狤偡睤偡癩珮狤嶠秴矲烧犠烰硲矶狤圀",
+"䀁摡睧烲崠秥祶瓣犠燯盰癥穥嶠秴烲穩睧側瑥偬矡牥爠硡穨圀","䀁盩秳瓯睟祥烤粀","䀀惵穯偳狲筩燥崠獯癬矷瓮玠穨犠秡獥偲矵穥偢烣疠穯偷矲疮","䀀摡睧烲崠獵独偡睤偣烲珯偡祥偲狡特嶠秴烲穩睧側瑥偰烴琠穨祯竧琠扯燫偐石犠央",
+"䀁摡睧烲崠牥硬矹狤偍瓮狲偮狥牳偣烲珯偯礠搲偳狲筩燥嶠盯筩睧偤瓲狣穬粠穯偄矣疠桯秥倱圀","䀀烵穯槥祶瓣狃烲珯橲瓧珥祐狲燥睴","䀁烵穯槥祶瓣狈糤祯珥睔祩珧狲桥祣狮稀","䀀烵穯槥祶瓣狒狴竲睅睡煬狤","䀀狭盡姓燲瓰穌矧珩睧","䀁穩盥祐狲秩秴狮燥拮烢癥爀","䀁硲狦癩珨穇狮狲烴瓯眀","䀀硲狦癩珨穒狡特","䀀烣痮矷癥牧狤"
+,"䀁懡睮矴偰竢癩秨偩督短硬狴犠盯牵癥偣瑥燫硯瓮稀","䀁毡瓴瓮玠獯礠硡祴睥礀","䀀扵硬瓣烴犠硡祴睥礠桂偮热狳","䀀懯盭烮牥礯桩癯稠筥祳瓯眠盩秭烴燨","䀀杯偣矮穡燴偷瓴琠","䀀拍曁姟楕杔操拼壼","䀀櫮牯燫瓮珒狣短硩癥",
+"䀁櫮牯燫瓮珔矐石犀","䀁扯燫瓮珔矐石犀","䀀扯燫瓮珆瓮烬惰硲矡燨","䀀櫮牯燫瓮珔矏竴狲桯秥","䀁扯燫瓮珁癩珮惴柵穥祐石犀","䀀扯燫瓮珔矉睮狲桯秥","䀀扯燫瓮珐矷狲扯篮","䀀櫮牯燫瓮珐矷狲櫰","䀀扲瓬癆矲篡祤"},ओ=new string[307
+];static string B(int ם){if(ओ[ם]!=null)return ओ[ם];string Զ=ऒ[ם];char[]Ӂ=new char[(Զ.Length-1)*2-(Զ[0]&1)];for(int Ȣ=0;Ȣ<
+Ӂ.Length;Ȣ++)Ӂ[Ȣ]=(char)(((Զ[Ȣ/2+1]-16384)>>(Ȣ%2==0?7:0))&127);return ओ[ם]=new string(Ӂ);}static readonly Vector3D â=
+Vector3D.Zero;const MyShipConnectorStatus ɛ=MyShipConnectorStatus.Connected;const StringComparison ȵ=StringComparison.
+OrdinalIgnoreCase,Ȟ=StringComparison.Ordinal;static System.Globalization.CultureInfo Ѝ=System.Globalization.CultureInfo.InvariantCulture;
+static Vector3D ʆ(Vector3D ȸ)=>Vector3D.Normalize(ȸ);static double ʪ(Vector3D औ,Vector3D ͱ)=>Vector3D.Dot(औ,ͱ);static bool Γ(
+string ȸ)=>string.IsNullOrWhiteSpace(ȸ);

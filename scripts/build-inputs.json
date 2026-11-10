@@ -1,0 +1,438 @@
+[
+  {
+    "path": "../plugin/src/ShipNames.cs",
+    "sha256": "2E64FB965F8BE639BCA1EECB3B0CC30585FD8D5CE0531CE34C891951C9B5DB79"
+  },
+  {
+    "path": "build-modules.ps1",
+    "sha256": "82AAE1B3696503934A7162FC20271FEDC2EC83D32543C693376218041BA989EC"
+  },
+  {
+    "path": "get-module-inputs.ps1",
+    "sha256": "EE3B830FF0A8386926283639EAFEE36A7F8890EA48771A91D4F99BB73169DEB3"
+  },
+  {
+    "path": "modules.json",
+    "sha256": "6B92F66532E8F8931840528B36E8F985DF14744517E4E936D22D4E425EBD1EB5"
+  },
+  {
+    "path": "roles.json",
+    "sha256": "10BF6BD6776EA76D42952DF17AFAD820D145864FBA75EE9BD1365E8B6697854B"
+  },
+  {
+    "path": "src/Carrier/Commands.cs",
+    "sha256": "82B2142429ACC81B518F84F06EC8A76CF4D33C365F060A6D0DC4E7D8F7487CAE"
+  },
+  {
+    "path": "src/Carrier/DockPose.cs",
+    "sha256": "8BE27DF1CA9F94ECE4608889DA5A08BF272792FC2B92A417678D449DC2893191"
+  },
+  {
+    "path": "src/Carrier/Flight.cs",
+    "sha256": "B649ADF4BBE7BA544AFF8D70118B28F73F05CA4E48E9CC774E4D408C0AAF225B"
+  },
+  {
+    "path": "src/Carrier/FlightControllers.cs",
+    "sha256": "4E1BE750BE57C8E9C9F40CC5322C9A5C172D613E94944959C4D331A7FFF2C334"
+  },
+  {
+    "path": "src/Carrier/Menus.cs",
+    "sha256": "E151ABFB248D5F0688EA49D658CFEB94BCBA3A8C916FF7D276B4001D167915E9"
+  },
+  {
+    "path": "src/Carrier/Mission.cs",
+    "sha256": "70AA1177824CF6693AA70D1296ADF60E581AEF4AF4DEF3FBEFE186A755324D8F"
+  },
+  {
+    "path": "src/Carrier/PathCodec.cs",
+    "sha256": "08616F7AC5AFA9EAAE55F9F82FF0607467F515C75CEFB511334DDC39F4A5685B"
+  },
+  {
+    "path": "src/Carrier/Persistence.cs",
+    "sha256": "74D6CAF549673CA0F4147BF89565A4E120D5652B24992FA1654EF6B9A3E7EDA7"
+  },
+  {
+    "path": "src/Carrier/Production.cs",
+    "sha256": "1EE94739FA1B0AF3173E899EC31C0195570D719CF4EE42EE7DAB8247175C69EE"
+  },
+  {
+    "path": "src/Carrier/Reports.cs",
+    "sha256": "DA56E6E815D748E955E5A28589F65667BCFA59E061A4EBD10A56FFEB28D29CDA"
+  },
+  {
+    "path": "src/Carrier/Runtime.cs",
+    "sha256": "D41D43C6A811844280E1AD5516E3F854919F768DBDBE6CB53722281CC7F6A64C"
+  },
+  {
+    "path": "src/Carrier/StateAndStartup.cs",
+    "sha256": "0F6EC02080DC33D888E6A10F2DADF782549A1E6F865F3EFDCDE7855EE1092250"
+  },
+  {
+    "path": "src/Carrier/Telemetry.cs",
+    "sha256": "3CAA84C3182E091D4E4C986C3C1BFCABDBA1B2115A832CFAF8CA6BA2CC772963"
+  },
+  {
+    "path": "src/Carrier/Transfer.cs",
+    "sha256": "3B4D18AE71520995D38B903F53CCBBA9941233BA60BE114C54AE7E5810A71833"
+  },
+  {
+    "path": "src/Carrier/Transit.cs",
+    "sha256": "735D320D3B5C18C58E728DC1FBAF0588B60A5CEA316B34F4EAC3A6912310B804"
+  },
+  {
+    "path": "src/Miner/Commands.cs",
+    "sha256": "9FE512964EDB4F1721B3B54EFE5CBC15D14A70FC45336DB70887CB539DE14DCC"
+  },
+  {
+    "path": "src/Miner/Docking.cs",
+    "sha256": "6398ADB28A119F1DA536E1DF5616CBAA0FC1D0838FA831EC0B3E06C953501EAE"
+  },
+  {
+    "path": "src/Miner/DockPose.cs",
+    "sha256": "E4D4C75F5F695BF51E55E8E0971DF70E736D087F9694B7B5AB2CB4F410EEE846"
+  },
+  {
+    "path": "src/Miner/Flight.cs",
+    "sha256": "25D02C18F8D3406162692E9DB71D3039FF33D0CD3F797D2977C85BA29F6EF42D"
+  },
+  {
+    "path": "src/Miner/FlightControllers.cs",
+    "sha256": "C6E2B427AE69E541EF1453373EDE7BA873A5E62CC7651A8273961AF0CDA04916"
+  },
+  {
+    "path": "src/Miner/Hangar.cs",
+    "sha256": "C5027F540D082EDA05780B92FBDAEBF12C74B77BD57D2951BB3C96FC55A46A83"
+  },
+  {
+    "path": "src/Miner/Mining.cs",
+    "sha256": "6D180C09DFE8E20D2602590ECF00DEC7DA6D9ED5F822913E7712A96251E08BAB"
+  },
+  {
+    "path": "src/Miner/Path.cs",
+    "sha256": "E14C35202B7F3106846895B58B9C1C89C7BEFEB97EF3E305D34BD39DA11451FD"
+  },
+  {
+    "path": "src/Miner/PathCodec.cs",
+    "sha256": "FD190872F4A559094BEEAD227D9F764481A5B3DCC9C7C8E1039FF6E8B214C98B"
+  },
+  {
+    "path": "src/Miner/Persistence.cs",
+    "sha256": "9FE7D98B003723DCA5053A6EA9739A50FCD18BD68871D0D13ED844D262EB411F"
+  },
+  {
+    "path": "src/Miner/PlannerSettings.cs",
+    "sha256": "3643E361FA657F5AABBBEBB3E75C0837413844B190F1E92ADE4F69370EDED191"
+  },
+  {
+    "path": "src/Miner/Power.cs",
+    "sha256": "B49ABE21A45B16598D65B5CCEB8E3BD9DA188C965C660B1FC9550B0ED975F84F"
+  },
+  {
+    "path": "src/Miner/Recall.cs",
+    "sha256": "3958533C0E5A614E1114EAA01785A86B6242183B9F9435ED68285517F31E4BB7"
+  },
+  {
+    "path": "src/Miner/Reports.cs",
+    "sha256": "89DFFE136B4D252ADF08F4847445638037562CCB50C9E131EEDF7BDA2BD6C3AD"
+  },
+  {
+    "path": "src/Miner/Runtime.cs",
+    "sha256": "4810DFFB7CD719497AF02322FF72199388CE6590EE8552A559FB6CCCEB4246DC"
+  },
+  {
+    "path": "src/Miner/Service.cs",
+    "sha256": "3CF2991299FD4407347295D974A9D51104C5936DC5424D6BA1291B594752CFE7"
+  },
+  {
+    "path": "src/Miner/StateAndStartup.cs",
+    "sha256": "4FDE7CA653300D42AA0FD829BA5C56496E9C52A2AABEA3749D30CA4F85FFD68D"
+  },
+  {
+    "path": "src/Miner/Transfer.cs",
+    "sha256": "4DC263DCBF42598B7482CDF420A4B4AEAE575083214C9541C126FE2FCEF33CDA"
+  },
+  {
+    "path": "src/Modules/CarrierCommander/CheckpointPublication.cs",
+    "sha256": "AAFCC7AB5072A6A9D202B2234787E4AE536DDCF4863CBFD3B9E9280DEBE2D883"
+  },
+  {
+    "path": "src/Modules/CarrierCommander/EnableGate.cs",
+    "sha256": "84AA871453E84A672A3A4972FB3008B0755283EF89EF90779AE5F2315F48519F"
+  },
+  {
+    "path": "src/Modules/CarrierCommander/EntryPoints.cs",
+    "sha256": "DFEDFD5965C9A450769368446F861BD0A812737E9FF7450C04EA80CE819294C6"
+  },
+  {
+    "path": "src/Modules/CarrierCommander/PartitionRecovery.cs",
+    "sha256": "C6DD898D66BB83F0111D1CC1377F2ED9CBF07912FABF5637CB99EC276486EC0E"
+  },
+  {
+    "path": "src/Modules/CarrierCommander/PilotLink.cs",
+    "sha256": "316BF895BD539E9983E41E6BFECF95727E4275F85BC64104036FB8234F9151BA"
+  },
+  {
+    "path": "src/Modules/CarrierCommander/Recovery.cs",
+    "sha256": "793610E857A745C44CB340652D4AE6245A1CA73895C6BB28033006E407BBA132"
+  },
+  {
+    "path": "src/Modules/CarrierCommander/RuntimeTelemetry.cs",
+    "sha256": "BAE459F847E3479E476FA57B6334CD37C8D5B8C20C66813132CD1A1816D29C7E"
+  },
+  {
+    "path": "src/Modules/CarrierCommander/ScalarPersistence.cs",
+    "sha256": "EB47F3FFB1DF5D5F075FC3CCB7F2688CD5A0A25FE4CA1384F8981BF192DB5EAF"
+  },
+  {
+    "path": "src/Modules/CarrierCommander/UiLink.cs",
+    "sha256": "8E98F101B0120F06FE5ED0C4054529A240F0446CEB3FC7F5760121F4CE56D597"
+  },
+  {
+    "path": "src/Modules/CarrierCommander/UiSnapshot.cs",
+    "sha256": "38E133E46966CD3DD243016B40B2B538F768D602615832222A4B388F6BE66925"
+  },
+  {
+    "path": "src/Modules/CarrierPilot/CarrierUi.cs",
+    "sha256": "65B9F2AC12FEEBC7A906DFF68423792489994C2F7D8F4DFFE8AC0663064219EE"
+  },
+  {
+    "path": "src/Modules/CarrierPilot/CheckpointPublication.cs",
+    "sha256": "509DBEDD368F8AF346600EF4E49B32397F23823AE03D74C24F406D543D8DE2D9"
+  },
+  {
+    "path": "src/Modules/CarrierPilot/PartitionRecovery.cs",
+    "sha256": "C6DD898D66BB83F0111D1CC1377F2ED9CBF07912FABF5637CB99EC276486EC0E"
+  },
+  {
+    "path": "src/Modules/CarrierPilot/Recovery.cs",
+    "sha256": "C9310E90647B9371661028D5C783C8CDCA516343530B1CE37D7DE01C6F711BC2"
+  },
+  {
+    "path": "src/Modules/CarrierPilot/RouteSnapshot.cs",
+    "sha256": "58DB8C10B02A2E4A4BC99633F17A8692AA2273A83FD710141B45ADA4EAB6AC4C"
+  },
+  {
+    "path": "src/Modules/CarrierPilot/Runtime.cs",
+    "sha256": "4F0B7B8B379BD599EB294369A4BCB8616775FA01B00B50C9AA1A25C7CCAF0877"
+  },
+  {
+    "path": "src/Modules/CarrierPilot/ScalarPersistence.cs",
+    "sha256": "520396AB0816FAC3E9E0FD0005EE98B28B99BDE56AF0BBE7489C26C84E10566E"
+  },
+  {
+    "path": "src/Modules/CarrierPilot/UiLink.cs",
+    "sha256": "667FE13E2C77A5DB13FCB6C65B3EC4B6C9BCDA2796CCD13597111510FCDE08E4"
+  },
+  {
+    "path": "src/Modules/MinerCommander/CanonicalRouteCompiler.cs",
+    "sha256": "39F0EBA284A61C9DE68C624D2DED202A23DE8F076B989EC8695E617EB1BB97B8"
+  },
+  {
+    "path": "src/Modules/MinerCommander/CheckpointPublication.cs",
+    "sha256": "2B78750312A75C0A961C624EB9D3A9F64BBEEB32872F5211F8137513EACF09BB"
+  },
+  {
+    "path": "src/Modules/MinerCommander/PartitionRecovery.cs",
+    "sha256": "978BD70B888AD69EE6BF110E1D48E2BC5F0B5E30EBD5C325D599C2FDB157C102"
+  },
+  {
+    "path": "src/Modules/MinerCommander/Recovery.cs",
+    "sha256": "86D60FA276AB93359C99685360C2EED8FAA7E6E0490D8B5E22B335188187FB29"
+  },
+  {
+    "path": "src/Modules/MinerCommander/RoutePreparation.cs",
+    "sha256": "F1E66D39FAEDFE16F688AA822C8C4E6E2EA0AA444FB65E00346FDD9DF1BB5E6A"
+  },
+  {
+    "path": "src/Modules/MinerCommander/Runtime.cs",
+    "sha256": "31FD9B1AE3AB55107FE36A241A353393B092FAED35DA59B5FD2C7F610B06EB92"
+  },
+  {
+    "path": "src/Modules/MinerCommander/RuntimeTelemetry.cs",
+    "sha256": "0D8BB37C78FE3008558DE44BD2A9A3FD063040E5DECCC26AC5B6C14DC6BA079B"
+  },
+  {
+    "path": "src/Modules/MinerCommander/ScalarPersistence.cs",
+    "sha256": "7CE3B63ABC8824D9558116A238D03A7ED8A58644E0141E47AFB29298F20CD7ED"
+  },
+  {
+    "path": "src/Modules/MinerCommander/Service.cs",
+    "sha256": "68D86CD7A3542BBC3EB481E6CD246EC7425445FF7028B5FAAFC62401C4B9F9C9"
+  },
+  {
+    "path": "src/Modules/MinerCommander/Settings.cs",
+    "sha256": "8441D3AFE51CF54828276139B05BDEC287C073A4F5EF06DBF0253580CE55AD22"
+  },
+  {
+    "path": "src/Modules/MinerCommander/UndockPreflight.cs",
+    "sha256": "31CC6476682C7DB10C0E1713F47BCC5CC97327B08370A38233A19683C780119A"
+  },
+  {
+    "path": "src/Modules/MinerPilot/CanonicalRoute.cs",
+    "sha256": "66E8E2863BBC3A13B810F4BFE4DC2989573E489BBE33170A06A5034713C4417E"
+  },
+  {
+    "path": "src/Modules/MinerPilot/CheckpointPublication.cs",
+    "sha256": "71DB3E32095EA04E9921ED76AA5BB0915D1E5A0B8D4AEF4578DDC3F6E3D3E5AF"
+  },
+  {
+    "path": "src/Modules/MinerPilot/CommanderLink.cs",
+    "sha256": "E02532A3EBD9771D994863A14204977E217D36612BDF1798E669D2E20350A44F"
+  },
+  {
+    "path": "src/Modules/MinerPilot/DockHardware.cs",
+    "sha256": "0F9124EC9A26E94EEEE723BEF8D445F3EE9B3D9FCC493821885311FE218CAAB0"
+  },
+  {
+    "path": "src/Modules/MinerPilot/DockingFailure.cs",
+    "sha256": "85932A2CC82B26D97F91CB6AA69D131957664A45883950C103B592D4BE1ACDC4"
+  },
+  {
+    "path": "src/Modules/MinerPilot/EntryPoints.cs",
+    "sha256": "E18C95B7E942D46724ACAA7EA4DBF120D5FFED0A31A46489FDB62FDE0D6F90EB"
+  },
+  {
+    "path": "src/Modules/MinerPilot/Events.cs",
+    "sha256": "C8D227905F76560C3FE2454A9BD4E5B3B1F1E9CBBF77144A66DEDA0F50EF4B48"
+  },
+  {
+    "path": "src/Modules/MinerPilot/PartitionRecovery.cs",
+    "sha256": "978BD70B888AD69EE6BF110E1D48E2BC5F0B5E30EBD5C325D599C2FDB157C102"
+  },
+  {
+    "path": "src/Modules/MinerPilot/PathLoad.cs",
+    "sha256": "7378FE566EF7E4CA9C122BD45B0CC56EF16455E74342B1A8610A80B9BF72530F"
+  },
+  {
+    "path": "src/Modules/MinerPilot/PluginRelay.cs",
+    "sha256": "D813E64E5C6BAE2DB8ABF03DE3A3881FD66EC4CB9DD04768AE5FD6E2AB8BBB23"
+  },
+  {
+    "path": "src/Modules/MinerPilot/Recovery.cs",
+    "sha256": "F57E68FC3B505D8BC6603C97334F8740EB2A1C829651D8F35F2318161F73236C"
+  },
+  {
+    "path": "src/Modules/MinerPilot/RouteSnapshot.cs",
+    "sha256": "A5EEC0954E9E280C217E96E23DF1D012750780310504365EDF7F16D02965E679"
+  },
+  {
+    "path": "src/Modules/MinerPilot/ScalarPersistence.cs",
+    "sha256": "501D93FB887C6084CCD441229BBC6F9D7C0221EF5D227AD5DCECC39E6055C5D4"
+  },
+  {
+    "path": "src/Modules/MinerPilot/ServiceNavigation.cs",
+    "sha256": "F66A7EFD218B19983139780AF48198DDFAB25B290AA4D045A7383E1ABD54F7E2"
+  },
+  {
+    "path": "src/Modules/MinerPilot/Settings.cs",
+    "sha256": "90DBB5242780006D44586CC74697454919DA55ED5F9DFABF01D608B282B05533"
+  },
+  {
+    "path": "src/Modules/MinerPilot/UndockPreflight.cs",
+    "sha256": "00FA6F796AABA659A529A7A9541C8139067708BBF6AA16B1A6F6D66AC8FD5036"
+  },
+  {
+    "path": "src/Modules/OperationJournal.cs",
+    "sha256": "908A6562C0B4E446B1316DC4E6457F32A4A9CB9A3752A1FFE27F9FE672A18FC6"
+  },
+  {
+    "path": "src/Modules/Shared/Checkpoint.cs",
+    "sha256": "D1D547498B6584A0B39826549098AC160AA503C77A16A0BCB25D51A2B54A67A0"
+  },
+  {
+    "path": "src/Modules/Shared/DockProof.cs",
+    "sha256": "099C16EA0AC6B9AD90A7EBE0706A9B03F797E028DEB00F08678A430FC5214169"
+  },
+  {
+    "path": "src/Modules/Shared/Link.cs",
+    "sha256": "FE007DB246D151E2CBB0BE1AAC3CAC5048428FF07EDBDA6C091016C60FE54EA2"
+  },
+  {
+    "path": "src/Modules/Shared/RuntimeAverage.cs",
+    "sha256": "7605C802608DC7E216C92C3CD794CFBEFEED9B3B4B5A1328B2DF5DE974281B0D"
+  },
+  {
+    "path": "src/Shared/DockPoseValidation.cs",
+    "sha256": "2B53E26B9BB5AFEB3350CF9ADE817335FDEBDABB4756825C83198D2947CF6A98"
+  },
+  {
+    "path": "src/Shared/DockUnloadProtocol.cs",
+    "sha256": "09F95C8EA3EC9393B35F5C4C9A0378B4A1B8C481346BD07E961676F75D6B3F9F"
+  },
+  {
+    "path": "src/Shared/FlightDataCache.cs",
+    "sha256": "89D742ABDA42344FF2E2F9B1EA939792F5E01F26A6BF25B02C27CC0E874C8B9D"
+  },
+  {
+    "path": "src/Shared/LowAllocationText.cs",
+    "sha256": "FE9231FA8222DE3CA4B4E8D2CAFBF023BB30E3B9D1CFDE6EC402552975B1BF76"
+  },
+  {
+    "path": "src/Shared/MiningReportData.cs",
+    "sha256": "37E3D835FAFC4C5FF613AE8C56C63C1B32726CCFABC776B9B140A5C487F5C941"
+  },
+  {
+    "path": "src/Shared/Numbers.cs",
+    "sha256": "33D914D75028F7F1F5C662A195EFE1D4CAE1424452B540669A44F60A69E131BC"
+  },
+  {
+    "path": "src/Shared/ShipNaming.cs",
+    "sha256": "3B5A3106571B6CCD71E3DC0776D801A43229253D9F26E27BCBC915FEA6DE1505"
+  },
+  {
+    "path": "tools/ModuleBuilder/ModuleBuilder.csproj",
+    "sha256": "F00E8C1B5769B314E081302DB091E8EB11D3D3CECC7B19DF89796E2D3F470906"
+  },
+  {
+    "path": "tools/ModuleBuilder/Program.cs",
+    "sha256": "D9EA06D7660567B30421AEB0A8B0D1A4350E5668EE6D04F90F6CDBD89E4F2231"
+  },
+  {
+    "path": "tools/PackTransforms/ApiAliases.cs",
+    "sha256": "038A5481D6174EF300918F0B7BA4D4F341F672725C66AC8638604BDA78FB0898"
+  },
+  {
+    "path": "tools/PackTransforms/PackTransforms.csproj",
+    "sha256": "5716594D52D947C89E0CFAB28725292C3D0F36372A5A1A40C34432ECCD615907"
+  },
+  {
+    "path": "tools/PackTransforms/Program.cs",
+    "sha256": "D4F7FDA72ACC4B14B9DB11C917272BE33F6CD03777DBB6851925BF2CE1508EC1"
+  },
+  {
+    "path": "tools/PackTransforms/RemoveInstrumentation.cs",
+    "sha256": "C01F880FDED10360A4F632C3E412C4EC3136364304596D76AA7874D8E8C13CAF"
+  },
+  {
+    "path": "tools/PackTransforms/RuntimeSimplifier.cs",
+    "sha256": "1A64A40FC3F1789D5EC8A39BB10650669086B8FE26D10D195A51F831ED538A34"
+  },
+  {
+    "path": "tools/PackTransforms/SafeEnumTextRewriter.cs",
+    "sha256": "EA2A7C57CB35FBDBD651A6DE8D805B24AFEF6F7F466294E5DE86A4FE7D6ACD65"
+  },
+  {
+    "path": "tools/PackTransforms/TextPacking.cs",
+    "sha256": "6B8BA5316119B961C6E467E801BFC89FFE1212838008B593F9DE8570E03A15BB"
+  },
+  {
+    "path": "tools/prepare-module-pack.py",
+    "sha256": "178E75043788136412B7B82B96091712B1E2DAE743808E1C2FBE6A8113E19A92"
+  },
+  {
+    "path": "tools/seed-carrier-adapters.py",
+    "sha256": "C5BB30DB2F9446D13A31435DDDF323483317A40E4901773184ACC873AF240BA4"
+  },
+  {
+    "path": "tools/seed-carrier-ui.py",
+    "sha256": "4BF08B6CE65FBE7FB3D145E5FE2C417C56E1DD6FA54A601A5744D0B34876A6D2"
+  },
+  {
+    "path": "tools/seed-miner-adapters.py",
+    "sha256": "1765B3832E2BF870FA374738903DDE486DC5913F8B7D4DEA0079FAD318F4037F"
+  },
+  {
+    "path": "tools/seed-module-checkpoints.py",
+    "sha256": "FEC17D30D6D35E4BF9032E52ABD866568B9669074E25F4648C8D490CB5F5ABB5"
+  }
+]

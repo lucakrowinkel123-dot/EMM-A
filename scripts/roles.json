@@ -1,0 +1,6 @@
+[
+  { "role": "CarrierCommander", "file": "EMM-A Carrier.txt", "block": "EMM-A Ca Prog. Block (Commander)" },
+  { "role": "CarrierPilot", "file": "EMM-A Carrier Pilot.txt", "block": "EMM-A Ca Prog. Block (Pilot)" },
+  { "role": "MinerCommander", "file": "EMM-A Miner.txt", "block": "EMM-A Mi Prog. Block (Commander)" },
+  { "role": "MinerPilot", "file": "EMM-A Miner Pilot.txt", "block": "EMM-A Mi Prog. Block (Pilot)" }
+]

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PluginData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="GitHubPlugin">
+  <Id>local/emma3</Id>
+  <GroupId>local/emma3</GroupId>
+  <FriendlyName>EMM-A 0.8.56</FriendlyName>
+  <Author>EMM-A</Author>
+  <Commit>v0.8.56</Commit>
+  <SourceDirectories>
+    <Directory>src</Directory>
+  </SourceDirectories>
+  <Tooltip>EMM-A 0.8.56 dynamic asteroid and mining-route planner.</Tooltip>
+  <Description>Client-side Pulsar Legacy planner for the EMM-A Carrier and Miner programmable-block scripts.</Description>
+</PluginData>
