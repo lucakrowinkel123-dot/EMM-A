@@ -49,12 +49,13 @@ namespace EMMA3.Client
             measure = measure ?? (value => value.Length);
             int count = 3 + miners.Length * 2;
             var labels = new string[count]; var widths = new double[count];
-            double widest = 0, space = Math.Max(1, measure(" "));
+            // Measure one extra interior space, including the font's inter-character spacing.
+            double widest = 0, space = Math.Max(1, measure("-  -") - measure("- -"));
             for (int i = 0; i < count; i++)
             {
                 labels[i] = Short(i < 3 ? carrier : miners[(i - 3) / 2], 18)
                     + (i == 2 ? " LCD" : (i < 2 ? i : i - 3) % 2 == 0 ? " Commander" : " Pilot");
-                widths[i] = measure(labels[i]); widest = Math.Max(widest, widths[i]);
+                widths[i] = measure("   " + labels[i] + "   -"); widest = Math.Max(widest, widths[i]);
             }
             var text = new StringBuilder(650); int lines = 2;
             text.Append(' ').Append(Short(carrier, 28)).AppendLine(" | Runtime").AppendLine("—————————————————");

@@ -10,6 +10,7 @@ namespace EMMA3.Client
 {
     internal sealed partial class Emma3Controller
     {
+        private const string RuntimeFont = "Debug";
         private readonly RuntimeReadout runtimeReadout = new RuntimeReadout();
         private long lastRuntimeSecond = -1;
         private IMyTextPanel configuredRuntimePanel;
@@ -45,6 +46,7 @@ namespace EMMA3.Client
                 bool minerHangared = LiveRuntimeId(blocks.MinerPb) == 0 && LiveRuntimeId(blocks.MinerPilotPb) == 0
                     && blocks.IsMinerHangared;
                 string text;
+                Func<string, double> measure = label => panel.MeasureStringInPixels(new System.Text.StringBuilder(label), RuntimeFont, 1f).X;
                 if (count > 0)
                 {
                     var names = new string[count]; var stored = new bool[count];
@@ -55,20 +57,20 @@ namespace EMMA3.Client
                         runtimeReadout.Bind(2 + i * 2, commander); runtimeReadout.Bind(3 + i * 2, pilot);
                         runtimeReadout.Observe(fleet.Get("fleetRuntimeCommander" + i), simulationSecond); runtimeReadout.Observe(fleet.Get("fleetRuntimePilot" + i), simulationSecond);
                     }
-                    text = runtimeReadout.RenderFleet(blocks.Names.Carrier, names, stored, simulationSecond);
+                    text = runtimeReadout.RenderFleet(blocks.Names.Carrier, names, stored, simulationSecond, measure);
                 }
-                else text = runtimeReadout.Render(blocks.Names.Carrier, miner, simulationSecond, minerHangared: minerHangared);
+                else text = runtimeReadout.Render(blocks.Names.Carrier, miner, simulationSecond, measure, minerHangared);
                 if (!ReferenceEquals(configuredRuntimePanel, panel))
                 {
                     panel.ContentType = ContentType.TEXT_AND_IMAGE;
-                    panel.Font = "Monospace"; panel.TextPadding = 0f;
+                    panel.Font = RuntimeFont; panel.TextPadding = 0f;
                     panel.Alignment = TextAlignment.LEFT;
                     panel.FontColor = Color.White; panel.BackgroundColor = Color.Black;
                     configuredRuntimePanel = panel; lastRuntimeText = null;
                 }
                 if (!string.Equals(text, lastRuntimeText, StringComparison.Ordinal))
                 {
-                    var bounds = panel.MeasureStringInPixels(new System.Text.StringBuilder(text), "Monospace", 1f);
+                    var bounds = panel.MeasureStringInPixels(new System.Text.StringBuilder(text), RuntimeFont, 1f);
                     var surface = panel.SurfaceSize;
                     if (bounds.X > 0 && bounds.Y > 0 && surface.X > 0 && surface.Y > 0)
                     {
