@@ -1,0 +1,396 @@
+bool A=true,B=false,C=false;int D=0,E=0,F=60;StringBuilder G=new StringBuilder(512);List<string>H=new List<string>();
+const int I=128,J=16,K=60,L=10;bool M(){if(B||C)return false;B=true;return true;}enum a{N,O,P,Q,R,S,T,U,V,W}enum o{d,e,f,g,h,
+k,l,m}class Ð{public q r;public bool t,u,w,ª,µ=false,º=false,À=false,Á=false;public string Â="",Ä=Ã,Å="Miner A",Ç=Æ,È="",
+É="";public double Ê=0,Ë=0,Ì=0,Í=0,Î=9999;public o Ï=o.d;}const double Ñ=60;enum á{d=0,Ò=1,Ó=2,Ô=3,Õ=4,Ö=5,Ø=6,Ù=7,Ú=8,Û=
+9,Ü=10,Ý=11,Þ=12,ß=13,à=14}enum ê{d,â,ã,ä,å,æ,ç,è,é}void ì(){if(!A||H.Count==0||D<E)return;ë();E=D+(H.Count>0?L:K);}
+sealed class õ{public string í="EMM-A Ca",î="EMM-A Mi";public string ï=>í.Length+":"+í+î.Length+":"+î;public string ñ(string ð
+)=>í+" "+ð;public string ò(string ð)=>î+" "+ð;public string ô(string ó)=>í=="EMM-A Ca"&&î=="EMM-A Mi"?ó:ó+"|"+ï;public
+static õ ĉ(string ö,bool ø){var ù=new õ();bool ú=false,û=false,ü=false,ý=false;foreach(string þ in(ö??"").Split('\n')){string
+ÿ=þ.Trim();if(ÿ.StartsWith("[",Ā)){ú=ÿ.Equals("[EMMA]",ā);if(ú&&û)throw new ArgumentException(Ă(0));û|=ú;continue;}if(!ú)
+continue;int ă=ÿ.IndexOf('=');if(ă<0)continue;string Ą=ÿ.Substring(0,ă).Trim(),ą=ÿ.Substring(ă+1).Trim();if(Ą.Equals(ø?
+"NameCarrier":"NameMiner",ā))throw new ArgumentException(Ă(1));bool Ć=Ą.Equals("NameShip",ā);bool ć=Ą.Equals(ø?"NameMiner":
+"NameCarrier",ā);if(!Ć&&!ć)continue;if(Ć&&ü||ć&&ý)throw new ArgumentException("Duplicate "+Ą);if(ą.Length==0||ą.Length>96)throw new
+ArgumentException("Invalid "+Ą);foreach(char Ĉ in ą)if(char.IsControl(Ĉ))throw new ArgumentException("Invalid "+Ą);if(Ć)ü=true;else ý=
+true;if(Ć==ø)ù.í=ą;else ù.î=ą;}if(ù.í==ù.î)throw new ArgumentException(Ă(2));return ù;}}õ Ċ=new õ();string ñ(string ð)=>Ċ.ñ(
+ð);string ò(string ð)=>Ċ.ò(ð);void ė(bool ø,bool ċ,string Č){const string č=" Prog. Block (Commander)";string Ď=Ă(3)+Č+
+")";IMyProgrammableBlock ď=Me;var Đ=new List<IMyProgrammableBlock>();if(ċ){if(!Me.CustomName.EndsWith(Ď,Ā))throw new
+Exception(Ă(4)+Ď);string đ=Me.CustomName.Substring(0,Me.CustomName.Length-Ď.Length)+č;Ē.GetBlocksOfType(Đ,ē=>ē.CubeGrid==Me.
+CubeGrid&&ē.CustomName==đ);if(Đ.Count!=1)throw new Exception(Ă(5)+đ);ď=Đ[0];}Ċ=õ.ĉ(ď.CustomData,ø);string Ć=ø?Ċ.í:Ċ.î;if(ď.
+CustomName!=Ć+č||Me.CustomName!=Ć+(ċ?Ď:č))throw new Exception(Ă(6));string Ĕ=(ø?Ċ.î:Ċ.í)+č;Đ.Clear();Ē.GetBlocksOfType(Đ,ē=>ē.
+CustomName==Ĕ);if(!ø&&Đ.Count>1)throw new Exception(Ă(7));for(int ĕ=0;ĕ<Đ.Count;ĕ++){if(õ.ĉ(Đ[ĕ].CustomData,!ø).ï!=Ċ.ï)throw new
+Exception(Ă(7));for(int Ė=0;Ė<ĕ;Ė++)if(Đ[ĕ].CubeGrid==Đ[Ė].CubeGrid)throw new Exception(Ă(8));}}static class ģ{public static int
+Ġ(List<string>Ę,int ę,int Ě){if(Ę==null||Ę.Count==0||ę<=0||Ě<=0)return 0;int ě=Math.Min(ę,Ę.Count);int Ĝ=0;int ĝ=0;for(
+int ĕ=0;ĕ<ě;ĕ++){string ą=Ę[ĕ];int Ğ=3;if(!ğ(ą)){for(int Ė=0;Ė<ą.Length;Ė++){char Ĉ=ą[Ė];Ğ+=Ĉ=='\\'||Ĉ=='\r'||Ĉ=='\n'?2:1;}
+}if(Ĝ>0&&ĝ+Ğ>Ě)break;Ĝ++;ĝ+=Ğ;if(ĝ>=Ě)break;}return Ĝ;}public static void Ģ(StringBuilder ġ,string ą){if(ğ(ą))return;for(
+int ĕ=0;ĕ<ą.Length;ĕ++){char Ĉ=ą[ĕ];if(Ĉ=='\\')ġ.Append("\\\\");else if(Ĉ=='\r')ġ.Append("\\r");else if(Ĉ=='\n')ġ.Append(
+"\\n");else ġ.Append(Ĉ);}}}static class ĥ{public static void Ĥ(StringBuilder ġ,string ą){if(ğ(ą))return;for(int ĕ=0;ĕ<ą.
+Length;ĕ++){char Ĉ=ą[ĕ];if(Ĉ=='%')ġ.Append("%25");else if(Ĉ=='|')ġ.Append("%7C");else if(Ĉ=='\r')ġ.Append("%0D");else if(Ĉ==
+'\n')ġ.Append("%0A");else ġ.Append(Ĉ);}}}class ĵ{const int Ħ=15*60;string ħ;long Ĩ;public bool ĩ{get;set;}public bool Ĵ(long
+Ī,string ī,bool Ĭ,á ĭ,bool Į,long į,long İ){bool ı=Į&&ĭ!=á.Ô&&(!Ĭ||İ==0||į==İ);bool Ĳ=false;if(Ĭ&&ĭ==á.Ö&&İ==0)ı=false;if
+(ı&&Ĭ&&ĭ==á.Ö){if(ħ!=ī||Ī<Ĩ){Ĳ=true;ħ=ī;Ĩ=Ī;}ı=(Ī-Ĩ)/Ħ%2==0;}else ħ=null;bool ĳ=ı!=ĩ;ĩ=ı;return ĳ||Ĳ;}}class Ň{public
+double Ķ,ķ,ĸ,Ĺ;int ĺ;public Dictionary<string,double>Ľ=>Ļ.ļ;public long ľ{get;set;}sealed class Ł{public Dictionary<string,
+double>ļ=new Dictionary<string,double>(StringComparer.Ordinal);public string Ŀ="";public bool ŀ;}Ł Ļ=new Ł();static bool Ń(
+string þ,out double ą)=>double.TryParse(þ,System.Globalization.NumberStyles.Float,ł,out ą)&&!double.IsNaN(ą)&&!double.
+IsInfinity(ą)&&ą>=0;void ņ(string đ,double ń){if(ń<=0||double.IsNaN(ń)||double.IsInfinity(ń))return;if(Ļ.ŀ)Ļ=new Ł{ļ=new
+Dictionary<string,double>(Ļ.ļ,StringComparer.Ordinal)};double Ņ;Ľ.TryGetValue(đ,out Ņ);Ľ[đ]=Ņ+ń;ľ++;Ļ.Ŀ=null;}public static Ň ŉ(
+string þ){Ň ù;return ň(þ,out ù)?ù:new Ň();}static bool ň(string þ,out Ň ù){ù=new Ň();string[]Ŋ=(þ??"").Split('~');if(Ŋ.Length
+!=6)return false;if(!Ń(Ŋ[0],out ù.Ķ)||!Ń(Ŋ[1],out ù.ķ)||!Ń(Ŋ[2],out ù.ĸ)||!Ń(Ŋ[3],out ù.Ĺ)||!int.TryParse(Ŋ[4],out ù.ĺ)||ù
+.ĺ<0)return false;if(Ŋ[5].Length==0)return true;foreach(string ŋ in Ŋ[5].Split(';')){int ă=ŋ.IndexOf('=');double ń;if(ă<=
+0||!Ń(ŋ.Substring(ă+1),out ń))return false;string đ=ŋ.Substring(0,ă);if(ù.Ľ.ContainsKey(đ))return false;ù.ņ(đ,ń);}return
+true;}}static void Œ(StringBuilder Ō,string ō,Ð Ŏ,double ŏ){Ō.Append("   Hangar: ").Append(ō);if(!Ŏ.Á&&(Ŏ.r==null||Ŏ.r.Ő<0))
+{double ő=Ŏ.Î;Ō.Append(" · ");if(double.IsNaN(ő)||double.IsInfinity(ő)||ő<0||ő==9999||((Ŏ.ª||Ŏ.w)&&ő<ŏ))Ō.Append(Æ);else
+if(ő<ŏ)Ō.Append(Ă(9));else if(ő<Ñ)Ō.Append("Contact: ").Append((int)ő).Append("s ago");else Ō.Append(Ă(10)).Append(Math.
+Floor(ő/60)).Append("m");}Ō.AppendLine();}struct ŕ{public string Å;public char œ;public int Ŕ;}bool Ŗ(string ö,out double ą)
+=>double.TryParse(ö,System.Globalization.NumberStyles.Float,ł,out ą);bool Ş(string ŗ,out Vector3D Ř){Ř=ř;if(Ś(ŗ))return
+false;string[]ē=ŗ.Split(':');if(ē.Length!=3)return false;double ś,Ŝ,ŝ;if(!double.TryParse(ē[0],System.Globalization.
+NumberStyles.Float,ł,out ś)||!double.TryParse(ē[1],System.Globalization.NumberStyles.Float,ł,out Ŝ)||!double.TryParse(ē[2],System.
+Globalization.NumberStyles.Float,ł,out ŝ))return false;Ř=new Vector3D(ś,Ŝ,ŝ);return true;}class Ů{Program ş;õ Ċ=>ş.Ċ;string ñ(string
+ð)=>Ċ.ñ(ð);IMyProgrammableBlock Š=>ş.Me;IMyGridTerminalSystem š=>ş.GridTerminalSystem;IMyGridProgramRuntimeInfo Ţ=>ş.
+Runtime;public Ů(Program ţ){ş=ţ;Ť=š.GetBlockWithName(ť)as IMyTextPanel;Ŧ=š.GetBlockWithName(ñ("LCD Report"))as IMyTextPanel;ŧ=š
+.GetBlockWithName(ñ("Resources"))as IMyTimerBlock;Ũ=š.GetBlockWithName(ñ("Items"))as IMyTimerBlock;ũ=š.GetBlockWithName(Ū
+);ū();Ŭ();ŭ();}double ů=500,Ű=1.0;double ű=2.5;string Ų=>ñ("Ores");string ť=>ñ("LCD Main");string Ū=>ñ("Hangar - A");
+string ų=>ñ(Ă(15));double Ŵ=50000,ŵ=400,Ŷ=1,ŷ=30.0,Ÿ=17.5,Ź=12.5,ź=0.7,Ż=2.5,ż=90.0,Ž=20.0,ž=0.0,ſ=50000,ƀ=2000,Ɓ=5000000,Ƃ=80
+,ƃ=2.0,Ƅ=0,ƅ=0,Ɔ=0,Ƈ=0,ƈ=0,Ɖ=0,Ɗ=0,Ƌ=-1,ƌ=-1;double ƍ=25,Ǝ=75,Ə=0;bool Ɛ=true,Ƒ=false,ƒ=false,Ɠ=false,Ɣ=false;bool A=true
+,ƕ=false,Ɩ=false,Ɨ=true,Ƙ=true,ƙ=true,ƚ=true,ƛ=false,Ɯ=true,Ɲ=true,ƞ=false,Ɵ=false,Ơ=true,ơ=false,Ƣ=false,ƣ=false,Į,Ƥ,ƥ;
+string Ʀ="",Ƨ="",ƨ="",Ʃ="",ƪ="",ƫ="",Ƭ="",ƭ,Ʈ,Ư,ư="idle",Ʊ=Ă(16),Ʋ,Ƴ,ƴ,Ƶ;IMyTimerBlock Ũ,ŧ;List<string>ƶ=new List<string>(),Ʒ=
+new List<string>(),Ƹ=new List<string>(),ƹ=new List<string>();IMyTextPanel Ť;Vector3D ƺ=ř;int D=0,ƻ=int.MaxValue,Ƽ,ƽ,ƾ,F=60,
+ƿ=int.MinValue,ǀ=0,ǁ=0,ǂ=0,ǃ=5,Ǆ=173,ǅ=0,ǆ=0,Ǉ=0,ǈ,ǉ,Ǌ;StringBuilder ǋ=new StringBuilder(1024),ǌ=new StringBuilder(1024);
+const int Ǎ=60,ǎ=300;int Ǐ=-1,ǐ=-1;a Ǒ=a.N;const double Ñ=60;á ǒ=á.d;ê Ǔ=ê.d;IMyTerminalBlock ũ;long ǔ=0,į,Ǖ=-1;List<Vector3D
+>ǖ=new List<Vector3D>();IMyTextPanel Ŧ,Ǘ;Ň ǘ=new Ň(),Ǚ=new Ň(),ǚ;ĵ Ǜ=new ĵ();List<ŕ>ǜ=new List<ŕ>();string[]ǝ=new string[
+0];string Ǟ;bool ǟ=false;Ð Ǡ=new Ð();List<Ð>ǡ=new List<Ð>();int Ǣ;string ǣ="",Ǥ="";void Ǩ(int ǥ){double Ǧ=1.0;if(ǐ==1)Ǧ=ǧ
+(ǥ);else if(ǐ==2)Ǧ=0.1;else if(ǐ==3)Ǧ=0.5;else if(ǐ==9)Ǧ=500;else if(ǐ==10)Ǧ=250;else if(ǐ==11)Ǧ=500;else if(ǐ==12)Ǧ=5;
+else if(ǐ==13)Ǧ=0.1;else if(ǐ==16)Ǧ=1000;else if(ǐ==17)Ǧ=25;else if(ǐ==18)Ǧ=1;else if(ǐ==19)Ǧ=5;else if(ǐ==101)Ǧ=2.5;else if
+(ǐ==102||ǐ==103)Ǧ=0.5;else if(ǐ==104||ǐ==105)Ǧ=0.1;else if(ǐ==107||ǐ==108)Ǧ=2.5;else if(ǐ==109)Ǧ=5;Ə=Math.Max(0,Ə+Ǧ*ǥ);if
+(ǐ==1)Ə=MathHelper.Clamp(Ə,1,50000);if(ǐ==25)Ə=Math.Max(1,Math.Min(1000000,Ə));if(ǐ==7)Ə=Math.Max(Ǎ,Ə);else if(ǐ==9)Ə=
+Math.Max(100,Ə);else if(ǐ==10)Ə=Math.Max(100,Ə);else if(ǐ==11)Ə=Math.Max(1,Ə);else if(ǐ==12)Ə=MathHelper.Clamp(Ə,1,100);else
+if(ǐ==13)Ə=Math.Max(0.1,Ə);else if(ǐ==16)Ə=MathHelper.Clamp(Ə,1000,50000);else if(ǐ==17)Ə=Math.Max(25,Ə);else if(ǐ==18)Ə=
+Math.Max(1,Ə);else if(ǐ==19)Ə=Math.Max(10,Ə);else if(ǐ==102||ǐ==103||ǐ==104||ǐ==105)Ə=Math.Max(0.1,Ə);else if(ǐ==107||ǐ==108
+)Ə=MathHelper.Clamp(Ə,0,100);else if(ǐ==109)Ə=MathHelper.Clamp(Ə,0,500);}void ǫ(int ǥ){if(ǐ==11)Ə=Math.Max(1,Ə+ǩ()*ǥ);
+else if(ǐ==12)Ə=MathHelper.Clamp(Ə+5*ǥ,1,100);else if(ǐ==15)Ə=MathHelper.Clamp(Math.Round(Ə)+ǥ,0,Ǫ()-1);}void Ǳ(
+StringBuilder Ō,int Ǭ){bool ǭ=ǀ==Ǭ;Ō.Append(ǭ?"> ":Ǯ);Ō.AppendLine(Ă(17));Ō.Append(ǯ);Ō.Append(ǰ(Ɓ));Ō.AppendLine(" kN");}void ǵ(
+StringBuilder Ō,string ǲ,int ǳ,int Ǭ){bool ǭ=ǀ==Ǭ;bool Ǵ=Ƣ&&ǭ&&ǐ==ǳ;if(ǭ)Ō.Append(Ǵ?"< ":"> ");else Ō.Append(Ǯ);Ō.AppendLine(ǲ);}void
+ǹ(StringBuilder Ō,string ǲ,int ǳ,int Ǭ,string Ƕ,string Ƿ){bool ǭ=ǀ==Ǭ;bool Ǵ=Ƣ&&ǭ&&ǐ==ǳ;if(ǭ)Ō.Append(Ǵ?"< ":"> ");else Ō
+.Append(Ǯ);Ō.Append(ǲ);Ō.Append(": ");Ō.Append(Ǹ(ǳ).ToString(Ƿ));Ō.AppendLine(Ƕ);}string[]Ǻ=Ă(18).Split('|');int[]ǻ=new
+int[10];void ǿ(StringBuilder Ō,List<Ð>Ǽ){for(int ĕ=0;ĕ<ǻ.Length;ĕ++)ǻ[ĕ]=0;for(int ĕ=0;ĕ<Ǽ.Count;ĕ++)ǻ[ǽ(Ǽ[ĕ])]++;bool Ǿ=
+false;for(int ĕ=0;ĕ<ǻ.Length;ĕ++){if(ǻ[ĕ]==0)continue;if(Ǿ)Ō.Append(" · ");Ō.Append(ǻ[ĕ]).Append(' ').Append(Ǻ[ĕ]);Ǿ=true;}if
+(!Ǿ)Ō.Append(Ă(19));}int ǽ(Ð Ŏ){if(Ŏ==null)return 9;if(Ŏ.ª||(Ŏ.r!=null&&Ŏ.r.Ȁ))return 7;if(Ŏ.Á||(Ŏ.r!=null&&Ŏ.r.Ő>=0))
+return 3;if(Ŏ.w||(Ŏ.r!=null&&Ŏ.r.ȁ)||double.IsNaN(Ŏ.Î)||double.IsInfinity(Ŏ.Î)||Ŏ.Î>=Ñ)return 6;switch(Ŏ.Ç){case"Miner mining"
+:case"Miner ejecting stone":return 0;case"Servicing":case"Final service":case"Post-deploy service":case"Final unloading":
+case"Miner powering down":return 1;case"Miner returning":case"Miner docking":case"Miner undocking":case"Travelling":case
+"Entering hangar":case"Miner powering up":return 2;case"Idle":case"Ready":case"Docked":case"Parked at Dock Pose 2":return 4;case"Paused":
+return 5;case"Loading route":case"Checking after deploy":case"Deploying":case"Ready to store":case"Storing":return 8;default:
+return 9;}}void Ȅ(StringBuilder Ō){while(Ȃ(Ō)<11)Ō.AppendLine();Ō.AppendLine("—————————————————");Ō.Append(" ");Ō.AppendLine(ȃ
+());Ō.Append(" ");ǿ(Ō,ǡ);}void Ȇ(StringBuilder Ō){if(Ǒ==a.O||Ǒ==a.P||Ǒ==a.V){Ō.Append(' ').Append(Ċ.í).AppendLine(Ă(20));
+}else if(Ǒ==a.R){Ō.Append(" EMM-A ").Append(Ǡ.Å).Append(" | Auto ");Ō.AppendLine(Ɣ?"On":ȅ);}else if(Ǒ==a.Q){Ō.Append(Ă(21
+));Ō.AppendLine(Ɣ?"On":ȅ);}else if(Ǒ==a.U){Ō.Append(' ').Append(Ċ.í).AppendLine(Ă(22));}else{Ō.Append(' ').Append(Ċ.í).
+Append(" | Auto ");Ō.AppendLine(Ɣ?"On":ȅ);}Ō.AppendLine("—————————————————");}void ȉ(StringBuilder Ō){for(int ĕ=0;ĕ<ƶ.Count;ĕ
+++)ȇ(Ō,"["+(Ȉ(Ʒ[ĕ])?"Y":"X")+"] "+ƶ[ĕ],ĕ+2,false);if(ƶ.Count==0)Ō.AppendLine(Ƨ.Length>0?ǯ+Ƨ:Ă(23));}void ȇ(StringBuilder Ō
+,string ö,int Ȋ,bool ȋ){bool ǭ=ǀ==Ȋ;bool Ǵ=Ƣ&&ǭ;if(ǭ)Ō.Append((ȋ||Ǵ)?"< ":"> ");else Ō.Append(Ǯ);Ō.AppendLine(ö);}void ȏ(
+StringBuilder Ō){Ȍ();Ƶ=ƴ;if(ƴ==null){Ō.AppendLine(Ă(24));return;}for(int ĕ=0;ĕ<ǜ.Count;ĕ++){ŕ ȍ=ǜ[ĕ];int Ȏ=ĕ+3;if(Ɠ&&ǀ==Ȏ)Ō.
+AppendLine("< ["+ȍ.œ+"] "+ȍ.Å);else ȇ(Ō,"["+ȍ.œ+"] "+ȍ.Å,Ȏ,false);}}void ȫ(StringBuilder Ō){if(Ǒ==a.N){ȇ(Ō,Ă(25),0,false);ȇ(Ō,
+"Miners",1,false);ȇ(Ō,Ă(26),2,false);ȇ(Ō,"Info",3,false);return;}ȇ(Ō,"Back",0,true);if(Ǒ==a.O){string Ȑ=Ă(27)+(Ɣ?"On":ȅ)+"]";if(
+!Ɣ&&Ǉ>0)Ȑ+=" "+ȑ();ȇ(Ō,Ȑ,1,false);ȇ(Ō,"Select mode",2,false);if(Ȓ())ȇ(Ō,"Continue",3,false);else if(ȓ())ȇ(Ō,Ȕ().º?
+"Recall sent":Ă(28),3,false);else Ō.AppendLine();if(ȕ())ȇ(Ō,Ă(29)+(Ƥ?"On":ȅ)+"]",Ȗ(),false);else Ō.AppendLine();Ō.Append("   Plan: ")
+;Ō.Append(ȗ(ư));if(Ș()){Ō.Append(" ");Ō.Append(ȑ());}Ō.AppendLine();Ō.Append(ǯ);Ō.AppendLine(Ʊ);Ō.Append(Ă(30));Ō.
+AppendLine(ș(ǒ));if(ƛ&&ƨ.Length>0)Ō.AppendLine(ǯ+ƨ);if(ǒ==á.Ô){Ō.Append("   Route: ");Ō.Append(ǆ);Ō.Append("/");Ō.Append(ǖ.Count);
+Ō.Append(", ");Ō.Append(Vector3D.Distance(Ț(),ƺ).ToString(ț));Ō.AppendLine("m");}return;}if(Ǒ==a.Q){for(int ĕ=0;ĕ<ǡ.Count
+;ĕ++){Ð Ȝ=ǡ[ĕ];ȇ(Ō,Ȝ.Å+(Ȝ.u?" *":"")+(Ȝ.ª?" Lost":Ȝ.w?" Missing":""),ĕ+1,false);ȝ(Ō,Ȝ);}if(ǡ.Count==0)Ō.AppendLine(Ă(31))
+;return;}if(Ǒ==a.R){Ð Ŏ=Ȕ();ȇ(Ō,Ȟ(Ŏ),1,false);ȇ(Ō,Ŏ.ª?Ă(32):"Report lost",2,false);Ō.Append("   Status: ");Ō.AppendLine(ȟ
+());bool ȡ=Ƞ();Ō.Append("   Cargo: ");Ō.Append(ȡ?Ŏ.Ì.ToString("0"):"-");Ō.AppendLine("%");Ō.Append("   H2O: ");Ō.Append(ȡ
+?Ŏ.Í.ToString("0"):"-");Ō.AppendLine("%");Œ(Ō,Ȣ(),Ŏ,3);return;}if(Ǒ==a.S){ȇ(Ō,"Next page "+(ǂ+1)+"/3 Miner",1,false);Ō.
+AppendLine();if(ǂ==0){ǹ(Ō,Ă(33),101,2," m",ț);ǹ(Ō,"Lane width",102,3," m",ț);ǹ(Ō,"Lane height",103,4," m",ț);ǹ(Ō,Ă(34),104,5,
+" m/s",ț);ǹ(Ō,Ă(35),105,6," m/s",ț);}else if(ǂ==1){ǵ(Ō,"Resupply ["+(Ɯ?"On":ȅ)+"]",106,2);ǹ(Ō,Ă(36),107,3,"%",ț);ǹ(Ō,
+"Resupply H2",108,4,"%",ț);ǹ(Ō,Ă(37),109,5," m","0");ǵ(Ō,Ă(38)+(ƞ?"On":ȅ)+"]",110,6);ǵ(Ō,Ă(39)+(Ɲ?"On":ȅ)+"]",112,7);}else{ǵ(Ō,Ă(40)+
+(Ɵ?"On":ȅ)+"]",111,2);Ō.Append("   Hangar: ");Ō.AppendLine(Ū);Ō.Append("   Timer: ");Ō.AppendLine(ų);Ō.Append(
+"   Miner: ");Ō.AppendLine(ȣ());}return;}if(Ǒ==a.P){ȇ(Ō,ƛ?"Mode: Items":"Mode: Ore",1,false);if(ƛ)ȉ(Ō);else{ȇ(Ō,Ă(41),2,false);ȏ(Ō);
+}return;}if(Ǒ==a.V){Ō.AppendLine();Ō.AppendLine(Ă(42));Ō.AppendLine(Ă(43));Ō.AppendLine(Ă(44));Ō.AppendLine(Ă(45));ȇ(Ō,
+"Yes",1,false);return;}if(Ǒ==a.U){ȇ(Ō,"Save",1,false);Ō.AppendLine();Ȥ(Ō);Ō.AppendLine();ȥ(Ō);Ȧ(Ō);if(ǀ==2&&Ƣ&&ǐ==11){ȧ(Ō);}
+if(ǀ==4){Ō.Append(Ă(46));Ō.Append(Ȩ(Math.Max(0,100-ȩ())));Ō.AppendLine(Ă(47));Ō.AppendLine(Ă(48));}return;}if(Ǒ==a.T){ȇ(Ō,
+"Next page "+(ǁ+1)+"/5 Carrier",1,false);Ō.AppendLine();if(ǁ==0){ǹ(Ō,"Max speed",1,2," m/s","0");ǹ(Ō,Ă(49),2,3," deg","0.#");ǹ(Ō,Ă(
+50),3,4," m","0.#");Ȫ(Ō);}else if(ǁ==1){ǹ(Ō,"LCD refresh",7,2," ticks","0");Ō.AppendLine(Ă(51));ǹ(Ō,Ă(52),10,4," m","0");Ǳ
+(Ō,5);}else if(ǁ==2){ǹ(Ō,Ă(53),13,2," m/s²",ț);ǵ(Ō,Ă(54)+(Ƒ?"On":ȅ)+"]",21,4);ǵ(Ō,Ă(55)+(ƕ?"On":ȅ)+"]",23,5);ǵ(Ō,Ă(56)+(Ɩ
+?"On":ȅ)+"]",24,6);if(Ɩ)ǹ(Ō,"Ice reserve",25,7," million L","0");}else if(ǁ==3){ǹ(Ō,Ă(57),16,2," m","0");ǹ(Ō,Ă(58),17,3,
+" m","0");ǹ(Ō,Ă(59),18,4," m","0");ǹ(Ō,Ă(60),19,5," m","0");ǵ(Ō,Ă(61)+(Ɛ?"On":ȅ)+"]",20,6);ǵ(Ō,Ă(62)+(A?"On":ȅ)+"]",22,7);}
+else if(ǁ==4){ǵ(Ō,Ă(63)+(Ɨ?"On":ȅ)+"]",26,2);ǵ(Ō,Ă(64)+(Ƙ?"On":ȅ)+"]",27,3);ǵ(Ō,Ă(65)+(ƙ?"On":ȅ)+"]",28,4);ǵ(Ō,Ă(66)+(ƚ?"On"
+:ȅ)+"]",29,5);ǵ(Ō,Ă(67)+(ǟ?"On":ȅ)+"]",30,6);}return;}if(Ǒ==a.W){Ō.AppendLine(Ă(68)+ƈ.ToString(ț)+"m");Ō.AppendLine(Ă(69)
++Ɖ.ToString(ț)+"m");Ō.AppendLine(Ă(70)+Ɗ.ToString(ț)+"m");if(Ƌ<0)Ō.AppendLine(Ă(71));else{Ō.AppendLine(Ă(72)+Ƌ.ToString(ț
+)+"%");if(ƌ>=0)Ō.AppendLine("   Cargo: "+ƌ.ToString(ț)+"%");}Ō.AppendLine("   Plan: "+ȗ(ư));Ō.AppendLine(ǯ+Ʊ);ȇ(Ō,
+"Clean reset",1,false);Ō.AppendLine(ǯ+ǅ+Ă(73));}}void ȧ(StringBuilder Ō){double ȭ=Math.Max(1,Ȭ())*1000.0;Ō.Append(Ă(74));Ō.AppendLine
+(Ȯ(ȭ,ş.ȯ));Ō.Append(Ă(75));Ō.AppendLine(Ȯ(ȭ,ş.Ȱ));}void Ȥ(StringBuilder Ō){bool ǭ=ǀ==2;bool Ǵ=Ƣ&&ǭ&&ǐ==11;if(ǭ)Ō.Append(Ǵ
+?"< ":"> ");else Ō.Append(Ǯ);Ō.Append(ǰ(Ȭ()));Ō.AppendLine(" kN");}void ȥ(StringBuilder Ō){bool ǭ=ǀ==3;bool Ǵ=Ƣ&&ǭ&&ǐ==15
+;if(ǭ)Ō.Append(Ǵ?"< ":"> ");else Ō.Append(Ǯ);Ō.Append("Step: ");Ō.AppendLine(ȱ(Ȳ()));}void Ȧ(StringBuilder Ō){bool ǭ=ǀ==4
+;bool Ǵ=Ƣ&&ǭ&&ǐ==12;if(ǭ)Ō.Append(Ǵ?"< ":"> ");else Ō.Append(Ǯ);Ō.Append(Ă(76));Ō.Append(Ȩ(ȩ()));Ō.AppendLine();}void Ȫ(
+StringBuilder Ō){Ō.Append(Ă(77));Ō.AppendLine(ȳ()?"Ready":"Needed");Ō.Append(Ă(78));if(ƅ<=0||Ƅ<=0){Ō.AppendLine("None");return;}Ō.
+Append(ǰ(ƅ/1000.0));Ō.Append(" t / ");Ō.Append(Math.Max(0,(Ƅ-2)/2).ToString(ț).Replace(',','.'));Ō.AppendLine("s");}void ȝ(
+StringBuilder Ō,Ð Ȝ){if(!Ɣ||ǒ!=á.Ö)return;int ȴ=ǽ(Ȝ);if(ȴ!=0&&ȴ!=2&&ȴ!=8)return;const int ȵ=30;double ȶ=Ȝ.Ë>0?MathHelper.Clamp(Ȝ.Ê/Ȝ.
+Ë,0,1):0;int ȷ=(int)Math.Round(ȶ*ȵ);Ō.Append(ǯ);for(int ĕ=0;ĕ<=ȵ;ĕ++)Ō.Append(ĕ==ȷ?'¤':'•');Ō.AppendLine();}void ȹ(){ȸ(a.
+O);ǀ=2;}void Ȼ(int Ȋ){if((Ȋ<1||Ȋ>23)&&Ȋ!=25&&(Ȋ<101||Ȋ>109))return;ǐ=Ȋ;Ə=Ⱥ(Ȋ);Ƣ=true;}void ɀ(int ȼ){Ȍ();IMyTimerBlock Ⱦ=Ƚ
+();if(Ⱦ==null||ȼ<0||ȼ>=ǜ.Count)return;if(!string.Equals(Ƶ,ƴ,Ā)){ȿ(Ă(79));return;}Ǟ=ƴ;Ǐ=ȼ;Ɠ=true;}void Ɂ(int Ȋ){if(Ȋ!=11&&
+Ȋ!=12&&Ȋ!=15)return;ǐ=Ȋ;if(Ȋ==11)Ə=Ɔ;else if(Ȋ==12)Ə=Ƈ;else Ə=ǃ;Ƣ=true;}void ɂ(){Ƣ=false;ǐ=-1;}void Ʌ(){IMyTimerBlock Ⱦ=Ƚ
+();if(Ɠ&&Ⱦ!=null&&Ǟ!=null){Ƀ(Ⱦ,Ǟ);ƴ=null;Ȍ();Ƶ=ƴ;if(Ǐ>=0)ǀ=Ǐ+3;}Ʉ();}void Ʉ(){Ɠ=false;ƒ=false;Ǐ=-1;Ǟ=null;}bool Ȉ(string
+Ɇ)=>(","+Ʀ+",").IndexOf(","+Ɇ+",",Ā)>=0;void ɇ(){Ǒ=a.T;ǁ=1;ǀ=6;ɂ();}int Ȃ(StringBuilder Ō){int Ĝ=0;for(int ĕ=0;ĕ<Ō.Length
+;ĕ++)if(Ō[ĕ]=='\n')Ĝ++;return Ĝ;}void Ɉ(){if(Ɠ)ȿ(Ă(80));Ɠ=false;ƒ=false;Ǐ=-1;Ǟ=null;}void ɉ(){if(ǐ==11)Ɔ=Math.Max(1,Ə);
+else if(ǐ==12)Ƈ=MathHelper.Clamp(Ə,1,100);else if(ǐ==15)ǃ=Math.Max(0,Math.Min(Ǫ()-1,(int)Math.Round(Ə)));ɂ();}int Ȗ()=>Ȓ()||
+ȓ()?4:3;string ɍ(double Ɋ){double ɋ=Math.Abs(Ɋ);double Ɍ;string Ƕ;if(ɋ>=1000000000.0){Ɍ=Ɋ/1000000000.0;Ƕ="GN";}else if(ɋ
+>=1000000.0){Ɍ=Ɋ/1000000.0;Ƕ="MN";}else{Ɍ=Ɋ/1000.0;Ƕ="kN";}return Ɍ.ToString("000.0").Replace(',','.')+" "+Ƕ;}string Ȩ(
+double ą)=>Math.Round(ą,1).ToString("0.#").Replace(',','.')+"%";string Ȯ(double ȭ,double Ɏ){if(Ɏ<=0)return"---";return Math.
+Round(ȭ/Ɏ*100.0).ToString("0")+"%";}string ǰ(double ą){long ɏ=Math.Max(0,(long)Math.Round(ą));string ŗ=ɏ.ToString();
+StringBuilder Ō=new StringBuilder(ŗ.Length+ŗ.Length/3);for(int ĕ=0;ĕ<ŗ.Length;ĕ++){if(ĕ>0&&(ŗ.Length-ĕ)%3==0)Ō.Append(',');Ō.Append(ŗ
+[ĕ]);}return Ō.ToString();}int ɐ(int Ǭ){if(Ǭ<2)return-1;if(ǁ==0&&Ǭ>=2&&Ǭ<=4)return Ǭ-1;if(ǁ==1){if(Ǭ==2)return 7;if(Ǭ==3)
+return 9;if(Ǭ==4)return 10;if(Ǭ==5)return 11;}if(ǁ==2){if(Ǭ==2)return 13;if(Ǭ==3)return 14;if(Ǭ==4)return 21;if(Ǭ==5)return 23
+;if(Ǭ==6)return 24;if(Ǭ==7&&Ɩ)return 25;}if(ǁ==3){if(Ǭ>=2&&Ǭ<=6)return Ǭ+14;if(Ǭ==7)return 22;}if(ǁ==4){if(Ǭ==2)return 26
+;if(Ǭ==3)return 27;if(Ǭ==4)return 28;if(Ǭ==5)return 29;if(Ǭ==6)return 30;}return-1;}string ȃ(){string ɒ=ş.ɑ();if(ɒ.Length
+>0)return ɒ;if(Ǒ==a.N){if(ǀ==0)return Ă(81);if(ǀ==1)return Ă(82);if(ǀ==2)return Ă(83);if(ǀ==3)return Ă(84);}if(Ǒ==a.P&&ǀ
+==0)return Ă(85);if(ǀ==0&&Ǒ!=a.U)return Ă(85);if(Ǒ==a.O){if(ǀ==1)return Ă(86);if(ǀ==2)return Ă(87);if(ȕ()&&ǀ==Ȗ())return Ƥ
+?Ă(88):Ă(89);if(ǀ==3&&Ȓ())return Ă(90);if(ǀ==3)return Ȕ().º?Ă(91):Ă(92);}if(Ǒ==a.Q){if(ǀ>0&&ǀ<=ǡ.Count)return"Open "+ǡ[ǀ-
+1].Å+".";}if(Ǒ==a.R&&ǀ==1)return ɓ(Ȕ());if(Ǒ==a.R&&ǀ==2)return Ȕ().ª?Ă(93):Ă(94);if(Ǒ==a.S){if(ǀ==1)return ǂ<2?Ă(95):Ă(96
+);if(ɔ(ǀ)==110)return ƞ?Ă(97):Ă(98);if(ɔ(ǀ)==111)return Ă(99);if(ɔ(ǀ)==112)return Ă(100);return Ă(101);}if(Ǒ==a.T){if(ǀ==
+1)return ǁ<4?Ă(102):Ă(103);int ǳ=ɐ(ǀ);if(ǳ==24)return Ă(104);if(ǳ==25)return Ă(105);if(ǳ==1)return Ă(106);if(ǳ==2)return
+Ă(107);if(ǳ==3)return Ă(108);if(ǳ==4)return Ă(109);if(ǳ==5)return Ă(110);if(ǳ==6)return Ă(111);if(ǳ==7)return Ă(112);if(ǳ
+==8)return Ă(113);if(ǳ==9)return Ă(114);if(ǳ==10)return Ă(115);if(ǳ==11)return Ă(116);if(ǳ==12)return Ă(117);if(ǳ==13)
+return Ă(118);if(ǳ==14)return Ă(119);if(ǳ==22)return Ă(120);if(ǳ==23)return Ă(121);if(ǳ==26)return Ă(122);if(ǳ==27)return Ă(
+123);if(ǳ==28)return Ă(124);}if(Ǒ==a.U){if(ǀ==0)return Ă(125);if(ǀ==1)return Ă(126);if(ǀ==2&&Ƣ&&ǐ==11)return Ă(127)+ɍ(ɕ());
+if(ǀ==2)return Ă(116);if(ǀ==3)return Ă(128);if(ǀ==4)return Ă(117);}if(Ǒ==a.P&&ǀ==1)return Ă(129);if(Ǒ==a.P&&ƛ)return Ƨ.
+Length>0?Ƨ:Ă(130);if(Ǒ==a.P&&Ɠ)return Ă(131);if(Ǒ==a.P&&ǀ==2)return ƒ?Ă(132):Ă(133);if(Ǒ==a.P&&ƒ&&ǀ>2)return Ă(134);if(Ǒ==a.P
+&&ǀ>2)return Ă(135);if(Ǒ==a.V){if(ǀ==1)return Ă(136);}if(Ǒ==a.W&&ǀ==1)return Ă(137);return"";}int ɖ()=>ƶ.Count;int ɛ(){int
+ɗ=17;ɗ=ɗ*31+(int)Ǒ;ɗ=ɗ*31+ǀ;ɗ=ɗ*31+(Ƣ?1:0);ɗ=ɗ*31+(ƒ?1:0);ɗ=ɗ*31+(Ɠ?1:0);ɗ=ɗ*31+(Ɣ?1:0);if(Ǒ==a.O||Ǒ==a.W){string ɘ=ư??""
+,ə=Ʊ??"";if(!object.ReferenceEquals(ɘ,ƭ)){ƭ=ɘ;Ƽ=ɘ.GetHashCode();}if(!object.ReferenceEquals(ə,Ʈ)){Ʈ=ə;ƽ=ə.GetHashCode();}
+ɗ=ɗ*31+Ƽ;ɗ=ɗ*31+ƽ;if(Ǒ==a.O){ɗ=ɗ*31+(Ƥ?1:0);ɗ=ɗ*31+(int)ǒ;}else{ɗ=ɗ*31+(int)Math.Round(Ƌ);ɗ=ɗ*31+(int)Math.Round(ƌ);}}
+else if(Ǒ==a.R){Ð Ŏ=Ȕ();string ɚ=Ŏ.Ç??"";if(!object.ReferenceEquals(ɚ,Ư)){Ư=ɚ;ƾ=ɚ.GetHashCode();}ɗ=ɗ*31+ƾ;ɗ=ɗ*31+(int)Math.
+Round(Ŏ.Ì);ɗ=ɗ*31+(int)Math.Round(Ŏ.Í);ɗ=ɗ*31+ȟ().GetHashCode();ɗ=ɗ*31+Ȣ().GetHashCode();ɗ=ɗ*31+(Ƞ()?1:0);ɗ=ɗ*31+Ȟ(Ŏ).
+GetHashCode();}else if(Ǒ==a.S&&ǂ==2)ɗ=ɗ*31+ȣ().GetHashCode();return ɗ;}double ǧ(int ǥ){double ą=Ə;if(ǥ<0&&ą>1)ą-=0.000001;if(ą<100)
+return 5;if(ą<250)return 10;if(ą<500)return 25;if(ą<1000)return 50;if(ą<5000)return 1000;return 5000;}int ɝ(){if(Ǒ==a.N)return
+4;if(Ǒ==a.O)return(Ȓ()||ȓ()?4:3)+(ȕ()?1:0);if(Ǒ==a.Q)return 1+ǡ.Count;if(Ǒ==a.R)return 3;if(Ǒ==a.S)return ǂ==2?3:(ǂ==1?8:
+7);if(Ǒ==a.P)return ƛ?2+ɖ():3+ɜ();if(Ǒ==a.T){if(ǁ==0)return 5;if(ǁ==1)return 6;if(ǁ==2)return Ɩ?8:7;if(ǁ==3)return 8;
+return 7;}if(Ǒ==a.U)return 5;if(Ǒ==a.V)return 2;if(Ǒ==a.W)return 2;return 1;}int ɜ(){Ȍ();return ǜ.Count;}double Ⱥ(int Ȋ){if(Ȋ
+==1)return ů;if(Ȋ==2)return Ű;if(Ȋ==3)return ű;if(Ȋ==7)return F;if(Ȋ==9)return ſ;if(Ȋ==10)return ƀ;if(Ȋ==11)return Ɓ;if(Ȋ
+==12)return Ƃ;if(Ȋ==13)return ƃ;if(Ȋ==14)return Ơ?1:0;if(Ȋ==16)return Ŵ;if(Ȋ==17)return ŵ;if(Ȋ==18)return ƍ;if(Ȋ==19)
+return Ǝ;if(Ȋ==20)return Ɛ?1:0;if(Ȋ==21)return Ƒ?1:0;if(Ȋ==25)return Ŷ;if(Ȋ==101)return ŷ;if(Ȋ==102)return Ÿ;if(Ȋ==103)return
+Ź;if(Ȋ==104)return ź;if(Ȋ==105)return Ż;if(Ȋ==106)return Ɯ?1:0;if(Ȋ==107)return ż;if(Ȋ==108)return Ž;if(Ȋ==109)return ž;
+if(Ȋ==112)return Ɲ?1:0;return 0;}double Ȭ(){if(Ƣ&&Ǒ==a.U&&ǐ==11)return Ə;return Ɔ;}int Ǫ()=>7;int Ȳ(){if(Ƣ&&Ǒ==a.U&&ǐ==15)
+return Math.Max(0,Math.Min(Ǫ()-1,(int)Math.Round(Ə)));return ǃ;}double ǩ(){int Ȋ=Math.Max(0,Math.Min(Ǫ()-1,ǃ));if(Ȋ==0)return
+1;if(Ȋ==1)return 10;if(Ȋ==2)return 100;if(Ȋ==3)return 1000;if(Ȋ==4)return 10000;if(Ȋ==5)return 100000;return 1000000;}
+string ȱ(int Ȋ){if(Ȋ==0)return"1 kN";if(Ȋ==1)return"10 kN";if(Ȋ==2)return"100 kN";if(Ȋ==3)return"1 MN";if(Ȋ==4)return"10 MN";
+if(Ȋ==5)return"100 MN";return"1 GN";}double ȩ(){if(Ƣ&&Ǒ==a.U&&ǐ==12)return Ə;return Ƈ;}double Ǹ(int Ȋ){if(Ƣ&&ǐ==Ȋ)return Ə
+;return Ⱥ(Ȋ);}string ș(á ɞ){switch(ɞ){case á.d:return"Idle";case á.Ò:return Ă(138);case á.Ó:return Ă(139);case á.Ô:return
+Ă(140);case á.Õ:return Ă(141);case á.Ö:return Ă(142);case á.Ø:return Ă(143);case á.Ù:return Ă(144);case á.Ú:return Ă(145)
+;case á.Ý:return Ă(146);case á.à:return Ă(147);case á.Þ:return Ă(148);case á.ß:return Ă(143);}return ɟ(ɞ);}string ȗ(
+string ɞ){if(Ś(ɞ))return"Idle";if(ɞ.Equals("idle",ā))return"Idle";if(ɞ.Equals("scanning",ā))return"Scanning";if(ɞ.Equals(
+"planning",ā))return Ă(149);if(ɞ.Equals("producing",ā))return"Producing";if(ɞ.Equals(Ă(150),ā))return Ă(139);if(ɞ.Equals("ready",ā
+))return"Plan ready";if(ɞ.Equals("error",ā))return"Error";if(ɞ.Equals("aborted",ā))return"Aborted";if(ɞ.Equals(
+"completed",ā))return"Complete";if(ɞ.Equals("missing",ā))return Ă(151);if(ɞ.Equals("requested",ā))return"Requested";return ɞ;}
+string ɠ(Ð Ŏ){if(Ŏ.ª||Ŏ.É.Length>0)return"";if(Ŏ.Á)return"deploy:"+Ŏ.Â;return Ŏ.º?"":"recall:"+Ŏ.Â;}string Ȟ(Ð Ŏ){if(Ŏ.ª)
+return"Unavailable";if(Ŏ.É=="Held")return Ă(152);if(Ŏ.É.Length>0)return ȑ();if(Ŏ.Á)return Ă(153);return Ŏ.º?"Recall sent":
+"Recall "+Ŏ.Å;}string ɓ(Ð Ŏ){if(Ŏ.ª)return Ă(154);if(Ŏ.É=="Held")return Ă(155);if(Ŏ.É=="Deploying")return Ă(156);if(Ŏ.É==
+"Storing")return Ă(157);if(Ŏ.Á)return Ă(158);return Ŏ.º?Ă(91):"Recall "+Ŏ.Å+".";}string ȑ()=>((D/20)%2==0)?".. .":". ..";int ɔ(
+int Ǭ){if(Ǭ<2)return-1;if(ǂ==0&&Ǭ>=2&&Ǭ<=6)return 99+Ǭ;if(ǂ==1){if(Ǭ==2)return 106;if(Ǭ==3)return 107;if(Ǭ==4)return 108;if
+(Ǭ==5)return 109;if(Ǭ==6)return 110;if(Ǭ==7)return 112;}if(ǂ==2&&Ǭ==2)return 111;return-1;}string ȟ(){Ð Ŏ=Ȕ();if(Ŏ.ª)
+return"Lost";if(Ŏ.Á)return"Stored";if(Ŏ.Î>=Ñ)return Æ;return Ś(Ŏ.Ç)?"-":Ŏ.Ç;}string Ȣ()=>Ȕ().Ä;string ȣ(){string ɡ=Ȣ();if(ɡ==
+"Filled")return"Stored";if(ɡ=="Empty")return"Deployed";return Ã;}void Ŭ(){if(Ŧ==null)return;Ʋ=null;Ƴ=null;Ǘ=null;Ŧ.ContentType=
+ContentType.TEXT_AND_IMAGE;Ŧ.Font="Debug";Ŧ.FontSize=1.225f;Ŧ.TextPadding=0f;Ŧ.Alignment=TextAlignment.LEFT;}void ū(){Ũ=š.
+GetBlockWithName(ñ("Items"))as IMyTimerBlock;string þ=Ũ==null?"":(Ũ.CustomData??"");long ɢ=Ũ==null?0:Ũ.EntityId;if(ɣ==þ&&ɤ==ɢ)return;ɣ=þ
+;ɤ=ɢ;ƶ.Clear();Ʒ.Clear();Ƨ=Ũ==null?Ă(159):"";if(þ.Length>65536){Ƨ=Ă(160);ɥ();return;}var ɦ=new List<string>();foreach(
+string ą in þ.Split(new[]{'\r','\n'},StringSplitOptions.RemoveEmptyEntries)){string ÿ=ą.Trim();if(ÿ.Length>0&&!ÿ.StartsWith(
+"#")&&!ÿ.StartsWith("//"))ɦ.Add(ÿ);}if(ɦ.Count%2!=0||ɦ.Count>256)Ƨ=Ă(161);for(int ĕ=0;ĕ+1<ɦ.Count&&ĕ<256;ĕ+=2){string Ɇ=ɦ[ĕ
++1];if(!Ɇ.StartsWith(Ă(162),Ā)||Ɇ.Length<=Ă(162).Length||Ɇ.IndexOf(',')>=0||Ʒ.Contains(Ɇ)){Ƨ=Ă(163);continue;}ƶ.Add(ɦ[ĕ])
+;Ʒ.Add(Ɇ);}ɥ();}bool Ƞ(){Ð Ŏ=Ȕ();return Ŏ.Î<Ñ&&!Ŏ.Á&&Ŏ.Ï!=o.g&&ǒ!=á.Ù&&Ǔ!=ê.ä;}void ɨ(int ɧ){int Ĝ=Math.Max(1,ɝ());ǀ+=ɧ;
+if(ǀ<0)ǀ=Ĝ-1;if(ǀ>=Ĝ)ǀ=0;}void ɬ(int ɧ){Ȍ();IMyTimerBlock Ⱦ=Ƚ();int ȼ=ǀ-3;int ġ=ȼ+ɧ;if(!Ɠ||Ⱦ==null||ȼ<0||ȼ>=ǜ.Count||ġ<0||
+ġ>=ǜ.Count)return;int ɩ=ǜ[ȼ].Ŕ;int ɪ=ǜ[ġ].Ŕ;string ɫ=ǝ[ɩ];ǝ[ɩ]=ǝ[ɪ];ǝ[ɪ]=ɫ;Ƀ(Ⱦ,string.Join("\n",ǝ).TrimEnd());ƴ=null;Ȍ();
+Ƶ=ƴ;ǀ=ġ+3;}void ȸ(a ɭ){Ʉ();Ǒ=ɭ;ǀ=0;if(ɭ==a.T)ǁ=0;if(ɭ==a.S)ǂ=0;ɂ();}void ɮ(){Ǒ=a.U;ǀ=2;Ɔ=Ɓ;Ƈ=Ƃ;ɂ();}char ɰ(string ą){
+string ɯ=(ą??"").Trim();if(ɯ.Equals("Y",ā)||ɯ.Equals("on",ā)||ɯ.Equals("true",ā)||ɯ=="1"||ɯ.Equals("target",ā))return'Y';if(ɯ.
+Equals("X",ā)||ɯ.Equals("exclude",ā)||ɯ.Equals("excluded",ā)||ɯ.Equals("never",ā))return'X';return'U';}bool Ș()=>ư.Equals(
+"scanning",ā)||ư.Equals("planning",ā);void ŭ(){var ɱ=new List<IMyTerminalBlock>();š.GetBlocksOfType(ɱ,ɲ=>ɲ.CubeGrid.EntityId==Š.
+CubeGrid.EntityId);if(ɱ.Count==0){ƈ=0;Ɖ=0;Ɗ=0;return;}Vector3I ɳ=ɱ[0].Min;Vector3I ɴ=ɱ[0].Max;foreach(var ɲ in ɱ){ɳ.X=Math.Min(ɳ
+.X,ɲ.Min.X);ɳ.Y=Math.Min(ɳ.Y,ɲ.Min.Y);ɳ.Z=Math.Min(ɳ.Z,ɲ.Min.Z);ɴ.X=Math.Max(ɴ.X,ɲ.Max.X);ɴ.Y=Math.Max(ɴ.Y,ɲ.Max.Y);ɴ.Z=
+Math.Max(ɴ.Z,ɲ.Max.Z);}double ɵ=Š.CubeGrid.GridSize;Ɖ=(Math.Abs(ɴ.X-ɳ.X)+1)*ɵ;ƈ=(Math.Abs(ɴ.Y-ɳ.Y)+1)*ɵ;Ɗ=(Math.Abs(ɴ.Z-ɳ.Z)
++1)*ɵ;}void Ȍ(){IMyTimerBlock Ⱦ=Ƚ();string þ=Ⱦ==null?null:(ɶ(Ⱦ)??"");if(string.Equals(þ,ƴ,Ā))return;ƴ=þ;ǜ.Clear();if(þ==
+null){ǝ=new string[0];return;}ǝ=þ.Replace("\r\n","\n").Replace('\r','\n').Split('\n');for(int ĕ=0;ĕ<ǝ.Length;ĕ++){string ÿ=ǝ
+[ĕ].Trim();if(ÿ.Length==0||ÿ.StartsWith("//"))continue;string[]ɷ=ÿ.Split(new[]{' ','\t'},StringSplitOptions.
+RemoveEmptyEntries);ǜ.Add(new ŕ{Å=ɷ[0],œ=ɰ(ɷ.Length<2?"Y":ɷ[1]),Ŕ=ĕ});}}void ɹ(){if(ŧ==null){Ƌ=-1;ƌ=-1;return;}Ƌ=-1;ƌ=-1;foreach(string þ
+in(ŧ.CustomData??"").Split('\n')){string ÿ=þ.Trim();int ɸ=ÿ.IndexOf(':');if(ɸ<0)continue;string ǲ=ÿ.Substring(0,ɸ).Trim();
+if(ǲ!="Cargo"&&ǲ!="H2O")continue;double ą;if(!Ŗ(ÿ.Substring(ɸ+1).Trim().TrimEnd('%'),out ą)||ą<0)continue;if(ǲ=="Cargo")ƌ=
+MathHelper.Clamp(ą,0,100);else Ƌ=MathHelper.Clamp(ą,0,100);}}string ɻ(double ɺ){long ą=Math.Max(0,(long)ɺ);return ą>=3600?(ą/3600)
++":"+((ą/60)%60).ToString("00")+":"+(ą%60).ToString("00"):(ą/60)+":"+(ą%60).ToString("00");}void ɾ(){if(ǐ==1)ů=MathHelper
+.Clamp(Ə,1,50000);else if(ǐ==2)Ű=Math.Max(0.1,Ə);else if(ǐ==3)ű=Math.Max(0.1,Ə);else if(ǐ==7)F=Math.Max(Ǎ,(int)Math.Round
+(Ə));else if(ǐ==9)ſ=Math.Max(100,Ə);else if(ǐ==10)ƀ=Math.Max(100,Ə);else if(ǐ==11)Ɓ=Math.Max(1,Ə);else if(ǐ==12)Ƃ=
+MathHelper.Clamp(Ə,1,100);else if(ǐ==13)ƃ=Math.Max(0.1,Ə);else if(ǐ==16)Ŵ=MathHelper.Clamp(Ə,1000,50000);else if(ǐ==17)ŵ=Math.Max(
+25,Ə);else if(ǐ==18)ƍ=Math.Max(25,Ə);else if(ǐ==19)Ǝ=Math.Max(10,Ə);else if(ǐ==25)Ŷ=Math.Max(1,Math.Min(1000000,Ə));else
+if(ǐ==101)ŷ=Math.Max(0,Ə);else if(ǐ==102)Ÿ=Math.Max(0.1,Ə);else if(ǐ==103)Ź=Math.Max(0.1,Ə);else if(ǐ==104)ź=Math.Max(0.1,
+Ə);else if(ǐ==105)Ż=Math.Max(0.1,Ə);else if(ǐ==107)ż=MathHelper.Clamp(Ə,0,100);else if(ǐ==108)Ž=MathHelper.Clamp(Ə,0,100)
+;else if(ǐ==109)ž=MathHelper.Clamp(Ə,0,500);if((ǐ>=16&&ǐ<=19)||ǐ==25)ɼ();if(ǐ>=101&&ǐ<=109)ɽ();ɂ();}void ɿ(){Ɓ=Math.Max(1
+,Ɔ);Ƃ=MathHelper.Clamp(Ƈ,1,100);ɇ();}void ʍ(){if(Ǒ==a.N){if(ǀ==0){ȸ(a.O);ǀ=1;}else if(ǀ==1){ȸ(a.Q);}else if(ǀ==2){ȸ(a.T);
+}else if(ǀ==3)ȸ(a.W);return;}if(Ǒ==a.U&&ǀ==0){ɇ();return;}if(ǀ==0){if(Ǒ==a.P){ȹ();return;}ȸ(a.N);return;}if(Ǒ==a.O){if(ǀ
+==1){ʀ(!Ɣ);}else if(ǀ==2){ȸ(a.P);ǀ=1;}else if(ȕ()&&ǀ==Ȗ()){Ƥ=!Ƥ;ʁ();}else if(ǀ==3){if(Ȓ())ʂ();else if(ȓ()&&!Ȕ().º)ʃ();}
+return;}if(Ǒ==a.Q){if(ǀ>0&&ǀ<=ǡ.Count){Ǣ=ǀ-1;Ǡ=ǡ[Ǣ];ȸ(a.R);}return;}if(Ǒ==a.R){Ð Ŏ=Ȕ();if(ǀ==1){string ʄ=ɠ(Ŏ);if(ʄ.Length>0)ʅ(
+ʄ);}if(ǀ==2&&!Ȕ().ª)ʅ("lost:"+Ȕ().Â);return;}if(Ǒ==a.S){if(ǀ==1){if(ǂ<2)ǂ++;else{Ǒ=a.T;ǁ=0;}ǀ=1;ɂ();return;}int ʆ=ɔ(ǀ);if
+(ʆ==106){Ɯ=!Ɯ;ɽ();}else if(ʆ==110){ƞ=!ƞ;ɽ();ʇ();}else if(ʆ==111){Ɵ=!Ɵ;ɽ();ȿ(Ă(164)+(Ɵ?"enabled.":"disabled."));}else if(ʆ
+==112){Ɲ=!Ɲ;ɽ();}else if(ʆ>0)Ȼ(ʆ);return;}if(Ǒ==a.W){if(ǀ==1)ȸ(a.V);return;}if(Ǒ==a.P){if(Ɠ){Ɉ();return;}if(ǀ==1){Ʉ();ƛ=!ƛ
+;ɼ();}else if(ƛ)ʈ(ǀ-2);else if(ǀ==2)ƒ=!ƒ;else if(ƒ)ɀ(ǀ-3);else ʉ(ǀ-3);return;}if(Ǒ==a.T){if(ǀ==1){if(ǁ<4)ǁ++;else{Ǒ=a.S;ǂ
+=0;}ǀ=1;ɂ();return;}int ǳ=ɐ(ǀ);if(ǳ==11)ɮ();else if(ǳ==14)Ơ=!Ơ;else if(ǳ==20){Ɛ=!Ɛ;ɼ();}else if(ǳ==21){Ƒ=!Ƒ;ɼ();}else if(
+ǳ==22){A=!A;if(!A)ʊ();ɼ();ʇ();if(A)ȿ(Ă(165));}else if(ǳ==23){ƕ=!ƕ;ɼ();ȿ(Ă(166)+(ƕ?"allowed.":"blocked."));}else if(ǳ==24)
+{Ɩ=!Ɩ;ɼ();}else if(ǳ==26){Ɨ=!Ɨ;ɼ();}else if(ǳ==27){Ƙ=!Ƙ;ɼ();}else if(ǳ==28){ƙ=!ƙ;ɼ();}else if(ǳ==29){ƚ=!ƚ;ƻ=int.MaxValue;
+ơ=false;ƪ="";Ƴ="";ɼ();}else if(ǳ==30){ʋ(!ǟ);ɼ();ʇ();}else if(ǳ>0)Ȼ(ǳ);return;}if(Ǒ==a.U){if(ǀ==1){ɿ();return;}if(ǀ==2)Ɂ(
+11);else if(ǀ==3)Ɂ(15);else if(ǀ==4)Ɂ(12);return;}if(Ǒ==a.V){if(ǀ==1){ʌ();ȸ(a.W);ǀ=1;}return;}}bool Ȓ()=>ư.Equals(
+"aborted",ā)&&ƣ;bool ȕ()=>Ɣ&&ǔ!=0&&(ǒ==á.Õ||ǒ==á.Ö||ǒ==á.Ù);bool ȓ()=>ǒ==á.Ö&&(!ʎ()||!Ȕ().À)&&!Ȕ().µ;void ʈ(int Ȋ){if(Ȋ<0||Ȋ>=Ʒ.
+Count||Ƨ.Length>0)return;string Ɇ=Ʒ[Ȋ];var ʏ=new List<string>(Ʀ.Split(new[]{','},StringSplitOptions.RemoveEmptyEntries));if(!
+ʏ.Remove(Ɇ))ʏ.Add(Ɇ);Ʀ=string.Join(",",ʏ);ɼ();}void ʉ(int ȼ){Ȍ();IMyTimerBlock ʐ=Ƚ();if(ʐ==null||ȼ<0||ȼ>=ǜ.Count)return;
+if(!string.Equals(Ƶ,ƴ,Ā)){ȿ(Ă(79));return;}ŕ ȍ=ǜ[ȼ];char ʑ=ȍ.œ=='Y'?'U':(ȍ.œ=='U'?'X':'Y');ǝ[ȍ.Ŕ]=ȍ.Å+" "+ʑ;Ƀ(ʐ,string.
+Join("\n",ǝ).TrimEnd());Ȍ();ȿ("Ore state: "+ȍ.Å+" set to "+ʑ+".");}bool ʔ(string ʒ){if(ʒ.Equals("up",ā)||ʒ.Equals("w",ā)){if
+(Ǒ==a.P&&Ɠ)ɬ(-1);else if(Ƣ&&Ǒ==a.U)ǫ(1);else if(Ƣ)Ǩ(1);else ɨ(-1);ʓ();return true;}if(ʒ.Equals("down",ā)||ʒ.Equals("s",ā)
+){if(Ǒ==a.P&&Ɠ)ɬ(1);else if(Ƣ&&Ǒ==a.U)ǫ(-1);else if(Ƣ)Ǩ(-1);else ɨ(1);ʓ();return true;}if(ʒ.Equals("apply",ā)||ʒ.Equals(
+"e",ā)){if(Ƣ&&Ǒ==a.U)ɉ();else if(Ƣ)ɾ();else ʍ();ʓ();return true;}if(ʒ.Equals("back",ā)||ʒ.Equals("c",ā)){if(Ǒ==a.P&&Ɠ)Ʌ();
+else if(Ǒ==a.P&&ƒ)ƒ=false;else if(Ƣ)ɂ();else if(Ǒ==a.U)ɇ();else if(Ǒ==a.P)ȹ();else{Ǒ=a.N;ǀ=0;}ʓ();return true;}if(ʒ.Equals(Ă
+(170),ā)||ʒ.Equals(Ă(171),ā)){ʓ();ȿ(Ă(172));return true;}return false;}void ʕ(){if(Ǆ>0){Ǆ--;return;}Ǆ=ǎ-1;ɹ();}void ʓ(){
+if(Ť==null)return;bool ʗ=ʖ();if(!ʗ)ʘ();int ʙ=Math.Max(1,ɝ());if(ǀ>=ʙ)ǀ=ʙ-1;StringBuilder Ō=ǋ;Ō.Clear();Ȇ(Ō);ȫ(Ō);Ȅ(Ō);
+string ö=Ō.ToString();if(!string.Equals(ö,Ʃ,Ā)){Ʃ=ö;ʚ(ö,Ƭ);}if(!ʗ&&!string.Equals(ö,ƪ,Ā)){if(!M())return;if(Ť.WriteText(ö,
+false))ƪ=ö;}ƿ=ɛ();}void ʞ(){if(Ŧ==null)return;bool ʛ=Ǜ.ĩ;Ň ʜ=ʛ?ǘ:Ǚ;if(ǚ!=ʜ||Ǖ!=ʜ.ľ){Ƹ.Clear();ƹ.Clear();ƹ.AddRange(ʜ.Ľ.Keys);
+ƹ.Sort(StringComparer.OrdinalIgnoreCase);foreach(string đ in ƹ)Ƹ.Add(đ+" "+ʜ.Ľ[đ].ToString("N0",ł).Replace(',','.')+" Kg"
+);if(ƹ.Count==0)Ƹ.Add(Ă(173));Ƹ.Add("");Ƹ.Add("");ǚ=ʜ;Ǖ=ʜ.ľ;}Ƹ[Ƹ.Count-2]=Ă(174)+ɻ(ʜ.Ķ);Ƹ[Ƹ.Count-1]="Mining: "+ɻ(ʜ.ķ);ǌ.
+Clear();ǌ.Append(' ').Append(Ċ.í).AppendLine(ʛ?Ă(175):Ă(176));ǌ.AppendLine("—————————————————");int ʝ=ʛ?ǉ:Ǌ;if(Ƹ.Count<=9)ʝ=0
+;else ʝ%=Ƹ.Count;for(int ĕ=0;ĕ<9;ĕ++)ǌ.Append(ǯ).AppendLine(ĕ<Ƹ.Count?Ƹ[(ʝ+ĕ)%Ƹ.Count]:"");ǌ.AppendLine(
+"—————————————————");ǌ.AppendLine(ʛ?Ă(177)+į:Ă(178)+ǈ);ǌ.Append(" ").AppendLine(ɻ(ʜ.Ĺ));string ö=ǌ.ToString();if(!string.Equals(Ʋ,ö,Ā)){Ʋ=ö
+;ʚ(ƫ,ö);}if(!ʖ()&&(Ǘ!=Ŧ||!string.Equals(Ƴ,ö,Ā))){if(!M())return;if(Ŧ.WriteText(ö,false)){Ƴ=ö;Ǘ=Ŧ;}}if(Ƹ.Count>9)ʝ++;if(ʛ)
+ǉ=ʝ;else Ǌ=ʝ;}bool M()=>ş.M();Ð Ȕ()=>Ǡ;void ȿ(string ö)=>ş.ȿ(ö);void ʊ()=>ʅ("clearlog");bool ʖ()=>ƚ&&ơ&&(long)ƻ+Math.Max(
+0,ş.D-ş.ʟ)<=720;IMyTextPanel ʠ;int ʡ;public void ʣ(){if(ʖ()){ʠ=null;ʡ=0;return;}if(ʡ>0){ʡ--;return;}ʡ=60;try{IMyTextPanel
+ʢ=š.GetBlockWithName(ñ("LCD Runtime"))as IMyTextPanel;if(ʢ==null||!ʢ.IsWorking||object.ReferenceEquals(ʢ,ʠ))return;string
+đ=(Ċ.í??"Ship").Replace('\r',' ').Replace('\n',' ');if(đ.Length>28)đ=đ.Substring(0,25)+"...";string ö=" "+đ+
+" | Runtime\n—————————————————\n"+new string('\n',9)+"—————————————————\n Total - --";if(ʢ.WriteText(ö,false))ʠ=ʢ;}catch(Exception){ʠ=null;}}void ʚ(
+string ʤ,string ʥ){ƫ=ʤ??"";Ƭ=ʥ??"";}void ʘ(){if(Ť==null)return;if(ƥ)return;Ť.ContentType=ContentType.TEXT_AND_IMAGE;Ť.Font=
+"Debug";Ť.FontSize=1.225f;Ť.TextPadding=0f;Ť.Alignment=TextAlignment.LEFT;ƥ=true;}void ʇ()=>ʅ("status");void ʀ(bool ʏ)=>ʅ(ʏ?
+"am:on":"am:off");bool ʎ()=>ǣ.Length>0&&Ǡ.È==ǣ;void ʃ()=>ʅ("recall:"+Ȕ().Â);string ɣ=null,ʦ="";long ɤ;public void ʫ(MyIni ʧ){ū(
+);ʧ.Set(ʨ,"itemsTimer",ɤ);ʧ.Set(ʨ,"itemsSource",ɣ.Length<=65536?ʩ.ʪ(ɣ):"");ʧ.Set(ʨ,Ă(179),ʦ);}void ɥ(){var ö=new
+StringBuilder();for(int ĕ=0;ĕ<ƶ.Count;ĕ++)ö.Append(ƶ[ĕ]).Append('\n').Append(Ʒ[ĕ]).Append('\n');ʦ=Ƨ.Length>0?"error:"+Ƨ:"1:"+ö.
+ToString().Replace("%","%25").Replace("\n","%0A");}double ɕ()=>ş.ɕ();Vector3D Ț()=>ş.Ț();IMyTimerBlock Ƚ()=>š.GetBlockWithName(Ų
+)as IMyTimerBlock;void ɼ()=>ʅ(ʬ);void ɽ()=>ʅ(ʬ);void ʂ()=>ʅ("continue");void ʌ()=>ʅ("reset");bool ȳ()=>ş.ȳ();bool Ŗ(
+string ö,out double ą)=>ş.Ŗ(ö,out ą);void ʋ(bool ʏ){ǟ=ʏ;ʅ(ʬ);}void ʁ()=>ʅ(ʬ);void ʅ(string ʄ)=>Ǥ+=ʄ+"\n";public void ʶ(MyIni ʧ
+){ʭ=null;ʮ=null;ů=ʧ.Get("Ui","maxSpeed").ToDouble(ů);ű=ʧ.Get("Ui",Ă(180)).ToDouble(ű);Ű=ʧ.Get("Ui",Ă(181)).ToDouble(Ű);Ŵ=
+ʧ.Get("Ui",Ă(182)).ToDouble(Ŵ);ŵ=ʧ.Get("Ui",Ă(183)).ToDouble(ŵ);ƍ=ʧ.Get("Ui",Ă(184)).ToDouble(ƍ);Ǝ=ʧ.Get("Ui",Ă(185)).
+ToDouble(Ǝ);Ɛ=ʧ.Get("Ui",Ă(186)).ToBoolean(Ɛ);Ƒ=ʧ.Get("Ui",Ă(187)).ToBoolean(Ƒ);A=ʧ.Get("Ui",Ă(188)).ToBoolean(A);ƕ=ʧ.Get("Ui",Ă
+(189)).ToBoolean(ƕ);Ɩ=ʧ.Get("Ui",Ă(190)).ToBoolean(Ɩ);Ŷ=ʧ.Get("Ui",Ă(191)).ToDouble(Ŷ);Ɨ=ʧ.Get("Ui",Ă(192)).ToBoolean(Ɨ);
+Ƙ=ʧ.Get("Ui",Ă(193)).ToBoolean(Ƙ);ƙ=ʧ.Get("Ui",Ă(194)).ToBoolean(ƙ);ƚ=ʧ.Get("Ui",Ă(195)).ToBoolean(ƚ);ƛ=ʧ.Get("Ui",Ă(196)
+).ToBoolean(ƛ);Ʀ=ʧ.Get("Ui",Ă(197)).ToString(Ʀ);ƨ=ʧ.Get("Ui",Ă(198)).ToString(ƨ);ŷ=ʧ.Get("Ui",Ă(199)).ToDouble(ŷ);Ÿ=ʧ.Get
+("Ui",Ă(200)).ToDouble(Ÿ);Ź=ʧ.Get("Ui",Ă(201)).ToDouble(Ź);ź=ʧ.Get("Ui",Ă(202)).ToDouble(ź);Ż=ʧ.Get("Ui",Ă(203)).ToDouble
+(Ż);Ɯ=ʧ.Get("Ui",Ă(204)).ToBoolean(Ɯ);ż=ʧ.Get("Ui",Ă(205)).ToDouble(ż);Ž=ʧ.Get("Ui",Ă(206)).ToDouble(Ž);Ɲ=ʧ.Get("Ui",Ă(
+207)).ToBoolean(Ɲ);ž=ʧ.Get("Ui",Ă(208)).ToDouble(ž);ƞ=ʧ.Get("Ui",Ă(209)).ToBoolean(ƞ);Ɵ=ʧ.Get("Ui",Ă(210)).ToBoolean(Ɵ);ſ=ʧ
+.Get("Ui",Ă(211)).ToDouble(ſ);ƀ=ʧ.Get("Ui",Ă(212)).ToDouble(ƀ);Ɓ=ʧ.Get("Ui",Ă(213)).ToDouble(Ɓ);Ƃ=ʧ.Get("Ui",Ă(214)).
+ToDouble(Ƃ);ƃ=ʧ.Get("Ui",Ă(215)).ToDouble(ƃ);Ơ=ʧ.Get("Ui",Ă(216)).ToBoolean(Ơ);Ƅ=ʧ.Get("Ui",Ă(217)).ToDouble(Ƅ);ƅ=ʧ.Get("Ui",Ă(
+218)).ToDouble(ƅ);ƻ=ʧ.Get("Ui",Ă(219)).ToInt32(ƻ);ơ=ʧ.Get("Ui",Ă(220)).ToBoolean(ơ);F=ʧ.Get("Ui",Ă(221)).ToInt32(F);Ɣ=ʧ.Get
+("Ui",Ă(222)).ToBoolean(Ɣ);ǒ=(á)ʧ.Get("Ui",Ă(223)).ToInt32((int)ǒ);Ǔ=(ê)ʧ.Get("Ui",Ă(224)).ToInt32((int)Ǔ);ǔ=ʧ.Get("Ui",Ă
+(225)).ToInt64(ǔ);ư=ʧ.Get("Ui",Ă(226)).ToString(ư);Ʊ=ʧ.Get("Ui",Ă(227)).ToString(Ʊ);ƣ=ʧ.Get("Ui",Ă(228)).ToBoolean(ƣ);ǅ=ʧ
+.Get("Ui",Ă(229)).ToInt32(ǅ);ǆ=ʧ.Get("Ui",Ă(230)).ToInt32(ǆ);Ǉ=ʧ.Get("Ui",Ă(231)).ToInt32(Ǉ);long ʯ=ʧ.Get("Ui",Ă(232)).
+ToInt64(į);if(ʯ!=į)ǉ=0;į=ʯ;ǈ=ʧ.Get("Ui",Ă(233)).ToInt32(ǈ);Į=ʧ.Get("Ui",Ă(234)).ToBoolean(Į);Ƥ=ʧ.Get("Ui",Ă(235)).ToBoolean(Ƥ);
+ǟ=ʧ.Get("Ui",Ă(236)).ToBoolean(ǟ);int ʰ=Math.Max(0,Math.Min(3,ʧ.Get("Ui","fleetCount").ToInt32(0)));while(ǡ.Count<ʰ)ǡ.Add
+(new Ð());while(ǡ.Count>ʰ)ǡ.RemoveAt(ǡ.Count-1);for(int ĕ=0;ĕ<ʰ;ĕ++){Ð Ȝ=ǡ[ĕ];string ʱ="UiFleet"+ĕ;Ȝ.Â=ʲ(ʧ,ʱ,ʳ);Ȝ.Å=ʧ.Get
+(ʱ,"name").ToString("Miner "+(char)('A'+ĕ));Ȝ.u=ʴ(ʧ,ʱ,"token");Ȝ.w=ʴ(ʧ,ʱ,"missing");Ȝ.ª=ʴ(ʧ,ʱ,"lost");Ȝ.µ=ʴ(ʧ,ʱ,
+"completed");Ȝ.Ê=ʵ(ʧ,ʱ,"meters");Ȝ.Ë=ʵ(ʧ,ʱ,"total");Ȝ.Ç=ʲ(ʧ,ʱ,"status");Ȝ.Ì=ʵ(ʧ,ʱ,"cargo",-1);Ȝ.Í=ʵ(ʧ,ʱ,"fuel",-1);Ȝ.t=ʧ.Get(ʱ,
+"area").ToBoolean(Ȝ.Ç==Ă(237));Ȝ.É=ʲ(ʧ,ʱ,"manual");Ȝ.Î=ʵ(ʧ,ʱ,"age",9999);Ȝ.º=ʴ(ʧ,ʱ,"recall");Ȝ.Á=ʴ(ʧ,ʱ,"stored");Ȝ.Ä=ʲ(ʧ,ʱ,
+"contents",Ã);}Ǣ=Math.Max(0,Math.Min(Math.Max(0,ʰ-1),Ǣ));if(ʰ>0)Ǡ=ǡ[Ǣ];ǣ=ʲ(ʧ,"Ui","mission");ǘ=Ň.ŉ(ʲ(ʧ,"Ui",Ă(238)));Ǚ=Ň.ŉ(ʲ(ʧ,
+"Ui",Ă(239)));ǖ.Clear();int Ĝ=ʧ.Get("Ui","routeCount").ToInt32(0);for(int ĕ=0;ĕ<Math.Min(Ĝ,1024);ĕ++)ǖ.Add(ř);ƺ=ş.ƺ;}public
+bool ʷ()=>Ǜ.Ĵ(Ţ.LifetimeTicks,ǣ,Ɣ,ǒ,Į,į,ǔ);public void ʺ(bool ʸ){D=ş.D;if(ʸ)ʞ();else{ū();ʕ();ʓ();}ş.ʹ(ƫ,Ƭ);}string ˉ(string
+ʻ){string[]ʼ=ʻ.Split(new[]{'\n'},4);if(ʼ.Length!=4)return"";string[]ɷ=ʼ[2].Split(new[]{' ','\t'},StringSplitOptions.
+RemoveEmptyEntries);if(ɷ.Length!=2)return"";string ʽ=ɷ[0];char ɯ=ɰ(ɷ[1]);string ʾ=ʩ.ŉ(ʼ[3]);if(ʾ==null)return"";var ɦ=new List<string>(ʾ.
+Split('\n'));bool ʿ=false;for(int ĕ=0;ĕ<ɦ.Count;ĕ++){string ÿ=ɦ[ĕ]??"";string ʒ=ÿ.Trim();if(ʒ.Length==0||ʒ.StartsWith("//"))
+continue;string[]ˀ=ʒ.Split(new[]{' ','\t'},StringSplitOptions.RemoveEmptyEntries);if(ˀ.Length==0)continue;if(ˀ[0].Equals(ʽ,ā)){ɦ
+[ĕ]=ʽ+" "+ɯ;ʿ=true;break;}}if(!ʿ)ɦ.Add(ʽ+" "+ɯ);string ˁ=string.Join("\n",ɦ).Replace("\r","").TrimEnd();MyIni ˆ=new MyIni
+();ˆ.Set(ˇ,"oreTimer",ʼ[1]);ˆ.Set(ˇ,"oreBefore64",ʩ.ʪ(ʾ));ˆ.Set(ˇ,ˈ,ʩ.ʪ(ˁ));ˆ.Set(ˇ,"notice","Ore state: "+ʽ+" set to "+ɯ
++".");return ˆ.ToString();}public string ˍ(string ʻ){if(ʻ.StartsWith("ore\n",Ā))return ˉ(ʻ);MyIni ˊ=new MyIni();ˋ(ˊ);ʭ=
+null;ʮ=null;Ǥ="";if(ʻ.StartsWith("menu:",Ā))ȸ((a)int.Parse(ʻ.Substring(5)));else ʔ(ʻ);MyIni ʧ=new MyIni();ˋ(ʧ);List<MyIniKey
+>ˌ=new List<MyIniKey>();ʧ.GetKeys(ˌ);foreach(MyIniKey Ą in ˌ)if(ˊ.Get(Ą).ToString()==ʧ.Get(Ą).ToString())ʧ.Delete(Ą);ʧ.
+Set(ˇ,"actions",Ǥ);if(ʭ!=null){ʧ.Set(ˇ,"oreBefore64",ʩ.ʪ(ʮ));ʧ.Set(ˇ,ˈ,ʩ.ʪ(ʭ));}return ʧ.ToString();}void ˋ(MyIni ʧ){ʧ.Set(
+ˎ,"maxSpeed",ů);ʧ.Set(ˎ,Ă(180),ű);ʧ.Set(ˎ,Ă(181),Ű);ʧ.Set(ˎ,Ă(182),Ŵ);ʧ.Set(ˎ,Ă(183),ŵ);ʧ.Set(ˎ,Ă(184),ƍ);ʧ.Set(ˎ,Ă(185),
+Ǝ);ʧ.Set(ˎ,Ă(186),Ɛ);ʧ.Set(ˎ,Ă(187),Ƒ);ʧ.Set(ˎ,Ă(188),A);ʧ.Set(ˎ,Ă(189),ƕ);ʧ.Set(ˎ,Ă(190),Ɩ);ʧ.Set(ˎ,Ă(191),Ŷ);ʧ.Set(ˎ,Ă(
+192),Ɨ);ʧ.Set(ˎ,Ă(193),Ƙ);ʧ.Set(ˎ,Ă(194),ƙ);ʧ.Set(ˎ,Ă(195),ƚ);ʧ.Set(ˎ,Ă(196),ƛ);ʧ.Set(ˎ,Ă(197),Ʀ);ʧ.Set(ˎ,Ă(199),ŷ);ʧ.Set(ˎ
+,Ă(200),Ÿ);ʧ.Set(ˎ,Ă(201),Ź);ʧ.Set(ˎ,Ă(202),ź);ʧ.Set(ˎ,Ă(203),Ż);ʧ.Set(ˎ,Ă(204),Ɯ);ʧ.Set(ˎ,Ă(205),ż);ʧ.Set(ˎ,Ă(206),Ž);ʧ.
+Set(ˎ,Ă(207),Ɲ);ʧ.Set(ˎ,Ă(208),ž);ʧ.Set(ˎ,Ă(209),ƞ);ʧ.Set(ˎ,Ă(210),Ɵ);ʧ.Set(ˎ,Ă(211),ſ);ʧ.Set(ˎ,Ă(212),ƀ);ʧ.Set(ˎ,Ă(213),Ɓ)
+;ʧ.Set(ˎ,Ă(214),Ƃ);ʧ.Set(ˎ,Ă(215),ƃ);ʧ.Set(ˎ,Ă(216),Ơ);ʧ.Set(ˎ,Ă(221),F);ʧ.Set(ˎ,Ă(235),Ƥ);ʧ.Set(ˎ,Ă(236),ǟ);}public void
+ː(MyIni ʧ){ʧ.Set(ˏ,Ă(240),Ǣ);ʧ.Set(ˏ,"caMenuIndex",ǀ);ʧ.Set(ˏ,Ă(241),ǁ);ʧ.Set(ˏ,Ă(242),ǂ);ʧ.Set(ˏ,Ă(243),Ƣ);ʧ.Set(ˏ,Ă(244
+),ƒ);ʧ.Set(ˏ,Ă(245),Ɠ);ʧ.Set(ˏ,Ă(246),Ǐ);ʧ.Set(ˏ,Ă(247),ǐ);ʧ.Set(ˏ,"caEditValue",Ə);ʧ.Set(ˏ,Ă(248),Ɔ);ʧ.Set(ˏ,Ă(249),Ƈ);ʧ
+.Set(ˏ,Ă(250),ǃ);ʧ.Set(ˏ,Ă(251),ƈ);ʧ.Set(ˏ,Ă(252),Ɖ);ʧ.Set(ˏ,Ă(253),Ɗ);ʧ.Set(ˏ,Ă(254),Ƌ);ʧ.Set(ˏ,Ă(255),ƌ);ʧ.Set(ˏ,Ă(256)
+,Ǆ);ʧ.Set(ˏ,Ă(257),ǎ);ʧ.Set(ˏ,Ă(258),Ǟ);ʧ.Set(ˏ,"caLcdMenu",(int)Ǒ);}public void ˑ(MyIni ʧ){Ǣ=ʧ.Get(ˏ,Ă(240)).ToInt32(Ǣ);
+if(ǡ.Count>0){Ǣ=Math.Max(0,Math.Min(ǡ.Count-1,Ǣ));Ǡ=ǡ[Ǣ];}ǀ=ʧ.Get(ˏ,"caMenuIndex").ToInt32(ǀ);ǁ=ʧ.Get(ˏ,Ă(241)).ToInt32(ǁ)
+;ǂ=ʧ.Get(ˏ,Ă(242)).ToInt32(ǂ);Ƣ=ʧ.Get(ˏ,Ă(243)).ToBoolean(Ƣ);ƒ=ʧ.Get(ˏ,Ă(244)).ToBoolean(ƒ);Ɠ=ʧ.Get(ˏ,Ă(245)).ToBoolean(Ɠ
+);Ǐ=ʧ.Get(ˏ,Ă(246)).ToInt32(Ǐ);ǐ=ʧ.Get(ˏ,Ă(247)).ToInt32(ǐ);Ə=ʧ.Get(ˏ,"caEditValue").ToDouble(Ə);Ɔ=ʧ.Get(ˏ,Ă(248)).
+ToDouble(Ɔ);Ƈ=ʧ.Get(ˏ,Ă(249)).ToDouble(Ƈ);ǃ=ʧ.Get(ˏ,Ă(250)).ToInt32(ǃ);ƈ=ʧ.Get(ˏ,Ă(251)).ToDouble(ƈ);Ɖ=ʧ.Get(ˏ,Ă(252)).ToDouble(
+Ɖ);Ɗ=ʧ.Get(ˏ,Ă(253)).ToDouble(Ɗ);Ƌ=ʧ.Get(ˏ,Ă(254)).ToDouble(Ƌ);ƌ=ʧ.Get(ˏ,Ă(255)).ToDouble(ƌ);Ǆ=ʧ.Get(ˏ,Ă(256)).ToInt32(Ǆ)
+;Ǟ=ʧ.Get(ˏ,Ă(258)).ToString(Ǟ);Ǒ=(a)ʧ.Get(ˏ,"caLcdMenu").ToInt32((int)Ǒ);}string ʭ,ʮ;string ɶ(IMyTimerBlock Ⱦ)=>ʭ??Ⱦ.
+CustomData??"";void Ƀ(IMyTimerBlock Ⱦ,string þ){if(ʮ==null)ʮ=Ⱦ.CustomData??"";ʭ=þ;}}const string ˠ="CarrierLcd",ˡ=
+"CarrierLcdRelay";string ˢ=>ñ(Ă(259));bool ˣ,ˤ,ˬ,ˮ;Vector3D Ͱ,ƺ;double Ȱ,ȯ,ͱ;public
+ Program
+(){ė(true,true,"LCD");MyIni ʧ=Ͳ();if(Storage.Length>0){ˬ=!ʧ.TryParse(Storage)||!ͳ(ʧ);if(!ˬ){ˣ=true;ʹ=ʲ(ʧ,Ͷ,Ă(260));ͷ=ʲ(ʧ,
+Ͷ,ͺ);ͻ=ʲ(ʧ,Ͷ,ͼ);ͽ=ʲ(ʧ,Ͷ,Ă(261));}}Ά();Έ();Runtime.UpdateFrequency=UpdateFrequency.Update1;}public void
+ Main
+(string Ή,UpdateType Ί){Ό.Ύ(Runtime.LifetimeTicks,Runtime.LastRunTimeMs);if(!Ś(Ή)){Ώ(Ή);return;}if((Ί&UpdateType.Update1)
+==0)return;ΐ();if(Α!=null)Α.ʣ();if(ˬ)Echo(Ă(262));else if(!Β()){ˤ=false;Echo(Γ);}else{B=false;Δ();Ε();}ì();D++;}void Θ(){
+if(ˬ)return;Ζ(ˣ?"uiReady":Ă(263),ˣ?Η():"");if(ͽ.Length>0)Ζ("uiDirect",ͽ);}void Ν(string Ι,string Κ){if(ˬ)return;if(Ι==
+"uiRestore"&&!ˣ){MyIni ʧ=Ͳ();if(!ʧ.TryParse(Κ))return;ʹ=ʲ(ʧ,Ͷ,Ă(260));ͷ=ʲ(ʧ,Ͷ,ͺ);ͻ=ʲ(ʧ,Ͷ,ͼ);Έ();ˣ=true;Λ();Ζ("uiReady",Η());return;
+}Μ(Ι,Κ);}void Π(MyIni ʧ){Vector3D Ξ,ġ;if(!Ş(ʲ(ʧ,Ο,"position"),out Ξ)||!Ş(ʲ(ʧ,Ο,"target"),out ġ))return;Ͱ=Ξ;ƺ=ġ;Ȱ=ʵ(ʧ,Ο,
+"forward");ȯ=ʵ(ʧ,Ο,"backward");ͱ=ʵ(ʧ,Ο,"max");ˮ=ʴ(ʧ,Ο,"calibrated");A=ʴ(ʧ,"Ui",Ă(188),true);ˤ=true;}Vector3D Ț()=>Ͱ;double ɕ()=>ͱ
+;bool ȳ()=>ˮ;void Λ(){if(!ˣ||ˬ)return;MyIni ʧ=Ͳ(),Ρ=Ͳ();Σ(ʧ);if(Α!=null)Α.ː(Ρ);ʧ.Set(Ͷ,Ă(260),ʹ);ʧ.Set(Ͷ,ͺ,ͷ);ʧ.Set(Ͷ,ͼ,Ρ
+.ToString());ʧ.Set(Ͷ,Ă(261),ͽ);Storage=ʧ.ToString();}Ů Α;string ʹ="",ͷ="",ͻ="",ͽ="",Τ="",Υ="";int Φ,Χ,ʟ=-10000;string ɑ()
+=>ͽ.Length>0?Ă(264):Τ;void Ώ(string Ή){string Ą=Ή.Trim().ToLowerInvariant();string ö;if(Ą!="up"&&Ą!="w"&&Ą!="down"&&Ą!="s"
+&&Ą!="apply"&&Ą!="e"&&Ą!="back"&&Ą!="c"&&Ą!=Ă(170)&&Ą!=Ă(171))ö=Ă(265);else if(ˬ||!ˣ||!Β()||!ˤ||D-ʟ>180)ö=Ă(266);else if(ͽ
+.Length>0)ö=Ă(267);else{Τ="";string Ψ=Α.ˍ(Ą);var ˆ=Ͳ();ˆ.TryParse(Ψ);ˆ.Set(ˇ,Ω,Υ);var Ϊ=new List<MyIniKey>();ˆ.GetKeys(ˎ,
+Ϊ);if(Ϊ.Count>0||ˆ.ContainsKey(ˇ,"oreAfter")||ˆ.ContainsKey(ˇ,ˈ)||ʲ(ˆ,ˇ,"actions").Length>0){ͽ=Ϋ()+"\n"+ˆ.ToString();Λ();
+Ζ("uiDirect",ͽ);ö=Ă(268);}else{Λ();ö=Ă(269);}Φ=0;}ά(ö);Ε();}void Έ(){Α=new Ů(this);MyIni ʧ=Ͳ();if(ʧ.TryParse(ͻ))Α.ˑ(ʧ);}
+bool Μ(string Ι,string Κ){if(Ι=="uiAck"){int έ=Κ.IndexOf('\n');if(έ>0&&ͽ.StartsWith(Κ.Substring(0,έ+1),Ā)){ͽ="";Λ();string ù
+=Κ.Substring(έ+1);Τ=ù.Replace('\r',' ').Replace('\n',' ');ά(ù);Φ=0;}return true;}if(Ι!="uiSnapshot"&&Ι!="uiInput")return
+false;if(Α==null||!ˣ)return true;MyIni ʧ=Ͳ();if(!ʧ.TryParse(Κ))return true;Π(ʧ);if(Ι=="uiSnapshot"){Α.ʶ(ʧ);ʟ=D;Υ=ʲ(ʧ,"Ui",Ω,
+"-");return true;}if(ͽ.Length>0)return true;string Ɇ=ʲ(ʧ,"UiInput","id");if(Ɇ==ʹ){Ζ("uiReply",ͷ);return true;}if(!ή.ί(Ɇ,ʹ))
+return true;Α.ʶ(ʧ);ʟ=D;Υ=ʲ(ʧ,"Ui",Ω,"-");MyIni ˆ=Ͳ();ˆ.TryParse(Α.ˍ(ʲ(ʧ,"UiInput","command")));ˆ.Set(ˇ,"id",Ɇ);ˆ.Set(ˇ,Ω,Υ);ʹ=
+Ɇ;ͷ=ˆ.ToString();Λ();Ζ("uiReply",ͷ);Φ=0;return true;}void Δ(){if(Α==null||!Β()||!ˤ)return;if(Α.ʷ()||D>=Χ){Χ=D+300;Α.ʺ(
+true);}else if(D>=Φ){Φ=D+Math.Max(60,F);Α.ʺ(false);}}void ʹ(string ʤ,string ʥ){MyIni ʧ=Ͳ();ʧ.Set(ʨ,"fields",ΰ(ʤ,ʥ));Α.ʫ(ʧ);Ζ
+("uiDisplay",ʧ.ToString());}string ΰ(string ʤ,string ʥ){var ö=new StringBuilder();ĥ.Ĥ(ö,ʤ);ö.Append('|');ĥ.Ĥ(ö,ʥ);return
+ö.ToString();}class ή{string α="",β="",γ="",δ="",ε="";public string η()=>"EMMA-OP-1\n"+ζ(α)+ζ(β)+ζ(γ)+ζ(δ)+ζ(ε);static
+string ζ(string ą)=>ą.Length.ToString()+":"+ą;public static bool ί(string θ,string Ņ){int ă=θ==null?-1:θ.LastIndexOf('/');long
+ι;if(ă<=0||!long.TryParse(θ.Substring(ă+1),out ι)||ι<=0)return false;if(ğ(Ņ))return true;int κ=Ņ.LastIndexOf('/');long λ;
+return κ==ă&&θ.Substring(0,ă)==Ņ.Substring(0,κ)&&long.TryParse(Ņ.Substring(κ+1),out λ)&&ι>λ;}public bool ρ(string ą){const
+string μ="EMMA-OP-1\n";if(ą==null||!ą.StartsWith(μ,Ā))return false;int ν=μ.Length;string Ɇ,ξ,Κ,ɞ,ù;if(!ĉ(ą,ref ν,out Ɇ)||!ĉ(ą,
+ref ν,out ξ)||!ĉ(ą,ref ν,out Κ)||!ĉ(ą,ref ν,out ɞ)||!ĉ(ą,ref ν,out ù)||ν!=ą.Length)return false;if(ɞ!=""&&ɞ!=ο&&ɞ!=π&&ɞ!=Ă(
+270))return false;if(ɞ!=""&&(!ί(Ɇ,"")||ξ.Length==0))return false;if(ɞ==""&&(Ɇ.Length!=0||ξ.Length!=0||Κ.Length!=0||ù.Length
+!=0))return false;α=Ɇ;β=ξ;γ=Κ;δ=ɞ;ε=ù;return true;}static bool ĉ(string ą,ref int ν,out string ς){ς="";int έ=ą.IndexOf(':'
+,ν),σ;if(έ<ν||έ-ν>9||!int.TryParse(ą.Substring(ν,έ-ν),out σ)||σ<0||σ>ą.Length-έ-1)return false;ς=ą.Substring(έ+1,σ);ν=έ+1
++σ;return true;}}string τ="";bool υ;void ά(string ö)=>τ=ö??"";void Ε(){if(τ.Length!=0)Echo(τ);}class q{long φ;public int
+Ő=-1;public bool Ȁ;public bool ȁ=>!Ȁ&&Ő<0&&φ>=18000;}const string χ="EMMA-MODULE/0.9.00/1";IMyBroadcastListener ψ;
+IMyProgrammableBlock ω;List<IMyProgrammableBlock>ϊ=new List<IMyProgrammableBlock>();int ϋ,ό=-10000;bool ύ,ώ,Ϗ;string Γ=Ă(271),ϐ="";ή ϑ=new ή
+();long ϒ;bool Β()=>ύ&&ω!=null&&!ω.Closed&&ω.Enabled&&ω.IsFunctional&&ϋ-ό<=180;void Ά(){ψ=IGC.RegisterBroadcastListener(Ċ
+.ô(χ+"/"+ˠ));if(ϐ.Length==0)ϐ=Me.EntityId.ToString();ϓ();if(ώ)Λ();}void ϓ(){ϊ.Clear();Ē.GetBlocksOfType(ϊ,ē=>ē.CubeGrid==
+Me.CubeGrid&&ē.CustomName==ˢ);IMyProgrammableBlock ϔ=ϊ.Count==1?ϊ[0]:null;if(ϔ!=ω){ω=ϔ;ύ=false;ό=-10000;}if(ϔ==null)Γ=ϊ.
+Count>1?Ă(272):"Missing "+ˢ;}void Ζ(string Ι,string Κ){if(ω==null||ω.Closed)return;IGC.SendBroadcastMessage(Ċ.ô(χ+"/"+ˡ),new
+MyTuple<long,string,string>(ω.EntityId,Ι,Κ??""),TransmissionDistance.CurrentConstruct);}void ΐ(){ϋ++;if(ϋ%60==1)ϓ();int ϕ=8;
+while(ψ.HasPendingMessage&&ϕ-->0){var ϖ=ψ.AcceptMessage();if(ω==null||ϖ.Source!=ω.EntityId||!(ϖ.Data is MyTuple<long,string,
+string>))continue;var ʜ=(MyTuple<long,string,string>)ϖ.Data;if(ʜ.Item1!=Me.EntityId)continue;if(ʜ.Item2=="hello"){ύ=ʜ.Item3==χ
+;if(ύ)ό=ϋ;else Γ=Ă(273);}else if(ύ){ό=ϋ;Ν(ʜ.Item2,ʜ.Item3);}}if(ϋ%60==1){Ζ("hello",χ);if(Β())Θ();}if(Β())Γ="";else if(ύ)Γ
+=Ă(274)+ˡ;}string Ϋ(){ϒ++;return ϐ+"/"+ϒ;}void Σ(MyIni ʧ){ʧ.Set(Ͷ,"role",ˠ);ʧ.Set(Ͷ,"pair",Ċ.ï);ʧ.Set(Ͷ,"version",χ);ʧ.
+Set(Ͷ,ʳ,ϐ);ʧ.Set(Ͷ,ϗ,ϒ);ʧ.Set(Ͷ,"operation",ϑ.η());}bool ͳ(MyIni ʧ){Ϗ=ώ=false;if(ʲ(ʧ,Ͷ,"role")!=ˠ)return false;ώ=ʧ.Get(Ͷ,
+"pair").ToString(new õ().ï)!=Ċ.ï;if(ώ)return false;string Ϙ=ʲ(ʧ,Ͷ,"version");if(Ϙ!=χ){Ϗ=Ϙ==Ă(275);if(Ϗ){ϐ=ʲ(ʧ,Ͷ,ʳ);ϒ=Math.Max(
+0,ʧ.Get(Ͷ,ϗ).ToInt64(0));}return false;}ϐ=ʲ(ʧ,Ͷ,ʳ);ϒ=ʧ.Get(Ͷ,ϗ).ToInt64(0);var ϙ=new ή();if(!ϙ.ρ(ʲ(ʧ,Ͷ,"operation")))
+return false;ϑ=ϙ;return ϐ.Length!=0&&ϒ>=0;}static class ʩ{public static string ʪ(string ö)=>Convert.ToBase64String(Encoding.
+UTF8.GetBytes(ö));public static string ŉ(string ö){try{return Encoding.UTF8.GetString(Convert.FromBase64String(ö));}catch(
+Exception){return null;}}}sealed class ϣ{public long Ϛ,ϛ=-1;double Ϝ;readonly long ϝ=DateTime.UtcNow.Ticks;bool Ę;public void Ύ(
+long Ϟ,double Ņ){if(ϛ>=0){if(Ę&&Ϛ++>=20&&Ņ>=0&&!double.IsInfinity(Ņ))Ϝ+=.005*Ņ;long ϟ=Math.Max(0,Ϟ-ϛ);if(ϟ>0)Ϝ*=ϟ==1?.995:
+Math.Pow(.995,ϟ);}ϛ=Ϟ;Ę=true;}public void Ϡ()=>Ę=false;public string Ϣ(string ϡ,long Ɇ)=>Ă(276)+ϡ+"|"+Ɇ+"|"+ϝ+"|"+Ϛ+"|"+Ϝ.
+ToString("R",ł);}ϣ Ό=new ϣ();long Ϥ=-60;string ϥ="";string Η(){if(ϥ.Length==0||Ό.ϛ-Ϥ>=60){Ϥ=Ό.ϛ;ϥ=Ό.Ϣ(ˠ,Me.EntityId);}return ϥ;}
+public void
+ Save
+(){Ό.Ϡ();Λ();}const string Ϧ="EMMA3_TIMER_LOG|1\n";const int ϧ=8192;readonly long Ϩ=DateTime.UtcNow.Ticks;long ϩ;List<
+IMyTimerBlock>Ϫ=new List<IMyTimerBlock>();void ȿ(string ö){if(υ)ά(ö);if(!A)return;if(H.Count>=I)H.RemoveAt(0);ö=ö??"";H.Add(ö.Length>
+2048?ö.Substring(0,2048)+"...":ö);}void ë(){string ð="Script Log";string đ=ˠ.StartsWith("Miner",Ā)?ò(ð):ñ(ð);Ē.
+GetBlocksOfType(Ϫ,Ⱦ=>Ⱦ.CubeGrid==Me.CubeGrid&&Ⱦ.CustomName==đ);if(Ϫ.Count!=1)return;IMyTimerBlock ϫ=Ϫ[0];int Ĝ=ģ.Ġ(H,J,4096);G.Clear();
+for(int ĕ=0;ĕ<Ĝ;ĕ++){G.Append(Me.EntityId).Append(':').Append(Ϩ).Append(':').Append(ϩ+ĕ+1).Append('|');ģ.Ģ(G,H[ĕ]);G.Append
+('\n');}string ϭ=Ϭ(ϫ.CustomData,G.ToString());if(ϭ==null||Ĝ==0)return;ϫ.CustomData=ϭ;if(ϫ.CustomData!=ϭ)return;ϩ+=Ĝ;H.
+RemoveRange(0,Ĝ);}string Ϭ(string Ϯ,string ϯ){if(ğ(Ϯ))Ϯ=Ϧ;else if(!Ϯ.StartsWith(Ϧ,Ā))return null;if(ϯ.Length>ϧ-Ϧ.Length)return null
+;int ϰ=Ϯ.Length+ϯ.Length-ϧ;if(ϰ>0){int έ=Ϯ.IndexOf('\n',ϰ+Ϧ.Length-1);Ϯ=Ϧ+(έ<0?"":Ϯ.Substring(έ+1));}return Ϯ+ϯ;}static
+string ɟ(á ą){switch((int)ą){case 0:return"None";case 1:return"WaitingPlan";case 2:return Ă(277);case 3:return Ă(278);case 4:
+return Ă(279);case 5:return Ă(280);case 6:return Ă(281);case 7:return Ă(282);case 8:return Ă(283);case 9:return Ă(284);case 10
+:return Ă(285);case 11:return Ă(286);case 12:return Ă(287);case 13:return Ă(288);case 14:return Ă(289);default:return((
+int)ą).ToString();}}static readonly Vector3D ř=Vector3D.Zero;const StringComparison ā=StringComparison.OrdinalIgnoreCase,Ā=
+StringComparison.Ordinal;static System.Globalization.CultureInfo ł=System.Globalization.CultureInfo.InvariantCulture;static bool Ś(
+string ą)=>string.IsNullOrWhiteSpace(ą);static bool ğ(string ą)=>string.IsNullOrEmpty(ą);IMyGridTerminalSystem Ē=>
+GridTerminalSystem;static string ʲ(MyIni ą,string ʱ,string Ą,string ϱ="")=>ą.Get(ʱ,Ą).ToString(ϱ);static bool ʴ(MyIni ą,string ʱ,string Ą,
+bool ϱ=false)=>ą.Get(ʱ,Ą).ToBoolean(ϱ);static double ʵ(MyIni ą,string ʱ,string Ą,double ϱ=0)=>ą.Get(ʱ,Ą).ToDouble(ϱ);static
+MyIni Ͳ()=>new MyIni();const string ˏ="UiDraft",ˎ="UiEdit",Ͷ="Module",ˇ="UiReply",ȅ="Off",Ο="UiFlight",ț="0.0",Ω="generation"
+,ͺ="uiLastReply",ʳ="identity",ʬ="settings",Æ="No contact",ˈ="oreAfter64",ʨ="Display",Ã="Unknown",ǯ="   ",Ǯ="-  ",ο=
+"accepted",π="finished",ϗ="sequence",ͼ="uiDraft";static string[]ϲ="ń脾淅曍惝偳狣脨|毲矮玠脻腜脤祯癥|Ń脢脯ō脣腜狳偭竳稠物獦狲|Ġ脹|桂腜犠盵秴健睤偷瓴Ũ|拸硥燴狤偯睥偬矣烬Ġ|条盥槨瓰偤知禠睯稠盡穣琠桂腜ť|Ń脢埍脣腜脤盩秭烴燨|ń脾脻偯眠矮犠珲瓤|懯睴烣稺偌瓶ť|Ŏ腉偦矲Ġ|楥盯穥偃矮穲矬|脹脻ĩ|Ő脦偂祩牧ť|Ł脫偉扳|脩曡睡珥Ų|ŷ脧Ű脦|Ŕ脮偬腢ĺ|脶ż腀瓣瓮珼穲烶独癩睧繳穯祥牼瓤癥繰烵秥牼Ů腉繬石穼硲狰烲瓮珼竮痮矷Ů|腅ų|偼Ġ腞ĭ脶|偅曍囁腕縠腞Ġ|偼偔脮偬腢|倠偁牤脺穯Ġ脭Į|倠偏祥側瓭狲偭瓳秩睧Į|腞睯盯竳Ġ脶|ł脵偳狴穩睧ų|腞ĭ腙ś|楥燡癬偭脣|ņ腘倦偈矬爠ś|倠偍腑崠|倠Ġ腅ų|Œ腊|槴烮牡祤偤狰穨|捯祷烲爠称狥Ť|腎偳硥狤|楥秵硰癹偃烲珯|Œ腔偳穡祴健籴祡|曥祧犠牯燫脤ś|槴矰偡稠墥偦童瘠ś|脩偳穯祡珥偛|腆偯祤狲|倠偔瑩禠秴矰禠腂燵祲狮稠ŭ腑|倠脯燬狡祳偣脷偉扳Ĭ|倠腄珥睥祡穥Ť|倠偃脢埍脣偰烴瑳Į|倠偅曍囁偫狥硳Ġ|偯猠烬癯篥爠|倠側脮偡禠矶狲瑥烤圠|柲瓥睴š脨側腓|惲祩筡瘠Ŵ腓|倠偔祡睳瓴崠烤烰穩筥偦癩砠煲烫瓮ŧ|懲竩秥偯獦秥Ŵ|Ł腈偬腢|惬癯箠盯筥盥睴偛|槥烴健籩稠腙ś|擣犠祥腀犠ś|槥烲燨偲烤瓵ų|桡祫脤Ũ腗|桬烮犠ţ腒|橲烶独偣腒|歩秵烬瓺š脨偛|œ腡ś|Ő脦腃側祡睳獥礠ś|Ő脦偰矷狲側祡睳ũ脨禠ś|Ő脦偲狭矴犠癩睫偛|Ő脦偌懄偯竴硵稠ś|橩盥礠硥祳瓳穥督犠ś|腋Ũ腗崠|腋篩牴琺Ġ|腋癥睧穨崠|倠偒狳矵祣犠穥癥盥穲粺偍瓳秩睧|倠Ġ腌崠|偣脷健睴瓴粠擄禮|倠倥偯猠捗戠Ŕ脮崠|倠倥偯猠慗戠Ŕ脮崠|Ŕ脮偵秥崠|倠偔竲眠穥秴崠|倠偃烬瓢祡穥爺Ġ|柲犠癩秴偣瑡睧狤嶠祥獲狳瑥爠盥睵圠惰硬粠烧烩眮|腆腃偯祤狲偵硤烴狤Į|柰狮偡竴瞭脶Į|ō脣偳穡穵ų脯Ţ脵Į|惤畵秴偣脢偢脵Į|腖ţ脢偳穡穳Į|慡燫腝盡瓮偭狮窮|橯珧癥偡脫Ġ脶Į|懨矯秥腃Ġ腙矲偩穥皠硲矤竣脨Į|Ń脳瘠ņ腘倦偈矬爮|橵祮偯獦偁暠篨狮偦腘狤Į|懯睴瓮童Ġ腂瓮穥祲竰穥爠ŭ腑Į|ŗ脧ŭ脣偣矮獩祭š脨Į|懡癬Ġ腂ŭ脣偢烣ū腝牯燫Į|惬祥烤粠Ų腊Į|楥癥烳犠穯痥眻偬狡筥偩穳偵睦腘狤偰癡睥禮|腖睥籴偭脣脬|腖Ń脢脬|楥磵瓲犠盥祧犠煥獯祥偣矮睥燴矲Į|扯燫偵ų脤燯睮狣穯礠矮癹Į|槴矲ť腕悠煥穷狥眠š脫禮|槴矰腕烴倱加獵独偤竲脤烵穯Ġ腀瓣犮|惤畵秴偡癬偭脣右偢脵Į|腖睥籴偃脢脬|腖ŭ脣脬|桲瓯祩穩絥偩燥偷瑥眠搲枠獡癬禠煥癯箠媰劮|槴矲狤偩燥側烲珥稻偭瓮瓭竭倱偭瓬癩矮偌Į|脴盡籩盵皠獬瓧瑴偳硥狤Į|脴祥磵瓲狤偦烣脤烣燵祡燹Į|脴烲祩筡Ŭ腛|脴š脫偡筯瓤偲烤瓵禮|脴獡瓬狤偳狡祣琠祥穲粠牥癡粮|脴烰硲矡燨偰矩睴腛|脴晃戠竰牡穥偩睴狲筡瘮|脴秡獥穹偣瑥燫禠硥礠穩燫Į|脴腏偨烮牯獦腛|脴腏偳穯砠矦獳狴Į|脴穯穡瘠Ŵ脮偣狩癩睧Į|脴睯祭烬側脮偢竤珥種|脴š腈偣烰Į|橥秴側竲眠祡穥偢狦矲犠腏Į|槡筥偃脢埍脣偬矧禠穨祯竧琠Ű脦Į|惬癯箠癥烶脤Ń脢偳狡稠烦穥礠腙秴烲穳Į|Ő脦偵睬矡牳腃嶠Ń脢偐愠祥盡瓮ų腇Į|Ő脦偳穡珥ų腕硯篥礻腕桂偩ų腇Į|惮穥睮炠Ű脦側独狭狴祹埤矣痳Ļ腇禠祥盡瓮Į|楥筥祴脯狸瓴Į|槡筥脯狸瓴Į|扥穥燴狤偍烸崠|槥癥燴偳穥硳瓺犮|槷瓴燨偢狴篥狮偏祥脯擴狭禮|沠燯睴瓮端竳癹偰祯牵燥嶠氠物秡煬狤Į|曯筥腃嶠惰硬粠秡筥禬偂烣疠ţ脳癳Į|懨矯秥偡Ů腃腝盯筥Į|楥矲牥礠祥Ŧ脣粠硲瓯祩穹Į|惰硬Ź腝硩燫偵砠穨瓳腃Į|沠穡祧狴嶠檠盩睥偩猠穨狲犻偘偳痩砮|腎Ġ腂Ű脦脯硡穨ų腝炠燬狡眠秴烴犮|懬狡眭祥秥稠擄禬腄硡穨禮|ŗ脧硬烮|桲狶瓥箠祥烤Ź|Ń脢健眠Ų腔|槥穴Ŭ脤ţ脢|ō脣偡燴瓶ť|槴矲脤ŭ脣|脼脤ŭ脣|懨狣ū脤瑡睧烲|桬烮Ů脤ŭ脣偲腔|腁脤ŭ脣|楥燯祤脤燯盰癥脨|桬烮Ů脤Ų腔|祥烤糟牲糲竮|曩秳脤秥穵Ű|脩偯硥祡脨偨独Ť|脼偍脣|橨瓳偭脣偷烳偲腊Į|懨狣疠腂Ń脢偬矧Į|脼腐盯Ŷ脤穯腚Į|扯燫腐秴矲瓮玮|脼嘠腀瓣ť脯硡祫偡Ŵ腚Į|曩秳脤拍暭悠懡Ġ脭Į|脭健籣狥牳倶媵妶偣瑡祡燴狲禮|脭偮狥牳脺呭烸倱夸咮|曹柢略燴慵瓬牥祟慬童硲瓮穄狦瓮ũ脨į|擮筡癩爠矲偤脾煬童硲瓮稠擄偩眠脭Į|脩偳穯祡珥Ġ|Ń脢脯ō脣偳腡狮烢癥爠獲短偌懄Į|槥烴健籩稠牵Ų脤腙|偼Ġ腁竰䔭倠惤爠矲偲狮热犠烮偌懄側瞊倠Ġ|嚠偒狮热犠拍暭悧禠硲矧圠煬矣疠穯|曩秳脤祥磵瓲狭狮穳Į|燵祳矲穯珧癥|燵祳矲側矧珬ť|腍竰嘠牯篮嘠烰硬粬偢烣疮|杯腃偤独瓶狲狤偹狴|橲烶独癩睧崠|偼偁脫偲脽|偼偍瓮脤穯穡癳|偁脫偉戺Ġ|偁脫禠ţ脷崠|瓴狭秃烴烬矧|烲祩筡癔腓|矲瓥睴š脨Ŕ腓扥ŧ|脥槥烲燨楡物竳|脥桡祫瓮珈腗|脥桬烮狃腒|脥橲烶独Ń腒|脥歩秵烬瓺š脨|脥惬癯篍矶狭狮Ŵ|脥槣祩硴景珧瓮ŧ|脥惬癯篓狡穅籩穄竲瓮珍瓮瓮ŧ|脥擣狒ť腀ť脰|脥擣狒ť腀狍瓬癩矮晩穥祳|脥Ő脦柲狔祡睳獥Ų|脥Ő脦桯篥祔祡睳ũ脨ų|脥Ő脦楥盯穥晩睫|脥Ő脦晣牏竴硵Ŵ|脥擴狭种矤ť|脥脰擴狭ų|脥桲矤竣脨槴烴竳|ŭ脣槴烮牡祤扥硴Ũ|ŭ脣晡睥毩牴Ũ|ŭ脣晡睥ň腗|ŭ脣捯祷烲牓硥狤|ŭ脣腎槰狥Ť|脸脰|脸懡祧ů脱|脸腌脱|ŭ脣槴矰惴柮ť脱捵独|ŭ脣Œ腔腁拸穲š|ŭ脣曥祧狁秳瓳穥牄矣痩睧|ŭ脣脩脰|秨矲穒烮珥扩秴脳曥穥祳|腏柦獳狴曥穥祳|Ŵ脮Ō腢旮|Ŵ脮櫳ť脱|š腈Ō腢|穵祮橥秴脰|腣槥燯睤ų|腣曡秳|Ű脦晣版狡祴煥烴惧狔瓣痳|Ű脦晣牒狡特|癣Ť脿|獵癬腞脰|脥ō腑槴烴ť|盡睵烬脩懹燬狓穡穥|脥惣穩筥拮穩穹擤|脥Ő脦槴烴ť|脥Ő脦曥秳烧ť|脥懯睴瓮童惶烩癡煬ť|脥Ń脷懯竮Ŵ|脥Ń脢Œ腔擮牥Ÿ|獵癬腞拮烢癥槴š脨烲糔瓣痳|Ų脽Ł脫|Ų脽Ń脷|Ų脽歩秩煬ť|Ŧ腘惮版矬Ť|穩盥祐狲秩秴狮燥脰|ō脣Ġ脶|š脫Œ脽|脶橯穡癳|獬狥穓独狣脨|燡ł脵桡珥|燡ō脣ł脵桡珥|燡拤瓴瓮珖烬童|燡腆楥矲牥祁祭狤|燡腆柲狍矶瓮ŧ|燡腆腟擮牥Ÿ|燡拤瓴瓮珉睤狸|燡Ŕ脮拤瓴Ō腢旮|燡Ŕ脮拤瓴櫳ť脱|燡Ŕ脮槴狰擮牥Ÿ|脲槨瓰ň腗|脲槨瓰毩牴Ũ|脲槨瓰晥睧穨|脲腌脱|脲懡祧ů脱|ţ脢擮獯楥獲狳瑔瓣痳|ţ脢擮獯脿|濣脢柲ť腟楡ŷ|脹桩癯稩|竩晡秴擮硵穉Ť|竩扩祥燴桥睤瓮ŧ|晃戠燨狣痰矩睴偮狥牳偡穴狮脨Į|竩楥秴矲狒狱童秴|ŗ脧Ń脢偲狰癹Į|腍櫰嘠扯篮嘠惰硬粬偂烣疮|曥睵偷脧腂Ń脢Į|ŗ脧腂Ń脢腝烮秷狲Ġ腂硲狶瓯竳偭狮窠烣脨Į|曥睵偡ţ脨偳狮種偗脧腂Ń脢Į|曥睵偵硤烴狤Į|烣痮矷癥牧狤|ŗ脧硡祴睥Ų|ń脾硡祴睥礠桂腜狳|脻埐瓬矴偶狲秩矮偭瓳盡穣Ũ|Ŏ腉偷瓴琠|拍曁囍柄櫌抯堮尮娲垱|拍曁姟楕杔操拼壼|桲狶瓥篒狡特|捬糩睧Ń脢Œ腔|脪槴š脨烲Ź|脪ō脣|脪脩槴矲ť|脪脩脼|脪腁竰脩擮筥睴矲Ź|腠脼|腠腎扯燫|脪ō脣桬烮|脪懯盰癥脨惣ū|脪桯秴懯盰癥脨脩槴矲ť|脪ō脣腁|烲祩狲|瓮狲|瓮玠|狭盡ĳ|癵珩Ů|烩Ŵ脤獯礠|穩矮|摡睧烲|毡瓴瓮ŧ|秴狲矩Ť|偳狴穩睧禠硡珥Į|擴狭禠穩盥Ų|瑲竳Ŵ|偡睤Ġ|拮烢癥Ť|桥祣狮Ŵ|燡燨狤Ń脢|烮燥|槥稠|狨烶瓯Ų|盩睩睧|短硬狴狤|ŭ脣惵穯槥祶瓣ť|桲矧圠慬矣疠Ĩ|偮热犯煬童硲瓮稠硡瓲禠|懯盭烮牥Ų|扥硬矹|狰矲Ŵ|竰癩燡穥Ġ|楥獲狳瑉睴狲筡癔瓣痳|秥祶|槴烲Ŵ|穨犠|偯祥|偳燡睳嘠燡燨狳Ĭ脯|杯偲狧瓳穥祥爠ŭ脣|楥Ŧ脣Ź|偦烬癢烣ū|燣独狲š脨|瞠燯睴烣Ŵ|脽狤偬石Ŵ|倠偓瑩砠|摹牲矧狮|晃戠燯盭烮牳崠|楥穵祮|燲竩秥|瓮玬Ġ腀瓣脤烮爠|瓳秩矮|癥烲脳|矬狲脳|矵穥|偍脣Ġ|槨矷Ġ|狩珨Ŵ|瓮瓳Ũ|盩Ů脤|偄矣疠桯秥倲|偤瓳Ŵ脳Į|偮热|側瞠|惵穯|曯筥柲瓧瓮烬|楥腀狤腁竰脩|燲瓰稠癯珧脤|瓭瓴|盥烳竲狤捬瓰"
+.Split('|'),ϳ=new string[356];static string Ă(int ɏ){if(ϳ[ɏ]!=null)return ϳ[ɏ];var ö=new System.Text.StringBuilder();
+foreach(char Ĉ in ϲ[ɏ])if(Ĉ>=32768)ö.Append(Ă(Ĉ-32768));else{if(Ĉ>=16384)ö.Append((char)(Ĉ>>7&127));ö.Append((char)(Ĉ&127));}
+return ϳ[ɏ]=ö.ToString();}

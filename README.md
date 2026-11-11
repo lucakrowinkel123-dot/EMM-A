@@ -1,8 +1,20 @@
 # EMM-A client plugin
 
-This branch contains the Pulsar Legacy client plugin bundled with EMM-A 0.9.40 for Space Engineers 1. It plans asteroid mining routes for a carrier and its fleet of miners. In-game use requires the matching 0.9.40 programmable-block scripts, installed separately.
+EMM-A 0.9.40 Single Miner automates asteroid mining for one carrier and one registered miner in Space Engineers 1. Install the EMM-A client plugin through Pulsar Legacy and paste the five matching scripts into their programmable blocks.
 
-The [0.8.56 release](https://github.com/lucakrowinkel123-dot/EMM-A/tree/v0.8.56) contains the earlier single-miner plugin and its four companion scripts. The scripts directory on this branch is from that release.
+## 0.9.40 Single Miner scripts
+
+Open a script, choose **Raw**, and paste the entire file into the matching block’s editor.
+
+| Carrier | Miner |
+| --- | --- |
+| [Carrier Commander](scripts/0.9.40-single-miner/EMM-A%20Carrier.txt) | [Miner Commander](scripts/0.9.40-single-miner/EMM-A%20Miner.txt) |
+| [Carrier Pilot](scripts/0.9.40-single-miner/EMM-A%20Carrier%20Pilot.txt) | [Miner Pilot](scripts/0.9.40-single-miner/EMM-A%20Miner%20Pilot.txt) |
+| [Carrier LCD](scripts/0.9.40-single-miner/EMM-A%20Carrier%20LCD.txt) | |
+
+A stored miner keeps its registration. A carrier with an existing multi-miner save must finish its fleet work and reduce its roster to the miner it wants to keep using its previous Commander before switching. Back up that save before changing registrations.
+
+The [0.8.56 release](https://github.com/lucakrowinkel123-dot/EMM-A/tree/v0.8.56) has its own plugin and four scripts.
 
 ## Source and build
 
