@@ -74,30 +74,8 @@ namespace EMMA3.Client
             BuildLaneDestructionRanges(plan, snapshot, settings, cancellation);
             LogTiming(plan.MissionId, "Marking destruction-safe lane sections", stageTimer, "drills=" + snapshot.MinerDrills.Count);
             stageTimer.Restart();
-            BuildMinerRoute(plan, settings, organicRouter, ref relaxedOrganicRouter, cancellation, progress);
-            LogTiming(plan.MissionId, "Building Miner route", stageTimer, "routePoints=" + plan.MinerRoute.Count);
-            progress.Set("Encoding and validating route");
-            stageTimer.Restart();
-            // The compact path format's anchor is a runnable safe pose, not the
-            // physically docked position. Keep it at the shared outer dock pose so
-            // `dock` and reverse-recall reach the safe gate before the Miner aligns,
-            // descends to the inner pose, and makes its final connector approach.
-            plan.MinerPathText = PathCodec.Build(
-                plan.MinerDeparturePosition,
-                plan.MinerDockForward,
-                plan.MinerDockUp,
-                plan.MinerRoute,
-                plan.Planes,
-                settings.MineHeight,
-                settings.MineWidth,
-                Vector3D.Distance(plan.MinerDockPosition, plan.MinerDeparturePosition));
-            int count;
-            string validation;
-            if (!PathCodec.Validate(plan.MinerPathText, out count, out validation))
-                throw new InvalidOperationException("Miner path invalid: " + validation);
-            plan.ValidationMessage = validation;
-            plan.PathHash = PathCodec.Hash(plan.MinerPathText);
-            LogTiming(plan.MissionId, "Encoding and validating route", stageTimer, "records=" + count);
+            int count = BuildFleetPaths(plan, snapshot, organicRouter, cancellation, progress);
+            LogTiming(plan.MissionId, "Encoding and validating fleet routes", stageTimer, "records=" + count);
             progress.Set("Route ready; publishing");
             int relaxedSearches = relaxedOrganicRouter == null ? 0 : relaxedOrganicRouter.SearchCount;
             int relaxedFallbacks = relaxedOrganicRouter == null ? 0 : relaxedOrganicRouter.FallbackCount;

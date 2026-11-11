@@ -14,6 +14,8 @@ namespace EMMA3.Client
         private IMyTimerBlock lastCarrierInfoTimer;
         private IMyTimerBlock lastMinerInfoTimer;
         private long minerInfoLookupOwner;
+        private readonly Dictionary<long, IMyTimerBlock> minerInfoTimers = new Dictionary<long, IMyTimerBlock>();
+        private readonly Dictionary<long, int> minerInfoRetryFrames = new Dictionary<long, int>();
         private readonly List<IMyTerminalBlock> pluginInfoLookupBlocks = new List<IMyTerminalBlock>();
 
         private void ObservePluginInfoTimers()
@@ -23,6 +25,7 @@ namespace EMMA3.Client
             if (blocks.MinerInfoTimer != null)
             {
                 lastMinerInfoTimer = blocks.MinerInfoTimer;
+                if (blocks.MinerPb != null) minerInfoTimers[blocks.MinerPb.EntityId] = blocks.MinerInfoTimer;
                 minerInfoLookupOwner = lastMinerPb?.EntityId ?? 0;
                 return;
             }
@@ -45,21 +48,31 @@ namespace EMMA3.Client
             pluginInfoLookupBlocks.Clear();
             terminal.GetBlocks(pluginInfoLookupBlocks);
             long gridId = ownerTerminal.CubeGrid.EntityId;
+            IMyTimerBlock found = null;
             for (int i = 0; i < pluginInfoLookupBlocks.Count; i++)
             {
                 IMyTerminalBlock block = pluginInfoLookupBlocks[i];
                 IMyTimerBlock timer = block as IMyTimerBlock;
                 if (timer != null && block.CubeGrid?.EntityId == gridId
                     && string.Equals(block.CustomName, exactName, StringComparison.Ordinal))
-                    return timer;
+                { if (found != null) return null; found = timer; }
             }
-            return null;
+            return found;
         }
 
         private string GetMinerPluginInfo(IMyProgrammableBlock miner)
         {
+            if (miner == null) return "";
+            IMyTimerBlock timer;
+            if (minerInfoTimers.TryGetValue(miner.EntityId, out timer) && TimerBelongsTo(timer, miner, MinerInfoTimerName)) return timer.CustomData ?? "";
             if (TimerBelongsTo(lastMinerInfoTimer, miner, MinerInfoTimerName))
                 return lastMinerInfoTimer.CustomData ?? "";
+            int next;
+            if (!minerInfoRetryFrames.TryGetValue(miner.EntityId, out next) || frame >= next)
+            {
+                minerInfoRetryFrames[miner.EntityId] = frame + 60; timer = FindExactTimerOnGrid(miner, MinerInfoTimerName);
+                if (timer != null) { minerInfoTimers[miner.EntityId] = timer; return timer.CustomData ?? ""; }
+            }
             return miner?.DetailedInfo ?? "";
         }
 

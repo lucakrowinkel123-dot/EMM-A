@@ -33,9 +33,35 @@ namespace EMMA3.Client
         private bool ValidateFuelConnectionsForPlanning(BridgeDocument bridge)
         {
             bool liveMiner = blocks.MinerPb != null && !blocks.MinerPb.Closed;
-            if (CheckFuelConnections(bridge, !planningCarrierOnly || liveMiner)) return true;
+            if (CheckFuelConnections(bridge, liveMiner || (!planningCarrierOnly && planningDimensions == null))) return true;
             Fail(bridge, bridge.Get("fuelConnectionWarning"), true);
             return false;
+        }
+
+        // Stored grids cannot be inspected during planning. Check the exact
+        // deployed member before its route is sent and bind the result to its
+        // current commander and mission, so an old result cannot authorize it.
+        private void CheckFleetPublicationFuel(BridgeDocument bridge)
+        {
+            string request = bridge.Get("fReq");
+            string[] fields = request.Split('|');
+            if (fields.Length != 4) return;
+            string mission = fields[1], identity = fields[2];
+            long commander, requestedCommander;
+            if (mission.Length == 0 || mission != bridge.Get("fleetAssignmentMission") || fields[0].Length == 0 || identity.Length == 0
+                || !long.TryParse(fields[3], out requestedCommander)) return;
+            int roster = -1;
+            for (int i = 0; i < bridge.GetInt("fleetCount"); i++)
+                if (bridge.Get("fleetId" + i) == identity) { roster = i; break; }
+            if (roster < 0 || !long.TryParse(bridge.Get("fleetCommander" + roster), out commander) || commander != requestedCommander) return;
+            VRage.ModAPI.IMyEntity entity;
+            var pb = MyAPIGateway.Entities.TryGetEntityById(commander, out entity) ? entity as Sandbox.ModAPI.Ingame.IMyProgrammableBlock : null;
+            var miner = IsAccessibleMinerPb(pb) ? pb as IMyTerminalBlock : null;
+            string warning = ""; bool unknown = false, disconnected = false;
+            CheckCraftFuelConnections(miner == null ? null : miner.CubeGrid as IMyCubeGrid,
+                "Miner", blocks.Names.Mi(""), blocks.Names.Ca(""), ref warning, ref unknown, ref disconnected);
+            bridge.Set("fResult", request + "|" + (disconnected ? "blocked" : unknown ? "waiting" : "ready"));
+            bridge.Set("fWarning", warning);
         }
 
         private bool CheckFuelConnections(BridgeDocument bridge, bool includeMiner)

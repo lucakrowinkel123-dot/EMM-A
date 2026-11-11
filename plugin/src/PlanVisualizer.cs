@@ -11,7 +11,8 @@ namespace EMMA3.Client
         private static readonly MyStringId LineMaterial = MyStringId.GetOrCompute("WeaponLaserIgnoreDepth");
         private static readonly Color NormalLaneColor = new Color(255, 150, 20);
         private static readonly Color DestructionLaneColor = Color.Red;
-        private static readonly Color ApproachColor = Color.Magenta;
+        private static readonly Color ApproachColor = Color.Yellow;
+        private static readonly Color[] MinerRouteColors = { Color.Orange, new Color(190, 80, 255), Color.Cyan };
         public int LastLineCount
         {
             get; private set;
@@ -76,12 +77,15 @@ namespace EMMA3.Client
                 return;
             }
 
-            foreach (MiningPlane p in plan.Planes)
+            for (int planeIndex = 0; planeIndex < plan.Planes.Count; planeIndex++)
             {
-                DrawLine(p.CornerA, p.CornerA + p.Right * p.Width, Color.Cyan, 0.16f);
-                DrawLine(p.CornerA, p.CornerA - p.Up * p.Height, Color.Cyan, 0.16f);
-                DrawLine(p.CornerB, p.CornerB - p.Right * p.Width, Color.Cyan, 0.16f);
-                DrawLine(p.CornerB, p.CornerB + p.Up * p.Height, Color.Cyan, 0.16f);
+                MiningPlane p = plan.Planes[planeIndex];
+                int owner = plan.FleetOwners != null && planeIndex < plan.FleetOwners.Length ? plan.FleetOwners[planeIndex] : (plan.FleetRoutes.Count == 0 ? 0 : -1);
+                Color outline = owner >= 0 && owner < MinerRouteColors.Length ? MinerRouteColors[owner] : Color.Gray;
+                DrawLine(p.CornerA, p.CornerA + p.Right * p.Width, outline, 0.16f);
+                DrawLine(p.CornerA, p.CornerA - p.Up * p.Height, outline, 0.16f);
+                DrawLine(p.CornerB, p.CornerB - p.Right * p.Width, outline, 0.16f);
+                DrawLine(p.CornerB, p.CornerB + p.Up * p.Height, outline, 0.16f);
                 DrawLine(p.Center, p.Staging, ApproachColor, 0.22f);
                 DrawCross(p.Staging, ApproachColor, 1.2);
                 DrawLaneDepths(p, settings);
@@ -97,7 +101,10 @@ namespace EMMA3.Client
                 DrawRoute(plan.CarrierRoute, routeColor, 0.42f, true);
                 DrawCross(plan.CarrierPosition, routeColor, 2.0);
             }
-            DrawRoute(plan.MinerRoute, routeColor, 0.225f);
+            if (plan.FleetRoutes.Count > 0)
+                for (int miner = 0; miner < plan.FleetRoutes.Count; miner++)
+                    DrawRoute(plan.FleetRoutes[miner], MinerRouteColors[miner % MinerRouteColors.Length], 0.225f);
+            else DrawRoute(plan.MinerRoute, MinerRouteColors[0], 0.225f);
             LastLineCount = lineCount;
         }
 

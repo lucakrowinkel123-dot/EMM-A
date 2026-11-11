@@ -66,6 +66,7 @@ namespace EMMA3.Client
         {
             get; private set;
         }
+        public IMyTimerBlock FleetPathTimer { get; private set; }
         public IMyTimerBlock MinerStateTimer
         {
             get; private set;
@@ -86,6 +87,7 @@ namespace EMMA3.Client
         {
             get; private set;
         }
+        public IMyProgrammableBlock CarrierLcdPb;
         public IMyProgrammableBlock CarrierPilotPb { get; private set; }
         public IMyProgrammableBlock MinerPilotPb { get; private set; }
         public IMyTextPanel CarrierLcdMain
@@ -156,7 +158,25 @@ namespace EMMA3.Client
                 CarrierPb = commander; Names = candidate;
             }
             if (CarrierPb == null) { Problem = "missing Carrier Commander or invalid naming settings"; return false; }
-            MinerPb = Find<IMyProgrammableBlock>(Names.Mi("Prog. Block (Commander)"));
+            BridgeTimer = Find<IMyTimerBlock>(Names.Ca("Plugin Bridge"), ControlledGrid);
+            FleetPathTimer = Find<IMyTimerBlock>(Names.Ca("Fleet Path"), ControlledGrid);
+            BridgeDocument fleet = BridgeDocument.Parse(BridgeTimer?.CustomData);
+            if (fleet.GetInt("fleetCount") > 0)
+            {
+                string requested = fleet.Get("minerDimensions").Length == 0 && fleet.GetBool("minerDimensionsCapture", true)
+                    ? fleet.Get("minerDimensionsCaptureIdentity") : "";
+                long requestedCommander = 0;
+                for (int i = 0; i < Math.Min(3, fleet.GetInt("fleetCount")); i++)
+                    if (fleet.Get("fleetId" + i) == requested) long.TryParse(fleet.Get("fleetCommander" + i), out requestedCommander);
+                IMyProgrammableBlock fallback = null;
+                foreach (IMyProgrammableBlock member in FleetMiners(fleet))
+                {
+                    if (fallback == null) fallback = member;
+                    if (requestedCommander != 0 && member.EntityId == requestedCommander) { MinerPb = member; break; }
+                }
+                if (MinerPb == null) MinerPb = fallback;
+            }
+            else MinerPb = Find<IMyProgrammableBlock>(Names.Mi("Prog. Block (Commander)"));
             if (MinerPb != null && !MatchesMiner(MinerPb)) { Problem = "Carrier/Miner naming mismatch"; return false; }
 
             CarrierRemote = Find<IMyShipController>(Names.Ca("Remote Control"), ControlledGrid);
@@ -172,6 +192,7 @@ namespace EMMA3.Client
             CarrierInfoTimer = Find<IMyTimerBlock>(Names.Ca("Plugin Info"), ControlledGrid);
             MinerInfoTimer = MinerPb == null ? null : Find<IMyTimerBlock>(Names.Mi("Plugin Info"), MinerPb.CubeGrid);
             CarrierPilotPb = FindModulePilot(blocks,CarrierPb,Names.Ca("Prog. Block (Pilot)"));
+            CarrierLcdPb = FindModulePilot(blocks,CarrierPb,Names.Ca("Prog. Block (LCD)"));
             MinerPilotPb = FindModulePilot(blocks,MinerPb,Names.Mi("Prog. Block (Pilot)"));
             CarrierLcdMain = Find<IMyTextPanel>(Names.Ca("LCD Main"), ControlledGrid);
             CarrierLcdReport = Find<IMyTextPanel>(Names.Ca("LCD Report"), ControlledGrid);
@@ -179,6 +200,10 @@ namespace EMMA3.Client
             carrierHangar = Find<IMyTerminalBlock>(Names.Ca("Hangar - A"), ControlledGrid);
             if (MinerRemote != null && MinerRemote.CubeGrid != null)
                 FindBlocksOnGrid(MinerRemote.CubeGrid.EntityId, MinerDrills);
+            // Registered miners can be deployed outside the Carrier terminal system.
+            // Resolve hardware from this exact registered PB's current grid, including after a hangar ID rebind.
+            if (fleet.GetInt("fleetCount") > 0 && MinerPb != null)
+                RestoreDetachedMiner(MinerPb);
             IsCarrierPilot = CarrierRemote != null && CarrierRemote.CubeGrid != null && CarrierRemote.CubeGrid.EntityId == ControlledGrid.EntityId;
             if (!IsCarrierPilot)
                 Problem = "planning requires the Carrier cockpit";
@@ -204,6 +229,19 @@ namespace EMMA3.Client
             if (MinerPb == null)
                 return "Dock Miner: missing Miner PB";
             return "";
+        }
+        public List<IMyProgrammableBlock> FleetMiners(BridgeDocument fleet)
+        {
+            var result = new List<IMyProgrammableBlock>();
+            int count = Math.Min(3, Math.Max(0, fleet.GetInt("fleetCount")));
+            for (int i = 0; i < count; i++)
+            {
+                long id; VRage.ModAPI.IMyEntity entity;
+                if (!long.TryParse(fleet.Get("fleetCommander" + i), out id) || !MyAPIGateway.Entities.TryGetEntityById(id, out entity)) continue;
+                var miner = entity as IMyProgrammableBlock;
+                if (miner != null && !entity.Closed && MatchesMiner(miner)) result.Add(miner);
+            }
+            return result;
         }
 
         public string ProjectedMinerPoseProblem()
@@ -373,12 +411,13 @@ namespace EMMA3.Client
             ResourcesTimer = null;
             CompletedAsteroidsTimer = null;
             MinerPathTimer = null;
+            FleetPathTimer = null;
             MinerStateTimer = null;
             CarrierInfoTimer = null;
             MinerInfoTimer = null;
             CarrierPb = null;
             MinerPb = null;
-            CarrierPilotPb = null; MinerPilotPb = null;
+            CarrierPilotPb = null; CarrierLcdPb = null; MinerPilotPb = null;
             CarrierLcdMain = null;
             CarrierLcdReport = null;
             CarrierLcdRuntime = null;

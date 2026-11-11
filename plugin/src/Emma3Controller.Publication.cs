@@ -26,6 +26,20 @@ namespace EMMA3.Client
             bridge.Set("pathHash", plan.PathHash);
             bridge.Set("pathRecords", records);
             bridge.Set("planeCount", plan.Planes.Count);
+            if (plan.FleetMembers != null)
+            {
+                bridge.Set("fleetAssignmentMission", plan.MissionId);
+                bridge.Set("fleetOwners", string.Join(",", plan.FleetOwners));
+                bridge.Set("fleetAssignmentCount", plan.FleetMembers.Length);
+                for (int i = 0; i < plan.FleetMembers.Length; i++)
+                {
+                    bridge.Set("fleetAssignment" + i, plan.FleetMembers[i]);
+                    bridge.Set("fleetWorkMeters" + i, FleetRoutePriority.RouteMeters(plan.FleetPaths[i]));
+                }
+                bridge.Set("fleetPublishOrder", string.Join(",", FleetRoutePriority.Order(plan.FleetPaths)));
+                bridge.Set("fleetPathAck", -1); bridge.Set("fleetPublishSlot", -1);
+                PumpFleetPublication(bridge);
+            }
             var minedOres = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
             foreach (MiningPlane plane in plan.Planes)
                 minedOres.UnionWith(plane.Ores);
@@ -88,12 +102,15 @@ namespace EMMA3.Client
             candidateIndex = 0;
             Vector3D current = blocks.CarrierRemote.GetPosition();
             BoundingSphereD sphere = new BoundingSphereD(current, settings.SearchRadius);
-            var entities = MyEntities.GetEntitiesInSphere(ref sphere);
+            // Own the query buffer: MyEntities.GetEntitiesInSphere appends to shared scratch storage.
+            var entities = new List<MyEntity>();
+            MyGamePruningStructure.GetAllEntitiesInSphere(ref sphere, entities);
+            var seen = new HashSet<long>();
             if (entities != null)
                 foreach (MyEntity entity in entities)
                 {
                     var voxel = entity as MyVoxelBase;
-                    if (voxel == null || voxel is MyPlanet || voxel.Closed || voxel.MarkedForClose)
+                    if (voxel == null || voxel is MyPlanet || voxel.Closed || voxel.MarkedForClose || !seen.Add(voxel.EntityId))
                         continue;
                     candidates.Add(voxel);
                 }

@@ -111,7 +111,9 @@ namespace EMMA3.Client
                 {
                     if (string.IsNullOrEmpty(directory))
                         return;
-                    string safeCraft = string.Equals(craft, "Miner", StringComparison.OrdinalIgnoreCase) ? "Miner" : "Carrier";
+                    bool fleetMiner = craft != null && craft.StartsWith("Miner ", StringComparison.OrdinalIgnoreCase);
+                    string safeCraft = fleetMiner || string.Equals(craft, "Miner", StringComparison.OrdinalIgnoreCase) ? "Miner" : "Carrier";
+                    if (fleetMiner) message = craft + ": " + message;
                     string target = Path.Combine(directory, "EMM-A 3 " + safeCraft + ".log");
                     RotateIfNeeded(target);
                     Append(target, "SCRIPT", message);

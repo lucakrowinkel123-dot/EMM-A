@@ -126,6 +126,7 @@ namespace EMMA3.Client
             // keeps odd legs near the scanned asteroid surface instead of jumping
             // out to far AABB corners whenever the fine grid exhausts its budget.
             if (relaxedOrganicRouter == null)
+            {
                 relaxedOrganicRouter = new OrganicVoxelRouter(
                     asteroid.Samples,
                     asteroid.OccupiedBox,
@@ -136,6 +137,8 @@ namespace EMMA3.Client
                     cancellation,
                     300000,
                     4);
+                relaxedOrganicRouter.SetReservations(organicRouter.Reservations);
+            }
             if (relaxedOrganicRouter.TryFindRoute(from, to, out organic))
             {
                 List<Vector3D> refined;
@@ -165,7 +168,11 @@ namespace EMMA3.Client
             Vector3D toGate = GeometrySafety.MoveOutsideBoxAlong(to, toOutward, fallbackAvoid, 5);
             if (Vector3D.DistanceSquared(from, fromGate) > 0.01)
                 AddSpaced(route, from, fromGate, forward, up, settings.NearPathSpacing, null);
-            AddSpaced(route, fromGate, toGate, forward, up, settings.OpenPathSpacing, fallbackAvoid);
+            var obstacles = new List<BoundingBoxD> { fallbackAvoid };
+            foreach (var volume in organicRouter.Reservations) obstacles.Add(FleetPlaneAllocator.Bounds(volume));
+            List<Vector3D> detour = RouteAroundBoxes(fromGate, toGate, obstacles, Math.Max(4, obstacles.Count * 4), true, true);
+            Vector3D cursor = fromGate;
+            foreach (Vector3D point in detour) { AddSpaced(route, cursor, point, forward, up, settings.OpenPathSpacing, null); cursor = point; }
             if (Vector3D.DistanceSquared(toGate, to) > 0.01)
                 AddSpaced(route, toGate, to, forward, up, settings.NearPathSpacing, null);
         }

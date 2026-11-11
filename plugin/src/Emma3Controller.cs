@@ -29,6 +29,7 @@ namespace EMMA3.Client
         private string planningPurpose = "Ore";
         private bool planningCarrierOnly;
         private bool planningProjectMinerDockPose;
+        private MinerDimensions planningDimensions;
         private long requestedAsteroidEntityId;
         private int nextProductionPlanCheck;
         private readonly Dictionary<long, AsteroidMap> cache = new Dictionary<long, AsteroidMap>();
@@ -67,6 +68,7 @@ namespace EMMA3.Client
         private string lastBlockProblem = "";
         private sealed class PlanningJob
         {
+            public PlanRequestIdentity Request;
             public AsteroidMap Map;
             public PlanningSnapshot Snapshot;
             public readonly PlanningCancellation Cancellation = new PlanningCancellation();
@@ -90,12 +92,11 @@ namespace EMMA3.Client
             frame++;
             UpdatePluginServices();
             UpdateDockHardware();
-            if (settings.ScriptLogging && frame % 30 == 0)
-                scriptLogs.Drain(blocks.CarrierPb ?? lastCarrierPb, blocks.MinerPb ?? lastMinerPb,
-                    blocks.CarrierPilotPb ?? lastCarrierPilotPb, blocks.MinerPilotPb ?? lastMinerPilotPb, settings.ScriptLogging);
+            if (settings.ScriptLogging && frame % 30 == 0) DrainFleetLogs();
             if (frame % 60 == 1)
             {
                 bool ready = blocks.Refresh();
+                bool registeredFleet = BridgeDocument.Parse(blocks.BridgeTimer?.CustomData).GetInt("fleetCount") > 0;
                 if (ready && shipContext.Changed(blocks.CarrierPb.EntityId, blocks.BridgeTimer.EntityId, blocks.Names.Pair))
                 {
                     RebindRequested = true;
@@ -113,7 +114,7 @@ namespace EMMA3.Client
                     lastMinerPb = blocks.MinerPb;
                     minerPbReference.Observe(blocks.MinerPb, blocks.MinerPb.EntityId);
                 }
-                else if ((lastMinerPb == null || !IsAccessibleMinerPb(lastMinerPb)) && blocks.BridgeTimer != null)
+                else if (!registeredFleet && (lastMinerPb == null || !IsAccessibleMinerPb(lastMinerPb)) && blocks.BridgeTimer != null)
                 {
                     minerPbReference.Load(BridgeDocument.Parse(blocks.BridgeTimer.CustomData));
                     lastMinerPb = minerPbReference.Resolve();
@@ -128,7 +129,7 @@ namespace EMMA3.Client
                         && pendingBridge.Get("command").Equals("plan", StringComparison.OrdinalIgnoreCase)
                         && !pendingBridge.Get("planType").Equals("carrier", StringComparison.OrdinalIgnoreCase);
                 }
-                if (detachedMinerDiscoveryRequired && blocks.MinerPb == null && (lastMinerPb == null || !IsAccessibleMinerPb(lastMinerPb)))
+                if (!registeredFleet && detachedMinerDiscoveryRequired && blocks.MinerPb == null && (lastMinerPb == null || !IsAccessibleMinerPb(lastMinerPb)))
                 {
                     lastMinerPb = blocks.FindDetachedMinerNearCarrier();
                     if (lastMinerPb != null)
@@ -137,7 +138,7 @@ namespace EMMA3.Client
                         Emma3Log.Diagnostic("Discovered the newly deployed Miner grid near the Carrier by its exact block names.");
                     }
                 }
-                if (blocks.MinerPb == null && lastMinerPb != null && blocks.RestoreDetachedMiner(lastMinerPb))
+                if (!registeredFleet && blocks.MinerPb == null && lastMinerPb != null && blocks.RestoreDetachedMiner(lastMinerPb))
                     Emma3Log.Diagnostic("Reacquired the deployed Miner grid outside the Carrier terminal system.");
                 if(blocks.MinerPilotPb!=null)lastMinerPilotPb=blocks.MinerPilotPb;
                 ObservePluginInfoTimers();
@@ -161,7 +162,7 @@ namespace EMMA3.Client
                 }
 
                 lastBlockProblem = "";
-                if (planningActive && !planningCarrierOnly)
+                if (planningActive && !planningCarrierOnly && planningDimensions == null)
                 {
                     string dockedMinerProblem = blocks.DockedMinerProblem();
                     if (dockedMinerProblem.Length != 0)

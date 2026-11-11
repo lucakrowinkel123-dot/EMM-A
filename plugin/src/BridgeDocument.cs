@@ -18,6 +18,7 @@ namespace EMMA3.Client
         };
         private readonly Dictionary<string, string> values = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         public bool Dirty { get; private set; }
+        internal IEnumerable<KeyValuePair<string, string>> Entries { get { return values; } }
         public static BridgeDocument Parse(string text)
         {
             var result = new BridgeDocument();

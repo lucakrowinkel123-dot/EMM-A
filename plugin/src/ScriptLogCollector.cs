@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Text;
 using Sandbox.ModAPI.Ingame;
 
@@ -14,6 +15,51 @@ namespace EMMA3.Client
         private bool minerConnectedLogged;
         private string lastCarrierPilotFailure="",lastMinerPilotFailure="";
         private bool carrierPilotConnectedLogged,minerPilotConnectedLogged;
+        private sealed class Receipt { public string Failure=""; public bool Connected; }
+        private readonly Dictionary<long,Receipt> members=new Dictionary<long,Receipt>();
+        private const string TimerHeader = "EMMA3_TIMER_LOG|1\n";
+        private sealed class TimerReceipt
+        {
+            public string Snapshot = "";
+            public HashSet<string> Records = new HashSet<string>(StringComparer.Ordinal);
+        }
+        private readonly Dictionary<long,TimerReceipt> timers = new Dictionary<long,TimerReceipt>();
+
+        public void DrainTimer(IMyTerminalBlock timer, string label)
+        {
+            if (timer == null) return;
+            string snapshot = timer.CustomData ?? "";
+            if (snapshot.Length > 8192 || !snapshot.StartsWith(TimerHeader, StringComparison.Ordinal)) return;
+            TimerReceipt receipt;
+            if (!timers.TryGetValue(timer.EntityId, out receipt))
+            {
+                if (timers.Count >= 64) timers.Clear();
+                timers.Add(timer.EntityId, receipt = new TimerReceipt());
+            }
+            if (receipt.Snapshot == snapshot) return;
+            var records = new HashSet<string>(StringComparer.Ordinal);
+            foreach (string line in snapshot.Substring(TimerHeader.Length).Split('\n'))
+            {
+                int separator = line.IndexOf('|');
+                if (separator < 1) continue;
+                string id = line.Substring(0, separator);
+                if (!records.Add(id) || receipt.Records.Contains(id)) continue;
+                Emma3Log.Script(label, Unescape(line.Substring(separator + 1)));
+            }
+            receipt.Records = records;
+            receipt.Snapshot = snapshot;
+        }
+        public void DrainMember(IMyProgrammableBlock block,string label,bool enabled)
+        {
+            if(!enabled||block==null)return;
+            Receipt receipt;
+            if(!members.TryGetValue(block.EntityId,out receipt))
+            {
+                if(members.Count>=64)members.Clear();
+                members.Add(block.EntityId,receipt=new Receipt());
+            }
+            DrainSafely(block,label,true,ref receipt.Failure,ref receipt.Connected);
+        }
         public void Drain(IMyProgrammableBlock carrier, IMyProgrammableBlock miner,
             IMyProgrammableBlock carrierPilot, IMyProgrammableBlock minerPilot, bool enabled)
         {

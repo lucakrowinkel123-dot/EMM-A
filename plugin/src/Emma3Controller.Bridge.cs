@@ -18,11 +18,14 @@ namespace EMMA3.Client
             minerPbReference.Publish(bridge);
             EnsureDefaults(bridge);
             ReadSettings(bridge);
+            CaptureRegisteredMinerDimensions(bridge);
             InitializeBridgeCounters(bridge);
             InitializeFuelConnectionWarning(bridge);
             ApplyPluginFeatureSettings(bridge);
             ApplyPluginLcdSettings(bridge);
             resources.Publish(blocks, bridge.GetBool("iceReserveEnabled") || bridge.Get("selectionMode").Equals("Items", StringComparison.OrdinalIgnoreCase));
+            PumpFleetPublication(bridge);
+            CheckFleetPublicationFuel(bridge);
             UpdateProduction(bridge);
             UpdateRefinerySorters(bridge);
             TryRestoreVisualization(bridge);
@@ -92,10 +95,10 @@ namespace EMMA3.Client
 
             int request = bridge.GetInt("request");
             string command = bridge.Get("command");
-            if (request > handledRequest && command.Equals("plan", StringComparison.OrdinalIgnoreCase))
+            if ((request > handledRequest || (request == handledRequest && bridge.Get("state") == "requested")) && command.Equals("plan", StringComparison.OrdinalIgnoreCase))
             {
                 handledRequest = request;
-                BeginPlanning(bridge);
+                HandlePlanningRequest(bridge);
             }
             else if (request > handledRequest && command.Equals("abort", StringComparison.OrdinalIgnoreCase))
             {
@@ -110,11 +113,7 @@ namespace EMMA3.Client
                 ContinueAfterCockpitLoss(bridge);
             }
 
-            if (bridge.Get("state") == "producing" && bridge.GetBool("autonomousMining") && frame >= nextProductionPlanCheck)
-            {
-                nextProductionPlanCheck = frame + 300;
-                BeginPlanning(bridge);
-            }
+            RetryPlanningState(bridge);
 
             if (bridge.Get("state") == "completed")
             {
@@ -168,6 +167,7 @@ namespace EMMA3.Client
             handledRequest = request;
             bridge.Set("state", "error");
             bridge.Set("message", CompactUnavailableMessage(problem));
+            new PlanRequestIdentity(bridge).Stamp(bridge);
             bridgeTimer.CustomData = bridge.Serialize();
             Emma3Log.Error("Rejected " + command + " request " + request + ": " + problem + ".");
         }

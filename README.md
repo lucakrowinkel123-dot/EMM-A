@@ -1,8 +1,8 @@
-# EMM-A 0.8.56
+# EMM-A client plugin
 
-Automates asteroid mining for one carrier and one miner in Space Engineers 1. The client plugin plans routes and the four programmable-block scripts fly the ships.
+This branch contains the Pulsar Legacy client plugin bundled with EMM-A 0.9.40 for Space Engineers 1. It plans asteroid mining routes for a carrier and its fleet of miners. In-game use requires the matching 0.9.40 programmable-block scripts, installed separately.
 
-The four ready-to-paste scripts and their matching readable sources are in [scripts](scripts). Each ship has a Commander and a Pilot. EMM-A 0.9.00 introduced the multi-miner fleet.
+The [0.8.56 release](https://github.com/lucakrowinkel123-dot/EMM-A/tree/v0.8.56) contains the earlier single-miner plugin and its four companion scripts. The scripts directory on this branch is from that release.
 
 ## Source and build
 

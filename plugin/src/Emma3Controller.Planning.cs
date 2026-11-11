@@ -14,8 +14,10 @@ namespace EMMA3.Client
     {
         private void BeginPlanning(BridgeDocument bridge)
         {
+            if (acceptedPlanRequest == null || !acceptedPlanRequest.Matches(bridge)) acceptedPlanRequest = new PlanRequestIdentity(bridge);
             planningCarrierOnly = bridge.Get("planType").Equals("carrier", StringComparison.OrdinalIgnoreCase);
             planningProjectMinerDockPose = bridge.GetBool("projectMinerDockPose");
+            planningDimensions = null;
             if (!long.TryParse(bridge.Get("requestedAsteroidEntityId"), NumberStyles.Integer, CultureInfo.InvariantCulture, out requestedAsteroidEntityId))
                 requestedAsteroidEntityId = 0;
             restartPlanningAfterCockpitLoss = false;
@@ -38,15 +40,23 @@ namespace EMMA3.Client
                 return;
             }
 
-            string dockedMinerProblem = planningCarrierOnly ? "" : blocks.DockedMinerProblem();
+            bool fleetPlanning = !planningCarrierOnly && bridge.GetInt("fleetCount") > 0;
+            if (fleetPlanning && !MinerDimensions.TryParse(bridge.Get("minerDimensions"), out planningDimensions))
+            {
+                bridge.Set("state", "waiting_replication");
+                bridge.Set("message", "Register a miner to record its dimensions before fleet planning");
+                return;
+            }
+            string dockedMinerProblem = planningCarrierOnly || fleetPlanning ? "" : blocks.DockedMinerProblem();
             if (dockedMinerProblem.Length != 0)
             {
+                if (bridge.GetInt("fleetCount") > 0) { bridge.Set("state", "waiting_replication"); bridge.Set("message", "Waiting for registered Miner hardware"); return; }
                 Fail(bridge, dockedMinerProblem, true);
                 return;
             }
             if (planningProjectMinerDockPose)
             {
-                string projectedPoseProblem = blocks.ProjectedMinerPoseProblem();
+                string projectedPoseProblem = fleetPlanning ? (blocks.CarrierConnector == null ? "missing Carrier connector for Miner pose" : "") : blocks.ProjectedMinerPoseProblem();
                 if (projectedPoseProblem.Length != 0)
                 {
                     Fail(bridge, projectedPoseProblem, true);
@@ -127,7 +137,7 @@ namespace EMMA3.Client
                     + "; last=" + (lastPlanningFailure.Length == 0 ? "unknown" : lastPlanningFailure);
             else
                 noMatch = "No " + DescribeTargetOres(ores) + " in " + cache.Count + "; found " + DescribeDetectedOres();
-            UpdateStatus("error", noMatch);
+            UpdateStatus("error", noMatch, matchingCandidates == 0);
             Emma3Log.Diagnostic(noMatch);
             planningActive = false;
             TryRun(blocks.MinerPb, "stop");
@@ -214,6 +224,7 @@ namespace EMMA3.Client
             {
                 var job = new PlanningJob
                 {
+                    Request = acceptedPlanRequest,
                     Map = map,
                     Snapshot = CapturePlanningSnapshot(map)
                 };
@@ -250,9 +261,11 @@ namespace EMMA3.Client
                 throw new InvalidOperationException("departure voxel preparation is incomplete");
             if (map == null || !map.Complete)
                 throw new InvalidOperationException("cannot plan from an incomplete asteroid map");
-            MatrixD actualMinerRemoteWorld = planningCarrierOnly ? MatrixD.Identity : blocks.MinerRemote.WorldMatrix;
+            MatrixD actualMinerRemoteWorld = planningCarrierOnly || planningDimensions != null ? MatrixD.Identity : blocks.MinerRemote.WorldMatrix;
             MatrixD minerRemoteWorld = actualMinerRemoteWorld;
-            if (planningProjectMinerDockPose)
+            if (planningDimensions != null)
+                minerRemoteWorld = planningDimensions.Project(blocks.CarrierConnector.WorldMatrix);
+            else if (planningProjectMinerDockPose)
                 minerRemoteWorld = GeometrySafety.ProjectRemoteAtCarrierConnector(
                     minerRemoteWorld,
                     blocks.MinerConnector.WorldMatrix,
@@ -268,9 +281,24 @@ namespace EMMA3.Client
                 HasCarrierConnector = blocks.CarrierConnector != null,
                 CarrierConnectorForward = blocks.CarrierConnector == null ? Vector3D.Zero : blocks.CarrierConnector.WorldMatrix.Forward,
                 CarrierConnectorUp = blocks.CarrierConnector == null ? Vector3D.Zero : blocks.CarrierConnector.WorldMatrix.Up,
-                MinerToolOffsetLocal = settings.MinerTargetOffsetLocal
+                MinerToolOffsetLocal = planningDimensions != null ? planningDimensions.ToolOffsetLocal : settings.MinerTargetOffsetLocal
             };
-            for (int i = 0; !planningCarrierOnly && i < blocks.MinerDrills.Count; i++)
+            BridgeDocument fleetBridge = BridgeDocument.Parse(blocks.BridgeTimer.CustomData);
+            int fleetCount = fleetBridge.GetInt("fleetCount");
+            if (fleetCount > 0)
+            {
+                if (fleetCount > 3 || blocks.FleetPathTimer == null) throw new InvalidOperationException("Fleet planning requires 1–3 registered miners and the Carrier Fleet Path timer.");
+                fleetCount = Math.Min(fleetCount, Math.Max(1, Math.Min(3, fleetBridge.GetInt("minerUseCount", 3))));
+                snapshot.FleetCount = fleetCount; snapshot.FleetMembers = new string[fleetCount];
+                for (int i = 0; i < fleetCount; i++)
+                {
+                    snapshot.FleetMembers[i] = fleetBridge.Get("fleetId" + i);
+                    if (snapshot.FleetMembers[i].Length == 0) throw new InvalidOperationException("Fleet registration changed during planning.");
+                }
+            }
+            snapshot.MinerRadius = planningCarrierOnly ? 0 : planningDimensions != null ? planningDimensions.Radius : blocks.MinerRemote.CubeGrid.WorldVolume.Radius;
+            if (planningDimensions != null) snapshot.MinerDrills.AddRange(planningDimensions.Drills);
+            for (int i = 0; !planningCarrierOnly && planningDimensions == null && i < blocks.MinerDrills.Count; i++)
             {
                 IMyTerminalBlock drillBlock = blocks.MinerDrills[i] as IMyTerminalBlock;
                 if (drillBlock == null || drillBlock.PositionComp == null)
@@ -359,6 +387,9 @@ namespace EMMA3.Client
                 return;
             }
 
+            BridgeDocument currentRequest = BridgeDocument.Parse(blocks.BridgeTimer.CustomData);
+            if (job.Request != null && (!job.Request.Matches(currentRequest) || !CurrentPlanningRequest(currentRequest))) return;
+
             planningJob = null;
             if (job.Cancellation.IsCancellationRequested)
                 return;
@@ -380,13 +411,15 @@ namespace EMMA3.Client
                         throw new InvalidOperationException(validation);
                     if (activePlan.MinerPathText.Length > 61000)
                         throw new InvalidOperationException("Miner path has " + activePlan.MinerPathText.Length + " chars; safe limit is 61,000");
-                    blocks.MinerPathTimer.CustomData = activePlan.MinerPathText;
+                    if (activePlan.FleetMembers != null) SaveFleetPublication(activePlan);
+                    else blocks.MinerPathTimer.CustomData = activePlan.MinerPathText;
                     int confirmRecords;
                     string confirm;
-                    if (!PathCodec.Validate(blocks.MinerPathTimer.CustomData, out confirmRecords, out confirm) || PathCodec.Hash(blocks.MinerPathTimer.CustomData) != activePlan.PathHash)
+                    if (activePlan.FleetMembers == null && (!PathCodec.Validate(blocks.MinerPathTimer.CustomData, out confirmRecords, out confirm) || PathCodec.Hash(blocks.MinerPathTimer.CustomData) != activePlan.PathHash))
                         throw new InvalidOperationException("Miner path read-back failed: " + confirm);
                 }
                 PublishPlan(bridge, activePlan, records);
+                RememberPlanningResponse(bridge);
                 if (!planningCarrierOnly)
                     SaveVisualizationSnapshot(activePlan);
                 planningActive = false;

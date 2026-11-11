@@ -41,6 +41,7 @@ namespace EMMA3.Client
             }
 
             sb.AppendLine("path=" + Encode(plan.MinerPathText ?? ""));
+            foreach(string fleetPath in plan.FleetPaths)sb.AppendLine("fleetPath="+PathCodec.Hash(fleetPath)+"|"+Encode(fleetPath));
             File.WriteAllText(path, sb.ToString(), Encoding.UTF8);
         }
 
@@ -67,6 +68,7 @@ namespace EMMA3.Client
                 long asteroid = 0;
                 Vector3D? carrierStart = null;
                 var carrierRoute = new List<RoutePose>();
+                var fleetPaths=new List<string>();
                 for (int i = 1; i < lines.Length; i++)
                 {
                     string line = lines[i];
@@ -83,6 +85,14 @@ namespace EMMA3.Client
                         long.TryParse(value, NumberStyles.Integer, CultureInfo.InvariantCulture, out asteroid);
                     else if (key == "path")
                         encodedPath = value;
+                    else if(key=="fleetPath")
+                    {
+                        int split=value.IndexOf('|');
+                        if(split<0||fleetPaths.Count>=3)throw new FormatException("Invalid fleet visualization manifest");
+                        string text=Decode(value.Substring(split+1));
+                        if(!string.Equals(PathCodec.Hash(text),value.Substring(0,split),StringComparison.OrdinalIgnoreCase))throw new FormatException("Fleet visualization checksum differs");
+                        fleetPaths.Add(text);
+                    }
                     else if (key == "carrierStart")
                     {
                         Vector3D start;
@@ -126,6 +136,21 @@ namespace EMMA3.Client
                 plan.CarrierRoute.AddRange(carrierRoute);
                 plan.MinerRoute.AddRange(minerRoute);
                 plan.Planes.AddRange(planes);
+                if(fleetPaths.Count>0)
+                {
+                    plan.MinerRoute.Clear();plan.Planes.Clear();plan.FleetPaths.AddRange(fleetPaths);
+                    var owners = new List<int>();
+                    for (int miner = 0; miner < fleetPaths.Count; miner++)
+                    {
+                        string text = fleetPaths[miner];
+                        if(text.Length==0){plan.FleetRoutes.Add(new List<RoutePose>());continue;}
+                        List<RoutePose> route;List<MiningPlane> assigned;
+                        if(!PathCodec.TryReadVisualization(text,travelClearance,out route,out assigned,out reason)){plan=null;return false;}
+                        plan.FleetRoutes.Add(route);plan.MinerRoute.AddRange(route);plan.Planes.AddRange(assigned);
+                        for (int i = 0; i < assigned.Count; i++) owners.Add(miner);
+                    }
+                    plan.FleetOwners = owners.ToArray();
+                }
                 if (carrierRoute.Count > 0)
                     plan.CarrierPosition = carrierRoute[carrierRoute.Count - 1].Position;
                 reason = "restored mission " + savedMission;

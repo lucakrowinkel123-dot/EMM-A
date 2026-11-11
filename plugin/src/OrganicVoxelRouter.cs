@@ -17,6 +17,9 @@ namespace EMMA3.Client
         private readonly PlanningCancellation cancellation;
         private readonly int maxExpandedNodes;
         private readonly int endpointSearchRadiusCells;
+        internal List<FleetPlaneAllocator.Volume> Reservations = new List<FleetPlaneAllocator.Volume>();
+        internal void SetReservations(List<FleetPlaneAllocator.Volume> reservations)
+        { Reservations = reservations; routeCache.Clear(); }
         public int SearchCount
         {
             get; private set;
@@ -357,6 +360,7 @@ namespace EMMA3.Client
 
         internal bool SegmentClear(Vector3D a, Vector3D b)
         {
+            if (!FleetPlaneAllocator.Clear(Reservations, a, b)) return false;
             double length = Vector3D.Distance(a, b);
             int steps = Math.Max(1, (int)Math.Ceiling(length / 6.0));
             double sampleGuard = length / steps * 0.5;
@@ -383,6 +387,7 @@ namespace EMMA3.Client
 
         private bool PointClear(Vector3D point, double radius)
         {
+            if (!FleetPlaneAllocator.Clear(Reservations, point, point)) return false;
             if (samples.Count == 0)
                 return true;
             int minX = (int)Math.Floor((point.X - radius) / bucketSize), maxX = (int)Math.Floor((point.X + radius) / bucketSize);

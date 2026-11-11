@@ -33,6 +33,13 @@ namespace EMMA3.Client
                 miner.GetDouble("TOFFF", bridge.GetDouble("minerTargetOffsetForward", 5)));
         }
 
+        private static void EnsureVisualizationDefault(BridgeDocument bridge)
+        {
+            if (bridge.GetBool("visualizationDefault904Done")) return;
+            bridge.Set("visualization", 1);
+            bridge.Set("visualizationDefault904Done", 1);
+        }
+
         private static void EnsureDefaults(BridgeDocument bridge)
         {
             if (bridge.Get("protocol").Length == 0)
@@ -43,8 +50,7 @@ namespace EMMA3.Client
                 bridge.Set("state", "idle");
             if (bridge.Get("allowMovement").Length == 0)
                 bridge.Set("allowMovement", 0);
-            if (bridge.Get("visualization").Length == 0)
-                bridge.Set("visualization", 1);
+            EnsureVisualizationDefault(bridge);
             if (bridge.Get("scriptLogging").Length == 0)
                 bridge.Set("scriptLogging", 1);
             if (bridge.Get("allowSeatExitDuringMining").Length == 0)

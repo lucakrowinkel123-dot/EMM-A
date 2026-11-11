@@ -66,7 +66,7 @@ namespace EMMA3.Client
             double delta = lastDockHardwareTick.HasValue ? Math.Max(0, tick - lastDockHardwareTick.Value) : 0;
             lastDockHardwareTick = tick;
             if (delta <= 0) return;
-            IMyProgrammableBlock miner = blocks.MinerPb ?? lastMinerPb;
+            IMyProgrammableBlock miner = SelectServiceMiner(ref hardwareMinerCursor);
             if (dockHardware == null)
             {
                 TryBeginDockHardware(miner);
@@ -114,7 +114,7 @@ namespace EMMA3.Client
             long requestId, connectorId, mergerId;
             long minerPbId;
             if (fields.Length != 8 || fields[0] != "EMMA3_DOCK_HW" || fields[1] != "1"
-                || !long.TryParse(fields[2], out requestId) || requestId <= 0 || requestId == lastDockHardwareRequest
+                || !long.TryParse(fields[2], out requestId) || requestId <= 0 || RequestSeen(dockRequestHistory, miner.EntityId, requestId)
                 || !long.TryParse(fields[4], out connectorId) || !long.TryParse(fields[5], out mergerId)
                 || !long.TryParse(fields[7], out minerPbId) || minerPbId != miner.EntityId)
                 return;
@@ -151,6 +151,7 @@ namespace EMMA3.Client
             }
 
             lastDockHardwareRequest = requestId;
+            dockRequestHistory[miner.EntityId] = requestId;
             dockHardware = new DockHardwareTransaction
             {
                 RequestId = requestId,

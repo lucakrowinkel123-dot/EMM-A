@@ -125,7 +125,7 @@ namespace EMMA3.Client
             double tick = EmmaTiming.GameSimulationTime.Ticks;
             double delta = lastPluginServiceTick.HasValue ? Math.Max(0, tick - lastPluginServiceTick.Value) : 0;
             lastPluginServiceTick = tick;
-            IMyProgrammableBlock miner = blocks.MinerPb ?? lastMinerPb;
+            IMyProgrammableBlock miner = SelectServiceMiner(ref serviceMinerCursor);
             try { PublishFeatureConfiguration(miner); }
             catch (Exception exception)
             {
@@ -139,7 +139,7 @@ namespace EMMA3.Client
             if (pluginRemoteLink && frame >= nextRemoteServiceFrame)
             {
                 nextRemoteServiceFrame = frame + 10;
-                try { UpdateRemoteService(miner); }
+                try { UpdateRemoteService(SelectServiceMiner(ref remoteMinerCursor)); }
                 catch (Exception exception)
                 {
                     if (frame >= nextRemoteServiceErrorFrame)
@@ -162,8 +162,9 @@ namespace EMMA3.Client
             if (readyFields.Length != 3 || !long.TryParse(readyFields[2], out minerSession) || minerSession <= 0)
                 return;
             string value = featureConfiguration;
-            if (miner.EntityId == sentFeatureMiner && minerSession == sentFeatureMinerSession
-                && value == sentFeatureConfiguration && frame < nextFeatureConfigurationFrame)
+            FeatureReceipt receipt;
+            if (featureReceipts.TryGetValue(miner.EntityId, out receipt) && minerSession == receipt.Session
+                && value == receipt.Value && frame < receipt.NextFrame)
                 return;
             if (miner.TryRun(value))
             {
@@ -171,6 +172,7 @@ namespace EMMA3.Client
                 sentFeatureMinerSession = minerSession;
                 sentFeatureConfiguration = value;
                 nextFeatureConfigurationFrame = frame + 300;
+                featureReceipts[miner.EntityId] = new FeatureReceipt { Session = minerSession, Value = value, NextFrame = nextFeatureConfigurationFrame };
             }
         }
 
@@ -270,19 +272,19 @@ namespace EMMA3.Client
             long requestId, minerId;
             int goal;
             if (fields.Length != 6 || !long.TryParse(fields[2], out requestId) || requestId <= 0
-                || requestId == lastPowerServiceRequest || !int.TryParse(fields[3], out goal) || goal < 1 || goal > 2
+                || RequestSeen(powerRequestHistory, miner.EntityId, requestId) || !int.TryParse(fields[3], out goal) || goal < 1 || goal > 2
                 || !long.TryParse(fields[4], out minerId) || minerId != miner.EntityId)
                 return;
             var job = new PowerServiceJob { RequestId = requestId, Goal = goal, MinerPb = miner,
                 PublishedMarker = PowerMarker + requestId + "|" };
             if (!ParseIds(fields[5], job.Blocks, 256))
             {
-                lastPowerServiceRequest = requestId;
+                lastPowerServiceRequest = requestId; powerRequestHistory[miner.EntityId] = requestId;
                 powerService = job;
                 FinishPowerService(false, "invalid or empty power block ID list");
                 return;
             }
-            lastPowerServiceRequest = requestId;
+            lastPowerServiceRequest = requestId; powerRequestHistory[miner.EntityId] = requestId;
             powerService = job;
             Emma3Log.Diagnostic("Plugin power transition " + requestId + " started for " + job.Blocks.Count + " blocks.");
         }
@@ -438,7 +440,7 @@ namespace EMMA3.Client
             string[] fields;
             if (miner == null || !unloadFieldsCache.TryRead(miner.EntityId, GetMinerPluginInfo(miner), out fields)) return;
             long requestId, session, carrierConnector, minerConnector;
-            if (fields.Length != 9 || !long.TryParse(fields[2], out requestId) || requestId <= 0 || requestId == lastUnloadServiceRequest
+            if (fields.Length != 9 || !long.TryParse(fields[2], out requestId) || requestId <= 0 || RequestSeen(unloadRequestHistory, miner.EntityId, requestId)
                 || fields[3] != "Unload" || !long.TryParse(fields[4], out session) || session <= 0
                 || !long.TryParse(fields[5], out carrierConnector) || !long.TryParse(fields[6], out minerConnector)) return;
             var job = new UnloadServiceJob
@@ -449,12 +451,12 @@ namespace EMMA3.Client
             };
             if (!ParseIds(fields[8], job.SourceBlockIds, 128))
             {
-                lastUnloadServiceRequest = requestId;
+                lastUnloadServiceRequest = requestId; unloadRequestHistory[miner.EntityId] = requestId;
                 unloadService = job;
                 FinishUnloadService(false, "invalid or empty Miner cargo ID list");
                 return;
             }
-            lastUnloadServiceRequest = requestId;
+            lastUnloadServiceRequest = requestId; unloadRequestHistory[miner.EntityId] = requestId;
             unloadService = job;
             Emma3Log.Diagnostic("Plugin unload " + requestId + " started with " + job.SourceBlockIds.Count + " source blocks.");
         }
@@ -532,10 +534,14 @@ namespace EMMA3.Client
             if (fields.Length != 9 || !long.TryParse(fields[2], out minerId) || minerId != miner.EntityId
                 || !long.TryParse(fields[3], out minerConnector) || !long.TryParse(fields[5], out session)
                 || !long.TryParse(fields[6], out carrierConnector)) return;
-            if (frame % 300 < 10)
+            int nextTelemetry;
+            if (!remoteTelemetryFrames.TryGetValue(miner.EntityId, out nextTelemetry) || frame >= nextTelemetry)
+            {
+                remoteTelemetryFrames[miner.EntityId] = frame + 300;
                 SendRemoteTelemetry(miner, fields[7], fields[8]);
+            }
             if (fields[4] == "1" && session > 0 && carrierConnector > 0
-                && (session != remotePoseSession || frame >= nextRemotePoseFrame))
+                && (miner.EntityId != remotePoseMiner || session != remotePoseSession || frame >= nextRemotePoseFrame))
             {
                 IMyShipConnector connector = blocks.CarrierConnector;
                 if (connector == null || connector.EntityId != carrierConnector || connector.Closed) return;
@@ -546,6 +552,7 @@ namespace EMMA3.Client
                 if (miner.TryRun(command))
                 {
                     remotePoseSession = session;
+                    remotePoseMiner = miner.EntityId;
                     nextRemotePoseFrame = frame + 120;
                 }
             }

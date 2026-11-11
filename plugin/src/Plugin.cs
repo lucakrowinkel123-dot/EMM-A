@@ -8,7 +8,7 @@ namespace EMMA3.Client
 {
     public sealed class Plugin : IPlugin
     {
-        internal const string ProductName = "EMM-A 0.8.56";
+        internal const string ProductName = "EMM-A 0.9.40";
         private Emma3Controller controller;
         private bool failed;
         private int initializationRetryTicks;

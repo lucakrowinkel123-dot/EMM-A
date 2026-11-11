@@ -130,6 +130,10 @@ namespace EMMA3.Client
 
     internal sealed class MissionPlan
     {
+        public int[] FleetOwners;
+        public string[] FleetMembers;
+        public readonly List<string> FleetPaths = new List<string>();
+        public readonly List<List<RoutePose>> FleetRoutes = new List<List<RoutePose>>();
         public string MissionId;
         public long AsteroidEntityId;
         public AsteroidMap Asteroid;
@@ -186,6 +190,9 @@ namespace EMMA3.Client
     // dereferences a live block, grid, connector, or voxel entity.
     internal sealed class PlanningSnapshot
     {
+        public int FleetCount = 1;
+        public string[] FleetMembers;
+        public double MinerRadius;
         public bool CarrierOnly;
         public AsteroidMap Asteroid;
         public OreSelection OreSelection;

@@ -21,12 +21,14 @@ namespace EMMA3.Client
                 backgroundCandidates.Clear();
                 Vector3D current = blocks.CarrierRemote.GetPosition();
                 BoundingSphereD sphere = new BoundingSphereD(current, settings.SearchRadius);
-                var entities = MyEntities.GetEntitiesInSphere(ref sphere);
+                var entities = new List<MyEntity>();
+                MyGamePruningStructure.GetAllEntitiesInSphere(ref sphere, entities);
+                var seen = new HashSet<long>();
                 if (entities != null)
                     foreach (MyEntity entity in entities)
                     {
                         var voxel = entity as MyVoxelBase;
-                        if (voxel == null || voxel is MyPlanet || voxel.Closed || voxel.MarkedForClose)
+                        if (voxel == null || voxel is MyPlanet || voxel.Closed || voxel.MarkedForClose || !seen.Add(voxel.EntityId))
                             continue;
                         backgroundCandidates.Add(voxel);
                     }

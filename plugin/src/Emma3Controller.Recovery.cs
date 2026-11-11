@@ -12,13 +12,16 @@ namespace EMMA3.Client
 {
     internal sealed partial class Emma3Controller
     {
-        private void UpdateStatus(string state, string message)
+        private void UpdateStatus(string state, string message, bool exhausted = false)
         {
             if (blocks.BridgeTimer == null)
                 return;
             BridgeDocument bridge = BridgeDocument.Parse(blocks.BridgeTimer.CustomData);
+            if (!CurrentPlanningRequest(bridge)) return;
             bridge.Set("state", state);
             bridge.Set("message", message);
+            bridge.Set("planningExhausted", exhausted);
+            RememberPlanningResponse(bridge);
             blocks.BridgeTimer.CustomData = bridge.Serialize();
         }
 
@@ -57,9 +60,12 @@ namespace EMMA3.Client
 
         private void Fail(BridgeDocument bridge, string reason, bool stop)
         {
+            if (!CurrentPlanningRequest(bridge)) return;
             Emma3Log.Error(reason);
             bridge.Set("state", "error");
             bridge.Set("message", reason);
+            try { RememberPlanningResponse(bridge); }
+            catch (Exception ex) { Emma3Log.Warn("Planning failure could not be journaled: " + ex.Message); }
             if (stop)
             {
                 TryRun(blocks.CarrierPb, "PluginAbort");
@@ -145,12 +151,15 @@ namespace EMMA3.Client
             }
 
             cockpitSuspended = false;
+            bridge.Set("command", "plan");
+            acceptedPlanRequest = new PlanRequestIdentity(bridge);
             TryRun(blocks.CarrierPb ?? lastCarrierPb, "PluginContinue");
             TryRun(blocks.MinerPb ?? lastMinerPb, "resume");
             if (restartPlanningAfterCockpitLoss)
             {
                 restartPlanningAfterCockpitLoss = false;
-                BeginPlanning(bridge);
+                planningActive = false; // The previous request's worker was cancelled on cockpit loss.
+                HandlePlanningRequest(bridge);
                 bridge.Set("continueAvailable", 0);
                 return;
             }
@@ -171,6 +180,7 @@ namespace EMMA3.Client
             }
 
             bridge.Set("continueAvailable", 0);
+            RememberPlanningResponse(bridge);
             Emma3Log.Info("Continued cockpit-loss abort without resetting mission progress.");
         }
 
