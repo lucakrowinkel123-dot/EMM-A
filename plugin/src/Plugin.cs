@@ -18,10 +18,7 @@ namespace EMMA3.Client
         private const int MaxConsecutiveUpdateFailures = 5;
         public void Init(object gameInstance)
         {
-            // Pulsar can call Init before Space Engineers has initialized MyFileSystem.
-            // Only establish the independent bootstrap logger here; initialize the
-            // session-dependent controller from Update once a player is present.
-            Emma3Log.InitializeBootstrap();
+            // Startup messages are buffered until the game supplies its instance directory.
             Emma3Log.BootstrapInfo(ProductName + " loaded; waiting for the Space Engineers session.");
         }
 
@@ -34,6 +31,7 @@ namespace EMMA3.Client
             if (!ReferenceEquals(activeSession, currentSession))
             {
                 controller?.Detach();
+                if (activeSession != null) Emma3Log.Dispose();
                 controller = null;
                 activeSession = currentSession;
                 failed = false;
@@ -145,24 +143,8 @@ namespace EMMA3.Client
 
         private static string GetUserDataPath()
         {
-            string result = null;
-            try
-            {
-                result = MyFileSystem.UserDataPath;
-            }
-            catch (Exception ex)
-            {
-                Emma3Log.BootstrapError("MyFileSystem.UserDataPath is not ready: " + ex.Message);
-            }
-
-            if (string.IsNullOrWhiteSpace(result))
-            {
-                string roaming = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                if (!string.IsNullOrWhiteSpace(roaming))
-                    result = Path.Combine(roaming, "SpaceEngineers");
-            }
-
-            if (string.IsNullOrWhiteSpace(result))
+            string result = MyFileSystem.UserDataPath;
+            if (string.IsNullOrWhiteSpace(result) || !Path.IsPathRooted(result))
                 throw new InvalidOperationException("No Space Engineers user-data path is available yet.");
             Directory.CreateDirectory(result);
             return result;

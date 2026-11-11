@@ -23,11 +23,7 @@ namespace EMMA3.Client
             restartPlanningAfterCockpitLoss = false;
             CancelDeparturePreparation();
             CancelPlanningJob("new autonomous mining request");
-            if (scanner.Active && backgroundScanActive)
-            {
-                backgroundScanActive = false;
-                Emma3Log.Info("Promoted the active idle background scan to the requested planning scan.");
-            }
+            PromoteMatchingBackgroundScan();
 
             cockpitSuspended = false;
             planningActive = false;
@@ -111,7 +107,7 @@ namespace EMMA3.Client
                 MyVoxelBase voxel = candidates[candidateIndex++];
                 if (voxel == null || voxel.Closed || voxel.MarkedForClose || completed.Contains(voxel.EntityId) || rejectedCandidates.Contains(voxel.EntityId))
                     continue;
-                if (requestedAsteroidEntityId != 0 && voxel.EntityId != requestedAsteroidEntityId)
+                if (!MatchesRequestedAsteroid(voxel.EntityId))
                     continue;
                 AsteroidMap map;
                 if (cache.TryGetValue(voxel.EntityId, out map) && map.Complete)
@@ -169,40 +165,6 @@ namespace EMMA3.Client
             {
                 nextBackgroundRefresh = frame + 600;
             }
-        }
-
-        private void OnScanComplete(AsteroidMap map)
-        {
-            if (departurePreparation != null && !departurePreparation.Complete)
-            {
-                if (map != null && map.Complete)
-                {
-                    cache[map.EntityId] = map;
-                    AddDetectedOresToTimer(map);
-                }
-                backgroundScanActive = false;
-                return;
-            }
-            if (map == null)
-                return;
-            cache[map.EntityId] = map;
-            AddDetectedOresToTimer(map);
-            Emma3Log.Diagnostic("Candidate asteroid " + map.EntityId + " ores: " + DescribeMapOres(map) + ".");
-            if (backgroundScanActive)
-            {
-                backgroundScanActive = false;
-                if (planningActive)
-                    ContinuePlanning();
-                return;
-            }
-
-            if (!planningActive)
-                return;
-            OreSelection ores = completed.Remaining(map.EntityId, planningSelection);
-            if (Qualifies(map, ores))
-                BuildAndPublish(map);
-            else
-                ContinuePlanning();
         }
 
         private void AddDetectedOresToTimer(AsteroidMap map)

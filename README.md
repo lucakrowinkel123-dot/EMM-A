@@ -12,4 +12,6 @@ The [plugin source](plugin/src) targets .NET Framework 4.8 and Pulsar Legacy. On
 dotnet build plugin/EMMA3.Client.csproj -c Release
 ~~~
 
+Run the scan-target and per-instance logging regressions with `dotnet run --project tests/PluginIsolation/PluginIsolation.Tests.csproj -c Release`. Plugin and script logs, including startup diagnostics, are written under `Storage/EMMA3` in the current game user data directory.
+
 [Companion project](https://github.com/lucakrowinkel123-dot/HangarManager)
