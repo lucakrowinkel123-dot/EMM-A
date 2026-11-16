@@ -2,14 +2,16 @@ namespace EMMA3.Client
 {
     internal sealed partial class Emma3Controller
     {
+        private long resetSkippedAsteroid;
         private bool MatchesRequestedAsteroid(long entityId)
         {
-            return requestedAsteroidEntityId == 0 || entityId == requestedAsteroidEntityId;
+            return requestedAsteroidEntityId == 0 ? entityId != resetSkippedAsteroid : entityId == requestedAsteroidEntityId;
         }
 
         private void PromoteMatchingBackgroundScan()
         {
-            if (scanner.Active && backgroundScanActive && scanner.Current != null && MatchesRequestedAsteroid(scanner.Current.EntityId))
+            var current = scanner.Current;
+            if (scanner.Active && backgroundScanActive && current != null && MatchesRequestedAsteroid(current.EntityId))
             {
                 backgroundScanActive = false;
                 Emma3Log.Info("Promoted the active idle background scan to the requested planning scan.");
@@ -18,20 +20,17 @@ namespace EMMA3.Client
 
         private void OnScanComplete(AsteroidMap map)
         {
-            if (departurePreparation != null && !departurePreparation.Complete)
+            if (map == null || !map.Complete)
             {
-                if (map != null && map.Complete)
-                {
-                    cache[map.EntityId] = map;
-                    AddDetectedOresToTimer(map);
-                }
                 backgroundScanActive = false;
                 return;
             }
-            if (map == null)
+            RecordCompletedScan(map);
+            if (departurePreparation != null && !departurePreparation.Complete)
+            {
+                backgroundScanActive = false;
                 return;
-            cache[map.EntityId] = map;
-            AddDetectedOresToTimer(map);
+            }
             Emma3Log.Diagnostic("Candidate asteroid " + map.EntityId + " ores: " + DescribeMapOres(map) + ".");
             if (backgroundScanActive || !MatchesRequestedAsteroid(map.EntityId))
             {

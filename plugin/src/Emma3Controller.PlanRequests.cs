@@ -20,6 +20,7 @@ namespace EMMA3.Client
         }
         private void HandlePlanningRequest(BridgeDocument bridge, bool replayOnly = false)
         {
+            if (bridge.GetInt("request") <= bridge.GetInt("resetThroughRequest", -1)) return;
             var request = new PlanRequestIdentity(bridge);
             if (acceptedPlanRequest != null && request.Sequence == acceptedPlanRequest.Sequence && !acceptedPlanRequest.Matches(bridge))
             { bridge.Set("state", "error"); bridge.Set("message", "Conflicting intent for an accepted planning sequence"); request.Stamp(bridge); return; }
@@ -58,7 +59,15 @@ namespace EMMA3.Client
             string state = bridge.Get("state");
             if (acceptedPlanRequest == null && state == "ready_dryrun" && settings.AllowMovement && bridge.Get("planIntent").Length > 0)
             { HandlePlanningRequest(bridge, true); return; }
-            if (bridge.GetBool("autonomousMining") && (state == "waiting_replication" || (state == "producing" && frame >= nextProductionPlanCheck)))
+            if (state == "waiting_ore" && !bridge.GetBool("autonomousMining"))
+            {
+                bridge.Set("state", "idle");
+                bridge.Set("message", "");
+                RememberPlanningResponse(bridge);
+                return;
+            }
+            bool retryOreSearch = state == "waiting_ore" && bridge.Get("command") == "plan" && frame >= nextOreSearchFrame;
+            if (bridge.GetBool("autonomousMining") && (state == "waiting_replication" || (state == "producing" && frame >= nextProductionPlanCheck) || retryOreSearch))
             { nextProductionPlanCheck = frame + 300; HandlePlanningRequest(bridge); }
             if (activePlan == null && acceptedPlanRequest != null && bridge.Get("state") == "ready_dryrun" && settings.AllowMovement)
                 HandlePlanningRequest(bridge);

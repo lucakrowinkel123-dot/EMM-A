@@ -32,7 +32,7 @@ namespace EMMA3.Client
             long.TryParse(bridge.Get("completedEntityId"), out previous);
             // Candidate enumeration includes completed entities; ore eligibility
             // is applied later. Exit safety must never depend on ore selection.
-            foreach (MyVoxelBase voxel in candidates)
+            foreach (MyVoxelBase voxel in obstacleVoxels)
             {
                 BoundingBoxD guard = voxel.PositionComp.WorldAABB;
                 guard.Inflate(Math.Max(50, settings.TravelClearance));
@@ -51,13 +51,13 @@ namespace EMMA3.Client
             {
                 if (job.Scanner.Active)
                 {
+                    if (!blocks.CanScan(job.Scanner.Current?.Voxel)) job.Scanner.Cancel();
                     job.Scanner.Step();
                     if (job.Scanner.Active) return;
                     AsteroidMap map = job.Scanner.Current;
-                    if (map == null || !map.Complete) throw new InvalidOperationException("scan incomplete");
+                    if (map == null || !map.Complete || !blocks.CanScan(map.Voxel)) throw new InvalidOperationException("departure asteroid left detector range");
                     job.Maps.Add(map.EntityId, map);
-                    cache[map.EntityId] = map;
-                    AddDetectedOresToTimer(map);
+                    RecordCompletedScan(map);
                     job.Scanner.ClearCurrent();
                 }
                 if (job.Index == job.Queue.Count)
@@ -68,6 +68,11 @@ namespace EMMA3.Client
                 MyVoxelBase voxel = job.Queue[job.Index++];
                 if (voxel == null || voxel.Closed || voxel.MarkedForClose)
                     throw new InvalidOperationException("asteroid disappeared");
+                if (!blocks.CanScan(voxel))
+                {
+                    // Keep unscanned obstacles as solid AABBs in the planning snapshot.
+                    return;
+                }
                 job.Scanner.Begin(voxel);
                 UpdateStatus("scanning", "checking fresh departure voxels " + job.Index + "/" + job.Queue.Count);
             }

@@ -144,6 +144,7 @@ namespace EMMA3.Client
 
             blocks.Clear();
             terminal.GetBlocks(blocks);
+            RefreshScanSensors();
             // Bootstrap from the occupied grid, before resolving any prefixed hardware.
             foreach (var block in blocks)
             {
@@ -329,6 +330,36 @@ namespace EMMA3.Client
             return nearest;
         }
 
+        private readonly List<IMyTerminalBlock> scanSensors = new List<IMyTerminalBlock>();
+
+        private void RefreshScanSensors()
+        {
+            scanSensors.Clear();
+            foreach (var block in blocks)
+                if (block.CubeGrid == ControlledGrid && (block is Sandbox.ModAPI.Ingame.IMyOreDetector
+                    || (block is Sandbox.ModAPI.Ingame.IMyConveyorSorter && DetectorScanPolicy.IsSdxLidar(block.BlockDefinition.SubtypeName))))
+                    scanSensors.Add(block);
+        }
+
+        public bool CanScan(Sandbox.Game.Entities.MyVoxelBase voxel)
+        {
+            var player = MyAPIGateway.Session?.Player;
+            if (player == null || !IsCarrierPilot || CarrierRemote == null || voxel == null || voxel.Closed || voxel.MarkedForClose)
+                return false;
+            foreach (var sensor in scanSensors)
+            {
+                if (sensor.Closed || sensor.MarkedForClose || sensor.CubeGrid != CarrierRemote.CubeGrid
+                    || !sensor.IsWorking || !sensor.HasPlayerAccess(player.IdentityId)) continue;
+                bool lidar = !(sensor is Sandbox.ModAPI.Ingame.IMyOreDetector);
+                // Both terminal sliders return metres. IMyOreDetector.Range returns a percentage.
+                var slider = sensor.GetProperty(lidar ? "Weapon Range" : "Range") as Sandbox.ModAPI.Interfaces.ITerminalProperty<float>;
+                if (slider == null) continue;
+                double radius = DetectorScanPolicy.Range(slider.GetValue(sensor), slider.GetMaximum(sensor), lidar);
+                if (DetectorScanPolicy.Overlaps(sensor.GetPosition(), radius, voxel.PositionComp.WorldAABB)) return true;
+            }
+            return false;
+        }
+
         public void GetCarrierBlocks(List<IMyTerminalBlock> result)
         {
             result.Clear();
@@ -400,6 +431,7 @@ namespace EMMA3.Client
 
         private void Clear()
         {
+            scanSensors.Clear();
             ControlledGrid = null;
             OccupiedController = null;
             CarrierRemote = null;

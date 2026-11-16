@@ -41,6 +41,7 @@ namespace EMMA3.Client
         void BuildAndPublish(AsteroidMap map) { published = map.EntityId; }
         internal void Promote() => PromoteMatchingBackgroundScan();
         internal void Finish(AsteroidMap map) => OnScanComplete(map);
+        internal int SurveyCount => scannedAsteroids.Count;
     }
 }
 namespace VRage.Plugins { public interface IPlugin {} }

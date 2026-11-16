@@ -177,7 +177,7 @@ namespace EMMA3.Client
         public bool Visualization;
         public bool AllowMovement;
         public bool ScriptLogging = true;
-        public bool AllowSeatExitDuringMining;
+        public bool AllowSeatExitDuringMining = true;
         public PlannerSettings Clone()
         {
             return (PlannerSettings)MemberwiseClone();

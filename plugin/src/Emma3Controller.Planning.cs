@@ -12,6 +12,26 @@ namespace EMMA3.Client
 {
     internal sealed partial class Emma3Controller
     {
+        private readonly HashSet<long> failedRoutesThisPass = new HashSet<long>();
+
+        private string ReadPlanningFleet(BridgeDocument bridge, out string[] members)
+        {
+            members = null;
+            int registered = bridge.GetInt("fleetCount");
+            if (registered == 0) return null;
+            if (registered != 1) return "EMM-A 0.9.46B requires one registered Miner.";
+            if (blocks.FleetPathTimer == null)
+                return "Need one timer named " + blocks.Names.Ca("Fleet Path") + " on the Carrier grid.";
+            const int count = 1;
+            members = new string[count];
+            for (int i = 0; i < count; i++)
+            {
+                members[i] = bridge.Get("fleetId" + i);
+                if (string.IsNullOrEmpty(members[i])) return "Waiting for registered Miner identity in slot " + (i + 1) + ".";
+            }
+            return null;
+        }
+
         private void BeginPlanning(BridgeDocument bridge)
         {
             if (acceptedPlanRequest == null || !acceptedPlanRequest.Matches(bridge)) acceptedPlanRequest = new PlanRequestIdentity(bridge);
@@ -20,6 +40,7 @@ namespace EMMA3.Client
             planningDimensions = null;
             if (!long.TryParse(bridge.Get("requestedAsteroidEntityId"), NumberStyles.Integer, CultureInfo.InvariantCulture, out requestedAsteroidEntityId))
                 requestedAsteroidEntityId = 0;
+            long.TryParse(bridge.Get("resetSkipAsteroid"), out resetSkippedAsteroid);
             restartPlanningAfterCockpitLoss = false;
             CancelDeparturePreparation();
             CancelPlanningJob("new autonomous mining request");
@@ -33,6 +54,15 @@ namespace EMMA3.Client
             if (!blocks.IsCarrierPilot)
             {
                 Fail(bridge, "Stay in the Carrier cockpit while planning", true);
+                return;
+            }
+
+            string fleetProblem = ReadPlanningFleet(bridge, out _);
+            if (fleetProblem != null)
+            {
+                bridge.Set("state", "waiting_replication");
+                bridge.Set("message", fleetProblem);
+                bridge.Set("planningExhausted", false);
                 return;
             }
 
@@ -88,6 +118,7 @@ namespace EMMA3.Client
             planningActive = true;
             matchingCandidates = 0;
             planningFailures = 0;
+            failedRoutesThisPass.Clear();
             lastPlanningFailure = "";
             BuildCandidateList();
             PrepareDeparture(bridge);
@@ -107,8 +138,9 @@ namespace EMMA3.Client
                 MyVoxelBase voxel = candidates[candidateIndex++];
                 if (voxel == null || voxel.Closed || voxel.MarkedForClose || completed.Contains(voxel.EntityId) || rejectedCandidates.Contains(voxel.EntityId))
                     continue;
-                if (!MatchesRequestedAsteroid(voxel.EntityId))
+                if (!blocks.CanScan(voxel) || !MatchesRequestedAsteroid(voxel.EntityId))
                     continue;
+                if (failedRoutesThisPass.Contains(voxel.EntityId)) continue;
                 AsteroidMap map;
                 if (cache.TryGetValue(voxel.EntityId, out map) && map.Complete)
                 {
@@ -127,16 +159,38 @@ namespace EMMA3.Client
                 return;
             }
 
+            // Untargeted carrier searches may see a different set of streamed asteroids every pass.
+            // Only the visit ledger establishes that a target was actually mined.
+            if (planningCarrierOnly && requestedAsteroidEntityId == 0 && matchingCandidates == 0 && planningFailures == 0
+                && (candidates.Count == 0 || candidates.Exists(voxel => voxel.Closed || voxel.MarkedForClose
+                    || completed.Remaining(voxel.EntityId, ores).Targets.Count > 0)
+                    || HasCachedTarget(ores)))
+            {
+                planningActive = false;
+                nextOreSearchFrame = frame + 3600;
+                UpdateStatus("waiting_ore", candidates.Count == 0 ? "No asteroid box in detector range. Check ore detector or SDX lidar."
+                    : "Waiting for " + DescribeTargetOres(ores) + " in range (" + candidates.Count + " loaded)");
+                return;
+            }
+
             string noMatch;
             if (matchingCandidates > 0)
                 noMatch = "Routes failed: " + planningFailures + "/" + matchingCandidates
                     + "; last=" + (lastPlanningFailure.Length == 0 ? "unknown" : lastPlanningFailure);
             else
-                noMatch = "No " + DescribeTargetOres(ores) + " in " + cache.Count + "; found " + DescribeDetectedOres();
+                noMatch = "No eligible " + DescribeTargetOres(ores) + " among " + candidates.Count + " loaded asteroids";
             UpdateStatus("error", noMatch, matchingCandidates == 0);
             Emma3Log.Diagnostic(noMatch);
             planningActive = false;
             TryRun(blocks.MinerPb, "stop");
+        }
+
+        private bool HasCachedTarget(OreSelection ores)
+        {
+            foreach (AsteroidMap map in cache.Values)
+                if (map.Complete && blocks.CanScan(map.Voxel) && !rejectedCandidates.Contains(map.EntityId) && Qualifies(map, completed.Remaining(map.EntityId, ores)))
+                    return true;
+            return false;
         }
 
         private void HandleScanFailure(AsteroidMap map, Exception ex)
@@ -181,6 +235,15 @@ namespace EMMA3.Client
 
         private void BuildAndPublish(AsteroidMap map)
         {
+            // The terminal system and roster can change while a voxel scan is running.
+            string[] members;
+            string fleetProblem = ReadPlanningFleet(BridgeDocument.Parse(blocks.BridgeTimer.CustomData), out members);
+            if (fleetProblem != null)
+            {
+                planningActive = false;
+                UpdateStatus("waiting_replication", fleetProblem);
+                return;
+            }
             matchingCandidates++;
             try
             {
@@ -188,7 +251,7 @@ namespace EMMA3.Client
                 {
                     Request = acceptedPlanRequest,
                     Map = map,
-                    Snapshot = CapturePlanningSnapshot(map)
+                    Snapshot = CapturePlanningSnapshot(map, members)
                 };
                 planningJob = job;
                 UpdateStatus("planning", "Planning route");
@@ -217,7 +280,7 @@ namespace EMMA3.Client
             }
         }
 
-        private PlanningSnapshot CapturePlanningSnapshot(AsteroidMap map)
+        private PlanningSnapshot CapturePlanningSnapshot(AsteroidMap map, string[] members)
         {
             if (departurePreparation != null && !departurePreparation.Complete)
                 throw new InvalidOperationException("departure voxel preparation is incomplete");
@@ -245,18 +308,10 @@ namespace EMMA3.Client
                 CarrierConnectorUp = blocks.CarrierConnector == null ? Vector3D.Zero : blocks.CarrierConnector.WorldMatrix.Up,
                 MinerToolOffsetLocal = planningDimensions != null ? planningDimensions.ToolOffsetLocal : settings.MinerTargetOffsetLocal
             };
-            BridgeDocument fleetBridge = BridgeDocument.Parse(blocks.BridgeTimer.CustomData);
-            int fleetCount = fleetBridge.GetInt("fleetCount");
-            if (fleetCount > 0)
+            if (members != null)
             {
-                if (fleetCount > 3 || blocks.FleetPathTimer == null) throw new InvalidOperationException("Fleet planning requires 1–3 registered miners and the Carrier Fleet Path timer.");
-                fleetCount = Math.Min(fleetCount, Math.Max(1, Math.Min(3, fleetBridge.GetInt("minerUseCount", 3))));
-                snapshot.FleetCount = fleetCount; snapshot.FleetMembers = new string[fleetCount];
-                for (int i = 0; i < fleetCount; i++)
-                {
-                    snapshot.FleetMembers[i] = fleetBridge.Get("fleetId" + i);
-                    if (snapshot.FleetMembers[i].Length == 0) throw new InvalidOperationException("Fleet registration changed during planning.");
-                }
+                snapshot.FleetCount = members.Length;
+                snapshot.FleetMembers = members;
             }
             snapshot.MinerRadius = planningCarrierOnly ? 0 : planningDimensions != null ? planningDimensions.Radius : blocks.MinerRemote.CubeGrid.WorldVolume.Radius;
             if (planningDimensions != null) snapshot.MinerDrills.AddRange(planningDimensions.Drills);
@@ -281,9 +336,9 @@ namespace EMMA3.Client
             }
 
             LogDrillFootprints(snapshot);
-            for (int i = 0; i < candidates.Count; i++)
+            for (int i = 0; i < obstacleVoxels.Count; i++)
             {
-                MyVoxelBase voxel = candidates[i];
+                MyVoxelBase voxel = obstacleVoxels[i];
                 if (voxel != null && voxel.EntityId != map.EntityId)
                 {
                     AsteroidMap departure;
@@ -355,6 +410,7 @@ namespace EMMA3.Client
             planningJob = null;
             if (job.Cancellation.IsCancellationRequested)
                 return;
+            if (!blocks.CanScan(job.Map.Voxel)) { ContinuePlanning(); return; }
             if (job.Error != null)
             {
                 HandlePlanningFailure(job.Map, job.Error);
@@ -404,7 +460,7 @@ namespace EMMA3.Client
 
         private void HandlePlanningFailure(AsteroidMap map, Exception ex)
         {
-            rejectedCandidates.Add(map.EntityId);
+            failedRoutesThisPass.Add(map.EntityId);
             planningFailures++;
             lastPlanningFailure = "asteroid " + map.EntityId + ": " + ex.Message;
             string export = Emma3Log.ExportFailure("candidate-" + map.EntityId, DescribeFailure(map, activePlan, ex));

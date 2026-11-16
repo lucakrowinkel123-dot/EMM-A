@@ -30,7 +30,7 @@ namespace EMMA3.Client
                         var voxel = entity as MyVoxelBase;
                         if (voxel == null || voxel is MyPlanet || voxel.Closed || voxel.MarkedForClose || !seen.Add(voxel.EntityId))
                             continue;
-                        backgroundCandidates.Add(voxel);
+                        if (blocks.CanScan(voxel)) backgroundCandidates.Add(voxel);
                     }
 
                 backgroundCandidates.Sort((a, b) => DistanceToBox(current, a.PositionComp.WorldAABB).CompareTo(DistanceToBox(current, b.PositionComp.WorldAABB)));
@@ -41,7 +41,7 @@ namespace EMMA3.Client
             while (backgroundIndex < backgroundCandidates.Count)
             {
                 MyVoxelBase voxel = backgroundCandidates[backgroundIndex++];
-                if (voxel == null || voxel.Closed || voxel.MarkedForClose)
+                if (!blocks.CanScan(voxel))
                     continue;
                 if (completed == null)
                     completed = new CompletedAsteroids(userDataPath);

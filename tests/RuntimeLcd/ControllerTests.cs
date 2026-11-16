@@ -11,6 +11,7 @@ namespace Sandbox.ModAPI.Ingame
     public interface IMyProgrammableBlock { long EntityId {get;} }
     public interface IMyTextPanel
     {
+        long EntityId { get; }
         VRageMath.Vector2 SurfaceSize {get;} bool IsWorking { get; }
         VRage.Game.GUI.TextPanel.ContentType ContentType { get; set; }
         string Font { get; set; }
@@ -33,7 +34,7 @@ namespace EMMA3.Client
     class Names { public string Carrier="Typhon",Miner="EMM-A Mi"; }
     class Blocks
     {
-        public IMyTextPanel CarrierLcdRuntime;
+        public IMyTextPanel CarrierLcdRuntime, CarrierLcdMain, CarrierLcdReport;
         public Timer BridgeTimer=new Timer();
         public bool IsCarrierPilot=true;
         public bool IsMinerHangared;
@@ -43,7 +44,9 @@ namespace EMMA3.Client
     internal sealed partial class Emma3Controller
     {
         internal Blocks blocks=new Blocks();
-        internal bool pluginLcdOutput=true;
+        internal void SetLcdOutput(bool enabled) { ApplyPluginLcdSettings(BridgeDocument.Parse("pluginLcdOutput="+enabled)); }
+        string GetCarrierPluginInfo() { return lastCarrierInfoTimer.CustomData; }
+        internal void DrawScreens() { UpdateCarrierLcdOutput(); }
         int frame;
         internal Timer lastCarrierInfoTimer=new Timer(),lastMinerInfoTimer=new Timer();
         string CarrierInfoTimerName="Typhon Plugin Info",MinerInfoTimerName="EMM-A Mi Plugin Info";
@@ -54,6 +57,7 @@ namespace EMMA3.Client
 }
 class Panel : IMyTextPanel
 {
+    public long EntityId { get; set; }
     public VRageMath.Vector2 SurfaceSize { get; set; } = new VRageMath.Vector2 { X=1024,Y=1024 };
     public bool IsWorking { get; set; }=true;
     public VRage.Game.GUI.TextPanel.ContentType ContentType { get; set; }
@@ -92,6 +96,7 @@ static class ControllerTests
 {
     public static void Run(Action<bool,string> check)
     {
+        CheckTransferredScreens(check);
         var controller=new Emma3Controller();var panel=new Panel();var pb=new PB{EntityId=1};
         controller.blocks.CarrierLcdRuntime=panel;controller.blocks.CarrierPb=pb;
         controller.blocks.CarrierPilotPb=new PB{EntityId=2};controller.blocks.MinerPb=new PB{EntityId=3};controller.blocks.MinerPilotPb=new PB{EntityId=4};
@@ -125,13 +130,39 @@ static class ControllerTests
         check(stored[5].EndsWith("Hangared")&&stored[6].Trim()=="Miner A Pilot"&&stored[2].EndsWith("Not loaded")&&stored[12].Contains("Total - --"),"Only confirmed stored Miner Commander shows Hangared; absent Carrier and Total keep their existing states");
         controller.blocks.IsMinerHangared=false;controller.Tick(true);
         check(!replacement.Text.Contains("Hangared")&&replacement.Text.Contains("Not loaded"),"Empty or unknown hangar returns absent Miner rows to Not loaded");
-        controller.pluginLcdOutput=false;int writes=replacement.Writes;controller.Tick(true);
+        controller.SetLcdOutput(false);int writes=replacement.Writes;controller.Tick(true);
         check(replacement.Writes==writes,"Disabled LCD output does not write");
-        controller.pluginLcdOutput=true;replacement.Fail=true;controller.Tick(true);
+        controller.SetLcdOutput(true);replacement.Fail=true;controller.Tick(true);
         replacement.Fail=false;controller.Tick(true);check(replacement.Text.Contains("Typhon | Runtime"),"Display errors retry without aborting mission");
         var editing=new Panel{EditorOpen=true};controller.blocks.CarrierLcdRuntime=editing;controller.Tick(true);
         editing.EditorOpen=false;controller.Tick(true);check(editing.Writes==1,"Rejected editor-open write retries");
         controller.blocks.CarrierLcdRuntime=null;controller.Tick(true);
+    }
+    static void CheckTransferredScreens(Action<bool,string> check)
+    {
+        var controller = new Emma3Controller();
+        controller.blocks.CarrierPb = new PB { EntityId = 1 };
+        controller.blocks.CarrierLcdMain = new Panel { EntityId = 10 };
+        controller.blocks.CarrierLcdReport = new Panel { EntityId = 11 };
+        controller.lastCarrierInfoTimer.CustomData = "EMMA3_LCD|1|7|Main|Totals";
+        controller.DrawScreens();
+        var main = new Panel { EntityId = 10 };
+        var report = new Panel { EntityId = 11, EditorOpen = true };
+        controller.blocks.CarrierLcdMain = main;
+        controller.blocks.CarrierLcdReport = report;
+        controller.DrawScreens();
+        check(main.Text == "Main" && main.Font == "Debug", "Transferred Main LCD redraws with the same block ID, sequence and text");
+        report.EditorOpen = false;
+        controller.DrawScreens();
+        check(report.Text == "Totals" && main.Writes == 1, "Report retries independently after a rejected write");
+        controller.blocks.CarrierLcdReport = null;
+        controller.lastCarrierInfoTimer.CustomData = "EMMA3_LCD|1|7|New Main|New Totals";
+        controller.DrawScreens();
+        check(main.Text == "New Main", "A restarted publisher can reuse a sequence with different text");
+        controller.blocks.CarrierLcdReport = new Panel { EntityId = 20 };
+        controller.DrawScreens();
+        check(((Panel)controller.blocks.CarrierLcdReport).Text == "New Totals" && main.Writes == 2,
+            "A late Report panel receives current text without a new packet or an extra Main write");
     }
     static void CheckDashPositions(Panel panel,int expectedRows,Action<bool,string> check)
     {

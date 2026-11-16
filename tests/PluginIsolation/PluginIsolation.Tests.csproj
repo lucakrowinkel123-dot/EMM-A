@@ -8,5 +8,6 @@
     <Compile Include="../../plugin/src/Plugin.cs" />
     <Compile Include="../../plugin/src/Emma3Log.cs" />
     <Compile Include="../../plugin/src/Emma3Controller.ScanCompletion.cs" />
+    <Compile Include="../../plugin/src/Emma3Controller.Survey.cs" />
   </ItemGroup>
 </Project>

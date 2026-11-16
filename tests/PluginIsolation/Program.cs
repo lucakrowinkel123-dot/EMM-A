@@ -36,6 +36,12 @@ static class Program
         c = new Emma3Controller(null) { planningActive = false, backgroundScanActive = true };
         c.Finish(b);
         Check(c.cache[b.EntityId] == b && c.published == 0 && c.continued == 0, "idle background scans only populate the cache");
+        c.Finish(new AsteroidMap { EntityId = 303, Complete = false });
+        Check(!c.cache.ContainsKey(303), "An unfinished asteroid cannot contribute a survey result");
+        c.Finish(a);
+        c.Finish(a);
+        c.cache.Remove(b.EntityId);
+        Check(c.SurveyCount == 2, "Count each fully scanned asteroid once, even after a rescan or map eviction");
         c = new Emma3Controller(null) { departurePreparation = new DeparturePreparation { Complete = false }, requestedAsteroidEntityId = a.EntityId };
         c.Finish(b);
         Check(c.cache[b.EntityId] == b && c.published == 0 && c.continued == 0, "unrelated scan during departure stays cached");

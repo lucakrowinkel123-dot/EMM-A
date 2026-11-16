@@ -24,15 +24,13 @@ namespace EMMA3.Client
             ApplyPluginFeatureSettings(bridge);
             ApplyPluginLcdSettings(bridge);
             resources.Publish(blocks, bridge.GetBool("iceReserveEnabled") || bridge.Get("selectionMode").Equals("Items", StringComparison.OrdinalIgnoreCase));
-            PumpFleetPublication(bridge);
-            CheckFleetPublicationFuel(bridge);
             UpdateProduction(bridge);
             UpdateRefinerySorters(bridge);
             TryRestoreVisualization(bridge);
             int reset = bridge.GetInt("resetSequence");
             if (reset > handledReset)
             {
-                handledReset = reset;
+                acceptedPlanRequest = null;
                 restartPlanningAfterCockpitLoss = false;
                 CancelDeparturePreparation();
                 CancelPlanningJob("clean reset");
@@ -50,6 +48,7 @@ namespace EMMA3.Client
                 completed.Clear();
                 blocks.CompletedAsteroidsTimer.CustomData = completed.Serialize();
                 cache.Clear();
+                scannedAsteroids.Clear();
                 rejectedCandidates.Clear();
                 candidates.Clear();
                 backgroundCandidates.Clear();
@@ -63,15 +62,29 @@ namespace EMMA3.Client
                 handledCompletion = Math.Max(handledCompletion, bridge.GetInt("completionSequence"));
                 if (blocks.MinerPathTimer != null)
                     blocks.MinerPathTimer.CustomData = "";
-                TryRun(blocks.CarrierPb, "PluginAbort");
-                TryRun(blocks.MinerPb, "stop");
+                fleetPublicationPaths.Clear();
+                fleetPublicationMission = "";
+                if (blocks.FleetPathTimer != null) blocks.FleetPathTimer.CustomData = "";
+                if (blocks.CarrierPb != null && System.IO.File.Exists(FleetPublicationFile)) System.IO.File.Delete(FleetPublicationFile);
+                if (bridge.GetInt("fleetCleanReset") != reset)
+                {
+                    TryRun(blocks.CarrierPb, "PluginAbort");
+                    TryRun(blocks.MinerPb, "stop");
+                }
+                if (bridge.Get("resetSkipAsteroid").Length == 0 && bridge.GetInt("fleetCleanReset") == reset)
+                    bridge.Set("resetSkipAsteroid", bridge.Get("asteroidEntityId"));
+                bridge.Set("resetThroughRequest", handledRequest);
                 ClearPublishedMission(bridge);
+                handledReset = reset;
                 bridge.Set("resetAck", reset);
                 bridge.Set("completionAck", handledCompletion);
                 bridge.Set("state", "idle");
                 bridge.Set("message", "Reset complete; paths, scans, caches, IDs cleared");
                 Emma3Log.Info("Clean reset completed from Carrier menu: completed IDs, active mission, scan/cache state, rejected candidates, Miner path, and Carrier route cleared.");
             }
+
+            PumpFleetPublication(bridge);
+            CheckFleetPublicationFuel(bridge);
 
             int completion = bridge.GetInt("completionSequence");
             if (completion > handledCompletion)
@@ -134,6 +147,11 @@ namespace EMMA3.Client
             }
 
             bridge.Set("completedCount", completed.Count);
+            bridge.Set("asteroidsScanned", scannedAsteroids.Count);
+            // Idle discovery also runs between background sweeps. A parked or
+            // disconnected client must not leave a perpetual searching label.
+            bool surveying = blocks.IsCarrierPilot && !cockpitSuspended && !planningActive && activePlan == null;
+            bridge.Set("surveyPulse", surveying ? 1 + frame / 300 : 0);
             bridge.Set("continueAvailable", cockpitSuspended && blocks.IsCarrierPilot ? 1 : 0);
             bridge.Set("pluginLcdReady", pluginLcdOutput && blocks.IsCarrierPilot && blocks.CarrierLcdMain != null ? 1 : 0);
             bridge.Set("pluginLcdHeartbeat", pluginLcdHeartbeat);
@@ -161,6 +179,9 @@ namespace EMMA3.Client
             if (!bridgeCountersInitialized) return;
             int request = bridge.GetInt("request");
             string command = bridge.Get("command");
+            if (IsCockpitUnavailable(problem) && bridge.GetBool("allowSeatExitDuringMining", true)
+                && (command.Equals("plan", StringComparison.OrdinalIgnoreCase) || command.Equals("continue", StringComparison.OrdinalIgnoreCase)))
+                return; // The seated controller will consume this same request.
             bool actionable = command.Equals("plan", StringComparison.OrdinalIgnoreCase) || command.Equals("continue", StringComparison.OrdinalIgnoreCase) || command.Equals("abort", StringComparison.OrdinalIgnoreCase);
             if (request <= handledRequest || !actionable)
                 return;
@@ -172,9 +193,14 @@ namespace EMMA3.Client
             Emma3Log.Error("Rejected " + command + " request " + request + ": " + problem + ".");
         }
 
+        private static bool IsCockpitUnavailable(string problem)
+        {
+            return problem == "sit in a Carrier cockpit" || problem == "planning requires the Carrier cockpit";
+        }
+
         private static string CompactUnavailableMessage(string problem)
         {
-            if (problem == "sit in a Carrier cockpit" || problem == "planning requires the Carrier cockpit")
+            if (IsCockpitUnavailable(problem))
                 return "Unavailable: use the Carrier cockpit.";
             if (problem == "no terminal system for occupied grid")
                 return "Unavailable: no terminal system for this grid.";
@@ -208,6 +234,10 @@ namespace EMMA3.Client
             bridge.Remove("planType");
             bridge.Remove("requestedAsteroidEntityId");
             bridge.Remove("projectMinerDockPose");
+            foreach (string prefix in new[] { "fleetAssignment", "fleetWorkMeters", "fleetPublish", "planResult", "asteroidBox" })
+                bridge.RemovePrefix(prefix);
+            foreach (string key in new[] { "fleetPathAck", "fleetOwners", "planIntent", "fReq", "fResult", "fWarning", "fuelConnectionWarning", "fuelConnectionStatus" })
+                bridge.Remove(key);
         }
 
         private void InitializeBridgeCounters(BridgeDocument bridge, bool resumeInterruptedPlanning = true)
@@ -236,8 +266,8 @@ namespace EMMA3.Client
             string resetAckText = bridge.Get("resetAck");
             if (resetAckText.Length == 0)
             {
-                handledReset = resetSequence;
-                bridge.Set("resetAck", resetSequence);
+                handledReset = command == "reset" && state == "requested" ? Math.Max(0, resetSequence - 1) : resetSequence;
+                bridge.Set("resetAck", handledReset);
             }
             else
             {

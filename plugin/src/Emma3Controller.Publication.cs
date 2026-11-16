@@ -16,6 +16,7 @@ namespace EMMA3.Client
         {
             bridge.Set("state", settings.AllowMovement ? "ready" : "ready_dryrun");
             bridge.Set("message", settings.AllowMovement ? "plan ready and validated" : "plan ready; Allow movement is Off");
+            bridge.Remove("resetSkipAsteroid");
             bridge.Set("missionId", plan.MissionId);
             bridge.Set("planType", planningCarrierOnly ? "carrier" : "full");
             bridge.Remove("carrierRouteCompletedMission");
@@ -57,7 +58,9 @@ namespace EMMA3.Client
 
         private void TryRestoreVisualization(BridgeDocument bridge)
         {
-            if (!settings.Visualization || activePlan != null || planningActive || restoredVisualizationPlan != null)
+            if (!settings.Visualization || activePlan != null || planningActive || restoredVisualizationPlan != null
+                || bridge.Get("state") == "completed" || bridge.GetInt("completionSequence") > handledCompletion
+                || bridge.GetInt("resetSequence") > handledReset)
                 return;
             string missionId = bridge.Get("missionId");
             string pathHash = bridge.Get("pathHash");
@@ -96,9 +99,12 @@ namespace EMMA3.Client
             }
         }
 
+        private readonly List<MyVoxelBase> obstacleVoxels = new List<MyVoxelBase>();
+
         private void BuildCandidateList()
         {
             candidates.Clear();
+            obstacleVoxels.Clear();
             candidateIndex = 0;
             Vector3D current = blocks.CarrierRemote.GetPosition();
             BoundingSphereD sphere = new BoundingSphereD(current, settings.SearchRadius);
@@ -112,7 +118,8 @@ namespace EMMA3.Client
                     var voxel = entity as MyVoxelBase;
                     if (voxel == null || voxel is MyPlanet || voxel.Closed || voxel.MarkedForClose || !seen.Add(voxel.EntityId))
                         continue;
-                    candidates.Add(voxel);
+                    obstacleVoxels.Add(voxel);
+                    if (blocks.CanScan(voxel)) candidates.Add(voxel);
                 }
 
             candidates.Sort((a, b) => DistanceToBox(current, a.PositionComp.WorldAABB).CompareTo(DistanceToBox(current, b.PositionComp.WorldAABB)));

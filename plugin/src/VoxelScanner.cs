@@ -140,9 +140,11 @@ namespace EMMA3.Client
             {
                 if (totalSamples <= 0)
                     throw new InvalidOperationException("Asteroid voxel storage has an empty LOD2 range.");
+                if (cancelRequested) throw new OperationCanceledException();
                 phase = "allocating storage";
                 var storage = new MyStorageData();
                 storage.Resize(min, max);
+                if (cancelRequested) throw new OperationCanceledException();
                 phase = "reading content and material";
                 voxel.Storage.ReadRange(storage, MyStorageDataTypeFlags.ContentAndMaterial, QueryLod, min, max);
                 phase = "processing raw arrays";

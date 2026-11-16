@@ -32,6 +32,7 @@ namespace EMMA3.Client
         private MinerDimensions planningDimensions;
         private long requestedAsteroidEntityId;
         private int nextProductionPlanCheck;
+        private int nextOreSearchFrame;
         private readonly Dictionary<long, AsteroidMap> cache = new Dictionary<long, AsteroidMap>();
         private readonly HashSet<long> rejectedCandidates = new HashSet<long>();
         private readonly List<MyVoxelBase> candidates = new List<MyVoxelBase>();
@@ -96,6 +97,9 @@ namespace EMMA3.Client
             if (frame % 60 == 1)
             {
                 bool ready = blocks.Refresh();
+                if (scanner.Active && !blocks.CanScan(scanner.Current?.Voxel)) { scanner.Cancel(); discardScanResult = true; }
+                if (departurePreparation != null && departurePreparation.Scanner.Active && !blocks.CanScan(departurePreparation.Scanner.Current?.Voxel))
+                    departurePreparation.Scanner.Cancel();
                 bool registeredFleet = BridgeDocument.Parse(blocks.BridgeTimer?.CustomData).GetInt("fleetCount") > 0;
                 if (ready && shipContext.Changed(blocks.CarrierPb.EntityId, blocks.BridgeTimer.EntityId, blocks.Names.Pair))
                 {
@@ -148,9 +152,9 @@ namespace EMMA3.Client
                     PublishUnavailableBridgeStatus();
                     if (planningActive || activePlan != null)
                     {
-                        if (blocks.Problem == "sit in a Carrier cockpit" || blocks.Problem == "planning requires the Carrier cockpit")
+                        if (IsCockpitUnavailable(blocks.Problem))
                         {
-                            if (!planningActive && activePlan != null && settings.AllowSeatExitDuringMining)
+                            if (settings.AllowSeatExitDuringMining)
                                 return;
                             SuspendForCockpitLoss(blocks.Problem);
                         }
@@ -196,6 +200,11 @@ namespace EMMA3.Client
             {
                 try
                 {
+                    if (!discardScanResult && !blocks.CanScan(scanner.Current?.Voxel))
+                    {
+                        scanner.Cancel();
+                        discardScanResult = true;
+                    }
                     scanner.Step();
                 }
                 catch (Exception ex)
@@ -210,7 +219,8 @@ namespace EMMA3.Client
                     {
                         discardScanResult = false;
                         scanner.ClearCurrent();
-                        Emma3Log.Diagnostic("Discarded the in-flight scan result after a clean reset.");
+                        backgroundScanActive = false;
+                        Emma3Log.Diagnostic("Discarded the cancelled asteroid scan.");
                     }
                     else
                         OnScanComplete(scanner.Current);

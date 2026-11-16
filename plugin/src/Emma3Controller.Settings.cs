@@ -20,7 +20,7 @@ namespace EMMA3.Client
             settings.TravelClearance = Clamp(bridge.GetDouble("travelClearance", 75), 10, 1000);
             settings.Visualization = bridge.GetBool("visualization");
             settings.AllowMovement = bridge.GetBool("allowMovement");
-            settings.AllowSeatExitDuringMining = bridge.GetBool("allowSeatExitDuringMining");
+            settings.AllowSeatExitDuringMining = bridge.GetBool("allowSeatExitDuringMining", true);
             settings.ScriptLogging = bridge.Get("scriptLogging").Length == 0 || bridge.GetBool("scriptLogging");
             Emma3Log.SetEnabled(settings.ScriptLogging);
             BridgeDocument miner = BridgeDocument.ReadMinerPlannerSettings(blocks.MinerPb?.CustomData, blocks.MinerStateTimer?.CustomData);
@@ -54,7 +54,7 @@ namespace EMMA3.Client
             if (bridge.Get("scriptLogging").Length == 0)
                 bridge.Set("scriptLogging", 1);
             if (bridge.Get("allowSeatExitDuringMining").Length == 0)
-                bridge.Set("allowSeatExitDuringMining", 0);
+                bridge.Set("allowSeatExitDuringMining", 1);
             if (bridge.Get("iceReserveEnabled").Length == 0)
                 bridge.Set("iceReserveEnabled", 0);
             if (bridge.Get("iceReserveLiters").Length == 0)

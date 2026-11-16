@@ -48,16 +48,52 @@ namespace EMMA3.Client
         public bool TryLoad(string missionId, string pathHash, double travelClearance, out MissionPlan plan, out string reason)
         {
             plan = null;
-            reason = "";
-            if (string.IsNullOrWhiteSpace(missionId) || string.IsNullOrWhiteSpace(pathHash) || !File.Exists(path))
-            {
-                reason = "no matching visualization snapshot";
+            reason = "no matching visualization snapshot";
+            if (string.IsNullOrWhiteSpace(missionId) || string.IsNullOrWhiteSpace(pathHash))
                 return false;
-            }
+            if (File.Exists(path) && TryRead(path, missionId, pathHash, travelClearance, out plan, out reason))
+                return true;
 
+            // A multiplayer world can reconnect the same ship through another server ID.
+            string world = SnapshotWorld(path);
+            if (world == null) return false;
             try
             {
-                string[] lines = File.ReadAllLines(path, Encoding.UTF8);
+                foreach (string candidate in Directory.EnumerateFiles(Path.GetDirectoryName(path), "current-visualization-*.txt"))
+                {
+                    if (string.Equals(path, candidate, StringComparison.OrdinalIgnoreCase)
+                        || !string.Equals(world, SnapshotWorld(candidate), StringComparison.OrdinalIgnoreCase))
+                        continue;
+                    string candidateReason;
+                    if (TryRead(candidate, missionId, pathHash, travelClearance, out plan, out candidateReason))
+                    {
+                        reason = candidateReason;
+                        return true;
+                    }
+                }
+            }
+            catch (IOException ex) { reason = ex.Message; }
+            catch (UnauthorizedAccessException ex) { reason = ex.Message; }
+            return false;
+        }
+
+        private static string SnapshotWorld(string file)
+        {
+            const string prefix = "current-visualization-";
+            string name = Path.GetFileNameWithoutExtension(file);
+            int separator = name.IndexOf('-', prefix.Length);
+            ulong server;
+            return separator > prefix.Length && ulong.TryParse(name.Substring(prefix.Length, separator - prefix.Length),
+                NumberStyles.None, CultureInfo.InvariantCulture, out server) ? name.Substring(separator + 1) : null;
+        }
+
+        private static bool TryRead(string file, string missionId, string pathHash, double travelClearance, out MissionPlan plan, out string reason)
+        {
+            plan = null;
+            reason = "";
+            try
+            {
+                string[] lines = File.ReadAllLines(file, Encoding.UTF8);
                 if (lines.Length < 5 || lines[0].Trim() != Header)
                 {
                     reason = "visualization snapshot format is invalid";
@@ -158,6 +194,7 @@ namespace EMMA3.Client
             }
             catch (Exception ex)
             {
+                plan = null;
                 reason = ex.GetType().Name + ": " + ex.Message;
                 return false;
             }

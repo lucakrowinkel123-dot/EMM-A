@@ -8,5 +8,7 @@
     <Compile Include="../../plugin/src/Emma3Controller.RuntimeLcd.cs" />
     <Compile Include="../../plugin/src/RuntimeReadout.cs" />
     <Compile Include="../../plugin/src/BridgeDocument.cs" />
+    <Compile Include="../../plugin/src/MarkerFieldCache.cs" />
+    <Compile Include="../../plugin/src/Emma3Controller.Lcd.cs" />
   </ItemGroup>
 </Project>

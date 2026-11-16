@@ -60,19 +60,6 @@ namespace EMMA3.Client
             return string.Join(",", names);
         }
 
-        private string DescribeDetectedOres()
-        {
-            var names = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-            foreach (AsteroidMap value in cache.Values)
-                foreach (string ore in value.OreSamples.Keys)
-                    names.Add(ore);
-            if (names.Count == 0)
-                return "none";
-            var sorted = new List<string>(names);
-            sorted.Sort(StringComparer.OrdinalIgnoreCase);
-            return string.Join(",", sorted);
-        }
-
         private static string DescribeMapOres(AsteroidMap value)
         {
             if (value == null || value.OreSamples.Count == 0)

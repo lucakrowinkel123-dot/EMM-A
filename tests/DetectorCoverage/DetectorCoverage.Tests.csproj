@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><TargetFramework>net48</TargetFramework><OutputType>Exe</OutputType></PropertyGroup>
+  <Import Project="../../plugin/Directory.Build.props" />
+  <ItemGroup>
+    <Compile Include="../../plugin/src/DetectorScanPolicy.cs" />
+    <Reference Include="VRage.Math"><HintPath>$(SpaceEngineersBin64)/VRage.Math.dll</HintPath></Reference>
+  </ItemGroup>
+</Project>

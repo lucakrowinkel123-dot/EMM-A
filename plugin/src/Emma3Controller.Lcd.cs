@@ -11,11 +11,10 @@ namespace EMMA3.Client
         private bool pluginLcdOutput = true;
         private int pluginLcdHeartbeat;
         private int nextPluginLcdHeartbeatFrame;
-        private int lastLcdSequence = -1;
-        private long configuredMainLcd;
-        private long configuredReportLcd;
-        private string lastMainLcdText = "";
-        private string lastReportLcdText = "";
+        private IMyTextPanel configuredMainLcd;
+        private IMyTextPanel configuredReportLcd;
+        private string lastMainLcdField;
+        private string lastReportLcdField;
 
         private void ApplyPluginLcdSettings(BridgeDocument bridge)
         {
@@ -31,7 +30,6 @@ namespace EMMA3.Client
             }
 
             pluginLcdOutput = enabled;
-            lastLcdSequence = -1;
             if (enabled)
             {
                 pluginLcdHeartbeat++;
@@ -43,48 +41,43 @@ namespace EMMA3.Client
 
         private void UpdateCarrierLcdOutput()
         {
-            if (!pluginLcdOutput || !blocks.IsCarrierPilot || blocks.CarrierPb == null || blocks.CarrierLcdMain == null)
+            if (!pluginLcdOutput || !blocks.IsCarrierPilot || blocks.CarrierPb == null)
+            {
+                configuredMainLcd = configuredReportLcd = null;
                 return;
+            }
 
             string[] fields;
             if (!lcdFieldsCache.TryRead(blocks.CarrierPb.EntityId, GetCarrierPluginInfo(), out fields))
                 return;
             int sequence;
-            if (fields.Length != 5 || !int.TryParse(fields[2], out sequence) || sequence == lastLcdSequence)
+            if (fields.Length != 5 || !int.TryParse(fields[2], out sequence))
                 return;
 
-            string main = DecodeLcdText(fields[3]);
-            string report = DecodeLcdText(fields[4]);
-            ConfigureLcd(blocks.CarrierLcdMain, ref configuredMainLcd);
-            if (!string.Equals(main, lastMainLcdText, StringComparison.Ordinal))
-            {
-                blocks.CarrierLcdMain.WriteText(main, false);
-                lastMainLcdText = main;
-            }
-
-            if (blocks.CarrierLcdReport != null)
-            {
-                ConfigureLcd(blocks.CarrierLcdReport, ref configuredReportLcd);
-                if (!string.Equals(report, lastReportLcdText, StringComparison.Ordinal))
-                {
-                    blocks.CarrierLcdReport.WriteText(report, false);
-                    lastReportLcdText = report;
-                }
-            }
-
-            lastLcdSequence = sequence;
+            WriteLcd(blocks.CarrierLcdMain, fields[3], ref configuredMainLcd, ref lastMainLcdField);
+            WriteLcd(blocks.CarrierLcdReport, fields[4], ref configuredReportLcd, ref lastReportLcdField);
         }
 
-        private static void ConfigureLcd(IMyTextPanel panel, ref long configuredId)
+        private static void WriteLcd(IMyTextPanel panel, string field, ref IMyTextPanel configured, ref string lastField)
         {
-            if (panel == null || panel.EntityId == configuredId)
+            if (panel == null || !panel.IsWorking)
+            {
+                configured = null;
                 return;
-            panel.ContentType = ContentType.TEXT_AND_IMAGE;
-            panel.Font = "Debug";
-            panel.FontSize = 1.225f;
-            panel.TextPadding = 0f;
-            panel.Alignment = TextAlignment.LEFT;
-            configuredId = panel.EntityId;
+            }
+            // Seamless transfers can create a new panel object with the old entity ID.
+            if (!ReferenceEquals(panel, configured))
+            {
+                panel.ContentType = ContentType.TEXT_AND_IMAGE;
+                panel.Font = "Debug";
+                panel.FontSize = 1.225f;
+                panel.TextPadding = 0f;
+                panel.Alignment = TextAlignment.LEFT;
+                configured = panel;
+                lastField = null;
+            }
+            if (!string.Equals(field, lastField, StringComparison.Ordinal) && panel.WriteText(DecodeLcdText(field), false))
+                lastField = field;
         }
 
         private static string DecodeLcdText(string value)
