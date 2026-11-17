@@ -67,6 +67,7 @@ namespace EMMA3.Client
         private string lastVisualizationDiagnostic = "";
         private string lastVisualizationRestoreKey = "";
         private string lastBlockProblem = "";
+        private bool lidarWasWorking;
         private sealed class PlanningJob
         {
             public PlanRequestIdentity Request;
@@ -91,21 +92,30 @@ namespace EMMA3.Client
         public void Update()
         {
             frame++;
+            bool refresh = frame % 60 == 1;
+            bool ready = refresh && blocks.Refresh();
+            if (refresh && blocks.IsCarrierPilot && blocks.BridgeTimer != null
+                && shipContext.Changed(blocks.CarrierPb.EntityId, blocks.BridgeTimer.EntityId, blocks.Names.Pair))
+            {
+                RebindRequested = true;
+                return;
+            }
+            if (!blocks.HasWorkingLidar)
+            {
+                WaitForCarrierLidar(refresh);
+                return;
+            }
+            if (!lidarWasWorking && !refresh) return; // Bind the bridge before serving the first powered tick.
+            lidarWasWorking = true;
             UpdatePluginServices();
             UpdateDockHardware();
             if (settings.ScriptLogging && frame % 30 == 0) DrainFleetLogs();
-            if (frame % 60 == 1)
+            if (refresh)
             {
-                bool ready = blocks.Refresh();
                 if (scanner.Active && !blocks.CanScan(scanner.Current?.Voxel)) { scanner.Cancel(); discardScanResult = true; }
                 if (departurePreparation != null && departurePreparation.Scanner.Active && !blocks.CanScan(departurePreparation.Scanner.Current?.Voxel))
                     departurePreparation.Scanner.Cancel();
                 bool registeredFleet = BridgeDocument.Parse(blocks.BridgeTimer?.CustomData).GetInt("fleetCount") > 0;
-                if (ready && shipContext.Changed(blocks.CarrierPb.EntityId, blocks.BridgeTimer.EntityId, blocks.Names.Pair))
-                {
-                    RebindRequested = true;
-                    return;
-                }
                 if(blocks.CarrierPilotPb!=null)lastCarrierPilotPb=blocks.CarrierPilotPb;
                 if(blocks.MinerPilotPb!=null)lastMinerPilotPb=blocks.MinerPilotPb;
                 // Logging must not depend on every planner prerequisite being valid.
@@ -253,6 +263,33 @@ namespace EMMA3.Client
                     Emma3Log.Error("Visualization draw failed but planning will continue: " + root.GetType().Name + ": " + root.Message);
                 }
             }
+        }
+
+        private void WaitForCarrierLidar(bool refresh)
+        {
+            if (lidarWasWorking)
+            {
+                lidarWasWorking = false;
+                if (scanner.Active) { scanner.Cancel(); discardScanResult = true; }
+                CancelDeparturePreparation();
+                CancelPlanningJob("carrier lidar unavailable");
+                // Re-read the bridge on power-up. Its latest request may now be a reset or abort.
+                if (planningActive) bridgeCountersInitialized = false;
+                planningActive = false;
+                backgroundScanActive = false;
+                backgroundCandidates.Clear();
+                backgroundIndex = 0;
+                nextOreSearchFrame = nextBackgroundRefresh = frame;
+                lastPluginServiceTick = null;
+            }
+            if (!refresh || !blocks.IsCarrierPilot || blocks.BridgeTimer == null) return;
+            var bridge = BridgeDocument.Parse(blocks.BridgeTimer.CustomData);
+            bridge.Set("surveyPulse", 0);
+            bridge.Set("pluginLcdReady", 0);
+            string state = bridge.Get("state");
+            if (state == "requested" || state == "scanning" || state == "planning" || state == "waiting_ore")
+                bridge.Set("message", "Switch on a working SDX lidar on this carrier.");
+            if (bridge.Dirty) blocks.BridgeTimer.CustomData = bridge.Serialize();
         }
 
         private static Sandbox.ModAPI.Ingame.IMyProgrammableBlock ResolveMinerPbEntity(long entityId)

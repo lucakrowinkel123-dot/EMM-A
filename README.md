@@ -1,12 +1,14 @@
 # EMM-A client plugin
 
-EMM-A 0.9.46B automates asteroid mining for one carrier and one registered miner in Space Engineers 1. Install the EMM-A client plugin through Pulsar Legacy and paste the five matching scripts into their programmable blocks.
+EMM-A 0.9.47B automates asteroid mining for one carrier and one registered miner in Space Engineers 1. This plugin update works with the five 0.9.46B programmable-block scripts.
 
-For an asteroid to qualify, a working ore detector or SDX2 targeted lidar on the carrier must reach its bounding box. Ranges are measured from each block using its current terminal setting. Even 5 cm of overlap qualifies the entire asteroid for scanning.
+Install an **SDX2 targeted lidar** on the carrier's own grid and switch it on. EMM-A requires a powered, working lidar that the player can access. Turning off the last qualifying lidar suspends plugin services and cancels scans in progress. A vanilla ore detector or a lidar on a docked ship cannot activate the plugin.
+
+Each qualifying lidar uses its current WeaponCore range setting. When its range sphere touches an asteroid's bounding box, EMM-A scans the whole asteroid, including ore beyond the sphere. Even 5 cm of overlap qualifies. The SDX2 block description documents ship-identification pings. The ore map described here comes from EMM-A's own voxel scan.
 
 ## 0.9.46B scripts
 
-Open a script, choose **Raw**, and paste the entire file into the matching blockâ€™s editor.
+Open a script, choose **Raw**, and paste the entire file into the matching block's editor.
 
 | Carrier | Miner |
 | --- | --- |

@@ -19,7 +19,7 @@ namespace EMMA3.Client
             members = null;
             int registered = bridge.GetInt("fleetCount");
             if (registered == 0) return null;
-            if (registered != 1) return "EMM-A 0.9.46B requires one registered Miner.";
+            if (registered != 1) return Plugin.ProductName + " requires one registered Miner.";
             if (blocks.FleetPathTimer == null)
                 return "Need one timer named " + blocks.Names.Ca("Fleet Path") + " on the Carrier grid.";
             const int count = 1;
@@ -168,7 +168,7 @@ namespace EMMA3.Client
             {
                 planningActive = false;
                 nextOreSearchFrame = frame + 3600;
-                UpdateStatus("waiting_ore", candidates.Count == 0 ? "No asteroid box in detector range. Check ore detector or SDX lidar."
+                UpdateStatus("waiting_ore", candidates.Count == 0 ? "No asteroid box within SDX lidar range."
                     : "Waiting for " + DescribeTargetOres(ores) + " in range (" + candidates.Count + " loaded)");
                 return;
             }

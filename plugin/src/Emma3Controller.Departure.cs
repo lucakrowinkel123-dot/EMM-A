@@ -55,7 +55,7 @@ namespace EMMA3.Client
                     job.Scanner.Step();
                     if (job.Scanner.Active) return;
                     AsteroidMap map = job.Scanner.Current;
-                    if (map == null || !map.Complete || !blocks.CanScan(map.Voxel)) throw new InvalidOperationException("departure asteroid left detector range");
+                    if (map == null || !map.Complete || !blocks.CanScan(map.Voxel)) throw new InvalidOperationException("departure asteroid left SDX lidar range");
                     job.Maps.Add(map.EntityId, map);
                     RecordCompletedScan(map);
                     job.Scanner.ClearCurrent();

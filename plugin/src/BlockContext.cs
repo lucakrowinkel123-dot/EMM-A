@@ -129,6 +129,7 @@ namespace EMMA3.Client
             var occupiedBlock = controlled?.Entity as IMyCubeBlock;
             OccupiedController = controlled?.Entity as IMyShipController;
             ControlledGrid = occupiedBlock?.CubeGrid;
+            if (ControlledGrid != null) lidar.Clear();
             if (ControlledGrid == null || OccupiedController == null)
             {
                 Problem = "sit in a Carrier cockpit";
@@ -144,7 +145,6 @@ namespace EMMA3.Client
 
             blocks.Clear();
             terminal.GetBlocks(blocks);
-            RefreshScanSensors();
             // Bootstrap from the occupied grid, before resolving any prefixed hardware.
             foreach (var block in blocks)
             {
@@ -206,6 +206,7 @@ namespace EMMA3.Client
             if (fleet.GetInt("fleetCount") > 0 && MinerPb != null)
                 RestoreDetachedMiner(MinerPb);
             IsCarrierPilot = CarrierRemote != null && CarrierRemote.CubeGrid != null && CarrierRemote.CubeGrid.EntityId == ControlledGrid.EntityId;
+            if (IsCarrierPilot) lidar.Bind((IMyTerminalBlock)CarrierPb, blocks);
             if (!IsCarrierPilot)
                 Problem = "planning requires the Carrier cockpit";
             else if (BridgeTimer == null)
@@ -330,34 +331,22 @@ namespace EMMA3.Client
             return nearest;
         }
 
-        private readonly List<IMyTerminalBlock> scanSensors = new List<IMyTerminalBlock>();
+        private readonly CarrierLidar lidar = new CarrierLidar();
 
-        private void RefreshScanSensors()
+        private bool LidarAvailable(BoundingBoxD? asteroid)
         {
-            scanSensors.Clear();
-            foreach (var block in blocks)
-                if (block.CubeGrid == ControlledGrid && (block is Sandbox.ModAPI.Ingame.IMyOreDetector
-                    || (block is Sandbox.ModAPI.Ingame.IMyConveyorSorter && DetectorScanPolicy.IsSdxLidar(block.BlockDefinition.SubtypeName))))
-                    scanSensors.Add(block);
+            var session = MyAPIGateway.Session;
+            var controlled = session?.ControlledObject as IMyControllableEntity;
+            var occupied = controlled?.Entity as IMyCubeBlock;
+            return lidar.Available(session?.Player?.IdentityId ?? 0, occupied?.CubeGrid?.EntityId ?? 0, asteroid);
         }
+
+        public bool HasWorkingLidar => LidarAvailable(null);
 
         public bool CanScan(Sandbox.Game.Entities.MyVoxelBase voxel)
         {
-            var player = MyAPIGateway.Session?.Player;
-            if (player == null || !IsCarrierPilot || CarrierRemote == null || voxel == null || voxel.Closed || voxel.MarkedForClose)
-                return false;
-            foreach (var sensor in scanSensors)
-            {
-                if (sensor.Closed || sensor.MarkedForClose || sensor.CubeGrid != CarrierRemote.CubeGrid
-                    || !sensor.IsWorking || !sensor.HasPlayerAccess(player.IdentityId)) continue;
-                bool lidar = !(sensor is Sandbox.ModAPI.Ingame.IMyOreDetector);
-                // Both terminal sliders return metres. IMyOreDetector.Range returns a percentage.
-                var slider = sensor.GetProperty(lidar ? "Weapon Range" : "Range") as Sandbox.ModAPI.Interfaces.ITerminalProperty<float>;
-                if (slider == null) continue;
-                double radius = DetectorScanPolicy.Range(slider.GetValue(sensor), slider.GetMaximum(sensor), lidar);
-                if (DetectorScanPolicy.Overlaps(sensor.GetPosition(), radius, voxel.PositionComp.WorldAABB)) return true;
-            }
-            return false;
+            return IsCarrierPilot && voxel != null && !voxel.Closed && !voxel.MarkedForClose
+                && LidarAvailable(voxel.PositionComp.WorldAABB);
         }
 
         public void GetCarrierBlocks(List<IMyTerminalBlock> result)
@@ -431,7 +420,6 @@ namespace EMMA3.Client
 
         private void Clear()
         {
-            scanSensors.Clear();
             ControlledGrid = null;
             OccupiedController = null;
             CarrierRemote = null;

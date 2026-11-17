@@ -3,6 +3,7 @@
   <Import Project="../../plugin/Directory.Build.props" />
   <ItemGroup>
     <Compile Include="../../plugin/src/DetectorScanPolicy.cs" />
+    <Compile Include="../../plugin/src/CarrierLidar.cs" />
     <Reference Include="VRage.Math"><HintPath>$(SpaceEngineersBin64)/VRage.Math.dll</HintPath></Reference>
   </ItemGroup>
 </Project>

@@ -10,12 +10,12 @@ namespace EMMA3.Client
             return subtype == "sdx_detectorTargeted_lidar" || subtype == "sdx_detectorTargeted_lidarMes";
         }
 
-        internal static double Range(double setting, double maximum, bool lidar)
+        internal static double Range(double setting, double maximum)
         {
             if (!(maximum > 0) || double.IsInfinity(maximum) || double.IsNaN(setting) || double.IsInfinity(setting))
                 return 0;
             // WeaponCore reports the lesser of the active hardware and ammo limits as the slider maximum.
-            if (lidar && setting == -1) return maximum;
+            if (setting == -1) return maximum;
             return Math.Max(0, Math.Min(setting, maximum));
         }
 
